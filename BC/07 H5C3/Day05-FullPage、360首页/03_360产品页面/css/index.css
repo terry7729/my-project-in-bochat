@@ -1,0 +1,209 @@
+/* 这个插件会帮我们把我们写的内容再包一层div */
+.section1>div{
+
+    /* 它的子元素用弹性布局 */
+    display: flex;
+
+    flex-direction: column;
+    /* 主轴方向排列 */
+    justify-content: space-around;
+    /* 副轴排列 */
+    align-items: center;
+}
+
+
+.section1 .text>img{
+
+    margin-left: 40px;
+    opacity: .5;
+}
+
+
+.section1.animation .text>img{
+
+    transition: all 1s;
+    margin-left: 0;
+    opacity: 1;
+}
+
+
+/* 第二屏开始 */
+.section2>div{
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.section2 .shield{
+
+    width: 450px;
+}
+
+.shield>img:nth-child(3){
+
+    transform: translate(1000px,600px) rotate(660deg);
+}
+
+.section2.animation .shield>img:nth-child(3){
+
+    transition: all 1s;
+    transform: none;
+}
+
+
+/* 第三屏 */
+.section3>div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.section3 .circle{
+
+    width: 453px;
+    height: 449px;
+    background: url(../images/circle.png);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section3 .rocket{
+
+    transform: translate(-1000px,800px);
+}
+
+.section3.animation .rocket{
+
+    transition: all 1s;
+    transform: none;
+}
+
+
+/* 第四屏 */
+.section4>div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.section4 .searchBox{
+    /* border: 1px solid #000; */
+    height:438px;
+}
+
+.section4 .search{
+
+    width: 529px;
+    height: 66px;
+    background: url(../images/search.png);
+    display: flex;
+    align-items: center;
+    transform: translate(-800px);
+}
+
+.section4 .key{
+    /* width: 99px; */
+    width: 0;
+    height: 22px;
+    background: url(../images/key.png);
+    margin-left: 20px;
+}
+
+
+
+.section4 .result{
+
+    width: 529px;
+    /* height: 372px; */
+    height: 0px;
+    background: url(../images/result.png);
+}
+
+
+.section4.animation .search{
+
+    transition: all 1s;
+    transform: none;
+}
+
+.section4.animation .key{
+    transition: all 1s 1s steps(5);
+    width: 99px;
+}
+
+.section4.animation .result{
+
+    transition: all 1s 2s;
+    height: 372px;
+}
+
+/* 第五屏 */
+.section5>div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+}
+
+.section5 .browserBox{
+
+    width: 1004px;
+    flex:1;
+    /* border:5px solid white; */
+    position: relative;
+}
+
+.section5 .extra{
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.section5 .border{
+
+    background-color: white;
+    position: absolute;
+}
+
+.top,.bottom{
+
+    width: 100%;
+    height: 5px;
+}
+
+
+.left,.right{
+    width: 5px;
+    height: 100%;
+}
+
+
+.top{
+
+    transform: translateX(-1200px);
+}
+
+.bottom{
+    bottom: 0px;
+    transform: translate(1200px);
+}
+
+.left{
+
+    transform: translateY(1000px);
+}
+
+.right{
+    right: 0;
+    transform: translateY(-1000px);
+}
+
+
+.section5.animation .border{
+    transition: all 1s;
+    transform: none;
+}

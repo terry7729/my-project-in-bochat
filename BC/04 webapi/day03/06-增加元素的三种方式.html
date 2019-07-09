@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>我是坤坤</div>
+<p>我是坤哥小迷弟</p>
+
+<button onclick="document.write('<div>我是班长1111</div>');">千万别点我</button>
+<script>
+    //1.document.write() : 不推荐使用,可能会覆盖
+    /*默认情况下页面在加载的时候形成一个文档流，页面加载完毕之后默认文档流会关闭。
+    不会覆盖：在默认文档流没有关闭之前调用document.write()
+    会覆盖：默认文档流已经关闭，此时再调用document.write()，则会生成一个新的文档流，会把以前所有的内容给覆盖前
+
+     */
+    document.write('<div>我是班长</div>');
+
+    // //2.innerHTML: 不常用（100以内），存在性能问题
+    // //直接赋值会替换元素的内容
+    // //document.body.innerHTML = '<div>临渊羡鱼不如退而结网</div>';
+    // //如果不想替换而是添加，则可以使用字符串连接符
+    // document.body.innerHTML += '<div>临渊羡鱼不如退而结网</div>';
+    //
+    // //3.dom推荐：document.createElement()
+    //
+    // //3.1 创建元素   (1)创建的是空标签  （2）只是内存创建，需要手动添加
+    // var p = document.createElement('p');//参数是标签名
+    // //3.2 设置属性
+    // p.innerText = '老铁666';
+    // //3.3 添加到页面
+    // document.body.appendChild(p);
+
+    // console.log ( p );
+</script>
+</body>
+</html>

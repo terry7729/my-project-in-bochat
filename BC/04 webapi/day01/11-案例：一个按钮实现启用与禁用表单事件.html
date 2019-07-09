@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--1.表单元素有一个非常特殊的属性disabled，表示表单元素的两种状态（可用 禁用），属性值是布尔类型
+        2.在html中，默认不写就是false，写了就是true
+        3.js中可以设置这个属性的值为true或者false
+-->
+
+<input type="text"  >
+<br>
+<input type="password">
+<input type="radio">
+<input type="checkbox">
+<input type="button" value="表单按钮">
+<hr>
+
+<button id="jy">禁用</button>
+
+<script>
+      /* 需求分析：点击按钮
+                    （1）如果按钮文本是禁用： 1.所有表单元素disabled属性变为true  2.自身文本变成启用
+                    （2）如果按钮文本是启用： 1.所有表单元素disabled属性变为false  2.自身文本变成禁用
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1. 获取元素：
+      var jy = document.getElementById('jy');
+      var inputList = document.getElementsByTagName('input');
+
+      /*如何获取元素文本
+
+       */
+      console.log ( jy.innerText );
+      // jy.innerText = '黑马李宗盛';
+      //2.注册事件：
+      jy.onclick = function (  ) {
+          //this：谁调用这个方法，this就指向谁
+          //3.事件处理
+          if(this.innerText == '禁用'){
+              //(1)设置表单的disabled属性为true
+              for(var i = 0;i<inputList.length;i++){
+                inputList[i].disabled = true;
+              }
+              //（2）设置自身文本为启用
+              this.innerText = '启用';
+          }else{//启用
+              //(1)设置表单的disabled属性为false
+              for(var i = 0;i<inputList.length;i++){
+                  inputList[i].disabled = false;
+              }
+              //（2）设置自身文本为禁用
+              this.innerText = '禁用';
+          }
+      }
+
+      //自动帮我们执行  jy1.onclick()
+</script>
+</body>
+</html>

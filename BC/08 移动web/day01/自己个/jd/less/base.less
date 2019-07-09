@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0; //去除一些按住高亮的背景色
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); //给移动端所有元素设置 设置内边距内置
+    box-sizing: border-box; //禁止文字选择
+    -webkit-user-select: none; //禁止自动调整大小
+    -webkit-text-size-adjust: 100%;
+}
+html {
+    font-size: 26.6667vw;
+}
+
+@main-color:#de181b;
+body {
+    font-size: 0.14rem;
+    font-family: '微软雅黑';
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+input {
+    border: 0;
+    outline: 0;
+}
+
+img {
+    //设置图标中线对齐 解决图片距离块级元素0.03rem间距
+    vertical-align: middle;
+}
+
+input,
+button {
+    //消除输入框和按钮的原生外观
+    -webkit-appearance: none; //去掉IOS移除原生控件样式
+    -webkit-touch-callout: none;
+}
+
+.bt {
+    border-top: 0.01rem solid #ccc;
+}
+
+.bb {
+    border-bottom: 0.01rem solid #ccc;
+}
+
+.bl {
+    border-left: 0.01rem solid #ccc;
+}
+
+.br {
+    border-right: 0.01rem solid #ccc;
+}
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(213, 20, 51);
+    ul {
+        display: flex;
+        li {
+            width: 20%;
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            img {
+                width: 0.65rem;
+            }
+        }
+    }
+}

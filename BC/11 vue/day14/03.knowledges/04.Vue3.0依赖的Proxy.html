@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" v-model /> <input type="button" value="修改数据" />
+    <p v-text></p>
+  </body>
+</html>
+<script>
+  let data = {}
+  // 实例化Proxy
+  let pro = new Proxy(data, {
+    // 取值触发
+    get(target, prop) {
+      console.log('get')
+      // console.log(target)
+      // console.log(prop)
+      // return target.prop 获取target对象的 prop属性
+      return target[prop] //获取target对象的prop解析之后的值 对应的属性 假设 prop=name  target.name
+    },
+    // 赋值触发
+    set(target, prop, value) {
+      console.log('set')
+      // console.log(target)
+      // console.log(prop)
+      // console.log(value)
+      target[prop] = value
+      // 检测到数据改变 同步修改 添加了标记的dom元素
+      document.querySelectorAll('[v-text]').forEach(v => {
+        v.innerHTML = value
+      })
+      document.querySelector('[v-model]').value = value
+    }
+  })
+  document.querySelector('[v-model]').oninput = function() {
+    pro.name = this.value
+  }
+  document.querySelector('input[type=button]').onclick = function() {
+    pro.name = 'rose'
+  }
+</script>

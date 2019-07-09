@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .wrap {
+            width: 330px;
+            height: 30px;
+            margin: 100px auto 0;
+            padding-left: 10px;
+            background-image: url(images/bg.jpg);
+        }
+
+        .wrap li{
+            background-image: url(images/libg.jpg);
+        }
+
+        .wrap > ul > li {
+            float: left;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .wrap a {
+            display: block;
+            height: 30px;
+            width: 100px;
+            text-decoration: none;
+            color: #000;
+            line-height: 30px;
+            text-align: center;
+        }
+
+        .wrap li ul {
+            position: absolute;
+            top: 30px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul>
+        <li>
+            <a href="javascript:void(0);">一级菜单1</a>
+            <ul>
+                <li><a href="javascript:void(0);">二级菜单1</a></li>
+                <li><a href="javascript:void(0);">二级菜单2</a></li>
+                <li><a href="javascript:void(0);">二级菜单3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">一级菜单1</a>
+            <ul>
+                <li><a href="javascript:void(0);">二级菜单1</a></li>
+                <li><a href="javascript:void(0);">二级菜单2</a></li>
+                <li><a href="javascript:void(0);">二级菜单3</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:void(0);">一级菜单1</a>
+            <ul>
+                <li><a href="javascript:void(0);">二级菜单1</a></li>
+                <li><a href="javascript:void(0);">二级菜单2</a></li>
+                <li><a href="javascript:void(0);">二级菜单3</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //需求: 给一级菜单的li标签设置鼠标移入事件，二级菜单ul显示。
+    //      给一级菜单li设置鼠标离开事件，二级菜单隐藏。
+
+
+    var i = 0;//声明一个变量i
+
+    //鼠标移入事件.
+    $('.wrap>ul>li').mouseenter(function () {
+      i++;//只要触发这个mouseover事件,变量i就会自增1.
+      console.log(i);
+      $(this).children('ul').show();//本质还是在修改display为block
+    });
+
+
+    //鼠标移出事件.
+    $('.wrap>ul>li').mouseleave(function () {
+      $(this).find('ul').hide();//本质还是在修改display为none
+    });
+
+
+
+    //mouseover 事件在鼠标移动到  选取的元素 及 其子元素上 时触发 。
+    //mouseenter 事件只在鼠标移动到选取的元素上时触发。
+
+
+    //以后如果要设置鼠标移入事件,请使用mouseenter,就不要再使用mouseove了.
+    //鼠标离开事件请使用mouseleave, 就不要使用mouseout了.
+
+
+  });
+</script>

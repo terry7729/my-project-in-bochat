@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    <li></li>
+</ul>
+
+<script>
+    /*
+    1.innerText与innerHTML
+        * innerText：获取元素与子元素的文本（只有文本，不包含标签）
+        * innerHTML：获取元素与子元素的内容（包含文本和标签）
+
+     2.节点- 页面上所有的东西都是节点 (元素、属性、文本、注释等)
+
+                                          元素     属性         文本          注释              document
+       节点类型nodeType         1            2            3              8                    9
+       节点名称nodeName    标签名    属性名       #text      #comment     #document
+       节点值nodeValue         null        属性值    文本内容    注释内容            null
+
+     为什么要介绍节点? 和节点的一些API？
+    * （1）获取上一个节点/元素：  previousSibling和previousElementSibling
+    * （2）获取下一个节点/元素：   nextSibiling和nextElementSibiling
+    * （3）获取第一个节点/元素:     firstChild和firstElementChild、
+    * （4）获取最后一个节点/元素： lastChild和lastElementChild
+    * （5）获取父节点： parentNode
+
+     2.1： 了解HTML文档并不是只由标签元素（元素节点）构成，还有属性，文本内容，注释
+     2.2： 开发中常用：获取元素
+        * a. 如果有特殊要求，例如获取标签外的文本内容，只能用节点来获取
+        * b. IE8及以下获取节点（非空文本，注释，元素），谷歌/火狐/IE9获取节点（文本（含空文本）、注释、元素）
+        * c. IE8及以下浏览器，只有获取节点API，没有获取元素API，如果想要兼容IE8浏览器，只能通过节点获取元素
+
+
+   3.浏览器兼容:思路完全一致
+
+   //获取下一个元素为例：
+   function getPreviousElementSibling(ele){
+    //能力检测
+    if(ele.previousElementSibling){//非IE8浏览器
+        return ele.previousElementSibling;
+    }else{
+        var node = ele.previousSibling;//获取上一个节点 ，可能是（文本节点 注释节点  null/没有上一个节点）
+        if(node && node.nodeType != 1){//如果能找到节点，并且节点类型不是1，就继续往上找
+            node = node.previousSibling;
+        }
+        //只有两种情况会结束循环：
+      //（1）!node  ：不存在上一个节点，已经找到底了,此时node是null
+      //（2）node.nodeType == 1:找到元素了，此时node是上一个元素
+        return node;
+    }
+  }
+
+
+    9.克隆 cloneNode
+      元素.cloneNode(true/false);
+      如果参数是true，表示深克隆，把这个元素的内容(所有子元素)全部拷贝。
+      如果参数是false，表示浅克隆，只会复制当前这个元素，他的内容不会被复制。
+
+      克隆后产生的新元素只存在于内存中，不会主动的添加到页面结构中，所有要主动的添加。
+      追加：
+        元素1.appendChild(追加的元素);
+
+    **/
+
+    //获取上一个元素为例：
+    function getPreviousElementSibling(ele){
+        //能力检测
+        if(ele.previousElementSibling){//非IE8浏览器
+            return ele.previousElementSibling;
+        }else{
+            var node = ele.previousSibling;//获取上一个节点 ，可能是（文本节点 注释节点  null/没有上一个节点）
+            if(node != null && node.nodeType != 1){//如果能找到节点，并且节点类型不是1，就继续往上找
+                node = node.previousSibling;
+            }
+            //只有两种情况会结束循环：
+            //（1）!node  ：不存在上一个节点，已经找到底了,此时node是null
+            //（2）node.nodeType == 1:找到元素了，此时node是上一个元素
+            return node;
+        }
+    }
+
+
+</script>
+</body>
+</html>

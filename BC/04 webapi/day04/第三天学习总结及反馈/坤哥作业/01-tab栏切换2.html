@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>tab栏切换</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .box {
+      width: 400px;
+      height: 300px;
+      border: 1px solid #ccc;
+      margin: 100px auto;
+    }
+
+    .hd {
+      height: 45px;
+    }
+
+    .hd span {
+      display: inline-block; /*将行内元素转换成行内块元素，宽高才起作用*/
+      width: 90px;
+      background-color: pink;
+      line-height: 45px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .hd span.current { /*交集选择器，标签指定式选择器*/
+      background-color: purple; /*紫色*/
+    }
+
+    .bd li {
+      height: 255px;
+      background-color: purple;
+      display: none; /*设置隐藏*/
+    }
+
+    .bd li.current {
+      display: block; /*显示*/
+    }
+  </style>
+</head>
+<body>
+<div class="box" id="box">
+  <div class="hd">
+    <span class="current">体育</span>
+    <span>娱乐</span>
+    <span>新闻</span>
+    <span>综合</span>
+  </div>
+  <div class="bd">
+    <ul id="list">
+      <li class="current">我是体育模块</li>
+      <li>我的娱乐模块</li>
+      <li id="li3">我是新闻模块</li>
+      <li>我是综合模块</li>
+    </ul>
+  </div>
+</div>
+
+<script src="common.js"></script>
+<script>
+
+    /*1.获取事件源
+         2.添加事件
+         3.事件处理
+          */
+
+
+  //1.获取元素
+  var hd = document.getElementsByClassName('hd')[0];//头部div    类名获取返回一个数组，需要取下标才能得到元素
+  var spanList = hd.getElementsByTagName('span');//头部span列表
+  var ul = id('list');//模块ul
+  var liList = ul.getElementsByTagName('li');//具体模块列表
+
+  //2.遍历头部span列表
+  for(var i = 0;i<spanList.length;i++){
+      //2.1 给每一个span标签添加一个自定义index
+      spanList[i].setAttribute('index',i);
+
+      //2.2给每一个span标签添加点击事件
+      spanList[i].onclick = function (  ) {
+
+          //3： 点击span标签，自身样式发生变化，对应下标的li模块显示
+          //排他思想去除其他span的样式，并且隐藏其他模块li
+
+          //3.1 设置自身样式
+          this.className = 'current';
+          //3.2 显示对应下标的模块li
+          var index = this.getAttribute('index');
+          liList[index].style.display = 'block';
+
+          //3.3 排他思想去除其他span的样式，并且隐藏其他模块li
+          for(var j = 0;j<spanList.length;j++){
+              if(spanList[j] != this){
+                  spanList[j].className = '';//自身类名清空
+                  liList[j].style.display = 'none';//对应j下标的模块li标签隐藏
+              }
+          }
+      }
+  }
+
+
+
+</script>
+
+</body>
+</html>

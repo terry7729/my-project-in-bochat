@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 3.75rem;
+            height: 1rem;
+            background-color: hotpink;
+            font-size: 0.1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- rem 单位参照根元素即html字体大小  只需要根据不同屏幕宽度来改变html元素的字体大小即可
+    重点是根元素 的字体大小怎么变 参照什么变
+        1. 怎么变 使用vw单位根据视口变化而变化    使用JS计算来变化
+        2. 参照什么变 参照你的设计稿  或者写代码屏幕真实宽度  -->
+    <div class="box1">
+        文字
+    </div>
+    <script>
+        setHtmlFontSize();
+
+        function setHtmlFontSize() {
+            // 假设当前设计稿宽度 750
+            // 假设设计稿屏幕根元素字体 200px
+            // 如果当前屏幕是375
+            // 当前屏幕根元素字体大小 100px
+            var designWidth = 750;
+            var designFontSize = 200;
+            // 获取html元素的可视宽度 就是视口宽度
+            var windowWidth = document.documentElement.clientWidth;
+            // 先求出当前屏幕缩放的了多少倍 例如设计稿 750 当前屏幕 375  750/375 缩放了2倍 根元素也要按照设计稿根元素缩放2倍 200/2 == 100
+            var nowFontSize = 200 / (designWidth / windowWidth);
+            console.log(nowFontSize)
+            // 求出了当前根元素的fontSize之后 给html元素设置为当前计算的字体大小
+            document.documentElement.style.fontSize = nowFontSize + 'px';
+            // document.body ==  body元素
+            // document.documentElement == html元素
+        }
+        window.addEventListener('resize', setHtmlFontSize);
+        // 把函数赋值给fun
+        // var fun = setHtmlFontSize;
+        // 把函数的返回值赋值给fun1
+        // var fun1 = setHtmlFontSize();
+
+        // function hello() {
+        //     console.log(1)
+        // }
+        // document.querySelector('div').addEventListener('click', hello);
+    </script>
+</body>
+
+</html>

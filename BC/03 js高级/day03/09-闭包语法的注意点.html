@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.复习闭包语法
+       2.了解闭包语法的注意点
+     */
+    
+    function test (  ) {
+        var num = Math.random();
+        //1.声明闭包函数
+        function closure (  ) {
+            //2.返回想要访问的内部变量
+            return num;
+        }
+        //3.将闭包函数返回
+        return closure;
+    };
+
+    //1.外部函数只调用一次：得到的同一个变量
+    var fn = test();//调用一次外部函数，得到一个闭包函数
+    console.log ( fn () );//调用闭包函数，返回内部变量
+    console.log ( fn () );
+    console.log ( fn () );
+    //
+    // //2.外部函数调用多次：得到多个变量
+    // var fn1 = test();//每调用一次外部函数  就会重新声明一个变量，重新声明一个闭包函数
+    // console.log ( fn1 () );
+    // var fn2 = test();
+    // console.log ( fn2 () );
+    // var fn3 = test();
+    // console.log ( fn3 () );
+    //
+    // //外部函数调用多次，每一次都会生成新的变量，新的闭包函数
+    // console.log ( fn1 == fn2 );//false
+
+    //3.示例：投票机
+
+    function outer (  ) {
+        var num = 10;
+
+        function closure (  ) {
+            num++;
+            return num;
+        }
+
+        return closure;
+    }
+
+    //3.1 一台投票机投三票
+    var fn = outer();
+    console.log ( fn () )//11
+    console.log ( fn () );//12
+    console.log ( fn () );//13
+
+    //3.2  三台投票机 各投一票
+    // var fn1 = outer();
+    // console.log ( fn1 () );//11
+    console.log ( outer () () );//这行代码相当于以上两行代码简写
+    // var fn2 = outer();
+    // console.log ( fn2 () );//11
+    console.log ( outer () () );
+    // var fn3 = outer();
+    // console.log ( fn3 () );//11
+    console.log ( outer () () );
+
+    //课后题
+
+    for (var i = 1;i <= 5;i++){
+        function outer (  ) {
+            var num = i;
+            function closure (  ) {
+                return num;
+            }
+            return closure;
+        }
+         console.log ( '循环内' + outer () () );//打印什么？ 1 2 3 4 5
+    }
+
+    //console.log ('循环外' +  outer () () );//打印什么？   6
+
+
+</script>
+</body>
+</html>

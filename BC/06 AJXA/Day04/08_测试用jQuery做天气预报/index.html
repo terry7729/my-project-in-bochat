@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        div {
+            margin-top: 20px;
+            width: 1366px;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-top: 50px;
+            border: 2px solid #ddd;
+            height: 200px;
+        }
+
+        li {
+            text-align: center;
+            width: 180px;
+            background-color: #ccc;
+            margin-left: 12px;
+            float: left;
+            padding: 15px 0;
+        }
+    </style>
+
+    <!-- 
+        以后我们前端的开发：都是写界面、样式、交互、发请求
+
+     -->
+</head>
+
+<body>
+
+    <input type="text" id="city">
+    <button id="btn">查询天气</button>
+
+    <div>
+        <p id="cityname">城市名称：</p>
+        <ul id="weather">
+            <li>
+                <p class="date">20日星期五</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script src="../07_jQuery_ajax/jquery-1.12.4.js"></script>
+
+<script>
+
+    $('#btn').click(function(){
+
+        //发请求
+        $.get({
+
+            // url:"http://wthrcdn.etouch.cn/WeatherApi?city=" + $('#city').val(),
+            url:"http://wthrcdn.etouch.cn/WeatherApi",
+            data:{ city: $('#city').val() },
+            dataType:"xml",
+            success:function(obj){
+
+                // console.log(obj);
+                var weatherList = obj.getElementsByTagName('weather');
+                
+                for(var i = 0; i < weatherList.length; i++){
+
+                     $('li').eq(i).children().eq(0).html(weatherList[i].children[0].innerHTML);
+                     $('li').eq(i).children().eq(1).html(weatherList[i].children[1].innerHTML);
+                     $('li').eq(i).children().eq(2).html(weatherList[i].children[2].innerHTML);
+                }
+  
+            }
+        });
+    });
+
+</script>

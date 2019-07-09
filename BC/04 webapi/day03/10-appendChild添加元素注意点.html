@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="ul1">
+    <li>隔壁老宋1</li>
+    <li>隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+<ul id="ul2">
+    <li>隔壁保健坤1</li>
+    <li id="li2">隔壁保健坤2</li>
+    <li>隔壁保健坤3</li>
+    <li>隔壁保健坤4</li>
+    <li>隔壁保健坤5</li>
+</ul>
+
+<script>
+    /*添加子元素：  父元素.appendChild(子元素)
+            1.新创建元素 : 则添加到最后面
+            2.已经存在的元素: 则移动到最后面
+            3.父元素有子元素： 父元素和子元素一起移动到最后面
+     */
+
+    var ul1 = document.getElementById('ul1');
+
+    //1.新创建的元素
+    var newLi = document.createElement('li');
+    newLi.innerText = '我是新来的';
+    ul1.appendChild(newLi);
+
+    //2.已经存在的元素
+    var li2 = document.getElementById('li2');//保健坤2
+    ul1.appendChild(li2);
+
+    //3.父元素有子元素
+    var ul2 = document.getElementById('ul2');//保健坤
+
+    ul1.appendChild(ul2);
+</script>
+</body>
+</html>

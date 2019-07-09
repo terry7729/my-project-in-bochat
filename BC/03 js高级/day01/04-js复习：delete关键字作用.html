@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //delete关键字两个作用
+
+    //1.删除对象的属性:   delete 对象名.属性名
+    var banzhang = {
+        name:'经纪人老宋',
+        age:18,
+        sex:'男',
+        hoddy:'足疗爱好者'
+    };
+
+    console.log ( banzhang );
+    delete banzhang.hoddy;
+    console.log ( banzhang );
+
+    //2.删除没有使用var关键字声明的变量
+    //变量没有使用var声明： 不参与预解析，一定是全局变量
+
+    function fn (  ) {
+        num = 10;//全局变量
+    }
+    fn();
+    console.log ( num );
+
+    delete num;
+    //console.log ( num );//报错：  num is not undefined 没有声明
+
+    //注意：如果有var声明。delete关键字无法删除
+    var a = 100;
+    delete a;
+    console.log ( a );
+</script>
+</body>
+</html>

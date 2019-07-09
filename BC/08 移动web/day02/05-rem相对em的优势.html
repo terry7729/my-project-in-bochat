@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 如果使用em 如果每个元素字体不一样大 但是盒子一样大 每个盒子的em单位大小就不一样
+        实现适配的时候修改font-size 每个盒子font-size修改值都不一样 */
+        /* .em1 {
+            font-size: 10px;
+            width: 10em;
+            height: 10em;
+            background-color: hotpink;
+        }
+
+        .em2 {
+            font-size: 15px;
+            width: 6.66667em;
+            height: 6.66667em;
+            background-color: green;
+        }
+
+        .em3 {
+            font-size: 20px;
+            width: 5em;
+            height: 5em;
+            background-color: yellow;
+        } */
+        html{
+            font-size: 5.33333vw;
+        }
+        .rem1 {
+            font-size: 1rem;
+            width: 10rem;
+            height: 10rem;
+            background-color: hotpink;
+        }
+
+        .rem2 {
+            font-size: 1.5rem;
+            width: 10rem;
+            height: 10rem;
+            background-color: green;
+        }
+
+        .rem3 {
+            font-size: 2rem;
+            width: 10rem;
+            height: 10rem;
+            background-color: yellow;
+        }
+        nav img{
+            /* 当前根元素字体大小20px 1rem = 20px  40px / 20px  = 2rem; */
+            /* 1rem == 100px  */
+            width: 2rem;
+            height: 2rem;
+            /* width:0.4rem; */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="em1">
+        第一个盒子
+    </div>
+    <div class="em2">
+        第二个盒子
+    </div>
+    <div class="em3">
+        第三个盒子
+    </div> -->
+    <div class="rem1">第1个盒子</div>
+    <div class="rem2">第2个盒子</div>
+    <div class="rem3">第3个盒子</div>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">
+                    <img src="./jd/images/nav0.png" alt="">
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+       $(function () {
+          $('#btn1').on('click',function () {
+              console.log($('img').attr('src'));
+
+          })
+
+           $('#btn2').on('click',function () {
+           $('img').attr({title:111,src:222,aaa:'22211'})
+           })
+
+           $('#btn3').on('click',function () {
+               $('img').removeAttr('src alt')
+           })
+       })
+  </script>
+</head>
+<body>
+<input type="button" value="获取属性" id="btn1"/>
+<input type="button" value="设置属性" id="btn2"/>
+<input type="button" value="移除属性" id="btn3"/> <br/><br/>
+<img src="991.gif" alt="周五晚睡1" title="周五晚睡" aaa='aaa'/>
+
+</body>
+</html>
+
+<!--<script src="jquery-1.12.4.js"></script>-->
+<!--<script>-->
+  <!--$(function () {-->
+    <!--//回忆一下原生js中操作属性:  setAttribute();  getAttribute();  removeAttribute();-->
+
+    <!--//jQuery中如何操作属性: attr(); removeAttr();-->
+
+    <!--//获取属性.-->
+    <!--$('#btn1').on('click', function () {-->
+      <!--console.log($('img').attr('src')); //'991.gif'-->
+      <!--console.log($('img').attr('title'));//'周五晚睡'-->
+      <!--console.log($('img').attr('aaa'));//'aaa'-->
+      <!--console.log($('img').attr('bbb'));-->
+      <!--//一开始没有bbb这个属性,获取到的值是undefined. attr()设置了这个属性获取的就是这个属性的值.-->
+    <!--});-->
+
+    <!--//设置属性-->
+    <!--$('#btn2').on('click', function () {-->
+      <!--//设置单属性.-->
+      <!--// $('img').attr('src','992.gif'); //原来有这个src属性,设置那就是修改-->
+      <!--// $('img').attr('title','帅哥玩水'); //原来有这个title属性,设置那就是修改-->
+      <!--// $('img').attr('bbb','bbb');//原来没有这个bbb属性,那就是添加属性-->
+
+      <!--//设置多属性.-->
+      <!--$('img').attr({-->
+        <!--'src':'992.gif',-->
+        <!--'title':'帅哥玩水',-->
+        <!--bbb:'bbb'-->
+      <!--});-->
+    <!--});-->
+
+    <!--//移除属性.-->
+    <!--$('#btn3').on('click', function () {-->
+      <!--//移除单属性.-->
+      <!--//$('img').removeAttr('aaa');-->
+      <!--//$('img').removeAttr('src');-->
+      <!--//$('img').removeAttr('bbb');-->
+
+
+      <!--//移除多属性.-->
+      <!--$('img').removeAttr('aaa src bbb');-->
+
+    <!--});-->
+
+  <!--});-->
+<!--</script>-->

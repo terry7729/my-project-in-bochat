@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入账号" id="user">
+    <input type="password" placeholder="请输入密码" id="pwd">
+    <input type="button" value="点我继续填写更多" id="btn">
+</body>
+</html>
+
+<script>
+    var user = document.getElementById('user');
+    var pwd = document.getElementById('pwd');
+    document.getElementById('btn').onclick = function(){
+
+        //保存当前页面数据
+        sessionStorage.setItem('user',user.value);
+        sessionStorage.setItem('pwd',pwd.value);
+        location.href = "two.html";
+    }
+</script>

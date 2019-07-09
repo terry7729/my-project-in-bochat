@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <!-- 
+        单独设置某个子元素在副轴的排列
+            align-self：取值跟align-items是一样的
+     -->
+
+    <style>
+
+
+        ul{
+            padding: 0;
+            list-style: none;
+            width: 400px;
+            height: 550px;
+            border: 1px solid #000;
+            display: flex;
+            
+            /* 统一设置所有子元素在副轴的排列方式 */
+            /* align-items: center; */
+        }
+
+        li{
+            width: 100px;
+            height: 100px;
+            background-color: yellowgreen;
+        }
+
+        li:nth-child(2){
+            /* 单独设置某个子元素在副轴的排列，它的取值跟align-items是一样的 */
+            align-self:center;
+        }
+
+        li:nth-child(3){
+
+            align-self:flex-end;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

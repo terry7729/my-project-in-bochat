@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        script的src我们以前是用来引入文件的
+
+        script用src导入文件后，会当JS代码来执行文件的内容，跟文件类型没有半毛钱关系
+
+        但是，真的是把文件的内容来当JS代码来执行了吗？？？
+        不一定，严格来讲是把文件的响应体当JS代码来执行了    
+
+        script标签其实是会对导入的文件发请求，然后是把请求完成的响应体当JS代码来执行，不能说是文件的内容，只能说是响应体当JS代码执行
+    -->
+    <!-- <script src="1.js"></script> -->
+    <!-- <script src="1.txt"></script>  -->
+
+
+    <script>
+        function test(obj){
+
+            console.log('我是test');
+            console.log(obj);
+            
+        }
+
+        function f1(obj){
+            console.log('我是f1');
+            console.log(obj);
+            
+        }  
+    </script>
+
+    <script src="data.php?callback=f1"></script>
+</head>
+<body>
+    
+</body>
+</html>

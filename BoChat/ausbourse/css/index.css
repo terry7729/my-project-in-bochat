@@ -1,0 +1,316 @@
+.w h3 {
+    font-size: 40px;
+    position: absolute;
+    top: 128px;
+    color: #fff;
+}
+
+.w h5 {
+    font-size: 16px;
+    position: absolute;
+    top: 199px;
+    color: #fff;
+}
+
+.alletrading {
+    position: absolute;
+    top: 370px;
+}
+
+.etrading {}
+
+.alletrading>div {
+    width: 228px;
+    height: 110px;
+    background: url('../img/-s-bg_pic_1.png') no-repeat;
+    background-size: 228px;
+    float: left;
+    border: 1px #ccc dashed;
+    margin-right: 15px;
+}
+
+.alletrading>div>p {
+    color: #0090FF;
+    font-size: 20px;
+    padding-left: 30px;
+    margin-top: 23px;
+}
+
+.alletrading>div {
+    overflow: hidden;
+}
+
+.alletrading>div>p:nth-of-type(2) {
+    font-size: 14px;
+    color: #7385A8;
+    margin-top: 14px;
+}
+
+.alletrading>div:nth-of-type(5) {
+    margin-right: 0;
+}
+
+.alletrading .etrading2 {
+    background: url('../img/-s-bg_pic_2.png') no-repeat;
+}
+
+.alletrading .etrading3 {
+    background: url('../img/-s-bg_pic_3.png') no-repeat;
+}
+
+.alletrading .etrading4 {
+    background: url('../img/-s-bg_pic_4.png') no-repeat;
+}
+
+.alletrading .etrading5 {
+    background: url('../img/-s-bg_pic_5.png') no-repeat;
+}
+
+.greenhand {
+    background-color: #152346;
+    height: 36px;
+    top: 528px;
+    position: absolute;
+    width: 100%;
+}
+
+.greenhand .w {
+    text-align: center;
+}
+
+.greenhand .icon {
+    margin-left: 20px;
+}
+
+.glyphicon {
+    display: inline-block;
+    line-height: 36px;
+    color: #C8DBFF;
+    font-size: 12px;
+}
+
+.caozuo {
+    margin: 0 13px;
+    display: inline-block;
+    color: #C8DBFF;
+    line-height: 36px;
+}
+
+main {
+    width: 100%;
+    height: 640px;
+    background-color: #F4F5F8;
+    overflow: hidden;
+}
+
+.tbhead {
+    width: 100%;
+    height: 48px;
+    font-size: 18px;
+    line-height: 48px;
+}
+
+.tbhead ul {
+    background-color: #fff;
+}
+
+.tbhead li {
+    height: 48px;
+}
+
+.tbhead li:nth-of-type(1) {
+    margin: 0 29px 0 43px;
+}
+
+main .w {
+    overflow: hidden;
+}
+
+.tables {
+    margin-top: 36px;
+}
+
+.tables .active {
+    border-top: 2px solid #2385FB;
+    color: #2385FB;
+}
+
+.table {
+    text-align: center;
+}
+
+.table tr {
+    background-color: #fff;
+}
+
+.w .table>thead>tr>th {
+    border-bottom: none;
+    font-size: 16px;
+    color: #57698C;
+    text-align: center;
+    font-weight: normal;
+}
+
+.section1 {
+    background: url('../img/-s-bg_pic.png') no-repeat;
+    width: 100%;
+    height: 508px;
+    background-size: 100% 508px;
+    overflow: hidden;
+}
+
+.section1 .w {
+    overflow: hidden;
+}
+
+.section1 ul {
+    margin-top: 126px;
+    margin-left: 199px;
+    color: #C8DBFF;
+}
+
+.section1 ul li {
+    width: 125px;
+    text-align: center;
+    margin-right: 215px;
+}
+
+.section1 ul li:nth-of-type(3) {
+    margin-right: 0;
+}
+
+.section1 ul li .sec1text {
+    overflow: hidden;
+}
+
+.section1 ul li h2 {
+    font-size: 24px;
+    margin-top: 52px;
+    margin-bottom: 10px;
+}
+
+.section1 ul li p {
+    font-size: 16px;
+    margin-bottom: 0;
+    line-height: 29px;
+}
+
+.section2 .w {
+    overflow: hidden;
+}
+
+.section2 {
+    width: 100%;
+    height: 596px;
+}
+
+.section2 .w {
+    overflow: hidden;
+    cursor:
+}
+
+.four {
+    margin-top: 138px;
+}
+
+.section2 .four a {
+    width: 282px;
+    height: 258px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.section2 .four a>div {
+    width: 282px;
+    height: 258px;
+    background: url('../img/1.png') no-repeat;
+    background-size: 282px;
+    float: left;
+    border: 1px solid #DDE0EB;
+}
+
+.section2 .four a:nth-of-type(4) {
+    margin-right: 0;
+}
+
+.section2 .four>a>div {
+    overflow: hidden;
+}
+
+.section2 .four p:nth-of-type(1) {
+    text-align: center;
+    color: #1E2A39;
+    margin-top: 175px;
+    font-size: 20px;
+    line-height: 24px;
+    margin-bottom: 15px;
+}
+
+.section2 .four .bq {
+    font-size: 16px;
+    color: #2385FB;
+    margin-left: 12px;
+}
+
+.section2 .four .time {
+    float: right;
+    margin-right: 31px;
+}
+
+.section2 .more {
+    font-size: 14px;
+    color: #57698C;
+    width: 120px;
+    height: 36px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 72px;
+    text-align: center;
+    line-height: 36px;
+    border: 1px solid #57698C;
+    border-radius: 2px;
+    color: #57698C;
+    text-decoration: none;
+}
+
+.contactus {
+    position: absolute;
+    right: 48px;
+    bottom: 61px;
+}
+
+.contactus ul {
+    border: 1px solid #DDE0EB;
+    margin-bottom: 0;
+    margin-top: 22px;
+}
+
+.contactus>div {
+    border: 1px solid #DDE0EB;
+}
+
+.contactus span {
+    position: absolute;
+    width: 180px;
+    height: 40px;
+    border: 1px solid #DDE0EB;
+    right: 110px;
+    display: none;
+    text-align: center;
+    line-height: 40px;
+    box-sizing: border-box;
+    color: #57698C;
+    background-color: #FFFFFF
+}
+
+.contactus .top {}
+
+.contactus li {
+    width: 48px;
+    height: 48px;
+    float: none;
+    background-color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="存" id='set'>
+    <input type="button" value="取" id='get'>
+    <input type="button" value="清" id='clear'>
+    <input type="button" value="删" id='del'>
+</body>
+</html>
+<script src="./jquery-1.11.4.min.js"></script>
+<script>
+    $('#set').on('click',function(){
+        sessionStorage.setItem('name','pz');
+        sessionStorage.setItem('age',17);
+    })
+
+    $('#get').on('click',function(){
+       var res =sessionStorage.getItem('age');
+       console.log(res);
+       
+    })
+
+    $('#del').on('click',function(){
+        sessionStorage.removeItem('name');
+    })
+
+    $('#clear').on('click',function(){
+        sessionStorage.clear();
+    })
+</script>

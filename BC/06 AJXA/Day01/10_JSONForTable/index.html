@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 涉及到本机服务器要用127打开，其他的可以直接打开 -->
+
+    <style>
+        input{
+            width: 120px;
+            height: 60px;
+            display: block;
+
+            margin: 50px auto;
+        }
+
+        table{
+            margin: 50px auto;
+            
+            /* table专用的属性，合并单元格的边框 */
+            border-collapse: collapse;
+        }
+
+        th,td{
+
+            border: 1px solid #000;
+            width: 120px;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="加载数据" id="load">
+
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>成绩</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+</body>
+
+</html>
+
+
+<script>
+
+    //找到tbody
+    var tb = document.querySelector('tbody');
+
+    //加载数据的点击事件
+    document.getElementById('load').onclick = function () {
+
+        tb.innerHTML = "";
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //2. 设置请求行
+        xhr.open('get', 'data.php');
+        //3. 设置请求头（get不用设置）
+        //4. 发送请求&设置请求体
+        xhr.send();
+        //5. 监听响应完成
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                // console.log(xhr.responseText);
+                //把JSON转成JS数据
+                var arr = JSON.parse(xhr.responseText);
+                console.log(arr);
+
+                for (var i = 0; i < arr.length; i++) {
+
+                    var tr = "<tr>";
+
+                    tr += "<td>" + arr[i].Id + "</td>";
+                    tr += "<td>" + arr[i].name + "</td>";
+                    tr += "<td>" + arr[i].age + "</td>";
+                    tr += "<td>" + arr[i].score + "</td>";
+
+                    tr += "</tr>";
+
+                    tb.innerHTML += tr;
+                }
+            }
+        }
+    }
+</script>

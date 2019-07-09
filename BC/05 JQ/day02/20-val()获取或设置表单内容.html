@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //原生js中,表单元素获取/设置内容,用value属性.
+
+      //1.jQuery中,表单元素获取/设置内容,用val()方法.
+      //给按钮设置点击事件.
+      $('#btn').click(function () {
+        //1.1 获取内容 val()方法不加参数.
+        // console.log($('#txt').val());
+
+        //1.2 设置内容 val()方法加参数,参数就是你要设置的内容.
+        $('#txt').val('设置的内容');
+      });
+
+      //---------------------------------------------------------
+      //2.案例
+      //2.1 文本输入框设置获取焦点事件. focus
+      $('#txt').focus(function () {
+        //如果你为默认内容,获得焦点才设置为空.
+        if($(this).val() == this.defaultValue){
+          $(this).val("");
+        }
+      });
+
+      //2.1 文本输入框设置失去焦点事件. blur
+      $('#txt').blur(function () {
+        //如果你为空,失去焦点才应该还原.
+        if($(this).val() == ''){
+          $(this).val(this.defaultValue);
+        }
+      });
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/> <br/><br/>
+<input type="text" id="txt" value="请输入password"/>
+</body>
+</html>

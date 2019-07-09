@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* 在移动端去除一些按住高亮的背景色 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    font-size: 26.6667vw;
+}
+
+img {
+    border: none;
+}
+
+
+/*清除浮动*/
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+.title {
+    color: #222222;
+    font-size: 0.18rem;
+    line-height: 0.25rem;
+    /* margin-top: 0.22rem; */
+    font-weight: bold;
+    position: absolute;
+    top: 0.22rem;
+    left: 50%;
+    width: 3.6rem;
+    margin-left: -1.8rem;
+    text-align: center;
+}
+
+.content {
+    margin-top: 0.6rem;
+}
+
+.content>p {
+    line-height: 0.22rem;
+    font-size: 0.14rem;
+}
+
+.content p {
+    font-size: 0.14rem;
+    line-height: 0.22rem;
+    margin-bottom: 0.16rem;
+    text-indent: 0.3rem;
+}
+
+.content>div {
+    border-top: 1px #F7F7F7 solid;
+    /* padding-left: 0.16rem; */
+    padding-top: 0.16rem;
+    /* padding-right: 0.24rem; */
+    width: 3.46rem;
+    margin: 0 auto;
+}

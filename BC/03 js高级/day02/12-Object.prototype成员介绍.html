@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.根据完整的原型链，可以得知所有的对象的原型链最终都会指向Object.prototype
+    这意味着，所有的对象都可以访问Object.prototype原型中的成员
+
+     */
+
+    /*2.Object.prototype有哪些成员，哪些是常用的呢？*/
+    console.log ( Object.prototype );
+
+    //2.1 hasOwnProperty(): 检查对象是否包含某个成员
+
+
+    // function Person (name,age,sex  ) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sex = sex;
+    // };
+
+    // Person.prototype.eat = function (  ) {
+    //     console.log ( "大吉大利，今晚吃鸡" );
+    // }
+    //
+    // var p1 = new Person('班长',38,'男');
+    // console.log ( p1 );
+    //
+    // console.log ( p1.hasOwnProperty ( "name" ) );//true
+    // console.log ( p1.hasOwnProperty ( "age" ) );//true
+    // console.log ( p1.hasOwnProperty ( "sex" ) );//true
+    // console.log ( p1.hasOwnProperty ( "eat" ) );//false   虽然p1可以访问eat成员，但是eat不是p1自己的成员，而是原型中的成员
+
+    //2.2 isPrototypeOf(): 检查(左边)一个对象是不是(右边)另一个对象的原型
+
+
+
+    // function Person (name,age,sex  ) {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sex = sex;
+    // };
+    //
+    // var p1 = new Person('班长',38,'男');
+    //
+    // console.log ( Person.prototype.isPrototypeOf ( p1 ) );//true
+    //
+    // var p2 = {};
+    // p1.__proto__ = p2;//手动修改p1的原型为p2
+    // console.log ( p1 );
+    // console.log ( Person.prototype.isPrototypeOf ( p1 ) );//false
+    // console.log ( p2.isPrototypeOf ( p1 ) );//true
+
+
+    //2.3 propertyIsEnumerable(): 检查对象是否可以枚举某个属性
+    //枚举：   （1）是自己的成员  （2）可以被for-in循环遍历 （自己的和原型的）
+
+    function Person (name,age,sex  ) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+    };
+
+    Person.prototype.type = '哺乳动物';
+
+    var p1 = new Person('班长',38,'男');
+
+    for(var key in p1){
+        console.log ( key );//自己的和原型中的成员
+    }
+
+    console.log ( p1.propertyIsEnumerable ( "name" ) );;//true
+    console.log ( p1.propertyIsEnumerable ( "type" ) );;//false   不满足条件1：自己的成员
+    console.log ( p1.propertyIsEnumerable ( "sex" ) );;//true
+
+
+    //4.解答疑惑： hasOwnProperty与propertyIsEnumerable区别
+    /*
+    hasOwnProperty:只需要满足一个条件： 是自己的成员
+    propertyIsEnumerable： 需要满足两个条件：  是自己的成员   可以被for-in遍历
+     */
+
+    var arr = [10,20,30];
+    console.log ( arr );
+    console.log ( arr.hasOwnProperty ( "length" ) );//true
+    console.log ( arr.propertyIsEnumerable ( "length" ) );//false   虽然length是数组的成员  但是无法被for-in遍历
+
+    for (var key in arr){//数组对象使用for-in只能遍历下标，不能遍历length属性
+        console.log ( key );
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*1.函数的三种调用模式：  (1)全局函数  (2) 对象方法  (3) 构造函数
+            * 共同特点：this指向无法修改
+
+      2.函数的第四种调用模式：上下文模式
+               * 特点：函数中的this可以动态修改
+                * 上下文模式有三个方法：是放在Function.prototype中，意味着所有的函数都可以使用上下文模式
+                    * call()
+                    * apply()
+                    * bind()
+     */
+
+    // console.dir ( Function.prototype );
+    //
+    // function fn (  ) {
+    //     console.log ( this );//window
+    //     //程序报错： 原因：this谁调用这个方法，this就指向谁。 不能手动修改
+    //     // this = {name:'班长'};
+    //     // console.log ( this );
+    // }
+    //
+    // fn();
+
+    var obj = {
+        age:18
+    };
+
+    //1.call():   函数名.call(修改后的this指向，arg1,arg2…………)
+    //应用场景：函数只有一个参数
+    // function fn1 ( a,b ) {
+    //     console.log ( this )
+    //     console.log ( a + b );
+    // };
+    //
+    // fn1(10,20);//this:指向window
+    // fn1.call(obj,100,200);//
+
+
+    //2.apply(): 函数名.call(修改后的this指向，数组或者伪数组)
+    //应用场景：函数有多个参数
+    // function fn1 ( a,b ) {
+    //     console.log ( this )
+    //     console.log ( a + b );
+    // };
+    //
+    // fn1(10,20);//this:指向window
+    // fn1.apply(obj, [100,200]);
+
+
+
+    //3.bind(): 函数名.bind(修改后的this指向，arg1,arg2…………)
+    /*
+    特点：不会立即执行这个函数，而是返回一个修改了this之后的新函数
+    应用：适合回调函数
+     */
+    function fn1 ( a,b ) {
+        console.log ( this )
+        console.log ( a + b );
+    };
+    fn1(10,20);//this:指向window
+    var newFn =  fn1.bind(obj, 100,200);//bind不会调用fn1，而是会返回一个修改this后的新函数
+    newFn(100,200);//this执行：obj
+
+
+    //4.bind应场景：回调函数（定时器）
+
+    /*默认定时器中的this:指向window */
+
+    setTimeout( function (  ) {
+        console.log ( this );
+    }.bind(obj),3000);
+
+</script>
+</body>
+</html>

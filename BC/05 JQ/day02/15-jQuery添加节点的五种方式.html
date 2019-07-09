@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1.append()
+      //父元素.append(子元素); //作为最后一个子元素添加.
+      $('#btnAppend').click(function () {
+        //1.1 新建一个li标签,追加到ul1中.
+        // var $newLi = $('<li>我是新创建的li标签</li>');
+        // $('#ul1').append($newLi);
+
+        //1.2 把ul1中已知的某一个li,再添加到ul1中.
+        // var $li3 = $('#li3');
+        // $('#ul1').append($li3); //剪切追加到最后一个子元素.
+
+        //1.3 把ul2中已知的某一个li,添加到ul1中.
+        var $li32 = $('#li32');
+        $('#ul1').append($li32);//剪切追加到最后一个子元素.
+      });
+
+
+      //2.prepend();
+      //父元素.prepend(子元素); //作为第一个子元素添加.
+      $('#btnPrepend').click(function () {
+        //2.1 新建一个li标签,追加到ul1中.
+        // var $newLi = $('<li>我是新创建的li标签</li>');
+        // $('#ul1').prepend($newLi);
+
+        //2.2 把ul1中已知的某一个li,再添加到ul1中.
+        // var $li3 = $('#li3');
+        // $('#ul1').prepend($li3); //剪切追加到第一个子元素.
+
+        //2.3 把ul2中已知的某一个li,添加到ul1中.
+        var $li32 = $('#li32');
+        $('#ul1').prepend($li32);//剪切追加到第一个子元素.
+      });
+
+
+      //3.before();
+      //元素A.before(元素B);  把元素B作为兄弟元素插入到元素A的前面.
+      $('#btnBefore').click(function () {
+        //3.1 新建一个div
+        var $div = $('<div>我是新建的div</div>');
+        $('#ul1').before($div);
+      });
+
+
+      //4.after();
+      //元素A.after(元素B);  把元素B作为兄弟元素插入到元素A的后面.
+      $('#btnAfter').click(function () {
+        //3.1 新建一个div
+        var $div = $('<div>我是新建的div</div>');
+        $('#ul1').after($div);
+      });
+
+
+      //5.appendTo();
+      //子元素.appendTo(父元素);  //作为父元素的最后一个子元素添加.
+      $('#btnAppendTo').click(function () {
+        //5.1 新建一个li标签,追加到ul1中.
+        var $newLi = $('<li>我是新创建的li标签</li>');
+        $newLi.appendTo($('#ul1'));
+      });
+
+
+
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="append" id="btnAppend"/>
+<input type="button" value="prepend" id="btnPrepend"/>
+<input type="button" value="after" id="btnAfter"/>
+<input type="button" value="before" id="btnBefore"/>
+<input type="button" value="appendTo" id="btnAppendTo"/>
+<ul id="ul1">
+  <li>我是第1个li标签</li>
+  <li>我是第2个li标签</li>
+  <li id="li3">我是第3个li标签</li>
+  <li>我是第4个li标签</li>
+  <li>我是第5个li标签</li>
+</ul>
+
+<ul id="ul2">
+  <li>我是第1个li标签2</li>
+  <li>我是第2个li标签2</li>
+  <li id="li32">我是第3个li标签2</li>
+  <li>我是第4个li标签2</li>
+  <li>我是第5个li标签2</li>
+</ul>
+</body>
+</html>

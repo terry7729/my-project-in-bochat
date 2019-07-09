@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2 @click="changeMessage">{{message}}</h2>
+    吧的索引为:{{getNum}}
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  let app = new Vue({
+    el: "#app",
+    data: {
+      message: "网吧包宿15块",
+      info:'11'
+    },
+    methods: {
+      changeMessage(){
+        this.message="网咖其实就是之前的网吧"
+      }
+    },
+    computed: {
+      // 直接写方法即可
+      /*
+        1.通过返回值告诉Vue结果是什么
+        2.不用自己调用Vue会帮我们调用
+        3.如果用到了data中的数据，数据更新，计算属性会重新计算一次
+      */
+      getNum() {
+        // 计算一个随机数  并返回
+        // return parseInt(Math.random() * 100);
+        // 获取message中 吧的索引
+        return this.message.indexOf('吧');
+      }
+    },
+  })
+</script>

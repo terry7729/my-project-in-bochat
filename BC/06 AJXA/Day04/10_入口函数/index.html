@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <script src="../07_jQuery_ajax/jquery-1.12.4.js"></script>
+
+    <script>
+
+        //JS的入口：它其实是一个事件
+        //当页面资源加载完毕触发的事件
+        // window.onload = function () {
+        //     console.log('onload里面');
+            
+        //     var p = document.getElementById('txt');
+        //     console.log(p);
+        // }
+
+        // console.log('我在后面');
+            
+
+        // 等页面加载完毕来调用的代码
+        // 可以把一些找元素的代码写在里面，但是一定要有入口函数吗？
+        // 不一定，要看你的代码写在哪，如果是写在元素的后面就不需要
+        $(function(){
+
+            //这就是jQuery的入口函数
+            console.log('入口函数');
+            console.log($('#txt'));
+            
+        })
+
+        // console.log('我在后面');
+        //  console.log($('#txt'));
+
+    </script>
+
+
+</head>
+
+<body>
+    <p id="txt">这是一个p</p>
+</body>
+
+</html>
+
+
+<script>
+    
+    //console.log($('#txt'));
+
+</script>

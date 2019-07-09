@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // JSON 有格式要求字符串
+  let jsonObj = '{"name":"jack","age":18}';
+  let arrObj = '[1,2,3,"你好"]';
+
+  // string->obj(arr)
+  // JSON.parse()
+  console.log(JSON.parse(jsonObj));
+  console.log(JSON.parse(arrObj));
+
+  // obj(arr)->string
+  let obj = {
+    name: 'rose',
+    skill: '撩jack'
+  }
+  console.log(JSON.stringify(obj));
+</script>

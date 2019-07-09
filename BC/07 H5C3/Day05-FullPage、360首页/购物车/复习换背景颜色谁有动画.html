@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 296px;
+            height: 131px;
+            background-color: #f00;
+            background: url(images/03/color01.gif) no-repeat;
+
+            /* animation: test 1s paused; */
+
+            transition: all 1s;
+        }
+
+        .box:hover{
+
+            /* animation-play-state: running; */
+            background: url(images/03/color02.gif) no-repeat;
+        }
+
+        @keyframes test{
+
+            from{}
+
+            to{
+                background: url(images/03/color02.gif) no-repeat;
+            }
+        }
+
+
+        /* img:hover{
+
+            src:"images/03/color02.gif"
+        } */
+    </style>
+</head>
+<body>
+    <input type="button" value="jQuery做换颜色" id="btn1">
+    <div class="box"></div>
+
+    <img src="images/03/color01.gif" alt="">
+    
+</body>
+</html>
+
+<script src="js/jquery-1.8.3.min.js"></script>
+
+<script>
+
+    // jQuery不能用动画效果换图片
+    // $('#btn1').click(function(){
+
+    //     $('.box').animate({
+    //         background:'url(images/01/sofa.png)'
+    //     },1000);
+    // });
+</script>

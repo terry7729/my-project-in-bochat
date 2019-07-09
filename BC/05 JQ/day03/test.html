@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+
+</head>
+<body>
+<ul id="one">
+  <li>我是第1个li标签</li>
+  <li>我是第2个li标签</li>
+  <li>我是第3个li标签</li>
+  <li>我是第4个li标签</li>
+  <li>我是第5个li标签</li>
+  <li>我是第6个li标签</li>
+  <li>我是第7个li标签</li>
+  <li>我是第8个li标签</li>
+  <li>我是第9个li标签</li>
+  <li>我是第10个li标签</li>
+</ul>
+</body>
+</html>
+
+<script>
+  //点击那个li,获取那个li的文本.
+  // var lis = document.getElementsByTagName("li");
+  // for(var i = 0 ; i < lis.length; i++){
+  //   //在这里给每一个li都注册了事件.
+  // 	lis[i].onclick = function () {
+  //     console.log(this.innerText);
+  //   }
+  // }
+
+
+
+  //只给ul注册事件.
+  document.getElementById("one").onclick = function (e) {
+    console.log(e.target.innerHTML);
+    console.log(this);//ul
+  };
+
+
+</script>

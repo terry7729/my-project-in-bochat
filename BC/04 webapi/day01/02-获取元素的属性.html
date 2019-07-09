@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="banzhang" class="one" style="width: 100px;height: 100px;background-color: green;">我是班长</div>
+<div id="kunge">我是坤哥</div>
+
+<script>
+    //需求：改变班长的颜色
+
+    //1.获取元素
+    var banzhang = document.getElementById('banzhang');
+    console.log ( banzhang );
+
+    //2.对象的取值
+    console.log ( banzhang.id );
+    console.log ( banzhang.style );//style属性是一个对象类型，存储了这个元素所有的css样式
+    console.log ( banzhang.style.width );//100px   获取的是一个带单位的字符串
+    console.log ( banzhang.style.height );//100px   获取的是一个带单位的字符串
+    /*注意：如果元素属性有- （background-color  font- border- padding-），则需要转成驼峰命名法（-不符合js的命名规则）
+        * 去掉-，将-后面的首字母变成大写
+
+     */
+    console.log ( banzhang.style.backgroundColor );
+
+    //字符串语法  对象名['属性名']
+    console.log ( banzhang[ "id" ] );//banzhang
+
+    //3.对象的赋值
+    banzhang.style.backgroundColor = 'hotpink';
+
+</script>
+</body>
+</html>

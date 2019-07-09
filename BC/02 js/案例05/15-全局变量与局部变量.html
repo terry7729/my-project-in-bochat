@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.全局变量,声明在全局作用域中的变量,就是全局变量,当程序结束的时候,会被内存销毁
+        //2.局部变量,声明在局部作用域中的变量,就是局部变量,当函数运行结束,就会被内存销毁
+
+        //var num = 10;//全局作用域
+        //function demo1() {
+        //    var a = 100;
+        //    //局部变量
+        //    console.log(a);
+        //    console.log(num);
+        //    //在局部作用域中,可以访问全局变量
+        //    //在任何一个地方,都可以访问全局变量
+        //}
+        //demo1();
+        //console.log(a);
+        //在全局作用域中没办法访问局部变量,因为局部变量当函数运行结束的时候就已经被销毁
+
+        function demo2() {//局部作用域
+            var num1 = num2 = num3 = 10;
+            //console.log(num1, num2, num3);
+            //请问这个三个变量,是什么变量
+        }
+
+        demo2();
+        //console.log(num1);局部变量:死了
+        console.log(num2);//全局变量:还活着
+        console.log(num3);//全局变量:还活着
+    </script>
+</head>
+<body>
+
+</body>
+</html>

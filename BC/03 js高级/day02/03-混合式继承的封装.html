@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    
+    /**混合式继承封装
+    @param method:子对象的构造函数
+     @param father:要继承的父对象
+     */
+    function extendMehtd ( method,father ) {
+        for (var key in father){
+            method.prototype[key] = father[key];
+        }
+    };
+
+    var wangjianlin = {
+        hourse:{
+            address:'北京一环',
+            price:1000000000
+        },
+        car:{
+            bracd:'劳斯莱斯',
+            price:5000000
+        }
+    };
+
+    function CreateSon (  name,girlfreinds ) {
+        this.name = name;
+        this.girlFriends = girlfreinds;
+    };
+
+    CreateSon.prototype.play = function (  ) {
+        console.log ( "我是土豪，我很会花钱请女孩吃吃六块钱的麻辣烫" );
+    }
+
+    //将wangjianlin对象的成员添加到原型中
+    extendMehtd(CreateSon,wangjianlin);
+    // for (var key in wangjianlin){
+    //     CreateSon.prototype[key] = wangjianlin[key];
+    // }
+
+    var wangsicong = new CreateSon('聪聪',['豆得儿','林更新']);
+    console.log ( wangsicong );
+
+    var oldSong = new CreateSon('隔壁老宋',['苍老师','吉泽老师','白石老师']);
+    console.log ( oldSong );
+</script>
+</body>
+</html>

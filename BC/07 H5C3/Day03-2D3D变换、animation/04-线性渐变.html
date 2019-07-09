@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        线性渐变：相当于把渐变色当成背景图片来处理
+    --> 
+    <style>
+        .box{
+            width: 280px;
+            height: 180px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            
+            /*
+                参数1：渐变的方向 
+                        to right
+                        to left
+                        to top
+                        to bottom
+                        to right top
+                        .....
+                        还可以传角度，0deg从哪下开始，值越大顺时针走
+
+                参数2：颜色1
+                参数3：颜色2
+            
+                至少2个颜色，多了可以N个
+
+                颜色后面接百分比，第一个颜色接百分比代表在位置结束
+                第二个颜色接百分比，代表在什么位置开始,但是如果再写一个百分比，代表什么位置结束
+            */
+            /* background: linear-gradient(to right,blue 30%,red 30% 60%,orange 60%); */
+            /* background: linear-gradient(to right,blue,red,orange); */
+
+
+            /* background: linear-gradient(0deg,blue,red,orange); */
+
+            /* 图片可以用的属性，线性渐变也都可以用 */
+            background:linear-gradient(to right,red,blue) repeat left top/140px 180px; 
+
+            
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="box"></div>
+</body>
+</html>

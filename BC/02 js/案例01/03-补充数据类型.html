@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //字符串,数值,布尔值
+        //undefined:未定义,只有声明,没有赋值
+        //var num;
+        //console.log(num);//undefined
+        //console.log(typeof num);//undefined
+        //如果我连声明都没有,直接使用会怎样:报错
+        //console.log(num);
+
+        //2.null:空值
+        //一般情况下,变量不会主动等于null,除非程序员自己手动设置,或者是函数返回.
+        //var num = null;
+        //console.log(num);//null
+        //console.log(typeof num);//object对象
+
+        //3.undefined与null是否相等或者是否全等
+        //var res1 = undefined == null;
+        //console.log(res1);//true
+        //var res2 = undefined === null;
+        //console.log(res2);
+
+        //4.NaN:not a number:不是一个数字
+        //什么时候会出现NaN,计算错误的时候
+        //var str = "梁朝伟";
+        //var num = 10;
+        //var res = str - num;
+        //console.log(res);//NaN
+        //console.log(typeof res);//number
+
+        //NaN不等于任何数,包括它自己
+        //var res1 = NaN == NaN;//false
+        //console.log(res1);
+
+        //5.判断一个数据是否是NaN
+        //isNaN(检测数据)
+        var str = "lcw";
+        var res1 = isNaN(str);
+        console.log(res1);//true
+        var num = "123";
+        var res2 = isNaN(num);
+        console.log(res2);//false
+        //如果字符串不是数字,那么isNaN成立.但是如果字符串中的是数字,那么isNaN不成立
+    </script>
+</head>
+<body>
+
+</body>
+</html>

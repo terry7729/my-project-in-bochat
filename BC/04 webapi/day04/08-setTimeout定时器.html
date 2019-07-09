@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    /*1.setInterval() : 永久定时器，一旦开启自动永久重复，只能手动清除
+      2.setTimeout(): 一次定时器，间隔时间只会执行一次，执行完毕之后定时器自动清除
+     */
+
+    //一次定时器也是可以清除，只是用的较少
+    var timeID =  setTimeout(function (  ) {
+        console.log ( "平静的湖面练不出精悍的水手，温室的花朵长不成参天的大树" );
+    },3000);
+
+    //一次定时器，可以手动清除但是使用较少
+    clearTimeout(timeID);
+</script>
+</body>
+</html>

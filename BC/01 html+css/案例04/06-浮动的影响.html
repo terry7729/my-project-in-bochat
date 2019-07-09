@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            background-color: red;
+        }
+
+        .son {
+            width: 200px;
+            height: 50px;
+            border: 5px solid yellow;
+            background-color: pink;
+            float: left;
+        }
+
+        /* 问题: */
+        /* 当所有的子元素浮动之后,父元素的高度没了!!!!!! */
+        /* 分析: */
+        /* 子盒子是浮动流,父盒子是标准流 */
+        /* 当浮动的元素,脱离标准流之后,就不再占据标准流的位置 */
+        /* 子盒子浮动之后,就没有人帮父盒子撑开高度 */
+        /* 所以父盒子就丧失了高度 */
+        /* 会影响到整个页面的布局 */
+
+        .bottom {
+            width: 500px;
+            height: 500px;
+            background-color: gold;
+        }
+
+        .bottom .demo {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        /* 总结 */
+        /* 什么是浮动的影响: */
+        /* 没有设置高度的父盒子,当所有的子元素都浮动之后,父元素会丧失高度 */
+        /* 学会如何清除浮动带了的影响 */
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+    <div class="bottom">
+        <div class="demo"></div>
+    </div>
+</body>
+</html>

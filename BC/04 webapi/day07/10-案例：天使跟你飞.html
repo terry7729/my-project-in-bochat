@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div style="position: relative">
+    <img id="img" src="tianshi.gif" alt="" style="position: absolute" >
+</div>
+
+
+
+<script src="common.js"></script>
+<script>
+    var img = document.getElementById('img');
+
+    /*鼠标移动：onmousemove
+               鼠标也页面移动： document.onmousemove
+     */
+
+    //1.给页面注册鼠标移动事件
+    document.onmousemove = function ( e ) {
+        e = e || window.event;
+        //2.获取事件触发点相对于页面左上角距离  赋值给元素的定位
+        img.style.left = getPagePoint(e).pageX + 'px';
+        img.style.top = getPagePoint(e).pageY + 'px';
+        console.log ( "鼠标移动了" );
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2 @click="changeMessage" v-once>{{message}}</h2>
+
+  </div>
+</body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  /*
+    v-once 只解析一次，后续数据的更新 不会同步到该指令标记的元素上，可以节约性能
+    一般用在数据不固定，但是网页打开只需要渲染一次（解析）一次的标签
+  */ 
+  let app = new Vue({
+    el:"#app",
+    data:{
+      message:"网吧包宿15块"
+    },
+    methods: {
+      changeMessage(){
+        this.message = '网吧一个小时5块钱'
+      }
+    },
+  })
+
+</script>

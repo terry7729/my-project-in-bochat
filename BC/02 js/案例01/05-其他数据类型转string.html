@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //其他数据类型转string
+        //1.String(转换的数据);
+        //var res1 = String(123);
+        //console.log(typeof res1);//string
+        //var res2 = String(true);
+        //console.log(typeof res2);//string
+
+        //var res3 = String(undefined);
+        //console.log(res3);
+        //console.log(typeof res3);//string
+
+        //var res3 = String(null);
+        //console.log(res3);
+        //console.log(typeof res3);//string
+
+        //var res3 = String(NaN);
+        //console.log(res3);
+        //console.log(typeof res3);//string
+
+        //如果使用String(),那么所有类型都可以转换成功
+
+        //2.转换的数据.toString()
+        //var num1 = 123;
+        //var res1 = num1.toString();
+        //console.log(typeof res1);//string
+//
+        //var num2 = true;
+        //var res2 = num2.toString();
+        //console.log(typeof res2);//string
+
+        //var str = undefined.toString();//报错,undefined身上没有这个方法
+        //console.log(typeof str);
+
+        //var str = null.toString();//报错,null没有这个方法
+        //console.log(typeof str);
+
+        //var str = NaN.toString();//可以转换成功,因为NaN本身是数值类型拥有这个方法
+        //console.log(typeof str);
+
+        //3.让转换的数据+"";(拓展的知识点)
+        var num = 12;
+        var res = num + "";//利用连接加
+        console.log(res);
+        console.log(typeof res);//string
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

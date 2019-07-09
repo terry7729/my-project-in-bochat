@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //    循环的应用之8: 穷举
+        //    eg： 有1个整数至少是2.   这个数除以3余1 这个数除以4余1 这个数除以2余1,请问这样的数是多少(输出10个)
+        var j = 0;
+        for(var i = 2;true;i++){
+               if(i % 2 == 1 && i % 3 == 1 && i % 4 == 1 && i % 5 == 1 && i % 11 == 1){
+                   console.log(i);
+                   j++;
+                   if(j == 10){
+                       break;
+                   }
+               }
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

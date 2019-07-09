@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 班长要去参加征婚,必须填写基本信息,准备一份电子表单 -->
+
+    <form action="">
+        <!-- 表单域 -->
+        姓名: <input type="text" placeholder="请输入您的昵称">
+        <!-- type:类型,到底是什么样的输入框 -->
+        <!-- text:文本框 -->
+        <!-- value:默认值,记住账号密码 -->
+        <!-- placeholder:占位符 -->
+        <br>
+
+        <label for="psw">
+            密码: 
+        </label>
+        <input type="password" placeholder="请输入六位密码" maxlength="6" id="psw">
+        
+        <!-- password:密码框 -->
+        <!-- maxlength:控制输入的最大字符数 -->
+        <br>
+        性别: <input type="radio" name="sex">男 <label><input type="radio" name="sex" checked>女</label>
+        <!-- radio:单选框 -->
+        <!-- 为什么没有单选互斥的效果??? -->
+        <!-- 必须使用name属性,将单选框放到同一个组内,才能形成单选互斥 -->
+        <!-- checked:默认选中 -->
+        <br>
+        食物: <input type="checkbox" name="food" checked>烤腰子 <input type="checkbox" name="food">烤韭菜 <input    type="checkbox" name="food">烤生蚝
+        <br>
+        游戏: <input type="checkbox" name="game">绝地送快递 <input type="checkbox" name="game" checked>玩着农药 <input  type="checkbox" name="game">守望屁股
+        <!-- checkbox:多选框 -->
+        <br>
+        提交按钮: <input type="submit">
+        <br>
+        重置按钮: <input type="reset">
+        <!-- 重置按钮,是用来重置表单的,告诉这个按钮,要重置哪一张表当 -->
+        <br>
+        普通按钮: <input type="button" value="普普通通">
+        <br>
+        图片按钮: <input type="image" src="btn.png">
+        <br>
+        新版本: <button>新版本</button>
+        <br>
+        身份证: <input type="file">
+        <!-- 单文件上传 -->
+        <br>
+        文本域: <textarea cols="100" rows="30"></textarea>
+        <!-- 输入大段文字,例如评论输入框 -->
+        <br>
+        出生年月: 年 <select>
+                        <option>2002</option>
+                        <option>2003</option>
+                        <option selected>2004</option>
+                        <option>2005</option>
+                        <option>2006</option>
+                        <option>2007</option>
+                    </select>
+        <!-- selected:下拉框中默认选中 -->
+    </form>
+</body>
+</html>

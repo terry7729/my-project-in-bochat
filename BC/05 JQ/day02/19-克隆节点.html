@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    #div1 {
+      width: 400px;
+      height: 200px;
+      border: 1px solid red;
+    }
+
+    #div2 {
+      width: 400px;
+      height: 200px;
+      border: 1px solid red;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //回忆一下原生js中克隆节点:  cloneNode(参数);
+      //参数是true, 表示深克隆,所有的后代元素都会被克隆.
+      //参数是false,表示浅克隆,只会克隆自己,  默认参数是false.
+//----------------------------------------------------------------------------------------
+      //给id为div1的这个div设置一个事件.
+      $('#div1').click(function () {
+        alert('哈哈,我被点了...');
+      });
+
+      //jQuery中克隆节点  使用方法: clone();
+      //克隆出来的元素只会存在于内存中,如果要在页面上显示,就要追加到页面上.
+      //不管他有没有参数,不管参数是true,还是false,都会克隆所有的后代元素.
+
+      //如果参数是true,会克隆事件.
+      //如果参数是false,不会克隆事件. 参数不写默认是false
+
+      $('#clone').click(function () {
+        var $cloneDiv =  $('#div1').clone(true);
+        //修改克隆节点的id.
+        $cloneDiv.attr('id','div2');
+        //console.log($cloneDiv);
+        $cloneDiv.appendTo($('body'));
+      });
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="克隆" id="clone"/>
+<div id="div1">
+  <span>span1</span>
+  <p>p1
+    <b>b1</b>
+  </p>
+</div>
+<br/><br/>
+</body>
+</html>

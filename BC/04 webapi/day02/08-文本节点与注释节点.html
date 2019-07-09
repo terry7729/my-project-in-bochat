@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul id="ul1">
+    我是文本
+    <!--我是注释1111-->
+    <li>隔壁老宋1</li>
+    <li>隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+
+<script>
+    /*本小节知识点：文本节点与注释节点三要素
+        文本节点：
+            nodeType: 3
+            nodeName: #text
+            nodeValue: 文本内容
+         注释节点：
+            nodeType : 8
+            nodeName:  #comment
+            nodeValue: 注释内容
+         文档节点：
+            nodeType    : 9
+            nodeName   :  #document
+            nodeValue   : null
+     */
+
+    var ul1 = document.getElementById('ul1');
+    //获取元素的子节点  （元素  文本 注释）
+    console.log ( ul1.childNodes );
+
+    //1.文本节点
+    console.log ( ul1.childNodes[ 0 ].nodeType )//3
+    console.log ( ul1.childNodes[ 0 ].nodeName )//#text
+    console.log ( ul1.childNodes[ 0 ].nodeValue )//我是文本
+
+    //2.注释节点
+    console.log ( ul1.childNodes[ 1 ].nodeType )//8
+    console.log ( ul1.childNodes[ 1 ].nodeName )//#comment
+    console.log ( ul1.childNodes[ 1 ].nodeValue )//我是注释1111
+
+    //3.一切内容都是节点，document自身也是一个节点：文档节点
+    console.log ( document.nodeType );//9
+    console.log ( document.nodeName );//#document
+    console.log ( document.nodeValue );//null
+</script>
+</body>
+</html>

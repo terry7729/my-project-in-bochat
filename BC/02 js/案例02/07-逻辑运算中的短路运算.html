@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //短路运算:我要开车去你家,中间要经过两座桥,当我行驶在第一座桥的时候,桥塌了,请问,我还要经过第二座桥吗?
+        //前面式子的结果,已经决定了整个式子的最终结果,那么后面的式子就没有必要运行了,程序到此结束
+
+        //1.逻辑与运算:&&,全真才是真,有假便是假===找假问题
+        //在逻辑与运算中,如果前面的式子,结果是假,那么此时已经可以确定整个逻辑与运算的最终结果就是假,后面第二个式子的结果,没有任何作用,不需要再运行了
+        //var num1 = 10,num2 = 20;
+        //var res = ++num1 > 20 && --num2;
+        //console.log(res);//false
+        //console.log(num2);//20,--num2并没有运行
+
+        //2.逻辑或运算:||,全假才是假,有真便是真===找真问题
+        var num1 = 10,num2 = 20;
+        var res = num1 > 5 || --num2;
+        console.log(res);//true
+        console.log(num2);//20
+    </script>
+</head>
+<body>
+
+</body>
+</html>

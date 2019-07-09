@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            /*overflow: hidden;*/
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="all" id='box'>
+    <div class="screen">
+        <ul>
+            <ul>
+                <li><img src="images/1.jpg" width="500" height="200"/></li>
+                <li><img src="images/2.jpg." width="500" height="200"/></li>
+                <li><img src="images/3.jpg." width="500" height="200"/></li>
+                <li><img src="images/4.png" width="500" height="200"/></li>
+                <li><img src="images/5.jpg" width="500" height="200"/></li>
+                <li><img src="images/1.jpg" width="500" height="200"/></li>
+            </ul>
+        </ul>
+        <ol>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+
+    </div>
+    <div id="arr"><span id="left">&lt;</span><span id="right">&gt;</span></div>
+</div>
+
+</body>
+
+<script src="../common.js"></script>
+<script src="../animation.js"></script>
+
+<script>
+    /*第一步：获取页面元素，注册对应的事件
+
+     */
+
+    //1.获取元素
+    var box = document.getElementById ( "box" )//最外面边框大盒子
+    var screen = document.getElementsByClassName ( "screen" )[ 0 ]//轮播图可视盒子
+    var arr = document.getElementById ( "arr" )//上一页下一页盒子
+    var left = document.getElementById ( "left" )//上一页
+    var right = document.getElementById ( "right" )//下一页
+    // console.log ( screen.children );
+    var ul = screen.children[ 0 ]//轮播图列表ul
+    var ol = screen.children[ 1 ]//页码列表ol
+
+    //2.注册事件
+
+    //2.1 鼠标移入box
+    box.onmouseover = function () {
+        //3.事件处理L:显示上一页下一页
+        arr.style.display = "block"
+    }
+    //2.2 鼠标移出box
+    box.onmouseout = function () {
+        //3.事件处理L:隐藏上一页下一页
+        arr.style.display = "none"
+    }
+
+    var index = 0;//声明变量存储图片的下标
+    //2.3 下一页
+    right.onclick = function (  ) {
+        //3.事件处理
+        //3.1 下一页
+        index++;
+        console.log ( index );
+    }
+    //2.4 上一页
+    left.onclick = function (  ) {
+        index--;//上一页
+        console.log ( index );
+    }
+
+    //2.5 页码点击事件
+    for(var i = 0;i<ol.children.length;i++){
+        ol.children[i].onclick = function (  ) {
+            alert(111111);
+        }
+    }
+
+
+</script>
+</html>

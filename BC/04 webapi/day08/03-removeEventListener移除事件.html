@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<button id="btn">点我啊</button>
+
+<script src="common.js"></script>
+
+<script>
+    var btn = document.getElementById('btn');
+
+    //1.点语法移除事件：事件源.事件类型 =null
+    // btn.onclick = function (  ) {
+    //     alert('临渊羡鱼不如退而结网');
+    // }
+    //
+    // btn.onclick = null;
+
+    //2.addEventListener
+    addEvent(btn, 'click',function (  ) {
+        alert('临渊羡鱼不如退而结网');
+    });
+
+    addEvent(btn, 'click',test);
+
+    function test (  ) {
+        alert('平静的湖面练不出精悍的水手，温室的花朵长不成参天的大树');
+    };
+
+    /** 移除事件
+     * @param type:事件类型  不要on
+     * 事件处理函数
+     * 布尔类型：默认false
+     */
+    /*要想移除事件：注册事件的时候必须是具名函数*/
+    // btn.removeEventListener('click',test, false);
+
+    //3 IE8不支持：removeEventListener
+    //IE8:  detachEvent
+
+    // btn.detachEvent('onclick',test);
+
+    removeEvent(btn,'click',test);
+
+    //4. 浏览器兼容性封装
+    /**
+     *
+     * @param ele 事件源
+     * @param type 事件类型 不要on
+     * @param fn 事件处理函数
+     */
+    function removeEvent ( ele,type,fn ) {
+        if (ele.removeEventListener){//谷歌火狐
+            ele.removeEventListener(type,fn);
+        }else if (ele.detachEvent){//IE8
+            ele.detachEvent('on' + type,fn);
+        }else{//某些其他浏览器  点语法移除
+            ele['on' + type] = null;
+        }
+    }
+</script>
+</body>
+</html>

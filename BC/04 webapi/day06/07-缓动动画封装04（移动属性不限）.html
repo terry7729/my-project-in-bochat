@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            position: absolute;
+            left: 50px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="缓动移到400" id="move400"/>
+<input type="button" value="缓动移到800" id="move800"/>
+
+<div id="box"></div>
+
+
+
+<script>
+    /*本小节目标
+            解决移动属性不限   ---函数参数
+     */
+    var box = document.getElementById('box');
+
+
+    document.getElementById('move400').onclick = function (  ) {
+        animationSlow(box, 400,'top');
+    }
+
+    document.getElementById('move800').onclick = function (  ) {
+        animationSlow(box, 300,'width');
+    }
+
+
+
+    /** 缓动动画封装
+     @param ele:要移动的元素
+     @param target 移动目标距离
+     @param attr: 移动的属性
+     */
+    function animationSlow (ele, target,attr ) {
+        //1.清除之前的定时器，以本次移动为准
+        clearInterval ( ele.timeID );
+        //2.开始本次移动
+        ele.timeID = setInterval ( function () {
+            //2.1 获取当前位置
+            /*  细节：window.getComputedStyle方式取得是字符串，带单位。这里需要使用parseInt转成数字 */
+            var current = parseInt(getStyle ( ele, attr ));
+            //2.2 计算本次移动距离 = (目标位置 - 当前位置)/10
+            var step = (target - current)/10;
+            //取整
+            step = step>0?Math.ceil(step):Math.floor(step)
+            //2.3 开始移动
+            current += step;
+            ele.style[attr] = current + 'px';
+            //2.4 终点检测
+            if (current == target){
+                clearInterval(ele.timeID);
+            }
+
+        }, 50 )
+    }
+
+    /**获取元素样式属性值
+     * @param ele 元素
+     * @param attribute 属性名
+     */
+    function getStyle ( ele ,attribute) {
+        //能力检测
+        if (window.getComputedStyle){//谷歌火狐
+            return window.getComputedStyle(ele, null)[attribute];
+        }else{//IE8浏览器
+            return ele.currentStyle[attribute];
+        }
+    };
+</script>
+</body>
+</html>

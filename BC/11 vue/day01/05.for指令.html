@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- in关键 item可以乱写 -->
+    <p v-for="(it,index) in foodList" @click="changeValue(index)">
+      {{index}} 名字:{{it.name}} 色泽:{{it.color}}
+    </p>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  let app = new Vue({
+    el: "#app",
+    data: {
+      foodList: [{
+          name: "拔丝香蕉",
+          color: "黄色"
+        },
+        {
+          name: "拔丝苹果",
+          color: "红色"
+        },
+        {
+          name: "拔丝西兰花",
+          color: "绿色"
+        },
+      ]
+    },
+    methods:{
+      changeValue(index){
+        console.log(index);
+        this.foodList[index].name="西兰花炒蛋" 
+      }
+    }
+  })
+</script>

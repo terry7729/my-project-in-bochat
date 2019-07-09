@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //1.基本数据类型number
+    var str = 'str';
+    console.log ( typeof str );//string
+
+    /*基本数据类型是不能调用对象的方法，当基本数据类型在调用对象的方法的时候，系统会自动先帮我们转成
+   对应的引用类型
+        var str = new String('1111');
+        str.concat('11111')
+
+     */
+    console.log ( str.concat ( "11111" ) );
+
+
+    //2.基本包装类型： 内置对象String的区别
+    var str1 = new String('str');
+    console.log ( typeof str1 );//object
+    console.log ( str1 );
+
+    /*由于str1本身就是对象类型，所以可以直接调用，不会进行类型转换
+
+     */
+    console.log ( str1.concat ( "1111111" ) );
+
+    //3.两者区别
+    //原理： 复杂数据类型与基本数据比较的时候，会先获取复杂数据类型的原始值
+    //Str1对象会获取自己的PrimitiveValue属性值与str做比较
+    console.log ( str1 == str );//true
+    //原理：两者数据类型不一样
+    console.log ( str1 === str );//false
+</script>
+</body>
+</html>

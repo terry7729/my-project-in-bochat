@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul id="ul1">
+    我是文本
+    <!--我是注释1111-->
+    <li id="li1">隔壁老宋1</li>
+    skajvhgkjadsvhgk
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li id="li3">隔壁老宋5</li>
+</ul>
+
+
+<script>
+    /*本小节知识点
+        1.获取兄弟节点
+                上一个节点： previousSibling
+                下一个节点：nextSibling
+        2.获取兄弟元素
+                上一个元素：previousElementSibling
+                下一个元素：nextElementSibling
+     */
+
+    var li2 = document.getElementById('li2');
+    var li1 = document.getElementById('li1');
+
+    //1.获取兄弟节点(文本 元素  注释)
+    //1.1 获取上一个节点
+    console.log ( li2.previousSibling );
+    //1.2 获取下一个节点
+    console.log ( li2.nextSibling );
+
+    //2.获取兄弟元素(元素)
+    //2.1 获取上一个元素
+    console.log ( li2.previousElementSibling );
+    //2.2 获取下一个元素
+    console.log ( li2.nextElementSibling );
+
+
+    //IE8只有获取节点的api，没有获取元素的api
+    //IE8只能通过节点来获取
+    /*获取上一个兄弟元素思路
+    1.获取上一个兄弟节点
+    2.如果节点存在并且节点类型不是1，继续往上找
+
+     */
+
+    console.log ( getPreviousElementSibling ( li2 ) );
+    /**获取上一个兄弟元素
+     *
+     * @param ele  元素
+     */
+    function getPreviousElementSibling ( ele ) {
+        if (ele.previousElementSibling){//谷歌火狐
+            return ele.previousElementSibling;
+        }else{//IE8
+            //1.获取上一个兄弟节点  (null 元素  注释  文本)
+            var node = ele.previousSibling;
+            //2.只要节点存在并且节点类型不是1，就继续往上找
+           while(node != null && node.nodeType != 1){
+               node = node.previousSibling;
+           };
+           //两种情况循环会自动结束：  （1）node是null，找到底了都没有说明这个元素就是第一个元素  （2）node的nodetype是1，找到了
+           return node;
+        }
+    };
+
+
+    console.log ( getNextElementSibling ( li2 ) );
+
+    /**
+     * 获取下一个兄弟元素
+     * @param ele
+     * */
+    function getNextElementSibling ( ele ) {
+            //能力检测
+        if(ele.nextElementSibling ){//谷歌火狐
+            return ele.nextElementSibling;
+        }else{//IE8
+            //1.获取下一个节点
+            var node = ele.nextSibling;
+            //2.只要node存在，并且节点类型不是1，继续往下找
+            while(node && node.nodeType !=1){
+                node = node.nextSibling;
+            };
+            return node;
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

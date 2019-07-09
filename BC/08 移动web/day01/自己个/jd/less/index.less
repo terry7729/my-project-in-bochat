@@ -1,0 +1,202 @@
+@import 'base.less';
+header {
+    background-size: 3.75rem 1.75rem;
+    position: fixed;
+    top: 0;
+    display: flex;
+    background-color: rgba(233, 35, 34, 1);
+    width: 100%;
+    z-index: 2;
+    .icon-logo {
+        background: url(../images/sprites.png);
+        background-size: 2rem 2rem;
+        padding: 0.10rem 0.11rem;
+        display: block;
+        width: 0.8rem;
+        height: 0.45rem;
+        background-position: 0px -1.08rem;
+        background-origin: content-box;
+        background-clip: content-box;
+    }
+    form {
+        flex: 1;
+        position: relative;
+        padding-top: 0.05rem;
+        align-items: flex-start;
+        .search {
+            border-radius: 0.18rem;
+            font-size: 0.14rem;
+            padding-left: 0.3rem;
+            width: 100%;
+            height: 0.35rem;
+        }
+        i {
+            width: 0.2rem;
+            height: 0.2rem;
+            padding-top: 0.1rem;
+            padding: 0.05rem;
+            ;
+            background: url(../images/sprites.png);
+            background-size: 2rem 2rem;
+            position: absolute;
+            background-position: -0.58rem -1.08rem;
+            top: 0.12rem;
+            left: 0.1rem;
+        }
+    }
+    .login {
+        width: 0.5rem;
+        height: 0.45rem;
+        line-height: 0.45rem;
+        text-align: center;
+        color: #fff;
+        font-size: 0.14rem;
+    }
+}
+//轮播图区域
+#slide {
+   
+    img{
+        width: 100%;
+    }
+    //修改了小圆点的样式
+    .swiper-pagination-bullet{
+        background-color: gold;
+      
+    }
+    
+}
+
+#nav {
+    ul {
+        padding: 0.1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        li {
+            width: 25%;
+            text-align: center;
+            a {
+                display: block;
+            }
+            img {
+                width: 0.4rem;
+                height: 0.4rem;
+            }
+            p {
+                margin: 0.05rem 0;
+            }
+        }
+    }
+}
+
+#main {
+    padding: 0.1rem;
+    /* 为了把main里面的内容往上挤不要和底部重叠在一起 */
+    padding-bottom: .6rem;
+    background-color: #eee;
+    .seckill {
+        box-shadow: 0 0 0.05rem 0 #666;
+        .title {
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            margin-bottom: 0.04rem;
+            font-size: .14rem;
+            .left {
+                flex: 7;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                img {
+                    width: 0.2rem;
+                    margin-left: 0.05rem;
+                }
+                >span {
+                    color: @main-color;
+                    margin-left: 0.03rem;
+                }
+                .downtime {
+                    margin-left: 0.03rem;
+                    span {
+                        height: 0.15rem;
+                        width: 0.15rem;
+                        line-height: 0.15rem;
+                        text-align: center;
+                    }
+                    span:nth-child(3n) {
+                        color: black;
+                    }
+                    span:not(:nth-child(3n)) {
+                        display: inline-block;
+                        background-color: black;
+                    }
+                }
+            }
+            .right {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                a {
+                    width: 100%;
+                }
+            }
+        }
+        .content {
+            ul {
+                display: flex;
+                li {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    p:first-of-type {
+                        color: @main-color;
+                    }
+                }
+                li:not(:first-child) {
+                    border-left: 0.01rem solid #ccc;
+                }
+            }
+            img {
+                width: 1.1rem;
+            }
+        }
+    }
+}
+
+.jd-market {
+    box-shadow: 0 0 0.05rem 0 #666;
+    margin-top: 0.1rem;
+    background-color: #fff;
+    .title {
+        h4 {
+            height: 0.3rem;
+            line-height: 0.3rem;
+            position: relative;
+            padding-left: 0.3rem;
+        }
+        h4::before {
+            content: "";
+            position: absolute;
+            width: 0.04rem;
+            height: 0.14rem;
+            background-color: @main-color;
+            top: 0.08rem;
+            left: 0.2rem;
+        }
+    }
+    .content {
+        display: flex;
+        >div {
+            flex: 1;
+            a {
+                display: block;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+

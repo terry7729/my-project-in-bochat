@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" @click="sayHi">
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  // 协查检 必须 .install方法
+  let nb = {
+    install(Vue) {
+      // console.log(Vue);
+      // 注册全局指令
+      // 往原型上添加属性
+      Vue.prototype.$sayHi = function(){
+        alert('你好吗？？');
+      }
+    }
+  }
+
+  // 安装插件
+  Vue.use(nb);
+
+  let app = new Vue({
+    el: "#app",
+    data: {
+      message: '你好'
+    },
+    methods: {
+      sayHi(){
+        this.$sayHi();
+      }
+    },
+  })
+</script>

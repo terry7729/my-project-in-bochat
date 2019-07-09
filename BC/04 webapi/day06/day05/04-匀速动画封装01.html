@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始移动到四百" id="start"/>
+<input type="button" value="开始移动到八百" id="start1"/>
+<div class="one" id="box"></div>
+
+<script>
+
+    /*目前代码的存在的问题
+        1.代码冗余    ----封装函数
+        2.移动距离写死   -----函数参数
+        3.移动元素写死  -----函数参数
+        4.移动方向写死（只能从左往右移动）
+     */
+    var box = document.getElementById('box');
+    var timeID = null;
+    document.getElementById('start').onclick = function (  ) {
+        //开启定时器
+    timeID =     setInterval(function (  ) {
+            //1.获取元素当前位置
+            var currentLeft = box.offsetLeft;
+            //2.开始移动
+            currentLeft+=10;
+            box.style.left = currentLeft + 'px';
+            //3.边界检测
+            if (currentLeft >= 400){
+                //(1)停止移动，清除定时器
+                clearInterval(timeID);
+                //(2)元素复位
+                box.style.left = '400px';
+            }
+        },50);
+    };
+
+
+    document.getElementById('start1').onclick = function (  ) {
+        //开启定时器
+        timeID =     setInterval(function (  ) {
+            //1.获取元素当前位置
+            var currentLeft = box.offsetLeft;
+            //2.开始移动
+            currentLeft+=10;
+            box.style.left = currentLeft + 'px';
+            //3.边界检测
+            if (currentLeft >= 800){
+                //(1)停止移动，清除定时器
+                clearInterval(timeID);
+                //(2)元素复位
+                box.style.left = '800px';
+            }
+        },50);
+    }
+</script>
+</body>
+</html>

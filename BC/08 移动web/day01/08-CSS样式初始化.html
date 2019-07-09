@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: '微软雅黑';
+            font-size: 14px;
+        }
+        /* 给所有标签都去除默认样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            /* 移动端不允许网页出现横向滚动条 */
+            /* 而且页面都是全屏盛满 宽度通常100% */
+            /* 让盒模型的计算方式 固定为 设置 width 和 height 
+            如果 padding border 会把content内容挤小 */
+            /* 因为所有都要设置这个属性 放到*号里面 */
+            box-sizing: border-box;
+            /* 移动端一些能按住的元素会有一个高亮背景色 */
+            -webkit-tap-highlight-color: transparent;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            color:#666;
+            text-decoration: none;
+        }
+        img{
+            /* 解决图片的3px间隙问题 */
+            vertical-align: middle;
+        }
+        input{
+            border:0;
+            /* 去掉内边框 */
+            outline:0;
+        }
+
+        div {
+            width: 100%;
+            height: 200px;
+            padding: 20px;
+
+        }
+        a{
+            display: block;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        1231
+    </div>
+    <a href="#">123132</a>
+    <ul>
+        <li>
+            fsdfds
+        </li>
+    </ul>
+</body>
+
+</html>

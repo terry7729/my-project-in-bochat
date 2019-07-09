@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <body>
+        <div id="app">
+            <input type="text" v-model="music" @keyup.enter="searchss">
+
+            <ul>
+                <li v-for="it in songList">
+                    {{it}}
+                </li>
+            </ul>
+        </div>
+    </body>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<!-- //https://autumnfish.cn/search?keywords= -->
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            music: '',
+            songList: []
+        },
+        methods: {
+            searchss() {
+                axios.get(`https://autumnfish.cn/search?keywords=${this.music}`).then(res => {
+                    this.songList = response.data.result.songs;
+                })
+            }
+        },
+    })
+</script>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*复习js变量的作用域
+        全局作用域（全局变量）：在函数外部声明的变量，可以在页面任何位置起作用
+        局部作用域（局部变量）：在函数内部声明的变量，只能在函数内部起作用
+     */
+    //需求：在函数外部访问函数内部的变量
+
+    //1.函数外部无法直接访问内部变量
+    function outer (  ) {
+        var person = {
+            name:'班长'
+        };
+        //局部变量的生命周期：调用函数的时候声明，函数执行完毕之后被系统自动回收
+    }
+
+    outer();
+    //函数外部无法访问函数内部变量
+    // console.log ( person );
+
+
+    //2.使用函数的返回值
+    /*不能实现访问函数内部变量：每调用一次函数，就会生成一个新的变量
+
+     */
+    // function outer (  ) {
+    //     var person = {
+    //         name:'班长'
+    //     };
+    //     return person;
+    // }
+    //
+    // var p1 = outer();
+    // console.log ( p1 );
+    // var p2 = outer();
+    // console.log ( p2 );
+    // console.log ( p1 == p2 );//false
+
+    //3.使用闭包
+
+    /*什么闭包closure：闭包是一个可以在函数外部访问函数内部变量的函数
+     闭包作用：可以在函数外部访问函数内部变量
+      闭包语法：（1）在外部函数内部声明一个闭包函数   （2）在闭包函数中返回你想要访问的内部变量  （3）在外部函数中返回这个闭包函数
+        闭包本质：函数内部与函数外部沟通的一座桥梁
+     */
+    function outer (  ) {
+        var person = {
+            name:'班长'
+        };
+        //1.先声明一个局部函数closure：可以访问outer这个函数里面的变量
+        function closure (  ) {
+           // console.log ( person );
+            //2.在局部函数中返回内部变量
+            return person;
+        };
+        //3.返回这个内部函数closure
+        return closure;
+    };
+
+    //调用outer： （1）声明一个person变量  （2）声明一个closure函数  （3）返回closeure
+    var closure = outer();
+    var p1 = closure();
+    console.log ( p1 );
+    var p2 = closure();
+    console.log ( p2 );
+    console.log ( p1 == p2 );
+</script>
+</body>
+</html>

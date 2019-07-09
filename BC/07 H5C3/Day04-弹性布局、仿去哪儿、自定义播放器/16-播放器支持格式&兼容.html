@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        video和audio在IE8不支持
+        
+        以前的视频网站是用flash做的。
+    -->
+</head>
+<body>
+
+    <!-- mp4通用 -->
+    <!-- <video src="video/rabbit.ogg" controls></video> -->
+
+    <!-- 可以实现不同浏览器放不同的视频 -->
+    <video controls>
+        <!-- 特点：先找第一个source，如果第一个source就支持就播放第一个，如果不支持，就去找第二个 -->
+        <!-- 第一个格式谷歌支持 -->
+        <source src="video/rabbit.ogg"></source>
+        <source src="video/movie01.mp4"></source>
+        您的浏览器不支持最新功能，请下载最新浏览器体验最酷炫的效果！小妹下海写代码很辛苦哟！麻烦你一定要帮人家下载哟！O(∩_∩)O<a href="#">点我下载</a>
+    </video>
+</body>
+</html>

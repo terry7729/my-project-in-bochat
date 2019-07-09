@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //总结:
+        //1.在prompt前面添加+号
+        //2.使用算术运算,不能用加法
+        //3.Number(转换数据)
+        //4.parseInt整数
+        //5.parseFloat包括小数
+        //现有两兄弟,弟弟比哥哥小五岁,用户输入弟弟的年龄,求哥哥的年龄
+        //var didi = prompt("请输入弟弟的年龄:");//这里输入的数据类型是string类型
+        //var gege = didi + 5;//加号的两边,如果有字符串,那么就是连接符号
+        //alert("我是哥哥,我今年已经"+gege+"岁了!");//105
+
+        //用户输入的数据,应该转换成number类型
+
+
+        //1.在prompt的前面添加一个+号,可以将输入的数字,变成number类型
+        //var didi = +prompt("请输入弟弟的年龄:");
+        //console.log(typeof didi);//number
+
+        //2.利用算术运算,可以将字符串数字变成number数字,但是不能用+号
+        //var didi = prompt("请输入弟弟的年龄:");
+        //didi = didi * 1;
+        //console.log(typeof didi);//number
+
+        //3.Number(转换数据);
+        //var str1 = "123";
+        //var res1 = Number(str1);
+        //console.log(typeof res1);//number
+        //如果字符串本身是数字,那么可以被直接转换成为number类型的数字
+
+        //var str2 = "lcw";
+        //var res2 = Number(str2);
+        //console.log(typeof res2);//number
+        //console.log(res2);//NaN
+//
+        //var str3 = "";
+        //var res3 = Number(str3);
+        //console.log(typeof res3);//number
+        //console.log(res3);//0
+        //如果是空字符串,那么会转换成为0
+
+        //4.如果存在小数点
+        //var str1 = "3.14";
+        //var res1 = Number(str1);
+        //console.log(res1);
+        ////我只想要整数部分
+        //var str2 = "3.14";
+        //var res2 = parseInt(str2);//取数字的整数部分
+        //console.log(res2);//3
+//
+        //var str3 = "3.14abc";
+        //var res3 = parseInt(str3);
+        //console.log(res3);//3
+        ////从左边开始,直到非数字部分结束,取前面的整数
+//
+        ////取小数,包括小数
+        //var str4 = "3.14abc";
+        //var res4 = parseFloat(str4);
+        //console.log(res4);//3.14
+//
+        //var str5 = "123ab123";
+        //var res5 = parseInt(str5);
+        //console.log(res5);//123
+
+        //5.布尔值转number
+        //true:1
+        //false:0
+        //var res = Number(false);
+        //console.log(res);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

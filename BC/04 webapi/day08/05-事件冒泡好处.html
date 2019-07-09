@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="ul1">
+    <li>隔壁老宋1</li>
+    <li>隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+<script>
+    /*1.事件冒泡好处：如果一个父元素所有的子元素都要注册同名事件，只需要给父元素注册即可
+
+        2.关于事件对象的一些属性
+            e.target : 事件触发源  (真正触发父元素事件的那个子元素)
+            e.currentTarget : 与this一样的，不同点：currentTarget有浏览器兼容性，this没有
+            this:谁调用这个方法this代表谁
+     */
+    //需求：给ul中每一个li元素注册点击事件,点击弹出自己的文本
+
+    //1.以前做法
+        //获取元素
+    var ul1 = document.getElementById('ul1')
+    //遍历数组注册事件
+    // for(var i = 0;i<ul1.children.length;i++){
+    //         ul1.children[i].onclick = function (  ) {
+    //             //this:点击的li元素
+    //             alert(this.innerText);
+    //         }
+    // }
+
+    //2.利用事件冒泡：只需要给ul注册点击事件即可
+    ul1.onclick = function ( e ) {
+        //this:指向ul
+        // alert(this.innerText);
+        e = e || window.event;
+
+        console.log ( e.currentTarget === this );//true
+
+
+        //事件触发源：真正触发这个事件的源头
+        //IE8:  e.srcElement
+       e.target =  e.target || e.srcElement
+        alert(e.target.innerText);
+    }
+</script>
+</body>
+</html>

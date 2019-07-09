@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style> 
+    div {
+      width: 200px;
+      height: 200px;
+      margin-top: 10px;
+    }
+    .one  {
+      border: 1px solid red;
+    }
+    .two {
+      border: 1px solid green;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/> <br/><br/>
+<div class="one" id="one"></div>
+<span>哈哈,我是span</span>
+</body>
+</html>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //原生js注册相同的事件,后面会把前面的覆盖.
+    // document.getElementById("one").onclick = function () {
+    //   alert('11');
+    // };
+    // document.getElementById("one").onclick = function () {
+    //   alert('22');
+    // };
+
+    //jQuery注册相同的事件,后面的不会把前面的覆盖.
+    // $('#one').click(function () {
+    //   alert('11');
+    // });
+    // $('#one').click(function () {
+    //   alert('2');
+    // });
+
+    //相对于原生js注册事件而言,jQuery注册事件是有优势的.
+    //----------------------------------------------------------------------------------------
+    //点击按钮,创建一个div.追加到body中.
+    $('#btn').on('click', function () {
+      $('<div class="two"></div>').appendTo($('body'));
+    });
+
+    //----------------------------------------------------------------------------------------
+    //1.jQuery的事件注册发展历程.
+    //1.1 简单事件注册.
+    //不支持同时注册多个事件.
+    //不支持动态注册.
+    // $('div').click(function () {
+    //   console.log("我被点击了");
+    // });
+    // $('div').mouseenter(function () {
+    //   console.log("鼠标移入了");
+    // });
+
+    //1.2 bind();
+    //同时注册事件.
+    //不支持动态注册.
+    // $('div').bind('click mouseenter', function () {
+    //   console.log("11");
+    // });
+
+    // $('div').bind({
+    //   'click': function () {
+    //     console.log("我被单击了...");
+    //   },
+    //   'mouseenter': function () {
+    //     console.log("鼠标移入了");
+    //   }
+    // });
+
+
+    //1.3 delegate.委托注册.
+    //同时注册事件.
+    //支持动态注册.
+    // $('body').delegate('div',{
+    //   'click': function (e) {
+    //     console.log("点击了...");
+    //     console.log(e.target);
+    //   },
+    //   'mouseenter': function () {
+    //     console.log("鼠标移入了...");
+    //   }
+    // })
+
+
+
+
+    //1.4  jQuery1.7之后，jQuery用on统一了所有事件的处理方式。
+    //a.简单注册.
+    //支持同时注册.
+    //不支持动态注册.
+    // $('div').on('click', function () {
+    //   console.log("单击了...");
+    // });
+
+    // $('div').on({
+    //   click: function () {
+    //     console.log("单击了...");
+    //   },
+    //   'mouseenter': function () {
+    //     console.log("鼠标移入了...");
+    //   }
+    // });
+
+
+    //b.委托注册.
+    //支持动态注册的.
+    $('body').on('click','div,span', function (e) {
+      console.log("点击了...");
+
+      console.log(e.target);
+
+      //console.log(this);//jQuery为了方便使用者,修改了this的指向.
+    });
+
+
+
+
+
+
+  });
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*js基础创建对象四种方式
+    一个对象：  简洁语法{}     构造函数new Object()
+    多个对象：使用函数
+        工厂函数：几乎不用
+        自定义构造函数：代码简洁
+
+     */
+
+    //1.使用构造函数创建对象
+    /*构造函数中的方法弊端： 每实例化一个对象就会创建一个新的函数，浪费内存空间
+
+     */
+    // function Person (  name,age) {
+    //     //(1)创建一个空对象： {}
+    //     //(2)将this指向这个空对象 : this = {}
+    //     //（3）执行构造函数赋值代码（完成对象的赋值）
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sayHi = function (  ) {
+    //         //this:谁调用这个方法 this指向谁
+    //         console.log ( "大家好,我是" + this.name + "我的年龄是" + this.age );
+    //     }
+    //     //（4）返回这个对象
+    // };
+    //
+    // var banzhang =new Person('班长',18);
+    // console.log ( banzhang );
+    // banzhang.sayHi();
+    //
+    // var baojiankun = new Person('保健坤',16);
+    // baojiankun.sayHi();
+    //
+    // console.log ( banzhang.sayHi == baojiankun.sayHi );//false
+
+    //2.使用全局函数：解决内存空间浪费的问题
+    /*弊端：全局变量污染
+
+     */
+
+    // function sayHi (  ) {
+    //     console.log ( "大家好,我是" + this.name + "我的年龄是" + this.age );
+    // }
+    //
+    // function Person (  name,age) {
+    //     //(1)创建一个空对象： {}
+    //     //(2)将this指向这个空对象 : this = {}
+    //     //（3）执行构造函数赋值代码（完成对象的赋值）
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sayHi = sayHi;
+    //     //（4）返回这个对象
+    // };
+    //
+    // var banzhang =new Person('班长',18);
+    // console.log ( banzhang );
+    // banzhang.sayHi();
+    //
+    // var baojiankun = new Person('保健坤',16);
+    // baojiankun.sayHi();
+    //
+    // console.log ( banzhang.sayHi == baojiankun.sayHi );//true
+    // console.log ( banzhang.sayHi === sayHi );//true
+
+    //3.使用对象：解决全局变量污染问题
+    /*弊端：每声明一个构造函数，就要声明一个对象，非常的麻烦
+
+     */
+
+    // var obj = {
+    //     sayHi:function (  ) {
+    //     console.log ( "大家好,我是" + this.name + "我的年龄是" + this.age );
+    //      },
+    //     eat:function (  ) {
+    //         console.log ( "吃鸡" );
+    //     }
+    // }
+    //
+    // function Person (  name,age) {
+    //     //(1)创建一个空对象： {}
+    //     //(2)将this指向这个空对象 : this = {}
+    //     //（3）执行构造函数赋值代码（完成对象的赋值）
+    //     this.name = name;
+    //     this.age = age;
+    //     this.sayHi = obj.sayHi;
+    //     this.eat = obj.eat;
+    //     //（4）返回这个对象
+    // };
+    //
+    // var banzhang =new Person('班长',18);
+    // console.log ( banzhang );
+    // banzhang.sayHi();
+    //
+    // var baojiankun = new Person('保健坤',16);
+    // baojiankun.sayHi();
+    //
+    // console.log ( banzhang.sayHi == baojiankun.sayHi );//true
+    // console.log ( banzhang.sayHi === obj.sayHi );//true
+
+    /*--------------------------  4.使用原型：解决内存浪费，全局变量污染   --------------*/
+
+
+    //4.1原型：每一个函数在声明的时候，系统都会帮我们创建一个与之对应的对象，称之为原型对象
+
+    function Person (  name,age) {
+            this.name = name;
+            this.age = age;
+    }
+
+    //4.2 如何获取原型：构造函数名.prototype
+    console.log ( Person.prototype );
+
+    //4.3 既然原型是一个对象，就可以存储属性和方法
+    Person.prototype.sayHi = function (  ) {
+        console.log ( "111111" );
+    };
+
+    //4.4 谁可以访问原型对象中的成员(属性和方法)
+
+    //a.构造函数自己
+    Person.prototype.sayHi();
+
+    //b.构造函数实例化出来的每一个对象都可以访问
+    var p1 = new Person('班长',18);
+    console.log ( p1 );
+    p1.sayHi();
+
+    var p2 = new Person('班花',16);
+    p2.sayHi();
+
+    console.log ( p1.sayHi === p2.sayHi );
+
+
+</script>
+</body>
+</html>

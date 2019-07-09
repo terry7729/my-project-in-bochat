@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        
+        transition：过渡
+        transform：做变换的总属性
+                translate:平移的
+
+
+        不管你是要旋转，平移，缩放，扭曲，要改的都是一个属性：transform
+
+        旋转：  
+            rotate() 里面传角度，记得单位是deg，正代表顺时针，负代表逆时针
+
+        平移：
+            translate();
+                 参数1：x轴平移, 正往右，负往左
+                 参数2: y轴平移，正往下，负往上
+                 px为单位
+
+        缩放：
+            scale();
+                里面写的是缩放的倍数
+                    大于1是放大，小于1是缩小，等于1是不变
+
+                    参数1：x的缩放（宽度的缩放）
+                    参数2：y的缩放（高度的缩放）
+
+                    这个给一个值，都变
+
+
+        扭曲（倾斜）：
+                skew()
+                    传入的是角度
+                    相当于是把元素变成平行四边形
+    -->
+
+    <style>
+        ul{
+            list-style: none;
+            padding: 0;
+
+            width: 420px;
+            height: 420px;
+            /* border: 1px solid #000; */
+            margin: 100px auto;
+        }
+
+        li{
+            width: 200px;
+            height: 200px;
+            margin-left: 10px;
+            margin-top: 10px;
+            background-color: yellowgreen;
+            float: left;
+
+            text-align: center;
+            line-height: 200px;
+
+            transition: all 1s;
+        }
+
+        li:first-child:hover{
+
+            transform: rotate(-45deg);
+        }
+
+        li:nth-child(2):hover{
+
+            /*
+                参数1：x轴平移, 正往右，负往左
+                参数2: y轴平移，正往下，负往上
+                如果只给一个，就是只动x
+            */
+            /* transform: translate(-200px,-200px); */
+            transform: translate(300px);
+        }
+
+        li:nth-child(3):hover{
+
+            /* 缩放：里面写的是缩放的倍数
+                大于1是放大，小于1是缩小，等于1是不变
+
+                参数1：x的缩放（宽度的缩放）
+                参数2：y的缩放（高度的缩放）
+
+                这个给一个值，都变
+             */
+            transform: scale(1.5);
+        }
+
+        li:nth-child(4):hover{
+
+            transform: skew(-30deg);
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>旋转</li>
+        <li>平移</li>
+        <li>缩放</li>
+        <li>扭曲</li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*面向对象三大特征
+        封装：将功能代码封装到对象中，只暴露外部接口(API),使用者无需关心内部实现
+        继承：一个对象拥有另一个对象所有的成员变量(属性和方法)
+        多态:  一个对象在不同情况下的多种状态
+            * js从语法的角度上来说没有多态，因为js是基于对象的语言
+     */
+
+    //多态：饲养员喂食动物示例
+
+    //1.动物
+    //1.1 狗
+    function Dog ( name  ) {
+        this.name = name;
+    };
+    //每一只狗都有吃东西方法，可以放入原型中
+    Dog.prototype.eat = function ( food  ) {
+        console.log ( "汪汪汪,我是狗，我吃了" + food );
+    }
+
+    //1.2 猫
+    function Cat (name  ) {
+        this.name = name;
+    };
+    //每一只猫都有吃东西方法，可以放入原型中
+    Cat.prototype.eat = function ( food ) {
+        console.log ( "喵喵喵，我是猫，我吃了" + food );
+    };
+
+    //2.饲养员
+    function Person (name,age  ) {
+        this.name = name;
+        this.age = age;
+    };
+    //每一个饲养员都有工作的方法
+    Person.prototype.work = function ( animal,food ) {
+        //animal:接收动物对象，调用这个动物对象的eat方法吃东西
+        animal.eat(food);
+    };
+
+   var qunqun =  new Person('群群',38);
+   var d1 = new Dog('二哈');
+   var c1 = new Cat('美短');
+
+   qunqun.work(d1, '翔');
+   qunqun.work(c1, '鱼');
+</script>
+</body>
+</html>

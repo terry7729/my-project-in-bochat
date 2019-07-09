@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        img{
+            width: 100px;
+
+            animation: run 5s;
+        }
+
+        @keyframes run{
+
+            40%{
+
+                transform: translate(1100px);
+            }
+            
+            /* 从40%-50%这段时间掉头 */
+            50%{
+                transform:translate(1100px) rotateY(180deg);
+            }
+            
+            /* 50% - 90% 这段时间开回来 */
+            90%{
+
+                /* transform:translate(0px) rotateY(180deg); */
+                /* 上面那句话和下面这句话一样，都是代表把位置还原 */
+                transform:rotateY(180deg);
+            }
+            /* 剩下时间都是在复原 */
+        }
+    </style>
+</head>
+<body>
+    <img src="images/car.jpg" alt="">
+</body>
+</html>

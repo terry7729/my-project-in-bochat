@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    /*webapi八天课程大纲
+    dom：3天
+    动画：2.5天
+    bom:  0.5天
+    事件及事件对象：2天
+    */
+
+    /*dom:js动态操作网页内容
+    //1.网页内容（节点）：元素、属性、文本、注释
+    //2.动态操作：增删改查
+    */
+
+
+
+    //1.查询操作
+
+    //1.1 查询元素
+    document.getElementById();//通过id获取
+    document.getElementsByTagName();//通过标签名获取
+    document.getElementsByClassName();//通过类名获取
+    document.getElementsByName();//通过name属性获取（表单元素）
+    document.querySelector();//选择器获取  满足条件的第一个元素
+    document.querySelectorAll();//选择器获取 满足条件的所有元素
+
+    //1.2 查询属性
+    /* a.  点语法 常用于操作标准属性
+        元素.属性名
+       b. attribute:常用于操作自定义属性
+        获取属性：元素.getAttribute('属性名')
+        修改属性：元素.setAttribute('属性名',属性值)
+        删除属性： 元素.removeAttribute('属性名')
+            * 比点语法（删除属性值）删除更加彻底（属性名属性值一起删除）
+     */
+
+    //1.3 查询内容
+   //a. 元素.innerText                   获取文本
+    //b. 元素.innerHTML                获取文本和内容
+
+    //2.增加操作
+
+    //2.1 创建元素三种方式
+    //a.慎用：可能会覆盖原有内容
+    document.write('<p>p</p>');
+    //b.小心字符串恒定性造成的资源浪费
+    document.body.innerHTML = '<p>p</p>';
+    //c.dom推荐方式
+    var p =document.createElement('p');
+
+    //2.2 增加元素两种方式
+    /*特点
+    1.如果是新创建的元素，则是增加操作
+    2.如果是已经存在的元素，则是移动操作
+    3.如果元素有子元素，则子元素一起移动
+     */
+    // a.父元素.appendChild(子元素)              增加到最后面
+    // b.父元素.insertBefore(子元素,要插入的元素)               插入到元素前面
+
+    //3. 修改操作（替换元素）
+    /*特点
+    1.如果是新创建的元素，则是替换操作
+    2.如果是已经存在的元素，先移动后替换
+    3.如果元素有子元素，则子元素一起移动替换
+     */
+    //父元素.replaceChild(新元素,旧元素)
+
+    //4.删除操作
+    /*特点
+   1.只能删除的子元素（亲爸爸杀死亲儿子）
+   2.不能自己删除自己
+   3.不能删除别人的子元素
+    */
+
+    //父元素.removeChild(子元素)
+
+    //5.阻止a标签跳转的方式
+    /*1.设置a标签的href属性为：javascript:void(0)
+     2.行外写法，在事件处理中: return false
+     3.行内写法，必须在行内：return false
+
+     */
+
+</script>
+</body>
+</html>

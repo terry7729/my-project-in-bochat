@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .toggle-enter-active, .toggle-leave-active {
+  transition: opacity .5s;
+  }
+  .toggle-enter, .toggle-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
+  }
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to
+  /* .list-leave-active for below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" value="切换显示" @click="isShow=!isShow">
+    <br>
+    <transition name="toggle" @after-enter="enter" @after-leave="leave">
+      <p v-show="isShow">我是一个p标签</p>
+    </transition>
+    <br>
+    <input type="button" value="列表动画" @click="addList">
+    <br>
+    <!-- <ul> -->
+    <transition-group name="list" tag="ul">
+      <li v-for="item in list" :key="item">{{item}}</li>
+    </transition-group>
+    <!-- </ul> -->
+    <num-control></num-control>
+  </div>
+  <num-control></num-control>
+  <niehaha></niehaha>
+  <div></div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 动画 -->
+<!-- Vue组件的写法 -->
+<!-- 独立的ajax请求库 vue-resource -->
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script>
+  // 自己写组件
+  // Vue.component('abc', [definition])
+  Vue.component('num-control', {
+    // data:function(){
+    //   return {
+    //     count:0
+    //   }
+    // },
+    data() {
+      return {
+        count: 0
+      }
+    },
+    template: '<button @click="count++">{{count}}</button>'
+  })
+
+  let app = new Vue({
+    el: "#app",
+    data: {
+      isShow: false,
+      list: [1, 2, 3, 4]
+    },
+    methods: {
+      addList() {
+        this.list.push(parseInt(Math.random() * 100));
+        // this.$http.get('url').then();
+        // this.$http.post('url',body).then();
+      },
+      enter(el) {
+        console.log(el);
+      },
+      leave(el) {
+        console.log(el);
+      }
+    },
+  })
+
+  // Vue.component('num-control', {
+  //   // data:function(){
+  //   //   return {
+  //   //     count:0
+  //   //   }
+  //   // },
+  //   data() {
+  //     return {
+  //       count: 0
+  //     }
+  //   },
+  //   template: '<button @click="count++">{{count}}</button>'
+  // })
+</script>

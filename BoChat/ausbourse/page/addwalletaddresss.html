@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/addwalletaddresss.css">
+    <link rel="stylesheet" href="../js/layui/css/layui.css">
+    <link rel="stylesheet" href="../css/base.css">
+</head>
+
+<body>
+    <div>
+        <h2>添加钱包地址</h2>
+        <form action="">
+            <input type="text" name="greeting" list="greetings" placeholder="币种名称" id="tokenType">
+            <datalist id="greetings">
+                <option value="比特币(BTC)"></option>
+                <option value="以太坊(ETH)"></option>
+                <option value="柚子(EOS)"></option>
+            </datalist>
+
+            <input type="text" placeholder="钱包标签" id="walletBQ">
+            <input type="text" placeholder="钱包地址" id="walletAddress">
+            <input type="text" placeholder="交易密码" id="jypwd">
+            <button class="submit">立即添加</button>
+        </form>
+    </div>
+</body>
+
+</html>
+<script type="text/javascript" src="../js/jquery.min.js"></script>
+<script src="../js/layui/layui.all.js"></script>
+<script>
+    $('.submit').click(function(e) {
+        e.preventDefault();
+        if ($('#tokenType').val() == "") {
+            layer.tips('请选择/输入币种', '#tokenType', {
+                tips: 3,
+
+            })
+            return false;
+        }
+        if ($('#walletBQ').val() == "") {
+            layer.tips('请输入钱包标签', '#walletBQ', {
+                tips: 3,
+
+            })
+            return false;
+        }
+        if ($('#walletAddress').val() == "") {
+            layer.tips('请输入钱包地址', '#walletAddress', {
+                tips: 3
+            })
+            return false;
+        }
+        if ($('#jypwd').val() == "") {
+            layer.tips('请输入交易密码', '#jypwd', {
+                tips: 3
+            })
+            return false;
+        }
+
+    })
+</script>

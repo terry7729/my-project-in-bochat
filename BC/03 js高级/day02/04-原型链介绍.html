@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.原型链： 每一个对象都有__proto__指向自己的原型，而原型对象自己又是一个对象，又有__proto__属性指向自己的原型，以此类推
+    形成一个链式结构，称之为原型链
+       2.对象访问原型链中成员规则：就近原则
+            * 先看对象自己有没有，有则访问，没有则看原型有没有，有则访问，没有则看原型的原型有没有，以此类推
+            直到原型链的终点（null）,如果还没有 ：  属性：则返回undefined  方法：报错   xxxx is not a function
+
+     */
+    function Student ( name,age ) {
+        this.name = name;
+        this.age = age;
+    };
+    //每一个学生都有学习的方法
+    Student.prototype.study = function (  ) {
+        console.log ( "好好学习天天向上" );
+    };
+
+    //实例化对象
+    var s1 = new Student('班长',18);
+    s1.girlFriend = '苍老师';
+    console.log ( s1 );
+
+    console.log ( s1.name );//不会报错  因为s1 有name的属性
+    console.log ( s1.age );//不会报错  因为s1 有age的属性
+    s1.study();//不会报错 虽然s1没有study方法，但是原型有
+    console.log ( s1.hobby );//undefined    s1自己没有这个属性，原型也没有，当对象无法访问这个属性则返回undefined
+   // s1.eat();//程序会报错  提示：s1.eat is not a function   s1自己没有这个方法，原型也没有这个方法
+    //原因：s1的原型的原型中有toString方法
+    s1.toString();//为什么不会报错？s1自己没有toString方法，原型也没有stString方法
+
+    //检查s1原型
+    console.log ( s1.__proto__ );
+    console.log ( s1.__proto__.constructor );//Student
+    //检查s1原型的原型
+    console.log ( s1.__proto__.__proto__.constructor );//Object
+    console.log ( Object.prototype == s1.__proto__.__proto__ );//true
+
+    console.log ( Student.prototype.__proto__.constructor );//Object
+
+    //Object.prototype又是谁构造的呢
+    console.log ( Object.prototype.__proto__ );
+</script>
+</body>
+</html>

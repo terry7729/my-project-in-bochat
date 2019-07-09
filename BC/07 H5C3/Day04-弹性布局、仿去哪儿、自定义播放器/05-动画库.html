@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        很多动画效果，已经有大牛帮我们写好了，我们直接用就可以了
+        
+        写好的一堆动画效果，叫动画库：animate.css
+
+        使用方法：
+                1.导入这个css
+                2.去官网挑一个想要的效果
+                3.在需要用动画的元素上加一个类animation和一个类（动画的名字）
+
+        建议不要这样子用！ 因为如果你只是用某个动画，但是要导入整个库就浪费资源
+
+        所以建议挑好效果后，直接去animate.css里搜这个效果的名字，把剧本复制出来，自己用
+     -->
+    <!-- <link rel="stylesheet" href="animate.css"> -->
+
+    <style>
+        img {
+            display: block;
+            margin: 100px auto;
+
+            animation:hinge 2s infinite;
+        }
+
+        @keyframes hinge {
+            0% {
+               
+                transform-origin: top left;
+                animation-timing-function: ease-in-out;
+            }
+
+            20%,
+            60% {
+                -webkit-transform: rotate3d(0, 0, 1, 80deg);
+                transform: rotate3d(0, 0, 1, 80deg);
+                -webkit-transform-origin: top left;
+                transform-origin: top left;
+                -webkit-animation-timing-function: ease-in-out;
+                animation-timing-function: ease-in-out;
+            }
+
+            40%,
+            80% {
+                -webkit-transform: rotate3d(0, 0, 1, 60deg);
+                transform: rotate3d(0, 0, 1, 60deg);
+                -webkit-transform-origin: top left;
+                transform-origin: top left;
+                -webkit-animation-timing-function: ease-in-out;
+                animation-timing-function: ease-in-out;
+                opacity: 1;
+            }
+
+            to {
+                -webkit-transform: translate3d(0, 700px, 0);
+                transform: translate3d(0, 700px, 0);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <img src="images/lq.png" alt="">
+
+</body>
+
+</html>

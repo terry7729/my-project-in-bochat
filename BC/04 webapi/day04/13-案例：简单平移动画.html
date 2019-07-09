@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 50px;
+            top: 50px;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            left: 50px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="移动到400" id="move400"/>
+<input type="button" value="移动到800" id="move800"/>
+
+<div id="box1"></div>
+<div id="box2"></div>
+
+</body>
+
+<script>
+
+    /*本小节解决问题：移动元素灵活，可以是任意元素
+    思路：给函数添加一个参数，接收要移动的元素
+
+    */
+
+    var box1 = document.getElementById('box1');//红色盒子
+    var box2 = document.getElementById('box2');//绿色盒子
+
+    //点击移动红色盒子到400
+    document.getElementById('move400').onclick = function (  ) {
+        animateMove(box1,400);
+    }
+
+    //点击移动绿色盒子到800
+    document.getElementById('move800').onclick = function (  ) {
+        animateMove(box2,800);
+    }
+
+    //1.如果定义一个全局变量存储定时器id则会有一个bug：两个盒子无法同时移动，因为一个变量只能存储一个定时器id
+    // var timeID;
+    /*2.解决方案：谁要移动，我就给你一个定时器id，等你到达终点了我就回收定时器
+    PS：跑步比赛，比赛之前给每一个选手一个编号贴在背上区分，比赛完了就回收
+    */
+    function animateMove (obj,target ) {
+        //移动之前，如果元素已有定时器，则先清除
+        clearInterval(obj.timeID);
+
+        //移动动画:将定时器的id作为移动元素的属性
+        obj.timeID=  setInterval(function (  ) {
+            //1.获取盒子当前位置
+            var currentLeft = obj.offsetLeft;
+            //2.添加单次运动距离
+            currentLeft += 10;
+            //3.边界检测
+            if(currentLeft < target){
+                //4.设置盒子的位置（offset家族只能读取不能设置）
+                obj.style.left = currentLeft + 'px';
+            }else{
+                obj.style.left =  target + 'px';
+                //5.到达目的地之后移除定时器
+                clearInterval(obj.timeID);
+            }
+        },50);
+    }
+
+
+</script>
+</html>

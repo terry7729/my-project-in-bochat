@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //短路运算是什么意思:前面的式子的结果,导致后面的式子不会执行
+        //模拟:我现在要去你家,中间要经过两座桥,当我在第一座桥上的时候,哈哈,桥塌了.问,我还要经过第二座桥吗?
+        //1.逻辑与运算,如果前面的式子是假,那么后面的式子的结果就不重要了,所以就可以不执行
+        //var num1 = 10, num2 = 20;
+        //var res = num1 > 20 && num2++;
+        //console.log(res);
+        //console.log(num2);//20,短路运算,后面的式子不会执行
+
+        //2.逻辑或运算,如果前面的式子是真,那么后面式子的结果就不重要了,所以就不会执行
+        //var res = num1 > 5 || --num2;//有真就是真
+        //console.log(res);
+        //console.log(num2);//20,短路
+
+        //var num1 = 10;
+        //var num2 = 20;
+        //
+        //console.log(num1++ == 11 && num2++ > 20);
+        //console.log(num1, num2);
+
+        var a = 1;
+        var b;
+        console.log((a + b));
+        console.log(typeof (a + b));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

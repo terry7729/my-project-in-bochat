@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+
+            margin: 100px auto;
+            
+            /*
+                参数1：图片路径 要写一个url(路径) ，路径里面可以写引号也可以不写
+                参数2：是否平铺，默认为repeat代表x，y方向都平铺
+                            repeat-x：代表x轴平铺
+                            repeat-y：代表y轴平铺
+                            no-repeat：不平铺
+                参数3：图片偏移位置，第一个值x轴偏移，第二个值为y轴偏移
+                            可以给具体的像素，代表移动多少像素
+                            可以给百分比，代表移动到盒子内的某个位置
+                            可以给具体的位置,默认在left top
+                            居中给center
+                            水平方向：left center right
+                            垂直方向：top  center bottom
+
+                参数4：图片的大小，要指定图片大小，必须在参数3后面写一个 /
+                            可以给具体像素大小，也可以写百分比
+                            除了这些以外，还可以写两个特殊的关键字： cover
+                                                                 contain
+                            cover和contain都不会变形，因为它们都是等比例缩放
+                            cover：一定放的满整个盒子
+                                    cover覆盖的意思：要让图片覆盖整个盒子
+
+                            contain：一定放不满盒子
+                                    contain包含的意思：意思要让图片包含在盒子里面
+
+                参数5：背景颜色
+
+                如果要设置多张背景图片，逗号隔开，先写的层级最高，后写的层级低，如果多张背景图片，那么要加背景颜色的时候一定只能写在最后，或者单独写background-color
+
+            */
+            background: url(images/lq.png) no-repeat left top / 200px 100px,
+                        url(images/pl.png) no-repeat left top / 200px 150px ;
+            /* background-color: rgba(255, 0, 0, 0.3); */
+
+            /* background-image: 图片路径 */
+            /* background-repeat: 是否平铺 */
+            /* background-position: 图片位置 */
+            /* background-size: 图片大小 */
+            /* background-color: #fff; */
+
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+
+        span {
+            /* 所有的标签,都是盒子 */
+            margin-right: 20px;
+            margin-left: 20px;
+            /* 水平方向的margin是可以相加的 */
+        }
+
+        /* margin:控制盒子与盒子之间的距离,外边距 */
+
+        .top {
+            margin-bottom: 100px;
+        }
+
+        .bottom {
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <span>黑马程序员</span><span>黑马程序员</span><span>黑马程序员</span><span>黑马程序员</span>
+    </div>
+    <div class="bottom">
+        <span>黑马程序员</span><span>黑马程序员</span><span>黑马程序员</span><span>黑马程序员</span>
+    </div>
+</body>
+</html>

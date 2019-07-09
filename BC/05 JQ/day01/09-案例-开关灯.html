@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+            margin: 10px auto;
+        }
+
+        .color {
+            background-color: black;
+        }
+    </style>
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+         $(function () {
+            $("button").click(function () {
+                $('body').toggleClass('color');
+                if($(this).text()=="开灯"){
+                    $(this).text("关灯");
+                }else {
+                    $(this).text("开灯");
+                }
+
+            })
+         })
+    </script>
+</head>
+<body>
+    <button>开灯</button>
+
+    <img src="images/coder.jpg"/>
+</body>
+</html>
+
+<!--<script src="jquery-1.12.4.js"></script>-->
+<!--<script>-->
+  <!--$(function () {-->
+    <!--//1.获取按钮们.-->
+    <!--var  $btns = $('button');-->
+
+    <!--//2.关灯.-->
+    <!--$btns[1].onclick = function () {-->
+      <!--//给body设置背景色.-->
+      <!--//dom对象调用dom方法-->
+      <!--//document.body.style.backgroundColor = 'black';-->
+      <!--//jQuery对象调用jQuery方法.-->
+      <!--$('body').css('backgroundColor','black');-->
+    <!--}-->
+
+
+    <!--//3.开灯.-->
+    <!--$($btns[0]).click(function () {-->
+      <!--$('body').css('backgroundColor','white');-->
+    <!--});-->
+
+  <!--});-->
+<!--</script>-->

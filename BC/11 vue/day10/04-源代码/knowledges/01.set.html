@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let arr = [1, 2, 3, 1, 2, 3, 5, 6]
+  // 实例化一个Set即可
+  let set = new Set(arr)
+  console.log(set)
+  // ... 挨个取值内部的值 1,2,3,4，
+  console.log(...set)
+  console.log([...set].join(',')) //[1,2,3,4,5,6]
+  // 数组有join方法 set呢？没有
+  // set.join(',')
+  // 如果可以快速的把set转化为数组
+</script>

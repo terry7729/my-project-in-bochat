@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+<body>
+
+<ul id="ul1">
+    我是文本
+    <!--我是注释1111-->
+    <li id="li1">隔壁老宋1</li>
+    skajvhgkjadsvhgk
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li id="li5">隔壁老宋5</li>
+</ul>
+
+<script>
+    /*获取父节点
+     */
+    var li2 = document.getElementById('li2');
+
+    //获取父节点:一定是元素节点
+    //因为只有元素节点才有子节点
+    console.log ( li2.parentNode );
+
+    console.log ( li2.parentNode.parentNode );//body
+    console.log ( li2.parentNode.parentNode.parentNode );//html
+    console.log ( li2.parentNode.parentNode.parentNode.parentNode );//document
+    console.log ( li2.parentNode.parentNode.parentNode.parentNode.parentNode );//null
+</script>
+</body>
+</html>

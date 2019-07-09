@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 对象展开
+  let p = {
+    name: 'rose',
+    color: '肉色'
+  }
+  let p2 = {
+    skill: '青椒',
+    ...p
+  }
+  // vuex mapGetters
+  /*
+    computed:{
+      com1(){},
+      com2(){},
+      ...mapGetters() => ...{}
+    }
+  */
+  // console.log(p2)
+
+  // 数组的展开
+  let arr = [1, 2, 3, 4, 2, 4, 3]
+  let arr2 = ['牛逼', ...arr]
+  // console.log(arr2);
+  // 结合set实现数组去重 setES6中的新数据结构 特性是 内部不能有重复的数据
+  let set = new Set(arr)
+  console.log([...set])
+</script>

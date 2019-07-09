@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // es6中新增的
+  let person = {
+    name: '某群',
+    color: '黑色',
+    friend: {
+      name: '某林',
+      color: '粉色'
+    }
+  }
+  // 对象解构
+  // let name = person.name
+  // let color = person.color
+  // let { friend } = person
+  // let { name, color } = friend
+  // console.log(name)
+  // console.log(color)
+  // console.log(friend)
+
+  // 数组解构
+  let foodArr = ['西兰花炒蛋', '西兰花炒饭', '西兰花炖蛋']
+  // let f1 = foodArr[1]
+  // let f2 = foodArr[2]
+  // let f3 = foodArr[3]
+  // let f4 = foodArr[4]
+  let [f1, f2, f3, f4] = foodArr
+  console.log(f1, f2, f3,f4)
+</script>

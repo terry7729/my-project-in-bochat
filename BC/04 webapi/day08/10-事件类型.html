@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="box" style="width: 100px;height: 100px;background-color:red;"></div>
+
+<script>
+
+    /*
+    事件类型 e.type ：在事件处理函数中获取触发当前事件的类型
+        * 获取的不带on的字符串：  click mouseover
+     */
+    var box = document.getElementById('box');
+
+    box.onclick = test;
+
+    box.onmouseover = test;
+
+    function test ( e ) {
+        e = e || window.event;
+        console.log ( e.type );
+        //鼠标移入和单击都会执行这个函数体代码，在函数内部如何得知到底是哪个事件触发的这个函数呢？
+        alert('大吉大利，今晚吃鸡');
+    }
+</script>
+</body>
+</html>

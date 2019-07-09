@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //将0-100的数,存到数组中
+        //var arr = [];
+        ////准备好了一个空数组,来迎接下面数据
+        //for (var i = 0;i < 101;i++) {
+        //    //重复的,将i存放到一个数组中
+        //    //arr[i] = i;
+        //    //数组的长度也是动态变化的
+        //    //0
+        //    //1
+        //    //2
+        //    arr[arr.length] = i;
+        //}
+        //console.log(arr);
+
+        //将1-100的所有数,存到数组中
+        var arr = [];
+        for (var i = 1;i <= 100;i++) {
+            //arr[i] = i;
+            //上面的代码,跳过了下标为0的数据
+            arr[arr.length] = i;
+            //数组的长度是动态变化的,跟i一样在递增
+        }
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

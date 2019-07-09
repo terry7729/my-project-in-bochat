@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .tab-bar {
+      display: flex;
+    }
+
+    .tab-bar .item {
+      width: 100px;
+      height: 50px;
+      background-color: hotpink;
+      color: white;
+      text-align: center;
+      line-height: 50px;
+      margin: 10px;
+      cursor: pointer;
+    }
+
+    .tab-bar .item.active {
+      background-color: red;
+    }
+  </style>
+  <!-- 组件的样式 机器人 -->
+  <link rel="stylesheet" href="./css/robot.css">
+  <!-- 组件的样式 todo -->
+  <link rel="stylesheet" type="text/css" href="./css/result-light.css">
+  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <!-- 组件的样式 播放器 -->
+  <link rel="stylesheet" href="./css/music.css">
+  <style>
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="tab-bar">
+      <div class="item" @click='index=1' :class="{active:index==1}">机器人</div>
+      <div class="item" @click='index=2' :class="{active:index==2}">任务清单</div>
+      <div class="item" @click='index=3' :class="{active:index==3}">播放器</div>
+    </div>
+    <div class="tab-content">
+      <div class="item" v-show="index==1" id="container">
+        <chat-robot></chat-robot>
+      </div>
+      <div class="item" v-show="index==2" id='todoapp'>
+        <todolist></todolist>
+      </div>
+      <div class="item" v-show="index==3" id="blackMusic">
+          <playmusic></playmusic>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 组件的结构 机器人 -->
+<script type="text/html" id="robot">
+  <div>
+    <div class="header">
+      <span style="float: left;">业余草:模拟微信聊天界面</span>
+      <span style="float: right;">14:21</span>
+    </div>
+    <ul class="content" >
+      <!-- 欢迎加入qq群：454796847、135430763 -->
+      <!-- 自己的 右边 -->
+      <!-- <li><img src="./img/boy.png" class="imgright"><span class="spanright">你好吗？</span></li> -->
+      <!-- 机器人的 左边 -->
+      <!-- <li><img src="./img/girl.png" class="imgleft"><span class="spanleft">不好</span></li> -->
+      <!-- 生成列表 -->
+      <li v-for="it in messageList" >
+        <img :src="it.male?'./img/boy.png':'./img/girl.png'" :class="it.male?'imgright':'imgleft'">
+        <span :class="it.male?'spanright':'spanleft'">{{it.msg}}</span>
+      </li>
+
+    </ul>
+    <div class="footer">
+      <div id="user_face_icon">
+        <img src="./img/boy.png" alt="">
+      </div>
+      <input id="text" type="text" v-model.trim="inputValue" @keyup.enter="chat" placeholder="说点什么吧...">
+      <span id="btn">发送</span>
+    </div>
+  </div>
+</script>
+<!-- 组件的结构 todo -->
+<script type="text/html" id="todoTem">
+  <div>
+      <section class="todoapp">
+          <header class="header">
+            <h1>任务清单</h1>
+            <input autofocus="autofocus" v-model.trim="inputValue" @keyup.enter="addTodo" autocomplete="off" placeholder="你要干啥？"
+              class="new-todo">
+          </header>
+          <section class="main">
+            <input type="checkbox" class="toggle-all" v-model="isCheckAll">
+            <ul class="todo-list">
+              <!-- 循环todo -->
+              <!-- v-bind绑定的属性 如果默认存在，会进行合并 -->
+              <li class="todo" :class="{completed:item.completed,editing:item===editItem}" @dblclick="enterEdit(item)" v-for="(item,index) in currentTodoList">
+                <div class="view">
+                  <input type="checkbox" class="toggle" v-model="item.completed">
+                  <label>{{item.msg}}</label>
+                  <button class="destroy" @click="delOne(index)"></button>
+                </div>
+                <input v-focus type="text" class="edit" v-model="item.msg" @keyup.enter="saveEdit" @blur="saveEdit">
+              </li>
+              <!-- <h2>下面是模板</h2>
+              <li class="todo">
+                <div class="view"><input type="checkbox" class="toggle"> <label>吃饭饭1231231231</label> <button class="destroy"></button></div>
+                <input type="text" class="edit">
+              </li>
+              <li class="todo completed">
+                <div class="view"><input type="checkbox" class="toggle"> <label>睡觉觉</label> <button class="destroy"></button></div>
+                <input type="text" class="edit">
+              </li>
+              <li class="todo editing">
+                <div class="view"><input type="checkbox" class="toggle"> <label>睡觉觉</label> <button class="destroy"></button></div>
+                <input type="text" class="edit">
+              </li> -->
+            </ul>
+          </section>
+          <footer class="footer"><span class="todo-count"><strong>{{noCompletedNum}}</strong>
+              item{{noCompletedNum!=1?'s':''}} left
+            </span>
+            <ul class="filters">
+              <li><a href="#/all" @click="currentTodo='All'" :class="{selected:currentTodo=='All'}">All</a></li>
+              <li><a href="#/active" @click="currentTodo='Active'" :class="{selected:currentTodo=='Active'}">Active</a></li>
+              <li><a href="#/completed" @click="currentTodo='Completed'" :class="{selected:currentTodo=='Completed'}">Completed</a></li>
+            </ul> <button class="clear-completed" style="display: none;">
+              Clear completed
+            </button>
+          </footer>
+        </section>
+        <footer class="info">
+          <p>双击进入编辑</p>
+          <p>感谢 <a href="http://evanyou.me">Evan You</a></p>
+          <p><a href="http://todomvc.com">TodoMVC的一部分</a></p>
+        </footer>
+  </div>
+</script>
+
+<!-- 组件的结构 播放器 -->
+<script id='music' type="text/html">
+  <div>
+  <div class="left">
+      <input type="text" v-model.trim="inputValue" @keyup.enter="searchMusic" placeholder="请输入要查询的音乐">
+      <!-- <ul> -->
+      <transition-group name="list" tag="ul" @after-enter="afterEnter">
+        <li v-for="(it,index) in musicList" :key="it.id" @dblclick="playMusic(it)" :style="{'transition-delay':index*100+'ms'}">
+          {{it.name}}---{{it.artists[0].name}}
+        </li>
+      </transition-group>
+      <!-- </ul> -->
+    </div>
+    <div class="right">
+      <!-- <img :src="picUrl" alt="" :class="{autoRotate:isPause}"> -->
+      <img :src="picUrl" alt="" class="autoRotate" :class="{pause:isPause}">
+      <!-- 播放器 -->
+      <audio :src="musicUrl" autoplay controls @play="play" @pause="pause"></audio>
+      <!-- 热门评论 -->
+      <ul>
+        <li v-for="it in commentList">
+          <div class="icon">
+            <img :src="it.user.avatarUrl" alt="">
+            <p>{{it.user.nickname}}</p>
+          </div>
+          <div class="content">{{it.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script>
+  // 写3个组件 机器人
+  Vue.component('chat-robot', {
+    template: "#robot",
+    data() {
+      return {
+        // 输入的内容
+        inputValue: '',
+        // 聊天的内容列表
+        messageList: []
+      }
+    },
+    // 方法
+    methods: {
+      chat() {
+        // 非空判断
+        if (this.inputValue === '') {
+          alert('写点啥')
+          return;
+        }
+        // 自己的内容
+        this.messageList.push({
+          male: true,
+          msg: this.inputValue
+        })
+        // 机器人的内容
+        $.ajax({
+          url: 'http://www.tuling123.com/openapi/api',
+          type: 'post',
+          data: {
+            key: 'd7c82ebd8b304abeacc73b366e42b9ed',
+            info: this.inputValue
+          },
+          success: (backData) => {
+            // console.log(backData);
+            // 添加到data中 Vue同步到页面上的
+            this.messageList.push({
+              male: false,
+              msg: backData.text
+            })
+          }
+        })
+        // 清空内容
+        this.inputValue = '';
+      }
+    },
+
+  })
+
+  // 写3个组件 todo
+  Vue.component('todolist', {
+    data() {
+      return {
+        // 输入的内容
+        inputValue: "",
+        // todo数组 尝试读取缓存数据 有直接使用 没有使用 []
+        todoList: JSON.parse(window.localStorage.getItem('todo28')) || [],
+        // 当前编辑的item
+        editItem: undefined,
+        // 当前显示的todo数组
+        currentTodo: 'Active'
+      }
+    },
+    template: "#todoTem",
+    methods: {
+      // 添加todo
+      addTodo() {
+        if (this.inputValue === '') {
+          alert('哥们，写点啥呗？')
+          return;
+        }
+        // 添加到数组中
+        this.todoList.push({
+          msg: this.inputValue,
+          completed: false
+        })
+        // 清空
+        this.inputValue = '';
+      },
+      // 删除某一条
+      delOne(index) {
+        // 提示
+        if (window.confirm('你确定要删除（O(∩_∩)O哈哈~）？')) {
+          this.todoList.splice(index, 1);
+        }
+      },
+      // 选中某一个
+      checkOne(item) {
+        // console.log(item);
+        // 直接取反
+        item.completed = !item.completed
+      },
+      // 进入编辑状态
+      enterEdit(item) {
+        console.log(item);
+        // 保存起来item(引用赋值)
+        this.editItem = item;
+      },
+      // 保存编辑
+      saveEdit() {
+        this.editItem = null;
+      }
+    },
+    // 计算属性
+    computed: {
+      // 循环的todo数组 需要结合筛选
+      currentTodoList() {
+        // 把临时数组的声明提前
+        let temArr = [];
+        // 根据选中的状态返回不一样的值
+        switch (this.currentTodo) {
+          case 'All':
+            // 直接返回所有的数组
+            return this.todoList;
+            break;
+          case 'Active':
+            // 直接返回completed=false的数组
+            temArr = [];
+            this.todoList.forEach(v => {
+              if (v.completed == false) {
+                temArr.push(v);
+              }
+            })
+            return temArr;
+            break;
+          case 'Completed':
+            // 直接返回completed=true的数组
+            // temArr = [];
+            // this.todoList.forEach(v => {
+            //   if (v.completed == true) {
+            //     temArr.push(v);
+            //   }
+            // })
+            // return temArr;
+            // return this.todoList.filter(v=>v.completed)
+            return this.todoList.filter(v => {
+              // if(v.completed==true){
+              // return true;
+              return v.completed;
+              // }
+            })
+            break;
+
+        }
+        // 所有
+        // 未选中（未完成）
+        // 已完成
+      },
+      // 未完成的个数
+      noCompletedNum() {
+        // 定义个数
+        let num = 0;
+        // 循环 如果被选中 累加
+        // this.todoList.forEach((v) => {
+        //   if (v.completed == false) {
+        //     num++;
+        //   }
+        // })
+        for (let i = 0; i < this.todoList.length; i++) {
+          if (this.todoList[i].completed == false) {
+            num++;
+          }
+        }
+        // 返回个数
+        return num;
+      }
+      // 全选
+      ,
+      isCheckAll: {
+        // 取值时触发
+        get() {
+          // 取决于 是不是每一个都被选中
+          let totalNum = this.todoList.length;
+          let checkedNum = 0;
+          this.todoList.forEach(v => {
+            if (v.completed == true) {
+              checkedNum++;
+            }
+          })
+          // 比较是否相等
+          return totalNum == checkedNum;
+        },
+        set(value) {
+          // console.log(value);
+          // 把每一项的选中状态变得跟他一样即可
+          this.todoList.forEach(v => {
+            v.completed = value;
+          })
+        }
+      }
+
+    },
+  })
+
+  // 写3个组件 播放器
+  Vue.component('playmusic', {
+    template: "#music",
+    data() {
+      return {
+        // 输入的内容
+        inputValue: '',
+        // 歌曲
+        musicList: [],
+        // 歌曲url
+        musicUrl: '',
+        // 歌曲封面
+        picUrl: '',
+        // 歌曲是否暂停
+        isPause: false,
+        // 评论数组
+        commentList: []
+      }
+    },
+    methods: {
+      searchMusic() {
+        // 清空数组
+        this.musicList = [];
+        // 调用接口
+        this.$http.get(`https://autumnfish.cn/search?keywords=${this.inputValue}`)
+          .then(response => {
+            console.log(response);
+            this.musicList = response.body.result.songs;
+          })
+      },
+      // 动画钩子
+      afterEnter(el) {
+        // console.log(el);
+        // 清除行内式
+        el.style = '';
+      },
+      // 播放歌曲
+      playMusic(it) {
+        this.$http.get(`https://autumnfish.cn/song/url?id=${it.id}`).then(response => {
+          console.log(response);
+          this.musicUrl = response.body.data[0].url;
+        })
+        // 专辑id
+        let albumId = it.album.id;
+        this.$http.get(`https://autumnfish.cn/album?id=${albumId}`).then(response => {
+          // console.log(response);
+          // 获取封面
+          this.picUrl = response.body.album.picUrl;
+        })
+
+        // 获取 歌曲的热门评论
+        this.$http.get(`https://autumnfish.cn/comment/hot?id=${it.id}&type=0`).then(response => {
+          // console.log(response);
+          this.commentList = response.body.hotComments
+        })
+      },
+      // 播放
+      play() {
+        console.log('play');
+        this.isPause = false;
+      },
+      // 暂停
+      pause() {
+        console.log('pause');
+        this.isPause = true;
+      }
+    },
+  })
+
+
+  // 根实例（最顶级的Vue实例，需要设置el）
+  let app = new Vue({
+    el: "#app",
+    data: {
+      index: 1
+    }
+  })
+</script>

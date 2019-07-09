@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">我是班长
+<p>我是班长的私生子</p>
+</div>
+
+<script>
+    /*克隆节点：复制页面元素
+
+     */
+
+    var box = document.getElementById('box');
+    /**
+     * 克隆节点
+     * @param 布尔类型
+     *      false: 默认  浅克隆：只克隆元素自身，不克隆子元素
+     *      true:   深克隆： 克隆元素自身和所有的子元素
+     */
+    var box1 =  box.cloneNode(true);
+    console.log ( box1 );
+
+    /*克隆节点注意点
+    1.克隆之后只是在内存中克隆，不会添加到页面，只能手动添加   父元素.appendChild(子元素)
+    2.id也会克隆，为了保持id的唯一性，需要修改克隆体的id
+     */
+    box1.id = 'box1';
+    document.body.appendChild(box1);
+</script>
+</body>
+</html>

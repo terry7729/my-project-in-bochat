@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    .one {
+      width: 200px;
+      border: 10px solid red;
+      padding: 20px;
+      margin: 30px;
+    }
+  </style>
+
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<div id="one" class="one" style="height: 200px;"></div>
+</body>
+</html>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    $('#btn').on('click', function () {
+      //1.css();
+      // console.log($('#one').css('width'));//'200px'
+      // console.log($('#one').css('height'));//'200px'
+
+      //2.jQuery中有一个width(); height();
+      // 获取内容宽高.
+      // console.log($('#one').width()); //200
+      // console.log($('#one').height()); //200
+      //设置内容宽高.
+      // $('#one').width(300);
+      // $('#one').height(300);
+
+
+      //3.innerWidth(); innerHeight();    内容宽高+padding
+      // console.log($('#one').innerWidth());
+      // console.log($('#one').innerHeight());
+      //设置还是会把padding计算进来,修改内容的宽高.
+      // $('#one').innerWidth(300);
+      // $('#one').innerHeight(300);
+
+
+      //4.outerWidth(); outerHeight();    内容宽高+padding+border;
+      // console.log($('#one').outerWidth());
+      // console.log($('#one').outerHeight());
+      //设置还是会把padding和border计算进来,修改内容的宽高.
+      // $('#one').outerWidth(300);
+      // $('#one').outerHeight(300);
+
+      //5.outerWidth(true); outerHeight(true);      内容宽高+padding+border+margin;
+      // console.log($('#one').outerWidth(true));
+      // console.log($('#one').outerHeight(true));
+
+
+
+      //6.如何获取页面可视区的宽高?
+      // 获取可视区宽度 $(window).width();
+      // 获取可视区高度 $(window).height();
+      // console.log($(window).width());
+      // console.log($(window).height());
+    });
+
+
+    //学过一个事件.resize.改变大小.
+    //模拟响应式布局.
+    $(window).on('resize', function () {
+      var wValue = $(window).width();
+      if(wValue >= 1200){
+        $('body').css('backgroundColor','red');
+      }else if(wValue >= 1000){
+        $('body').css('backgroundColor','green');
+      }else if(wValue >= 800){
+        $('body').css('backgroundColor','yellow');
+      }else if(wValue >= 600){
+        $('body').css('backgroundColor','blue');
+      }else if(wValue >= 400){
+        $('body').css('backgroundColor','hotpink');
+      }else {
+        $('body').css('backgroundColor','skyblue');
+      }
+    });
+
+
+  });
+</script>

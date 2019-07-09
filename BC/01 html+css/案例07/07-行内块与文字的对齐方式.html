@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+
+        /* 为什么图片底部会有空白间隙 */
+        /* 因为图片与文字默认是基线对齐,所以导致底部有空白间隙 */
+        /* 只要保证图片与文字不是基线对齐即可 */
+
+        img {
+            vertical-align: baseline;
+            /* 默认基线对齐 */
+
+            vertical-align: top;
+            /* 顶线对齐 */
+
+            vertical-align: bottom;
+            /* 底线对齐 */
+
+            vertical-align: middle;
+            /* 中线对齐,最常用的方式 */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="鲁迅.png" alt="">开车才能救中国
+    </div>
+</body>
+</html>

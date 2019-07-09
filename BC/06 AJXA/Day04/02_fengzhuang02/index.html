@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        上一次封装存在的问题：
+            无法给接口发送数据(或者说无法给接口传递参数)
+
+
+        解决了无法给接口发送数据的问题
+            步骤：1.给封装的函数多加一个参数叫data，专门用来接收提交给服务器的数据
+                  2.在设置请求行之前判断请求方式是不是get，如果是就拼接url把提交的数据拼接起来
+                  3.设置完请求行以后，判断是不是post请求，如果是，那么先设置请求头，再发送请求，并且传入请求体（请求体就是传过来的data）
+                  4.如果不是post请求，就直接发送请求
+                  5.因为要让函数更强大，那么就要让调用者既可以传大写请求方式，也可以传小写请求方式，在函数里直接把type转成小写
+        
+        
+     -->
+</head>
+
+<body>
+    <input type="button" value="发请求1" id="btn1">
+    <input type="button" value="发请求2" id="btn2">
+</body>
+
+</html>
+
+<script>
+
+    function ajax(type, url, data) {
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //不管你请求方式传的是大写还是小写，我统一转成小写，那么我判断时只用判断小写的这一个条件就行了
+        type = type.toLowerCase();
+
+        //拼接url
+        if (type == "get") {
+
+            url += "?" + data;
+        }
+
+        //2. 设置请求行
+        xhr.open(type, url);
+        
+        //3. 设置请求头（get不用设置，post要设置）
+        if (type == "post") {
+
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            //4. 发送请求&设置请求体（post要设置请求体
+            xhr.send(data);
+
+        } else {
+            //4. 发送请求&设置请求体（post要设置请求体）
+            xhr.send();
+        }
+        //5. 监听响应完成
+        xhr.onload = function () {
+
+            console.log(xhr.responseText);
+
+        }
+    }
+
+
+    //发请求1
+    document.getElementById('btn1').onclick = function () {
+
+        ajax('GET', 'checkname.php', "name=rose");
+    }
+
+    //发请求2
+    document.getElementById('btn2').onclick = function () {
+
+        ajax('POST', 'code.php', "phone=13800138000");
+    }
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        以后视距为了更有3D效果都是加在父元素身上，而且加在父元素身上要用 perspective:距离 来加
+     -->
+
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 80px auto;
+            border: 1px solid #000;
+            width: 580px;
+            height: 200px;
+        }
+
+        li {
+            width: 180px;
+            height: 180px;
+            background-color: yellowgreen;
+            margin-left: 10px;
+            margin-top: 10px;
+            float: left;
+            transition: all 1s;
+        }
+
+        /* 第一个ul被hover的时候改它下面的li */
+        ul:nth-child(1):hover>li {
+
+            transform: perspective(800px) rotateY(90deg);
+        }
+
+
+        ul:nth-child(2){
+
+            /* 如果你要把视距加在父元素身上，那么不能用transform，而应该直接用perspective */
+            perspective: 800px;
+            
+        }
+
+        ul:nth-child(2):hover>li {
+
+            transform: rotateY(90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

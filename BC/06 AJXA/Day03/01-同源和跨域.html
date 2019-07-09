@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        同源：
+            当协议头、域名、端口三个都一样的时候就叫同源
+
+            比如说一个网站： http://www.zll.com/index1.html  和 http://www.zll.com/index2.html
+
+        跨域：
+            当协议头、域名、端口有一个不一样的时候就叫跨域
+
+            比如说一个网站： http://www.zll.com:8080/index1.html  和 http://www.zll.com/index2.html
+            这两个网站是跨域，因为端口不一样
+
+
+        浏览器默认有一个策略叫同源策源：
+                    就是说用ajax发请求的时候，只能访问到同源的资源，不能访问跨域资源
+
+                换句话说：浏览器不允许用ajax访问跨域资源
+
+            用script标签可以解决跨域问题并拿到响应体
+
+        如果以后想访问一个跨域的接口，那么可以尝试用script标签来访问
+        具体访问方法：
+                1.写一个script标签，src里写这个接口的地址
+                2.在地址后面加一个参数，参数名叫callback,参数值传一个你声明的函数的函数名
+                3.那么当响应完成，会自动调用你这个函数，并把响应体当形参传递过来
+
+        这套解决跨域的技术方案，我们叫JSONP
+
+        注意：JSONP和JSON不是同一个东西
+
+            JSON：一套按规则写的字符串
+            JSONP：它什么都不是，只是一套技术方案，这套方案是用来解决跨域问题的，因为这套方案最终是为了获得JSON数据
+
+
+        JSONP原理：
+                其实是访问的接口一个参数，这个参数拿到的是函数名。然后接口里返回了一个调用这个函数的语法，并且传入JSON对象作为实参
+
+                然后再因为你是通过script标签请求的这个接口，那么会把这个返回的代码，当JS执行，所以就会调用我们自己声明的那个函数了，并且形参是JSON对象
+
+        JSONP需要你访问的接口支持才能用，不支持是不能用的！
+        我怎么知道接口支不支持JSONP?只要这个接口不是你偷来的，都会有一个接口文档，接口文档里会说明是否支持JSONP
+
+        只要是支持JSONP的接口，它要传函数名，传递过去的参数名叫callback
+    -->
+
+
+    <!-- <link rel="stylesheet" href="http://api.douban.com/v2/movie/top250"> -->
+
+
+    <script>
+        //响应体当形参传递过来了
+        function f1(obj) {
+
+            console.log('f1被调用了');
+
+            console.log(obj);
+        }
+    </script>
+
+    <!-- 用script标签就是可以解决跨域访问接口拿到响应体！ -->
+    <script src="http://api.douban.com/v2/movie/top250?callback=f1"></script>
+
+</head>
+
+<body>
+
+    <!-- <a href="http://api.douban.com/v2/movie/top250" target="_blank">点我</a> -->
+    <!-- <img src="https://www.baidu.com/img/bd_logo1.png" alt=""> -->
+    <!-- <img src="http://api.douban.com/v2/movie/top250" alt=""> -->
+
+</body>
+
+</html>
+
+<script>
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('get','http://api.douban.com/v2/movie/top250');
+    // xhr.send();
+</script>

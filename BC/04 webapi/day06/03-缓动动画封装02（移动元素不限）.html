@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            position: absolute;
+            left: 50px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="缓动移到400" id="move400"/>
+<input type="button" value="缓动移到800" id="move800"/>
+
+<div id="box"></div>
+<div id="box1"></div>
+
+
+<script>
+    /*本小节目标
+    移动元素不限   --函数参数
+
+     */
+    var box = document.getElementById('box');
+    var box1 = document.getElementById('box1');
+
+    document.getElementById('move400').onclick = function (  ) {
+        animationSlow(box, 400);
+    }
+
+    document.getElementById('move800').onclick = function (  ) {
+        animationSlow(box1, 800);
+    }
+
+
+
+    /** 缓动动画封装
+     @param ele:要移动的元素
+     @param target 移动目标距离
+     */
+    function animationSlow (ele, target ) {
+        //1.清除之前的定时器以本次为准
+        clearInterval(ele.timeID);
+        //2.开始本次移动
+        ele.timeID = setInterval(function (  ) {
+            //2.1 获取元素当前位置
+           var currentLeft =  ele.offsetLeft
+            //2.2 计算本次移动距离 = （目标位置 - 当前位置）/10
+            var step = (target - currentLeft)/10;
+           //取整
+            step = Math.ceil(step);
+            //2.3 开始移动
+            currentLeft += step;
+            ele.style.left = currentLeft + 'px';
+            //2.4 终点检测
+            if (currentLeft == target){
+                clearInterval(ele.timeID);
+            }
+        },50);
+    }
+</script>
+</body>
+</html>

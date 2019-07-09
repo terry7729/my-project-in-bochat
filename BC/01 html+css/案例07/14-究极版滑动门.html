@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            float: left;
+        }
+        .left {
+            /* width: 15px; */
+            height: 33px;
+            background: url("./images/weixin.png");
+            padding-left: 15px;
+        }
+
+        .right {
+            /* width: 15px; */
+            /* 有内容的盒子,宽度不能写死 */
+            padding-right: 15px;
+            height: 33px;
+            line-height: 33px;
+            color: red;
+            background: url("./images/weixin.png") right 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <div class="right">宋明来了</div>
+    </div>
+    
+</body>
+</html>

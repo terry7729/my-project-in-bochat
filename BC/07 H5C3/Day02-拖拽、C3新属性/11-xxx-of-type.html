@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        first-of-type:就是找到第一个，不一定在父元素中需要是第几个子元素
+
+                    它不用管在父元素中是第几个子元素，它只是找到这种类型的第几个
+
+        其他用法跟xxx-child都是一样的
+     -->
+
+    <style>
+
+        /* li:first-child{
+
+            color:red;
+        } */
+        
+        /* 找到自己那个区域里的第一个li */
+        li:first-of-type{
+
+            color:red;
+        }
+
+        /* 找最后一个li */
+        li:last-of-type{
+
+            color:blue;
+        }
+
+        /* 找第三个li */
+        li:nth-of-type(3){
+
+            color:yellowgreen;
+        }
+        
+        li:nth-of-type(n){
+
+            font-size: 18px;
+        }
+
+        /* 找奇数的子元素 */
+        li:nth-of-type(odd){
+            background-color: hotpink;
+        }
+
+        li:nth-of-type(even){
+
+            background-color: purple;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <span>我是span</span>
+        <li>隔壁老王1</li>
+        <li>隔壁老王2</li>
+        <li>隔壁老王3</li>
+        <li>隔壁老王4</li>
+        <li>隔壁老王5</li>
+        <li>隔壁老王6</li>
+        <li>隔壁老王7</li>
+        <li>隔壁老王8</li>
+        <li>隔壁老王9</li>
+        <li>隔壁老王10</li>
+        <span>最后一个span</span>
+    </ul>
+
+
+    <ul>
+        <li>隔壁老周1</li>
+        <li>隔壁老周2</li>
+        <li>隔壁老周3</li>
+        <li>隔壁老周4</li>
+        <li>隔壁老周5</li>
+        <li>隔壁老周6</li>
+        <li>隔壁老周7</li>
+        <li>隔壁老周8</li>
+        <li>隔壁老周9</li>
+        <li>隔壁老周10</li>
+    </ul>
+</body>
+</html>

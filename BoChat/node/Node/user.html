@@ -1,0 +1,248 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>BXChain节点认购</title>
+		<link rel="stylesheet" href="css/style.css">
+
+	</head>
+
+	<body>
+		<div id="app" class="user">
+			<div class="main">
+				<div class="header">
+					<a href="index1.html" class="back"></a>
+					<span>个人中心</span>
+				</div>
+				<div class="info">
+					<table>
+						<tr>
+							<th>我的奖励</th>
+							<th>可用</th>
+							<th>冻结</th>
+						</tr>
+						<tr>
+							<td class="totalBalance"></td>
+							<td class="kyBalance">
+								<a class="btn" data-act="withdrawal">提现</a>
+							</td>
+							<td class="djBalance"></td>
+						</tr>
+					</table>
+				</div>
+				<div class="item">
+					<div class="tit">我的推荐二维码</div>
+					<div class="text">
+						<p class="code"></p>
+					</div>
+				</div>
+				<div class="item">
+					<div class="tit">我的推荐链接</div>
+					<div class="text links">
+						<p class="link"><span id="copyText"></span><input type="hidden" id="copyInput"><button data-clipboard-action="copy" data-clipboard-target="#copyText" id="copy_btn" readonly="readonly" class="copy-btn" data-act="copy_text">复制</button></p>
+					</div>
+				</div>
+				<div class="item">
+					<div class="tit">我的节点</div>
+					<div class="text pros"></div>
+				</div>
+
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="js/layer/layer.js"></script>
+		<script src="js/clipboard.min.js"></script>
+		<script type="text/javascript" src="js/jquery.qrcode.min.js"></script>
+		<script type="text/javascript">
+			var Url = 'http://api.bochat.net';
+			$(document).ready(function() {
+				if(localStorage.token == undefined) {
+					window.location = "index.html";
+				} else {
+					$.ajax({
+						type: "post",
+						url: Url + '/app/user/listPersonal',
+						async: true,
+						headers: {
+							'Authorization': localStorage.token
+						},
+						success(data) {
+							$(".code").qrcode({
+								render: "table",
+								width: 120,
+								height: 120,
+								text: data.data.shareUrl
+							});
+							$('#copyText').text(data.data.shareUrl);
+							var str = '';
+							console.log(data.data.item)
+							var item_data = data.data.item;
+							var status_title = '';
+							var type = '';
+							for(let i = 0; i < item_data.length; i++) {
+								if(item_data[i].status == 1) {
+									status_title = '未支付'
+								} else if(item_data[i].status == 2) {
+									status_title = '已到账'
+								} else if(item_data[i].status == 3) {
+									status_title = '审核中'
+								}
+								if(item_data[i].type == 1) {
+									type = '0.01%股权，获赠1000BX，认购金额1万元'
+								} else if(item_data[i].type == 2) {
+									type = '0.02%股权，获赠2000BX，认购金额2万元'
+								} else if(item_data[i].type == 3) {
+									type = '0.03%股权，获赠3000BX，认购金额3万元'
+								}
+								str += '<p style="margin-bottom: 0.1rem;"><span class="pro">' + type + '</span><span class="status" >' + status_title + '</span></p>'
+							}
+							$('.pros').html(str);
+						}
+					});
+					$.ajax({
+						type: "post",
+						url: Url + '/app/user/getCNYBalance',
+						async: true,
+						headers: {
+							'Authorization': localStorage.token
+						},
+						success(data) {
+							$('.totalBalance').text(data.data.totalBalance);
+							$('.kyBalance').text(data.data.kyBalance);
+							$('.djBalance').text(data.data.djBalance);
+						}
+					});
+				}
+			}).on('click', '[data-act]', page_call_act);
+		</script>
+
+		<script>
+			var paytype = 1;
+
+			function withdrawal(o) {
+				layer.msg('暂未开放');
+				var html = '<div class="tit">提现金额</div>';
+				html += '<div class="input-money"><span>￥</span><input type="text"></div>';
+				html += '<div class="main"><p>提现到</p><p class="p-type"><a class="ali on"><span >支付宝</span></a><a class="wx"><span>微信</span></a></p><p class="img"></p></div>';
+				html += '<div class="tip"><span class="lf">尚未设置支付账户</span><span class="rg" data-act="bind">立即绑定</span></div>';
+				html += '<div class="input-code"><input type="text" placeholder="验证码"><button>发送验证码</button></div>';
+				html += '<div class="post_btn"><button>确定提现</button></div>';
+
+				//				layer.open({
+				//					type: 1,
+				//					title: false,
+				//					skin: 'layer-withdrawal',
+				//					area: ['5.68rem', '10.56rem'],
+				//					content: html
+				//				});
+				//				$('.p-type a').click(function() {
+				//					$(this).addClass('on').siblings().removeClass('on');
+				//					paytype = $(this).index() + 1;
+				//				})
+			}
+
+			function bind(o) {
+				var html = '<div class="tit">绑定支付方式</div>';
+				html += '<div class="pay-type"><span class="ali change_ali">支付宝</span><span class="wx change_wx">微信</span></div>';
+				html += '<div class="input"><input type="number" class="phone" placeholder="手机号"></div>';
+				html += '<div class="code"><div><span class="hid">上传支付二维码</span><input type="file" accept="image/*" id="upload"><img src="" width="100%" height="100%" class="pho" style="display:none"/></div></div>';
+				html += '<div class="post_btn"><button class="sure" data-act="alert_success">确定</button></div>';
+
+				layer.open({
+					type: 1,
+					title: false,
+					skin: 'layer-bind',
+					area: ['5.68rem', '8.4rem'],
+					content: html
+				});
+
+				if(paytype == 1) {
+					$('.change_wx').css("display", "none");
+				} else {
+					$('.change_ali').css("display", "none");
+				}
+				//上传图片
+				$("#upload").change(function() {
+					var reads = new FileReader();
+					var objUrl = this.files[0];
+					reads.readAsDataURL(objUrl);
+					reads.onload = function() {
+						$('.pho').attr('src', this.result)
+						$('.pho').css('display', 'block')
+						$('.hid').css('display', 'none')
+					}
+
+				});
+				//确认
+				$('.sure').click(function() {
+					var phone = $('.phone').val();
+					if($('.pho').attr('src') == '') {
+						layer.msg('请选择图片');
+					} else if(phone == '') {
+						layer.msg('请输入手机号');
+					} else {
+						var files = $('#upload')[0].files[0];
+						var myForm = new FormData();
+						myForm.append('payCode', files);
+						myForm.append('payType', paytype);
+						myForm.append('payAccount', phone);
+						console.log(myForm);
+						$.ajax({
+							type: "post",
+							url: Url + '/app/user/addPay',
+							async: true,
+							cache: false,
+							data: myForm,
+							processData: false,
+							contentType: false,
+							headers: {
+								'Authorization': localStorage.token
+							},
+							dataType: 'json',
+							success(data) {
+								if(data.retcode == 0) {
+
+								}
+								console.log(data);
+							}
+						});
+					}
+				})
+			}
+
+			function alert_success() {
+				//				console.log($('.pho').attr('src'))
+
+				//				layer.open({
+				//					type: 1,
+				//					title: false,
+				//					time: 1000,
+				//					closeBtn: false,
+				//					skin: 'layer-success',
+				//					area: ['2.4rem', '2.4rem'],
+				//					content: '<p>绑定成功</p>'
+				//				});
+			}
+
+			var copyurl = document.getElementById('copy_btn');
+			var clipboard = new Clipboard(copyurl);
+			var copynum = 0;
+			function copy_text() {
+				layer.msg('复制成功');
+				clipboard.on('success', function(e) {
+					copynum++;
+					if(copynum >= 1) {
+						clipboard.destroy();
+						clipboard = new Clipboard(copyurl);
+					};
+				})
+			}
+		</script>
+
+	</body>
+
+</html>

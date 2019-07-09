@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 课堂练习:
+        // a.  将1-100之间能够被7整除的数打印出来.
+        //最后打印总共有几个符合条件的数值
+        //var j = 0;
+        ////准备一个筐,来存放符合条件的数字,每次找到一个就加1
+        //for(var i = 1;i <= 100;i++){
+        //       if(i % 7 == 0){
+        //           console.log(i);
+        //           j++;
+        //       }
+        //}
+        //alert("总共有"+j+"个数字符合条件");
+
+        // b.  将1000 - 5000 之间  各位数之和为5的数打印出来 1121
+        var ge,shi,bai,qian;
+        var sum = 0;
+        var j = 0;
+        for(var i = 1000;i <= 5000;i++){
+               qian = parseInt(i / 1000);
+               bai = parseInt(i / 100) % 10;
+               shi = parseInt(i / 10) % 10;
+               ge = i % 10;
+               sum = qian+bai+shi+ge;
+               if( sum == 5){
+                   console.log(i);
+                   j++;
+               }
+        }
+        alert("总共有"+j+"个数符合条件");
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

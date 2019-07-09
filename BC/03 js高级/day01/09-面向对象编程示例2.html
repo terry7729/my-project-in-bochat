@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div,p{
+            height: 20px;
+            margin-top: 20px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+
+
+<div></div>
+<div></div>
+<div></div>
+
+<p></p>
+<p></p>
+<p></p>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+    //需求：给页面所有的div与p设置边框
+
+    //面向对象：注重的是结果，不关心你内部是怎么实现
+    $('div,p').css('border','10px solid green');
+
+    /*以后实际开发中，解决需求的时候，一般首先会先看有没有别人造好的对象，如果有直接拿来用即可
+    如果没有，自己造一个对象
+
+    别人造好的对象：  开发效率高，节省时间，但是不便于维护
+    自己造的对象： 浪费时间，但是便于维护
+
+     */
+</script>
+</body>
+</html>

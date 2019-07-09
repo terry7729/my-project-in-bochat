@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    html,body{
+      height: 100%;
+      margin: 0px
+      ;
+      padding: 0;
+    }
+    #blackMusic{
+      height: 100%;
+      display: flex;
+    }
+    #blackMusic>div{
+      flex:1;
+      height: 100%;
+    }
+    .left{
+      background-color: #c20c0c;
+      overflow: scroll;
+    }
+    .right{
+      background-color: #f5f5f5;
+    }
+    .left input{
+      width: 80%;
+      display: block;
+      border-radius: 20px;
+      border:none;
+      height: 50px;
+      margin: 10px auto;
+      outline: none;
+      padding-left: 10px;
+      font-size:30px;
+    }
+    .left ul{
+      list-style: none;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    .left ul li{
+      width: 80%;
+      height: 60px;
+      border:1px solid hotpink;
+      background-color: yellowgreen;
+      color:white;
+      font-size:20px;
+      line-height: 60px;
+      font-weight: 700;
+      margin: 0 auto ;
+      cursor: pointer;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .left ul li:hover{
+      background-color: #0094ff;
+    }
+    .list-item {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    .list-enter-active, .list-leave-active {
+    /* .list-enter-active { */
+      transition: all 1s;
+    }
+    .list-enter, .list-leave-to
+    /* .list-enter */
+    /* .list-leave-active for below version 2.1.8 */ {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    .right img{
+      display: block;
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      margin: 0px auto;
+    }
+    .autoRotate{
+      /* 动画名 */
+      animation-name: autoRotate;
+      /* 次数 */
+      animation-iteration-count: infinite;
+      /* 持续时间 */
+      animation-duration: 10s;
+      /* 动画的速度 */
+      animation-timing-function: linear;
+    }
+    .autoRotate.pause{
+      /* 暂停动画 */
+      animation-play-state: paused;
+    }
+
+    @keyframes autoRotate{
+      from{
+        /* 从默认状态开始 */
+      }
+      to{
+        /* 结束状态 */
+        transform: rotateZ(360deg);
+      }
+    }
+
+    /* 评论样式 */
+    .right ul li{
+      display: flex;
+      height: 60px;
+      border: 1px solid gray;
+      margin: 5px;
+       border-radius: 5px;
+       text-overflow: -o-ellipsis-lastline;
+       overflow: hidden;
+       text-overflow: ellipsis;
+       display: -webkit-box;
+       -webkit-line-clamp: 2;
+       line-clamp: 2;
+       -webkit-box-orient: vertical;
+    }
+    .right ul li .icon{
+      width: 100px;
+    }
+    .right ul li .icon img{
+      display: block;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+    }
+    .right ul li .icon p{
+      padding: 0;
+      margin: 0;
+      font-size:14px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .right ul li .content{
+      flex:1;
+      background: linear-gradient(to right,black,hotpink,red,yellow,skyblue,orange,gray);
+      /* background-color: yellowgreen; */
+      color:white;
+    }
+    
+
+  </style>
+</head>
+
+<body>
+  <div id="blackMusic">
+    <div class="left">
+      <input type="text" v-model.trim="inputValue" @keyup.enter="searchMusic" placeholder="请输入要查询的音乐">
+      <!-- <ul> -->
+      <transition-group name="list" tag="ul" @after-enter="afterEnter">
+        <li v-for="(it,index) in musicList" :key="it.id" @dblclick="playMusic(it)" :style="{'transition-delay':index*100+'ms'}">
+          {{it.name}}---{{it.artists[0].name}}
+        </li>
+      </transition-group>
+      <!-- </ul> -->
+    </div>
+    <div class="right">
+      <!-- <img :src="picUrl" alt="" :class="{autoRotate:isPause}"> -->
+      <img :src="picUrl" alt="" class="autoRotate" :class="{pause:isPause}">
+      <!-- 播放器 -->
+      <audio :src="musicUrl" autoplay controls @play="play" @pause="pause"></audio>
+      <!-- 热门评论 -->
+      <ul>
+        <li v-for="it in commentList">
+          <div class="icon">
+            <img :src="it.user.avatarUrl" alt="">
+            <p>{{it.user.nickname}}</p>
+          </div>
+          <div class="content">{{it.content}}</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.5.1"></script>
+<script>
+  let app = new Vue({
+    el: "#blackMusic",
+    data: {
+      // 输入的内容
+      inputValue: '',
+      // 歌曲
+      musicList: [],
+      // 歌曲url
+      musicUrl: '',
+      // 歌曲封面
+      picUrl: '',
+      // 歌曲是否暂停
+      isPause: false,
+      // 评论数组
+      commentList: []
+    },
+    methods: {
+      searchMusic() {
+        // 清空数组
+        this.musicList = [];
+        // 调用接口
+        this.$http.get(`https://autumnfish.cn/search?keywords=${this.inputValue}`)
+          .then(response => {
+            console.log(response);
+            this.musicList = response.body.result.songs;
+          })
+      },
+      // 动画钩子
+      afterEnter(el) {
+        // console.log(el);
+        // 清除行内式
+        el.style = '';
+      },
+      // 播放歌曲
+      playMusic(it) {
+        this.$http.get(`https://autumnfish.cn/song/url?id=${it.id}`).then(response => {
+          console.log(response);
+          this.musicUrl = response.body.data[0].url;
+        })
+        // 专辑id
+        let albumId = it.album.id;
+        this.$http.get(`https://autumnfish.cn/album?id=${albumId}`).then(response => {
+          // console.log(response);
+          // 获取封面
+          this.picUrl = response.body.album.picUrl;
+        })
+
+        // 获取 歌曲的热门评论
+        this.$http.get(`https://autumnfish.cn/comment/hot?id=${it.id}&type=0`).then(response => {
+          // console.log(response);
+          this.commentList = response.body.hotComments
+        })
+      },
+      // 播放
+      play() {
+        console.log('play');
+        this.isPause = false;
+      },
+      // 暂停
+      pause() {
+        console.log('pause');
+        this.isPause = true;
+      }
+    },
+  })
+</script>

@@ -1,0 +1,199 @@
+@a-color: #666;
+
+/* 京东的主题颜色 */
+
+@main-color: #de181b;
+@border-color: #ccc;
+
+/*微金所 bootstrap自带了不需要*/
+
+
+/*原生jd需要自己写样式初始化*/
+
+
+/*1. 重置一些默认的样式 2. 一些公共类名样式*/
+
+* {
+    /*去掉所有元素的间距*/
+    margin: 0rem;
+    padding: 0rem;
+    /*保证元素的边框和padding不会撑大盒子出现横向滚动条*/
+    box-sizing: border-box;
+    /* 设置点击高亮的颜色 变成透明 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+img {
+    /*为了让图片的对齐方式居中 不用沿着基线对齐 解决图片距离块级元素底部0.03rem间距问题*/
+    vertical-align: bottom;
+}
+
+
+/*去掉移动端输入框的边框 和内边框*/
+
+input {
+    border: 0;
+    outline: none;    
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: @a-color;
+}
+
+
+/*浮动和清除浮动公共样式*/
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+
+/*公共头部 底部之类的公共样式*/
+
+
+/* 提取精灵图的公共样式 */
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* 注意如果需要连写背景属性 需要使用background属性 / 转义 使用~"/" */
+    /* background: url(../images/sprites.png) 0rem -1.1rem ~"/" 2rem 2rem;
+     */
+    background-image: url(../images/sprites.png);
+    /* 因为整个精灵图是2倍图 原图是400 * 4rem 缩小一半就是200*2rem */
+    background-size: 2rem 2rem;
+    /* 改变背景图裁切在内容区域才有背景图 */
+    background-clip: content-box;
+    /* 背景图的定位参照点 参照内容区域左上角 */
+    /* 这2个背景结合在一起使用就可以让背景跟着padding来走 */
+    background-origin: content-box;
+}
+
+
+/* 封装一些边框类名 */
+
+.bt {
+    border-top: 0.01rem solid @border-color;
+}
+
+.bb {
+    border-bottom: 0.01rem solid @border-color;
+}
+
+.bl {
+    border-left: 0.01rem solid @border-color;
+}
+
+.br {
+    border-right: 0.01rem solid @border-color;
+}
+
+body {
+    /* 使用给body加padding让内容往上挤 border的padding区域和底部的固定的定位重叠在一起 内容在padding上面显得是在底部的上面 */
+    padding-bottom: 0.5rem;
+    //把body的字体大小设置为16px 使用0.16rem 让页面中没有设置字体大小使用默认
+    font-size: 0.16rem;
+}
+
+
+/* 头部区域的样式 */
+
+#header {
+    position: fixed;
+    display: flex;
+    width: 100%;
+    z-index: 999;
+    top: 0rem;
+    /* logo图标 */
+    .icon-logo {
+        width: 0.8rem;
+        height: 0.45rem;
+        padding: 0.1rem 0.1rem;
+        /* 图片缩小了一半背景的定位也要缩小一半 */
+        background-position: 0rem -1.1rem;
+    }
+    .icon-back {
+        padding: 0.1rem;
+        width: 0.4rem;
+        height: 0.4rem;
+        background-position: -0.2rem 0;
+    }
+    /* 中间的表单 */
+    form {
+        flex: 1;
+        padding-top: 0.08rem;
+        position: relative;
+        /* 搜索图标 */
+        .icon-search {
+            width: 0.2rem;
+            height: 0.2rem;
+            position: absolute;
+            /* 只需要设置搜索图标的背景图定位 */
+            background-position: -0.6rem -1.1rem;
+            left: 0.1rem;
+            top: 0.15rem;
+        }
+        /* 输入框 */
+        >input {
+            width: 100%;
+            height: 0.3rem;
+            /* 注意写0.15rem只需要高度的一半 */
+            border-radius: 0.15rem;
+            padding-left: 0.3rem;
+        }
+    }
+    /* 登录链接 */
+    .login {
+        width: 0.5rem;
+        height: 0.45rem;
+        text-align: center;
+        line-height: 0.45rem;
+        color: #fff;
+    }
+    .icon-menu {
+        width: 0.4rem;
+        height: 0.4rem;
+        padding: 0.1rem;
+        background-position: -0.6rem 0;
+    }
+}
+
+
+/* 公共的底部样式 */
+
+#footer {
+    position: fixed;
+    bottom: 0rem;
+    left: 0rem;
+    width: 100%;
+    z-index: 999;
+    background-color: #fff;
+    >ul {
+        display: flex;
+        >li {
+            width: 25%;
+            >a {
+                display: block;
+                text-align: center;
+                >img {
+                    width: 0.65rem;
+                    height: 0.5rem;
+                }
+            }
+        }
+    }
+}

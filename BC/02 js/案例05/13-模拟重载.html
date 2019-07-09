@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //在js中是没有重载的
+        //重载是什么
+        //function sayHi() {
+        //    console.log("我是宋明");
+        //}
+//
+        //function sayHi() {
+        //    console.log("我是豆豆");
+        //}
+//
+        //function sayHi() {
+        //    console.log("我是胖虎");
+        //}
+//
+        //sayHi();//我是胖虎
+        //在js中,重名的函数,是会被覆盖的
+
+        //如果在其他有重载机制的语言中
+        //重载机制可以通过调用者传入的参数的个数,数据类型,顺序不同
+        //可是在js中,后面的同名函数会覆盖前面的.
+        //function getSum(a,b) {
+        //    var sum = a + b;
+        //    return sum;
+        //}
+        //
+        //function getSum(a,b,c) {
+        //    var sum = a + b + c;
+        //    return sum;
+        //}
+
+        //在js中利用arguments实现重载
+        //编写一个函数,不管用户传入的是几个数据,都能求和,并且返回结果
+
+        //function getSum(a,b,c) {
+        //    var sum = a + b + c;
+        //    return sum;
+        //}
+
+        //var res = getSum(10,20);
+        //console.log(res);//NaN
+
+        function getSum() {
+            //if (arguments.length == 2) {
+            //    //代表用户传了两个值
+            //    var sum = a + b;
+            //    return sum;
+            //} else {
+            //    //代表用户传了三个值
+            //    var sum = a + b + c;
+            //    return sum;
+            //}
+            //上面的方法,很low
+            //思考:传进来的数据,在arguments这个数组中
+            //数组求累加和会不会
+            //遍历数组,直接元素累加
+            var sum = 0;
+            for (var  i = 0;i < arguments.length;i++) {
+                sum += arguments[i];
+            }
+            return sum;
+        }
+
+        var res1 = getSum(10,20);
+        console.log(res1);
+
+        var res2 = getSum(10,20,30,40,50,60,70,80,90,100);
+        console.log(res2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

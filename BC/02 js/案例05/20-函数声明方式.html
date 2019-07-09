@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //内置构造函数的方法
+        //function demo1() {
+        //    console.log("我是由内置构造函数方法声明的函数");
+        //}
+        //demo1();
+//
+        ////使用函数表达式的方式来声明
+        //var demo2 = function () {
+        //    console.log("我是由函数表达式声明函数");
+        //}
+        //demo2();
+
+        //区别
+        demo1();
+        function demo1() {
+            console.log("我是由内置构造函数方法声明的函数");
+        }
+
+        //demo2();
+        //var demo2 = function () {
+        //    console.log("我是由函数表达式声明函数");
+        //}
+        //预解析之后的代码如下:将声明提高到最前面,赋值留在原地
+        //var demo2;//此时只是声明了一个普通的变量,并不是函数
+        //demo2();
+        //demo2 = function () {
+        //   console.log("我是由函数表达式声明函数");
+        //}
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

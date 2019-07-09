@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //总结:转换成number的方法
+        //a.在变量前加一个加号
+        //b.让数据参与算术元素,除了加法
+        //c.Number(转换数据)
+        //d.parseInt()取整数
+        //e.parseFloat()取小数
+
+        //假如弟弟年龄比哥哥小五岁,请输入弟弟的年龄,求哥哥的年龄
+        //var age = prompt("请输入弟弟的年龄:");//在这里接收的用户信息是字符串
+        //console.log(age);
+        //console.log(typeof age);
+        //var res = age + 5;//这个时候的加号是连接加
+        //alert("哥哥今年已经"+res+"岁了!");
+
+        //如果将字符串转换成number?
+        //1.在接收变量的时候,添加一个加号
+        //var age = +prompt("请输入一个年龄:");
+        //console.log(typeof age);//number
+
+        //2.如果不让你用加号来实现,可以利用算术运算(不包括+)
+        //var str = "123";
+        //var res = str * 1;
+        //console.log(res);
+        //console.log(typeof res);//number
+
+        //3.Number(转换的数据);
+        //var str = "234";
+        //var res = Number(str);
+        //console.log(res);
+        //console.log(typeof res);//number
+        //如果字符串本身是数字,那么会直接转换成number类型的数字
+
+        //var str = "梁朝伟";
+        //var res = Number(str);
+        //console.log(typeof res);//number
+        //console.log(res);//NaN
+        //如果字符串本身不是数字,那么会转换成为number类型的NaN
+
+        //var str = "";
+        //var res = Number(str);
+        //console.log(typeof res);//number
+        //console.log(res);//0
+        //如果字符串是空,那么会转换成0
+
+        //4.存在小数情况的字符串怎么转换
+        //var str = "-3.14";
+        //取整数部分,不要小数
+        //var res = parseInt(str);
+        //console.log(res);
+
+        //var str = "123.345abc";
+        //var res = parseInt(str);
+        //console.log(res);
+        //从左边开始,直到非数字的地方结束,取前面的整数
+
+        //取小数
+        //var str = "3.14";
+        //var res = parseFloat(str);
+        //console.log(res);
+
+        //var str = "3.14abc";
+        //var res = parseFloat(str);
+        //console.log(res);
+        //从左到右,知道非数字,包括小数点
+
+        //var str = "123ab123";
+        //var res = parseInt(str);
+        //console.log(res);
+
+        //5.布尔值转number
+        //true:1
+        //false:0
+        var res = Number(true);
+        console.log(res);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

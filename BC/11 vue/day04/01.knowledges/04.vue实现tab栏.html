@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .tab-bar{
+      display: flex;
+    }
+    .tab-bar .item{
+      width: 100px;
+      height: 50px;
+      background-color: hotpink;
+      color:white;
+      text-align: center;
+      line-height: 50px;
+      margin: 10px;
+      cursor: pointer;
+    }
+    .tab-bar .item.active{
+      background-color: red;
+    }
+  </style>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="tab-bar">
+      <div class="item" @click='index=1' :class="{active:index==1}">1</div>
+      <div class="item" @click='index=2' :class="{active:index==2}">2</div>
+      <div class="item" @click='index=3' :class="{active:index==3}">3</div>
+    </div>
+    <div class="tab-content">
+      <div class="item" v-show="index==1">内容1</div>
+      <div class="item" v-show="index==2">内容2</div>
+      <div class="item" v-show="index==3">内容3</div>
+    </div>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  
+  // 根实例（最顶级的Vue实例，需要设置el）
+  let app = new Vue({
+    el: "#app",
+    data:{
+      index:1
+    }
+
+  })
+</script>

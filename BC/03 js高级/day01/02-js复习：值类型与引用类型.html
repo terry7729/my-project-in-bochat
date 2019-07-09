@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    /*1.基本数据类型（值类型）：栈中存储的是数据，赋值时拷贝的是数据，修改拷贝后的数据对原数据没有影响
+      2.复杂数据类型(引用类型) : 栈中存储的是地址，数据存在堆中，赋值时拷贝的是地址，修改拷贝后的数据对原数据有影响
+     */
+    //1.值类型赋值
+    var a = 10;
+    var b = a;
+    b = 20;
+    console.log ( a );//10
+    console.log ( b );//20
+
+    //2.引用类型赋值
+    var arr1 = [10,20,30];
+    var arr2 = arr1;
+    arr2[0] = 100;
+    console.log ( arr2 );//[100,20,30]
+    console.log ( arr1 );//[100,20,30]
+
+    /*函数的传参本质：实参给形参赋值的过程 */
+    //3.值类型传参
+    function fn (  num ) {
+        num = 100;
+        console.log ( num );//100
+    };
+
+    var num1 = 10;
+    fn(num1);
+    console.log ( num1 );//10
+
+    //4.引用类型传参
+    function fn1 ( person ) {
+        person.name = '尼古拉斯坤';
+    };
+
+    var p1 = {name:'隔壁宋',age:38};
+    fn1(p1);
+    console.log ( p1.name );//尼古拉斯坤
+
+</script>
+</body>
+</html>

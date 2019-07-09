@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--表单元素有一个特殊的默认属性： name
+name属性是表单元素独有的默认属性
+-->
+<input type="text" value="用户名" name="one">
+<input type="password" value="密码" name="one">
+<input type="checkbox" name="one" >
+<input type="radio" name="two">
+<input type="button"  value="我是按钮" name="two">
+
+<script>
+    /**根据name属性值获取表单元素
+     *@param 表单元素的name属性值
+     * @return 表单元素数组
+     */
+    var oneList = document.getElementsByName('two');
+    console.log ( oneList );
+</script>
+</body>
+</html>

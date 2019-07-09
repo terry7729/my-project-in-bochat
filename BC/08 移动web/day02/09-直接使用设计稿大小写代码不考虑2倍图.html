@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html{
+            /* 在 750的时候 根元素 100px   */
+            font-size: 13.3333vw;
+            /* 640 */
+            /* font-size: 15.625vw; */
+            /* 720 如何计算出来的vw值 当前假设的根元素大小 / 设计稿大小 * 100  == vw值 */
+            /* font-size: 13.888889vw; */
+
+            /* jd 官网 假设设计稿是40px / 设计稿大小 * 100  == 5.3333vw */
+        }
+        #header{
+            display: flex;
+        }
+        .icon-logo{
+            width: 1.6rem;
+            height: .8rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <a href="#" class="icon-logo"></a>
+    </header>
+</body>
+</html>

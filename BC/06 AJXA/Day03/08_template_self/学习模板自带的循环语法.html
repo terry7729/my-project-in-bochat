@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        在模板自带的语法里
+            {{ }} 既可以写循环和判断的语法，也可以做输出
+
+            each list value
+                代表遍历list，取出每一个值
+
+            each list value key
+                代表遍历list，并取出每一个值和键
+
+        但是一般我们遍历主要是为了拿到值，所以用第一种简写形式比较多
+
+        注意：记得语法结束要加 /each
+
+    -->
+</head>
+<body>
+    
+</body>
+</html>
+
+<!-- 1.导入模板 -->
+<script src="../06_模板引擎的基本使用/template-web.js"></script>
+
+<!-- 2.准备模板 -->
+<script type="text/html" id="tpl">
+
+{{ each list value key }}
+
+
+    <p> {{value.name}}    {{key}} </p>
+
+{{ /each }}
+
+</script>
+
+
+
+<script>
+
+    var arr = [
+        {name:"jack",age:16},
+        {name:"rose",age:15},
+        {name:"james",age:19}
+    ];
+
+    // var arr = [10,20,30,40];
+
+    //调用模板
+    var html = template('tpl',{ list: arr });
+    console.log(html);
+    
+
+</script>

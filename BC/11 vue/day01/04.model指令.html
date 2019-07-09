@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input v-model="message" placeholder="edit me">
+    <p @click="changeMessage">Message is: {{ message }}</p>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  /*
+    1.v-model双向数据绑定
+    2.表单元素value改变会同步到data中的数据
+      表单元素的value改变时，同步修改data中的数据
+      为表单元素绑定input事件，在input事件中修改 data中的
+    3.data中的数据改变会同步到表单元素
+  */ 
+  // 实例化Vue
+  let app = new Vue({
+    el:"#app",
+    data:{
+      message:'占位文本'
+    },
+    methods:{
+      // 修改message
+      changeMessage(){
+        this.message = "出太阳啦，下课去晒晒太阳"
+      }
+    }
+  })
+
+</script>

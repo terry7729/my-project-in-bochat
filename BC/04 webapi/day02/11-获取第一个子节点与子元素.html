@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="ul1">
+    我是文本
+    <!--我是注释1111-->
+    <li id="li1">隔壁老宋1</li>
+    skajvhgkjadsvhgk
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li id="li3">隔壁老宋5</li>
+</ul>
+
+<script>
+    /*本小节知识点
+    获取第一个子节点： 父元素.firstChild
+    获取第一个子元素： 父元素.firstElementChild
+     */
+    var ul1 = document.getElementById('ul1');
+
+    //1.获取第一个子节点
+    console.log ( ul1.firstChild );
+
+    //2.获取第一个子元素
+    console.log ( ul1.firstElementChild );
+
+    console.log ( getFirstElementChild ( ul1 ) );
+
+    /**
+     * 获取第一个子元素
+     * @param ele 父元素
+     */
+    function getFirstElementChild( ele ) {
+        //能力检测
+        if (ele.firstElementChild){
+            return ele.firstElementChild;
+        }else{
+            //1.获取第一个子节点
+            var node = ele.firstChild;
+            //2.只要节点存在并且类型不是1，继续往下找
+            while (node && node.nodeType != 1){
+                node = node.nextSibling;
+            };
+            return node;
+        }
+    }
+</script>
+</body>
+</html>

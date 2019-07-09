@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* div{
+            width: 375px;
+            height: 667px;
+            background: #ccc;
+        } */
+        img:first-of-type{
+            /* 到分辨率里面变成 160px             */
+            width: 80px;
+            height: 80px;
+        }
+        img:last-of-type{
+            /* 到分辨率里面会变成 80px */
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 移动端分辨率比较高 是真实宽高2倍
+    页面视口== 真实宽高
+    CSSpx== 真实px一样 
+    我们的网页在移动端显示的时候 都会放大到分辨率里面显示 写一个盒子宽度 375 到分辨率里面 变成750-->
+    <!-- <div></div> -->
+    <!-- 强调一下前端写代码是按照视口不是分辨率
+    但是设计图是按照分辨率
+    但是分辨率是视口2倍  设计图也是我们页面的2倍  视口就是设计图宽高的一半
+    写CSS代码的时候 所有设计图上的尺寸 大小都要除以2来写 -->
+    <img src="../1-教学资料/jd/images/nav1.png" alt="">
+    <img src="../1-教学资料/jd/images/nav1.png" alt="">
+</body>
+</html>

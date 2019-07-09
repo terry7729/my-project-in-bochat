@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //编写一个函数,求两个数的和,并且返回这个结果
+
+        // function getSumOfTwoNums(num1,num2) {
+        //     var sum = num1 + num2;
+        //     return sum;
+        // }
+        //
+        // var res1 = getSumOfTwoNums(10,20);
+        // console.log(res1);
+
+        //编写一个函数,求两个值的最大值
+        function getMaxOfTwoNums(num1,num2) {
+            return num1 > num2 ? num1 : num2;
+        }
+        var res1 = getMaxOfTwoNums(99,100);
+        console.log(res1);
+
+        //编写一个函数,求三个数的最大值
+        function getMaxOfThreeNums(num1,num2,num3) {
+            var max12 = getMaxOfTwoNums(num1,num2);
+            var max = getMaxOfTwoNums(max12,num3);
+            return max;
+        }
+
+        var res2 = getMaxOfThreeNums(99,100,200);
+        console.log(res2);
+
+        //函数的内部,也可以调用其他函数
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

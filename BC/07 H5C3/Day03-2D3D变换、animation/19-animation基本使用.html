@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        animation做动画：
+                1.自动开始动画
+                2.可以无限动,和指定次数
+
+        
+        步骤：
+            1.写一个动画剧本：告诉元素该怎么动
+                    写剧本方法：  @keyframes 剧本名字{
+
+                                    from{}
+                                    to{
+
+                                        //把你想要元素变成什么样子写在这里
+                                        //相当于就是说这里写剧本的内容
+                                    }
+
+                                 }
+                    剧本名字随便起
+
+            2.在需要用动画效果的元素上，写一个属性叫animation，然后传入剧本名字和动画的时间就可以了
+     -->
+
+    <style>
+
+        .fish{
+            width: 174px;
+            height: 126px;
+            background: url(images/fish.png) no-repeat;
+            
+            /* 运动曲线 */
+            animation: swimming 1s steps(11);
+        }
+
+        @keyframes swimming{
+
+            from{}
+            to{
+                background-position-y: -1386px;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="fish"></div>
+</body>
+</html>

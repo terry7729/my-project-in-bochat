@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<!-- language网站的语言 -->
+<html lang="zh-cn">
+
+<head>
+    <!-- 网页字符编码 -->
+    <meta charset="utf-8">
+    <!-- Compatible 兼容性 设置IE兼容性 让IE浏览器使用最新的渲染引擎渲染页面 -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- 兼容360浏览器让双核浏览器使用webkit内核渲染页面 -->
+    <meta name="renderer" content="webkit">
+    <!-- 视口 设置浏览器的可视窗口  让视口宽度就和设备宽度一致 防止视口宽度和设备宽度不一致导致缩放-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>微金所的项目主页</title>
+    <!-- 引入bootstrap的css -->
+    <link href="lib/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- 注意引入自己的less文件需要放到bootstrap后面 方便我们去覆盖bootstrap的样式 -->
+    <!-- 1. 引包引入生成的字体的css文件 font.css -->
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <!-- 1. 引入主页的index.less -->
+    <link rel="stylesheet/less" href="less/index.less">
+    <!-- 2. 引入less.js编译器文件 编译less文件的编译器 -->
+    <script src="lib/less/less.js"></script>
+    <!-- HTML5 shiv 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <!-- 写页面的骨架结构 -->
+    <!-- 外面的容器都使用id选择器  id样式优先级高 方便覆盖框架的样式  方便JS去获取元素 -->
+    <!-- 头部区域 -->
+    <header id="header" class="hidden-xs hidden-sm">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-2">
+                    <a href="#">
+                        <!-- 2. 使用图标的类名 -->
+                        <i class="icon-mobilephone"></i> 手机微金所
+                        <i class="glyphicon glyphicon-chevron-up"></i>
+                        <img src="img/c_06.jpg" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    4006-89-4006（服务时间：9:00-21:00）
+                </div>
+                <div class="col-md-2">
+                    <a href="#">常见问题</a>
+                    <a href="#">财富登录</a>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="btn btn-danger btn-sm">免费注册</button>
+                    <a href="#" class="btn btn-link" data-toggle="modal" data-target="#myModal">登录</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- 导航条区域 -->
+    <!-- 组件里面的导航条组件 -->
+    <nav id="nav" class="navbar navbar-default">
+        <div class="container">
+            <!-- 导航条的头部 在移动端的默认显示头部 -->
+            <div class="navbar-header">
+                <!-- 移动端显示的按钮 -->
+                <!-- data-toggle="collapse" 开关是否开启折叠菜单的功能 -->
+                 <!-- data-target="#bs-example-navbar-collapse-1" 目标控制折叠的元素的选择器 -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- 品牌logo -->
+                <a href="#" class="navbar-brand">
+                    <i class="icon-icon"></i>
+                    <i class="icon-logo"></i>
+                </a>
+            </div>
+            <!-- 导航条的身体 在移动端的默认不显示 点击了头部里面的按钮才会显示 -->
+            <!-- collapse 在超小屏幕隐藏 其他屏幕显示 -->
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+                <!-- 导航条左边的ul -->
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">我要投资</a></li>
+                    <li><a href="#">我要借款</a></li>
+                    <li><a href="#">平台介绍</a></li>
+                    <li><a href="#">新手专区</a></li>
+                    <li><a href="#">最新动态</a></li>
+                    <li><a href="#">微论坛</a></li>
+                </ul>
+                <!-- 导航右边的ul -->
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">个人中心</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- 轮播图区域 -->
+    <section id="slide">
+    </section>
+    <!-- 特色介绍区域 -->
+    <section id="feature" class="hidden-xs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6">支付交易保障</div>
+                <div class="col-md-4 col-sm-6">支付交易保障</div>
+                <div class="col-md-4 col-sm-6">支付交易保障</div>
+                <div class="col-md-4 col-sm-6">支付交易保障</div>
+                <div class="col-md-4 col-sm-6">支付交易保障</div>
+                <div class="col-md-4 col-sm-6">支付交易保障</div>
+            </div>
+        </div>
+    </section>
+    <!-- 立即预约区域 -->
+    <section id="booking">
+    </section>
+    <!-- 商品推荐区域 -->
+    <section id="products">
+    </section>
+    <!-- 新闻区域 -->
+    <section id="news">
+    </section>
+    <!-- 合作伙伴区域 -->
+    <footer id="partner">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                        <div class="col-xs-4">
+                            图标
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Button trigger modal JS 插件不是和类名有关 和属性有关 -->
+    <!--  data-toggle="modal" 开关切换 控制modal效果是否开启(初始化)
+                    data-target="#myModal" 目标 控制弹出目标框框 值#myModal id选择器 建议使用id选择器-->
+    <!--  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                        Launch demo modal
+                    </button> -->
+    <!-- role 角色
+                    aria 盲人设备使用的 了解即可 中国不会考虑盲人的 -->
+    <!-- 弹出来的框框 一般放到网页底部和网页内容没关系 -->
+    <div class="modal fade text-left" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">模态框的标题</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox"> Remember me
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Sign in</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <!-- data-dismiss="modal" 关闭模态框 -->
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <script src="lib/jquery/jquery.js"></script>
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+</body>
+
+</html>

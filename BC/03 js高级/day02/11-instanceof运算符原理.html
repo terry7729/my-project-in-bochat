@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /* instanceof运算符语法：   对象 instanceof 构造函数
+    * 作用：检查右边的构造函数的原型在不在左边对象的原型链中
+     */
+
+    //1.Array完整原型链
+    //数组原型链：  arr -> Array.prototype -> Object.prototype->null
+    var arr = [10,20,30];
+    console.log ( arr instanceof Array );//true
+    console.log ( arr instanceof Object );//true
+
+    //2.Function对象完整原型链
+    //根据instanceof的语法 ： 左边Function当作函数对象  右边Function当作函数
+    //Function对象完整原型链：  Function对象 ->Function.prototype->Object.prototype->null
+    console.log ( Function instanceof Function );//true
+    console.log ( Function instanceof Object );//true
+
+    //3.Object对象的完整原型链
+    //根据instanceo的语法：  左边Object当作函数对象  右边Function当作函数
+    //Object函数对象完整原型链：  Object对象 ->Function.prototype->Object.prototype->null
+    console.log ( Object instanceof Function );//true
+    console.log ( Object instanceof Object );//true
+
+
+</script>
+</body>
+</html>

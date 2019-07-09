@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        :first-child：找到第一个子元素
+        :nth-child：找到某一个
+                    可以传入具体的数字，就代表找到第几哥。例：传8，就代表找到第8个
+                    可以传n，代表找到所有
+                    可以传odd，代表找到奇数
+                    可以传even，代表找到偶数
+                    mn：代表找到m的倍数，例：3n代表找到3和3的倍数，3,6,9……………………
+                    n+m：代表从m开始一直到最后，例：n+12 从12开始到最后
+
+        :last-child：找到最后一个
+
+        注意：它必须满足在父元素中是第几个子元素！
+
+        注意：以上选择器都是独立的选择器可以单独使用
+
+        也可以搭配其他选择器组成交集选择器（常用的写法）
+
+    -->
+
+    <style>
+        li:first-child {
+
+            color: red;
+        }
+
+        li:last-child{
+
+            color:blue;
+        }
+
+        /* li:nth-child(2){
+
+            color:yellow;
+        } */
+        
+        /* 如果传入n代表所有 */
+        li:nth-child(n){
+            font-size: 20px;
+        }
+        
+        /* 找到所有奇数 */
+        li:nth-child(odd){
+            background-color: yellowgreen;
+        }
+        
+        /* 找到所有偶数 */
+        li:nth-child(even){
+           background-color: hotpink;
+        }
+        
+        /* 从第六个开始，一直到最后 */
+        li:nth-child(n+6){
+
+            border: 1px solid #000;
+        }
+        
+        /* 3的倍数 */
+        li:nth-child(3n){
+            font-style: italic;
+        }
+
+        li:hover{
+            background-color: #f00;
+        }
+
+        
+        /* 找到所有的最后一个子元素 */
+        /* :last-child{
+            color:blue;
+        } */
+
+        /* 找到所有第三个子元素 */
+        /* .name:nth-child(3){
+
+            color:red;
+        } */
+
+   
+    
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <!-- <span class="name">我是span</span> -->
+        <li>隔壁老王1</li>
+        <li class="name">隔壁老王2</li>
+        <li>隔壁老王3</li>
+        <li>隔壁老王4</li>
+        <li>隔壁老王5</li>
+        <li>隔壁老王6</li>
+        <li>隔壁老王7</li>
+        <li>隔壁老王8</li>
+        <li>隔壁老王9</li>
+        <li>隔壁老王10</li>
+        <!-- <span>我是最后一个span</span> -->
+    </ul>
+
+    <ul>
+        <li>隔壁老周1</li>
+        <li>隔壁老周2</li>
+        <li>隔壁老周3</li>
+        <li>隔壁老周4</li>
+        <li>隔壁老周5</li>
+        <li>隔壁老周6</li>
+        <li>隔壁老周7</li>
+        <li>隔壁老周8</li>
+        <li>隔壁老周9</li>
+        <li>隔壁老周10</li>
+    </ul>
+
+    <p>你是p</p>
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+    * {
+        margin: 0;
+        padding: 0;
+        /* 在移动端去除一些按住高亮的背景色 */
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+    
+    html {
+        font-size: 26.6667vw;
+    }
+    
+    img {
+        border: none;
+    }
+    
+    input {
+        border: 1px solid #efefef;
+        outline: none;
+        height: 0.35rem;
+        width: 2.04rem;
+        border-radius: 0.03rem;
+        padding-left: 0.1rem;
+    }
+    
+    form {
+        font-size: 0.2rem;
+        color: #747474;
+        padding-top: 0.5rem;
+    }
+    
+    form div {
+        margin-bottom: 0.12rem;
+        display: flex
+    }
+    
+    div>label {
+        width: 1rem;
+        text-align: right;
+        padding-right: 0.1rem;
+        line-height: 0.35rem;
+        font-size: 0.16rem;
+    }
+    
+    form .submit {
+        width: 3rem;
+        height: 0.4rem;
+        background-color: #222222;
+        border-radius: 0.04rem;
+        text-align: center;
+        line-height: 0.4rem;
+        color: #fff;
+        font-size: 0.2rem;
+        border: none;
+        margin: 0.4rem auto;
+        display: block;
+        outline: none;
+    }
+    
+    form p {
+        color: #292c45;
+        font-size: 0.26rem;
+        text-align: center;
+        margin-bottom: 0.22rem
+    }
+    /*清除浮动*/
+    
+    .clearfix:after {
+        content: ".";
+        display: block;
+        clear: both;
+        height: 0;
+        visibility: hidden;
+    }
+    /* 
+input.disabled {
+    color: #292c45
+} */
+    
+    .loading {
+        position: fixed;
+        top: 0;
+        background: transparent;
+        height: 100%;
+        width: 100%;
+        z-index: 10000;
+        display: none;
+    }
+    
+    .loading img {
+        position: absolute;
+        top: 46.5%;
+        left: 50%;
+        margin-top: -0.15rem;
+        margin-left: -0.15rem;
+    }
+    
+    .paygif {
+        width: 0.3rem;
+    }
+    
+    input.disabled[disabled] {
+        background-color: transparent;
+        opacity: 1
+    }
+    
+    .layui-layer-content {
+        font-size: 0.16rem;
+        text-align: center;
+        line-height: 1rem;
+    }
+    
+    .layui-layer-close {
+        display: none !important;
+    }
+    
+    .alerts {
+        width: 1.6rem;
+        height: 0.34rem;
+        position: absolute;
+        background-color: #fff;
+        left: 50%;
+        margin-left: -0.8rem;
+        top: 0.15rem;
+        padding: 0;
+        text-align: center;
+        line-height: 0.34rem;
+        font-size: 0.14rem;
+        color: #666666;
+        display: none;
+        box-shadow: 0rem 0.03rem 0.08rem 0rem rgba(59, 87, 255, 0.15);
+    }
+    
+    .alerts>img {
+        width: 0.15rem;
+        /* margin-top: 10rem; */
+        margin-left: 0;
+        margin-top: -0.03rem;
+        vertical-align: middle;
+    }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //面向对象编程三大特征：  （1）封装   （2）继承  （3）多态
+    //1.继承：一个对象拥有另一个对象所有的属性和方法（js中的继承是对象之间的继承）
+
+    //1.1 继承好处：  代码简洁且复用性高
+
+    //1.2 如何实现继承： （1）混入式  （2）替换原型  （3）混合式
+    //js内置对象通过原型链实现继承
+
+
+    //2.原型链：对象都有原型(object.__proto__),而原型又是对象，所以原型又有原型，依次类推形成的链式结构称为原型链
+
+    //2.1 对象访问原型链中成员的规则：就近原则
+    /*对象访问成员时，会先看自己有没有，有则访问，没有则看自己的原型有没有，如果原型有则访问，没有则继续找原型的
+原型有没有，以此类推直到原型链的终点，如果还没有找到则程序报错 `xxx is not a function`或undefined */
+
+    //2.2 Object.prototype对象里面的一些常用成员
+    //2.3 函数是对象- 他是Function()构造函数实例化出来的对象。
+    //2,4 构造函数也是函数，所以构造函数也是对象。 - 构造函数也是Function()构造函数创建出来的。
+    //2.5 构造函数的原型链
+
+    /*完整原型链：构造函数、原型、实例对象（三者皆对象）
+        a.只要是构造函数，就有prototype属性指向自身的原型对象
+        b.只要是原型对象，就有constructor属性指向自身对应的构造函数
+        c.只要是对象,就有__proto__属性指向与之对应的构造函数的原型对象
+        d.函数本身也是对象
+     */
+
+    //2.6 实例成员与静态成员
+    //实例成员：属于构造函数实例化对象的
+    //静态成员：属于构造函数对象自身的
+
+    Math.random();//静态
+    Object.prototype;//静态
+    [].length;//实例
+
+    //3.给内置构造函数添加自定义成员
+
+    //3.1 不能直接给内置构造函数添加
+    //弊端：(1)多个程序员共同添加会导致同名覆盖的bug  (2)性能浪费
+    // Array.prototype.sayHi = function (  ) {
+    //     console.log ( "1111" );
+    // };
+
+    //3.2 正确做法：自定义一个数组
+    function MyArr (  ) {
+        this.maopao = function (  ) {
+            console.log ( "冒泡排序" );
+        }
+    };
+
+    /*这里不能使用Array.prototype,因为拷贝的是地址,如果修改拷贝后的数据对原数据有影响的
+
+     */
+    // MyArr.prototype = Array.prototype;//拷贝的是地址
+    //
+    // MyArr.prototype.aaaaa = '1111111';//往Array.prototype地址对应的对象中添加属性
+
+    MyArr.prototype = [];//声明一个空数组，将空数组作为MyArr的原型
+    MyArr.prototype.aaaaa = '111111';//往空数组中添加aaaaa属性
+
+    var arr1 = new MyArr();
+    console.log ( arr1 );
+    arr1.push(10,20,30,40,50);
+    console.log ( arr1 );
+
+    //默认内置数组对象
+    var arr2 = [10,20,30,40,50,60];
+    console.log ( arr2 );
+
+
+    //疑问？为什么数组的toString方法和对象的toString方法不一样？
+    //原因：数组的原型中也有toString方法，当调用数组的toString方法时调用的是Array.prototype中的toString，而不是Object.prototype中的toString
+    /*数组的toString：调用数组的join方法，返回字符串
+    对象toString: 返回固定格式字符串  [object 数据类型]
+     */
+    console.log ( [ 10, 20, 30 ].toString () );//10,20,30
+    console.log({name:10}.toString());//[object Object]
+</script>
+</body>
+</html>

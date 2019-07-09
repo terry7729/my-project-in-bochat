@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        input type="email" 自带邮箱格式的验证，什么时候会验证？点击提交时验证
+
+        但是，它没有带非空验证
+                所以如果需要，加上 required ，代表不能为空，必须填，否则无法提交
+
+
+        number:
+            max：设置最大能设置的值
+            min:设置最小能设置的值
+            step:设置每次点加能一次加多少，默认加1
+
+
+        新增的type属性取值：
+                color:专门用来输入颜色的
+                date：专门用来输入日期，只有年月日
+                time：专门用来输入时间，只有时分
+                datetime-local：结合
+                email：专门用来输入邮箱，自带邮箱验证
+                number：只能输入数字
+                url：只能输入网址，自带网址验证
+                search：跟普通文本框一样，移动端有区别：它弹出的键盘是带搜索按钮
+                tel：专门用来输入电话，移动端弹出的时候键盘是数字键盘
+                range：滑块，设置音量可以用这个
+
+        
+        行内属性：
+            max：最大值
+            min:最小值
+            step：一次增加多少
+            required：必须输入的内容
+     -->
+</head>
+
+<body>
+    <form action="http://www.itcast.cn">
+
+        <!-- <input type="text">
+        <input type="password">
+        <input type="checkbox">
+        <input type="radio">
+        <input type="button">
+        <input type="file">
+        <input type="datetime-local"> -->
+
+        <!-- 颜色输入框，可以弹出一个颜色选择器 -->
+        <input type="color">
+        <!-- 只有日期选择 -->
+        <input type="date">
+        <!-- 只有时间选择 -->
+        <input type="time">
+        <!-- 日期和时间结合 -->
+        <input type="datetime-local">
+        <!-- 专门用来输入邮箱，它会自带邮箱格式的验证 -->
+        <!-- <input type="email" required> -->
+        <!-- 专门用来输入网址的 -->
+        <!-- <input type="url" required> -->
+        <!-- 专门输入数字的
+            max：设置最大能设置的值
+            min:设置最小能设置的值
+            step:设置每次点加能一次加多少，默认加1
+        -->
+        <input type="number" max="100" min="10" required step="12">
+
+        <!-- 跟普通的文本框是一样的，它只是在移动端有效果：弹出的键盘回车键会变搜索两个字 -->
+        <input type="search">
+
+        <!-- 移动端有用，获得焦点弹出的是数字键盘 -->
+        <input type="tel">
+
+        <!-- 滑块 -->
+        <input type="range" value="5" max="10" min="5">
+
+        <input type="submit">
+
+    </form>
+</body>
+
+</html>

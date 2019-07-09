@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            position: absolute;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+
+
+
+
+<div id="box" style="width: 100px;height: 100px;background-color: green;position: absolute"></div>
+
+<script>
+    //1.定时器：让一段代码隔一段时间执行
+
+    //1.1  setInterval:重复定时器（间隔时间无限重复执行，需要手动清除才能结束）
+    var timeID =  setInterval(function (  ) {},1000);
+    clearInterval(timeID);
+    //1.2 setTimeout:一次定时器（间隔时间执行一次，执行完毕后自动清除）
+    setTimeout(function (  ) {},1000)
+    clearTimeout();
+
+    //2.动画
+    //核心思路：让元素移动从瞬移变成有速度(px/ms)
+    var box = document.getElementById('box');
+    //1.声明变量，记录元素当前位置与定时器id
+    var timeID = null;
+    var currentLeft = 0;
+    //2.开启定时器
+   timeID =  setInterval(function (  ) {
+        //3. 给元素一个移动速度
+        var setp = 12;//间隔时间的移动距离
+        currentLeft += setp;
+        box.style.left = currentLeft + 'px';
+        //4.边界检测：到达目的地，清除定时器
+        if(currentLeft >= 800){
+            clearInterval(timeID);
+            /* 一定要对元素进行复位操作，否则动画可能会有误差 */
+           box.style.left = '800px';
+        }
+    },100)
+
+    //3.bom:js动态操作浏览器窗口
+
+    /*bom组成结构（五个对象）
+    (1):window：js的顶级对象
+        * 3个特点
+            * a.所有的全局变量、全局函数、dom都是window的属性
+            * b.凡是window的属性，在使用时都可以省略window
+            * c.window对象有一个name属性，一定是字符串
+       * 2.2个常用方法
+            * a.window.open():打开一个新窗口
+            * b.window.close():关闭一个窗口
+       * 3.3个事件（浏览器窗口从打开到关闭的过程）
+        * a.window.onload:界面上所有的内容加载完毕之后才触发这个事件
+        * b.window.onbeforeunload:界面在关闭之前会触发这个事件
+        * c.window.onunload:界面在关闭的那一瞬间会触发这个事件
+    (2):location对象：包含当前页面的URL信息
+        * 3个常用方法
+            * a 打开新网页：location.assign('你要打开的新网页的url')
+                * window.location.href = 'https://www.baidu.com'
+            * b 替换当前网页：location.replace('要替换的网页url')
+            * c 刷新当前网页: location.reload()
+     (3):history对象主要用于记录你当前窗口的历史记录
+        * 主要作用就是前进和后退网页（相当于浏览器的左上角前进后退按钮功能）
+        * 2个常用方法
+            * history.forword():前进
+            * history.back():后退
+    （4）navigator对象：包含当前浏览器的信息
+            * 工作中应用场景：用户信息统计（统计我这个网站平台的用户群体分布，什么浏览器，windows什么版本等）
+    （5）screen：获取用户电脑的分辨率（对于开发者作用不大）
+     */
+
+</script>
+</body>
+</html>

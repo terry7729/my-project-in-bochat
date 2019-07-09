@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.键盘事件
+        键盘按下： onkeydown
+        键盘松开：onkeyup
+        键盘按下：onkeypress
+
+      2.获取键盘按键
+        e.keyCode  || e.char Code  ||  e.which
+        2.1 : 默认获取的是ASCII码 ： 键盘上每一个按键对应一个数字，这个数字就是ASCII码
+        2.2 :ASCII码转字符串:  String.fromCharCode ( ascii码 )
+
+      3.onkeydown和onkeypress（常用）的区别
+            onkeydown: (1)不区分大小写，大写   （2）不过滤特殊按键 （f1-f12 ctrk）
+            onkeypress: （1）区分大小写     （2）过滤特殊按键
+
+     */
+
+
+    window.onkeypress = function ( e ) {
+        e = e || window.event;
+        var code = e.keyCode || e.charCode || e.which;
+        console.log ( code );//ASCII码
+
+        console.log ( String.fromCharCode ( code ) );
+        console.log ( "键盘按下了" );
+    }
+
+    // window.onkeydown = function ( e ) {
+    //     e = e || window.event;
+    //     var code = e.keyCode || e.charCode || e.which;
+    //     console.log ( code );//ASCII码
+    //
+    //     console.log ( String.fromCharCode ( code ) );
+    //     console.log ( "键盘按下了" );
+    // }
+
+    window.onkeyup = function (  ) {
+        console.log ( "键盘松开了了" );
+    }
+</script>
+</body>
+</html>

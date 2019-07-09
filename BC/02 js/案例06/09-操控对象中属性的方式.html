@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.点语法
+        var stu = {
+            name:"宋明",
+            age:48,
+            sayHi:function () {
+                console.log(this.name + this.age);
+            }
+        };
+        stu.name = "宋小宝";
+        //利用点语法来控制对象的属性方法是常用的方法
+        stu.sayHi();
+
+        //2.利用对象的key值来操控
+        var dd = {
+            name:"豆豆",
+            age:20,
+            sayHi:function () {
+                console.log(this.name + this.age);
+            }
+        };
+        dd['name'] = "肉丝";
+        //为什么不用点语法,而是用上面这种看起来不是很方便的做法
+        dd.sayHi();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

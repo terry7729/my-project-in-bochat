@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 如果不允许用户缩放 不存在双击操作 没有双击就没有延迟 user-scalable=no -->
+    <!-- 只有当视口没有设置 user-scalable=no的时候才有双击缩放才有延迟 -->
+    <!-- <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"> -->
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        var div = document.querySelector('div');
+        // 移动端click事件为了兼容双击操作有一个 300ms延迟事件 只要页面没有禁止用户双击缩放 都会有这个问题
+        div.addEventListener('click', function () {
+            console.log('click');
+
+        });
+        // 只是一个普通函数
+        function tap(callback) {
+            // this 就当前触发函数对象 div触发当前对象就是div  直接给div添加事件就行了
+            console.log(this);            
+            var isMove = false;
+            // 直接给当前触发事件的元素去添加这些事件
+            this.addEventListener('touchstart', function () {
+                // console.log('touchstart');
+            });
+            this.addEventListener('touchmove', function () {
+                // console.log('touchmove');
+                isMove = true;
+            });
+            // 因为touch系列事件 没有延迟 吧touchend当成是click 判断 如果没有触发move
+            this.addEventListener('touchend', function () {
+                // console.log('touchend');
+                // 如果只单击了 没有移动 就是click事件 如果发生了移动就是 滑动事件            
+                if (isMove == false) {
+                    // console.log('使用touch事件 模拟一个不延迟的click');
+                    // 当如果事件触发了就调用这个回调函数 执行事件触发逻辑代码
+                    callback();
+                }
+                // 每次滑动结束 吧isMove 重置为false
+                isMove = false;
+            });
+        }
+        // 吧函数挂载到了Object的原型对象上  只要是对象的实例都会有这个函数
+        Object.prototype.tap = tap;
+        // div上有这个函数 调用这个函数 就不需要传人当前dom元素了
+        div.tap(function () {
+            console.log('移动端不延迟的click');
+
+        });
+    </script>
+</body>
+
+</html>

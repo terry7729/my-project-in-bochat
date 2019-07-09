@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="ul1">
+    我是文本
+    <!--我是注释1111-->
+    <li id="li1">隔壁老宋1</li>
+    skajvhgkjadsvhgk
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li id="li3">隔壁老宋5</li>
+    wkjfgks
+</ul>
+
+<script>
+    /*本小节知识点
+    获取最后一个子节点： 父元素.lastChild
+    获取最后一个子元素：父元素.lastElement Child
+     */
+    var ul1 = document.getElementById('ul1');
+
+    //1.获取最后一个子节点
+    console.log ( ul1.lastChild );
+
+    //2.获取最后一个子元素
+    console.log ( ul1.lastElementChild );
+
+    console.log ( getLastElementChild ( ul1 ) );
+
+    /**
+     * 获取最后一个子元素
+     * @param ele 父元素
+     */
+    function getLastElementChild ( ele ) {
+        //能力检测
+        if(ele.lastElementChild){
+            return ele.lastElementChild;
+        }else{
+            //1.获取最后一个子节点
+            var node = ele.lastChild;
+            //2.如果节点存在并且节点类型不是1，则继续往上找
+            while (node && node.nodeType != 1){
+                node = node.previousSibling;
+            };
+            return node;
+        }
+    }
+</script>
+</body>
+</html>

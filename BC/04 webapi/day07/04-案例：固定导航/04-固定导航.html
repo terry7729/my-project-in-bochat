@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        .main {
+            margin: 0 auto;
+            width: 1000px;
+            margin-top: 10px;
+        }
+
+        .fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="top" id="topPart">
+    <img id="pic" src="images/top.png" alt=""/>
+</div>
+
+<div class="nav" id="navBar">
+    <img src="images/nav.png" alt=""/>
+</div>
+
+<div class="main" id="mainPart">
+    <img src="images/main.png" alt=""/>
+</div>
+</body>
+
+<script src="common.js"></script>
+
+<script>
+/*思路分析：获取页面滚动出去距离，如果超出top部分则修改导航条为固定定位
+
+ */
+
+//1. 获取元素：
+var topPart = document.getElementById('topPart');//头部区域
+var navBar = document.getElementById('navBar');//导航条
+var mainPart = document.getElementById('mainPart');//底部部门
+//2.注册事件：
+window.onscroll = function (  ) {
+    //如果滚动出去的距离超过topPart的高度则修改navBar的定位为固定定位
+    if (getScroll().scrollTop >= topPart.offsetHeight){
+        /*细节注意点：设置元素为固定定位fixed之后，元素会脱标，此时后面元素会顶上去
+        * 解决方案：增加后面元素的margin，将脱标的高度撑起来
+        * */
+        navBar.className = 'fixed';
+        mainPart.style.marginTop = 10 + navBar.offsetHeight + 'px';
+    }else{
+        navBar.className = '';
+        mainPart.style.marginTop = '10px'
+    }
+
+}
+</script>
+</html>

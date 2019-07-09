@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //检测函数的数据类型
+        function fun1(a,b) {
+            console.log(a, b);
+        }
+
+        //typeof
+        // console.log(typeof fun1());
+        //函数加括号,是为了调用函数;
+        console.log(typeof fun1);//function
+
+        //函数名 instanceof Function:检测当前数据是否是函数对象
+        var res = fun1 instanceof Function;
+        console.log(res);//true
+
+        //Object.prototype.toString.call(函数名);
+        var res2 = Object.prototype.toString.call(fun1);
+        console.log(res2);//[object Function]
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

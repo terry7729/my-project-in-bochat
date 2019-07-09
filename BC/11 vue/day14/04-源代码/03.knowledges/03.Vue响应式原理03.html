@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <h2 v-html></h2>
+    <input type="button" value="修改data" />
+    <input type="text" v-model />
+  </body>
+</html>
+<script>
+  let data = {}
+  // 增加了属性 属性取值 和赋值的时候 执行自定义的逻辑
+  Object.defineProperty(data, 'name', {
+    get() {
+      console.log('get触发')
+      // return '998'
+      return name
+    },
+    set(value) {
+      console.log('set触发')
+      // console.log(value)
+      name = value
+      // 同步修改 所有使用了 data的属性的dom元素的内容
+      document.querySelectorAll('[v-html]').forEach(v => {
+        v.innerHTML = value
+      })
+
+      // 同步修改 v-model对应的表单元素即可
+      document.querySelector('[v-model]').value = value
+    }
+  })
+  console.log(data)
+
+  // input的value改变时 同步修改 页面上的其他元素中内容
+  // oninput 输入内容就会持续触发
+  // document.querySelector('[v-model]').onchange = function() {
+  document.querySelector('[v-model]').oninput = function() {
+    // 获取自己的value值
+    // 同步修改 data中的数据
+    data.name = this.value
+  }
+
+  // 按钮的点击事件
+  document.querySelector('input[type=button]').onclick = function() {
+    // 修改数据
+    data.name = '萌你奶奶个腿'
+  }
+</script>

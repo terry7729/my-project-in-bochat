@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            background-color: red;
+           
+        }
+
+        .son {
+            width: 200px;
+            height: 50px;
+            border: 5px solid yellow;
+            background-color: pink;
+            float: left;
+        }
+
+        .bottom {
+            width: 500px;
+            height: 500px;
+            background-color: gold;
+        }
+
+        .bottom .demo {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+
+        /* 额外标签法: */
+        /* 在父盒子的所有子元素的最后,添加一个额外标签,并且设置clear:both属性即可 */
+        /* 是官方推荐使用的方法 */
+        /* 注意,工作中,我们不会用 */
+        /* 会让我们代码结构性变差,因为添加了很多没有意义的标签 */
+        /* 会让代码变得十分冗余,所以程序员不会使用这种方法 */
+        .clear {
+            clear: both;
+        }
+
+        /* 思考:能不能在不添加额外标签代码的情况下,实现清除浮动的影响呢? */
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="bottom">
+        <div class="demo"></div>
+    </div>
+</body>
+</html>

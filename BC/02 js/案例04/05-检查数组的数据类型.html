@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //typeof
+        //console.log(typeof 123);//number
+        //console.log(typeof "梁朝伟");//string
+        //console.log(typeof true);//boolean
+        //console.log(typeof undefined);//undefined
+        //console.log(typeof NaN);//number
+        //console.log(typeof null);//object
+//
+        //var arr = [10,20,30,40,50];
+        //console.log(typeof arr);//object,不能确定是否是数组,因为null也是object
+
+        //1.Array.isArray(检测的数组名),只要返回的是一个true,那么就代表这个数据是数组
+        //var res = Array.isArray(arr);
+        //console.log(res);//true
+        //比较简洁
+
+        //2.数组名 instanceof Array,只要返回true就代表是一个数组
+        //var arr = [10,20,30,40,50];
+        //var res = arr instanceof Array;//是否是一个数组对象
+        //console.log(res);//true
+
+        //3.Object.prototype.toString.call(检测数据),会直接返回这个数据类型
+        var arr = [10,20,30,40,50];
+        var res = Object.prototype.toString.call(arr);//判断数据的数据类型,并且返回这个数据类型
+        console.log(res);//[object Array]
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

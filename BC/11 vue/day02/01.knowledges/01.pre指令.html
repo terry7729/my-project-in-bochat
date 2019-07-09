@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{message}}</h2>
+    <h2 v-pre>{{message}}
+      <p>占位文本{{message}}</p>
+    </h2>
+  </div>
+</body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  /*
+    v-pre 告诉Vue这个元素以及他的后台  直接无视
+    写网页时，希望展示Vue的原始代码不希望被解析 可以使用这个标签
+    跳过标记了这个指令的标签，提升速度
+  */
+  let app = new Vue({
+    el:"#app",
+    data:{
+      message:"网吧包宿15块"
+    }
+  })
+
+</script>

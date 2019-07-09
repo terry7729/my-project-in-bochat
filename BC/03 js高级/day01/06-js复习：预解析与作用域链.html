@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.预解析：js在从上下下解析执行代码之前会将代码看一眼这个过程称为预解析。在预解析的过程中编译器会做一件事：变量的提升
+                变量的提升： 将var与function关键字提升到当前作用域最顶端，赋值与调用语句还是在原地
+
+     */
+    // console.log ( num );//undefined
+    // var num = 10;
+    // fn();
+    // console.log ( num );//10
+    // function fn (  ) {
+    //     console.log ( "今天学的好开心" );
+    // }
+
+    /*
+    var num;
+     function fn (  ) {
+        console.log ( "今天学的好开心" );
+    }
+
+
+   console.log ( num );//undefined
+    num = 10;
+    fn();
+    console.log ( num );//10
+
+     */
+
+    /*2.作用域：变量起作用的范围
+            全局作用域（全局变量）：在函数外面声明的变量，可以在任何地方起作用
+            局部作用域（局部变量）：在函数里面声明的变量，只能在函数内部起作用
+
+    变量在作用域链访问规则:就近原则
+        * 当在某个作用域访问变量，首先会先从当前作用域寻找变量的声明，有则访问，没有则继续往上找，
+       找到则访问，没有则继续往上找，以此类推直到作用域最顶端（0级链），如果还没有找到则程序报错
+
+     */
+
+    var num = 10;
+    function fn (  ) {
+        var num = 20;//局部变量
+        console.log ( num );//20
+        fn1();
+        function fn1 (  ) {
+            var num = 30;
+            console.log ( num );//30
+        }
+    }
+    fn();
+    console.log ( num );//10
+
+    //3.预解析面试题
+
+
+    //1
+    // if ( "a" in window ) {
+    //     var a = 10
+    // }
+    // alert ( a )
+
+    /*
+    var a;//声明全局变量a，所有的全局变量都是window的属性
+
+    if ( "a" in window ) {//window有a属性
+        a = 10
+    }
+    alert ( a )//10
+     */
+
+    //2.
+    // var a
+    // if ( !"a" in window ) {// false in window  :window有没有一个叫做false的属性
+    //     var a = 10
+    // }
+    // alert ( a );//undefined
+
+    //3.
+    // var a
+    // if ( name in window ) {// (1)window有一个默认属性叫做name，它的是空字符串   (2) ' in window'
+    //     var a = 10
+    // }
+    // alert ( a )//undefined
+
+    //4.
+    // if ( 'name' in window ) {//检查window有没有name属性
+    //     var a = 10
+    // }
+    // alert ( a )//10
+
+    //5.
+    var num = 123;
+    function f1(num) {
+        console.log(num); //
+    }
+    function f2() {
+        var num = 456;
+        f1(num);
+    }
+    f2();
+
+    /*
+    var num
+    function f1(num) {
+        console.log(num); //456
+    }
+    function f2() {
+        var num；
+        num = 456;
+        f1(num);//
+    }
+
+   num = 123;
+    f2();
+
+     */
+</script>
+</body>
+</html>

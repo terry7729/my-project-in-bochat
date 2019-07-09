@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul>
+    <li>保健坤1</li>
+    <li>保健坤2</li>
+    <li>保健坤3</li>
+    <li>保健坤4</li>
+    <li>保健坤5</li>
+    <li>保健坤6</li>
+    <li>保健坤7</li>
+    <li>保健坤8</li>
+    <li>保健坤9</li>
+    <li>保健坤10</li>
+</ul>
+
+<script>
+      /* 需求分析：1.默认情况下，单数行li元素显示绿色，双数行显示黄色
+                        2.鼠标移入li元素：颜色变成红色
+                        3.鼠标移出li元素：颜色变成原先的颜色
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1. 获取元素：
+      var liList = document.getElementsByTagName('li');
+      //2.单数行li元素显示绿色，双数行显示黄色
+    for(var i = 0;i<liList.length;i++){
+        //2.1 设置li元素的颜色
+        if (i%2 == 0){//单数行
+            liList[i].style.backgroundColor = 'green';
+        }else{//双数行
+            liList[i].style.backgroundColor = 'yellow';
+        };
+
+        //2.2 注册鼠标移入事件
+        liList[i].onmouseover = function (  ) {
+            //3.事件处理:颜色变红
+
+            //3.1 先添加一个自定义属性来存储自身当前的颜色
+            this.aaa = this.style.backgroundColor;
+            //3.2 变量的赋值操作会先回收旧值，存入新值
+            this.style.backgroundColor = 'red';
+
+        };
+
+        //2.3 注册鼠标移出事件
+        liList[i].onmouseout = function (  ) {
+            //3.事件处理:颜色变成原先的颜色
+            console.log ( this );
+            this.style.backgroundColor = this.aaa;
+            // this.style.backgroundColor = '';//默认色,白色
+        }
+    };
+
+
+</script>
+</body>
+</html>

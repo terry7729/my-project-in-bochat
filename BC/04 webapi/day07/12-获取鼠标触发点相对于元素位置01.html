@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+
+        #box {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="box"></div>
+
+<script src="common.js"></script>
+
+<script>
+    var box = document.getElementById('box')
+
+    box.onclick = function ( e ) {
+       e = e || window.event;
+        //蓝线 = 红线(e.pageX)-绿线(box.offsetLeft)
+        var x = getPagePoint(e).pageX - box.offsetLeft;
+        var y = getPagePoint(e).pageY - box.offsetTop;
+
+        box.innerText = 'x:' + x + 'y:' + y;
+    }
+</script>
+</body>
+</html>

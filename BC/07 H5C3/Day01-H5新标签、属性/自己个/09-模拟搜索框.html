@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+                margin: 0;
+                padding: 0;
+            }
+    
+            body {
+                font-size: 20px;
+            }
+    
+            .box {
+                width: 600px;
+                height: 40px;
+                margin: 200px auto;
+                position: relative;
+            }
+    
+            #txt {
+                width: 498px;
+                height: 38px;
+                border: 1px solid #eee;
+                font-size: 20px;
+            }
+    
+            #search {
+                width: 100px;
+                height: 40px;
+            }
+    
+            #keywords {
+                position: absolute;
+                top: 40px;
+                left: 0;
+                background-color: rgb(12, 255, 24);
+                list-style: none;
+                width: 500px;;
+            }
+    
+            li {
+                line-height: 24px;
+            }
+    
+            /*/!*是li标签，并且鼠标移入的时候变红*!/*/
+            /*li:hover {*/
+    
+            /*background-color: red;*/
+            /*}*/
+        </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="top">
+            <input type="text" id="txt" /><input type="button" value="search" id="search" />
+        </div>
+        <ul id="keywords"></ul>
+    </div>
+
+</body>
+
+</html>
+<script src="./jquery-1.11.4.min.js"></script>
+<script>
+    var json = localStorage.getItem('his');
+    if (json)
+        var arr = JSON.parse(json);
+    else
+        var arr = [];
+    $('#search').on('click', function () {
+        var txt = $('#txt').val();
+        var keywords = $('#keywords').val();
+        console.log(!-1==false);
+        
+        if ($.inArray(txt, arr)<0) {
+            arr.push(txt);
+        }
+
+        var json = JSON.stringify(arr);
+        localStorage.setItem('his', json)
+    })
+
+
+    $('#txt').on('focus', function () {
+        var str = "";
+        for (var i = 0; i < arr.length; i++) {
+            str += '<li>' + arr[i] + '</li>';
+
+        }
+        $('#keywords').html(str);
+    })
+
+    $('#txt').on('blur', function () {
+
+        $('#keywords').html('');
+
+    })
+</script>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 代码设置的宽高,并不是真实宽高 */
+
+            border: 50px solid blue;
+            padding: 50px;
+        }
+
+        /* 盒子的真实宽高 = 设置的宽高 + border + padding */
+        /* 盒子的宽 = 设置的宽 + 水平的border + 水平的padding */
+        /* 盒子的高 = 设置的高 + 垂直的border + 垂直的padding */
+
+        /* 题目 : 现有一盒子,设置的宽是300px,还有一左边框为50px,以及一右内边距为100px,问真实宽度是多少 */
+    </style>
+</head>
+<body>
+    <!-- 真实宽高:浏览器最终效果 -->
+    <div></div>
+</body>
+</html>

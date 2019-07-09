@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <!-- 
+
+        from,to这种动画只是方便做单个动作的动画，如果复杂动作比如先干什么再干什么然后干什么最后干什么，用from to就不好做了
+
+        这个时候用百分比动画比较好做
+                依然是要写剧本，只是写剧本时不是写from to，而是写百分比
+     -->
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+
+            /* margin: 180px auto; */
+
+            animation: myAni 2s;
+        }
+
+        @keyframes myAni{
+
+            /* 从0%开始到动画时长的百分之50%，做的是你这括号里的事（放大） */
+            30%{
+
+                transform: translate(1000px);
+            }
+            
+            /* 是指从30%开始再到60%这段时间 */
+            60%{
+                /* 在你已经平移1000的基础上再进行放大 */
+                transform: translate(1000px) scale(1.5);
+            }
+
+            80%{
+                transform: translate(1000px) scale(1.5) rotate(45deg);
+            }
+            /* 如果后面什么都不写，代表用剩下的时间来复原 */
+        }
+
+
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

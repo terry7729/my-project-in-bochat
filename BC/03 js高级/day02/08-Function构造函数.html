@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //函数也是对象类型，函数对象都是Function构造函数生成
+
+    //3.构造函数生成
+    /**标准的函数的生成方式，开发中不常用，因为使用麻烦
+     * 所有的参数都是字符串
+     * @param args: 形参    前面所有的参数都是形参
+     * @param body: 函数体代码  最后一个参数是函数体代码
+     * @return 函数对象
+     */
+    //构造无参无返回值函数
+    // var fn = new Function('console.log("我是保健坤")');
+    // fn();
+    //
+    // //构造有参有返回值函数:求两个数字和
+    // var fn1 = new Function('a','b','var num = a + b;return num');
+    //
+    // console.log ( fn1 ( 100, 20 ) );
+
+
+
+     function Elyn(a,b) {
+            var num = a + b;
+            return num;
+
+    }
+
+    console.log(Elyn(10, 20));
+
+
+    // //1.函数式声明
+    // function fn1 ( a,b ) {
+    //     console.log ( "1111" );
+    // };
+    //
+    // //2.表达式声明
+    // var fn2 = function (  ) {
+    //     console.log ( "22222" );
+    // }
+</script>
+</body>
+</html>

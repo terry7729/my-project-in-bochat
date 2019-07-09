@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*本小节知识点：讨论闭包求斐波那契数列，了解闭包的性能问题
+
+     */
+
+    //1.数组求法:
+    //弊端：求的列越多，数组存储的元素越多，损耗内存
+
+    // console.time();
+    // function feiBo ( n ) {
+    //     var arr = [1,1];
+    //     for (var i = 2;i<n;i++){
+    //         arr.push(arr[i-1] + arr[i-2]);
+    //     }
+    //     return arr[arr.length - 1];
+    // };
+    //
+    // console.log ( feiBo ( 1000000 ) );//60ms
+    // console.timeEnd();
+
+    //2.递归求法:性能最低（存在重复计算）
+    //
+    // console.time()
+    //
+    // var count = 1;
+    // function feiBo (n  ) {
+    //     count++;
+    //     if (n == 1 || n == 2){
+    //         return 1;
+    //     }else{
+    //         return feiBo(n-1) + feiBo(n-2);
+    //     }
+    // };
+    //
+    // console.log ( feiBo ( 40 ) );
+    // console.log ( count );
+    // console.timeEnd()
+
+    //3.使用闭包来计算:数组递归法
+
+    console.time();
+    function feiBo (  ) {
+        //1.声明一个数组。前两个元素表示斐波那契数列默认前两列，第三个元素是一个占位符，存储斐波那契数列结果
+        var arr = [1,1,0];
+        //2.使用闭包延长arr的声明周期
+        function closure ( n ) {
+           for (var i = 2;i<n;i++){
+               //2.1  求出当前结果
+               arr[2] = arr[0] + arr[1];
+               //2.2 将数组元素前移，用于下一次计算
+               arr[0] = arr[1];
+               arr[1] = arr[2];
+           }
+           return arr[2];
+        };
+        //3.返回闭包函数
+        return closure;
+    };
+
+    console.log ( feiBo () ( 1000000 ) );//20ms
+
+    console.timeEnd();
+</script>
+</body>
+</html>

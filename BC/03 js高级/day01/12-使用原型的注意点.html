@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*使用原型的注意点
+
+     */
+
+    //1.哪些属性可以放到原型对象中：所有的实例化对象共有的成员
+    // function Dog (name, pinZhong ) {
+    //     this.name = name;
+    //     this.pinZhong = pinZhong;
+    //     this.sayHi = function (  ) {
+    //         console.log ( "汪汪汪" );
+    //     }
+    // };
+    // //
+    // // //世界上每一条狗都有打招呼的方法，这时就可以放入原型中
+    // Dog.prototype.sayHi = function (  ) {
+    //     console.log ( "汪汪汪" );
+    // };
+    // // //世界上每一条狗都是哺乳动物，所以类型属性可以放入原型中
+    // Dog.prototype.type = '哺乳动物';
+    // // //世界上每一条狗的性别并不一定是一样的，所以性别属性不能放入原型中
+    // // Dog.prototype.sex = '公狗';
+    //
+    // var dog1 = new Dog('群群','哈士奇');
+    // dog1.sayHi();
+
+
+
+    //2.对象访问成员的规则： 就近原则
+        //先看自己有没有这个属性，有则访问，没有则看原型有没有，如果有则访问
+    function Student ( name,sex ) {
+        this.name = name;
+        this.sex = sex;
+        this.sayHi = function (  ) {
+            console.log ( "我是构造函数中的方法" );
+        }
+    };
+
+    Student.prototype.sayHi = function (  ) {
+        console.log ( "我是原型中的方法" );
+    }
+
+    var s1 = new Student('班长','男');
+    console.log ( s1 );
+
+    s1.sayHi();
+
+    //3.原型是可以重新赋值的
+    /*a. 一般使用  `构造函数名.prototype`   来修改原型，尽量不要使用   `实例对象.__proto__` 来修改原型
+    b.实例对象访问的是修改前的原型还是修改后，取决于这个实例对象是在修改前实例化还是修改后实例化
+
+     */
+
+    // function Teahce ( name,sex ) {
+    //     this.name = name;
+    //     this.sex = sex;
+    // };
+    //
+    // var s1 = new Teahce('班长','男');
+    // //这不是赋值，而是访问默认原型对象的属性
+    // // s1.__proto__.sb  = function (  ) {
+    // //         console.log ( "天上一群大雁飞过，一会儿排成s形状，一会儿排成b形状" );
+    // // }
+    // Teahce.prototype.sb  = function (  ) {
+    //     console.log ( "我是修改前的原型" );
+    // }
+    // //对原型对象重新赋值
+    // Teahce.prototype = {//将Teache的默认的prototype指向一个新的对象
+    //     sb:function (  ) {
+    //         console.log ( "我是修改后的原型" );
+    //     }
+    // }
+    // var s2 = new Teahce('保健坤',38);
+    // console.log ( s2 );
+    // s2.sb();//我是修改后的原型
+    // console.log ( s1 );
+    //  s1.sb();//我是修改前的原型
+
+</script>
+</body>
+</html>

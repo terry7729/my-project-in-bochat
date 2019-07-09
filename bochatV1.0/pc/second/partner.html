@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>博信BoChat-合作伙伴</title>
+
+    <link rel="stylesheet" type="text/css" href="../css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="../css/index.css" />
+    <link rel="shortcut icon" href="../img/bochat-icon.ico" type="image/x-icon">
+</head>
+
+<body style="background: url(../img/Rectangle.png) no-repeat;width: 100%;height: 100%;background-size: 100% 100%;">
+    <header>
+        <div class="container">
+            <a href="#" style="flex: 1;">
+                <img src="../img/Logo.png" class="logo" />
+            </a>
+            <nav class="nav">
+                <ul class="nav_item">
+                    <li onclick="javascript:location.href='../index.html'">首页</li>
+                    <li onclick="javascript:location.href='node_recruit.html'">节点招募</li>
+                    <li onclick="javascript:location.href='about_botChat.html'">关于博信</li>
+                    <li onclick="javascript:location.href='white_paper.html'">白皮书</li>
+                    <li onclick="javascript:location.href='open_source.html'">开源代码</li>
+                    <li class="active">合作伙伴</li>
+                    <li onclick="javascript:location.href='app_up.html'">应用上架</li>
+                    <li onclick="javascript:location.href='commerce_cooperation.html'">商务合作</li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="node_">
+        <img src="../img/left_r.png" />
+        <span class="margin_lr_30">合作伙伴</span>
+        <img src="../img/right_r.png" />
+        <h1 class="node_size">BUSINESS PARTNERS</h1>
+    </div>
+    <div class="partner_item">
+        <ul class="control">
+            <li class="active1">全部合作伙伴</li>
+            <li>特邀媒体</li>
+            <li>战略媒体</li>
+            <li>合作媒体</li>
+        </ul>
+        <ul class="content">
+            <li style="display: block;">
+                <div class="content_item item1"></div>
+            </li>
+            <li>
+                <div class="content_item item2"></div>
+            </li>
+            <li>
+                <div class="content_item item2"></div>
+            </li>
+            <li>
+                <div class="content_item item2"></div>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(".control li").click(function() {
+            $(this).addClass("active1").siblings().removeClass("active1");
+            $(".content li").hide().eq($(this).index()).show();
+            var type = '';
+            if ($(this).index() == 1) {
+                type = 'TY'
+            } else if ($(this).index() == 2) {
+                type = 'ZL'
+            } else if ($(this).index() == 3) {
+                type = 'HZ'
+            }
+            $.ajax({
+                type: "post",
+                url: "http://api.bochat.net/app/partners/partnersList",
+                async: true,
+                data: 'type=' + type + '',
+                success: function(data) {
+                    var Img = data.data.item;
+                    var str = '';
+                    for (let i = 0; i < Img.length; i++) {
+                        str += '<img src="' + Img[i].image + '"/>'
+                    }
+                    $('.item2').html(str);
+                }
+            });
+        });
+        $('.content_item img').hover(function() {
+            $(this).addClass("box-show").siblings().removeClass("box-show");
+        });
+        $.ajax({
+            type: "post",
+            url: "http://api.bochat.net/app/partners/partnersList",
+            async: true,
+            success: function(data) {
+                var allImg = data.data.item;
+                var str = ''
+                for (let i = 0; i < allImg.length; i++) {
+                    str += '<img src="' + allImg[i].image + '"/>'
+                }
+                $('.item1').append(str);
+            }
+        });
+    </script>
+</body>
+
+</html>

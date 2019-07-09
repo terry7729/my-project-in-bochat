@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        介绍通用算法：
+
+            自身x = 事件对象.clientX - 盒子自身左边框到可视区域距离
+            自身y = 事件对象.clientY - 盒子自身上边框到可视区域距离
+
+        获得盒子边框相对于可视区域距离：
+                盒子.getBoundingClientRect();
+    -->
+
+    <style>
+        body {
+            width: 2000px;
+            height: 2000px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+
+            position: absolute;
+            left: 500px;
+            top: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+
+</body>
+
+</html>
+
+<script>
+    // var box = document.querySelector('.box');
+    var box = document.getElementById('box');
+
+    document.body.onclick = function () {
+
+        //获得盒子相对于可视区域的值
+        var rect = box.getBoundingClientRect();
+        console.log(rect);
+    }
+
+
+    box.onmousedown = function (e) {
+        e = e || window.event;
+
+        //获得盒子相对于可视区域的值
+        var rect = box.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        console.log(x, y);
+    }
+</script>

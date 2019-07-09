@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 1. 创建和引入less文件 页面中可以直接引入 但是不会像CSS一样执行 强调rel="stylesheet/less" -->
+	<!-- <link rel="stylesheet/less" href="base.less"> -->
+	<link rel="stylesheet/less" href="demo.less">
+	<!-- 2. 引入一个less.js文件 编译器文件 用来编译less -->
+	<!-- 因为less虽然引入了但是代码不能被浏览器解析成样式 通过less.js 吧less代码 编译(在js代码里面临时去编译)成css代码浏览器才可以执行 -->
+	<script src="weijinsuo/lib/less/less.js"></script>
+
+	<!-- 3. 使用服务器打开页面 less.js里面会发送ajax 请求demo.less 吧代码编译成css代码 通过style标签嵌入到页面中 完成了less的编译 -->
+</head>
+<body>
+	<div class="box1">
+		第一个盒子
+	</div>
+	<div class="box2">
+		第一个盒子
+	</div>
+	<div class="box3">
+		第一个盒子
+	</div>
+	<div class="box4">
+		第一个盒子
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--1.表单元素有一个非常特殊的属性disabled，表示表单元素的两种状态（可用 禁用），属性值是布尔类型
+        2.在html中，默认不写就是false，写了就是true
+        3.js中可以设置这个属性的值为true或者false
+-->
+
+<input type="text"  >
+<br>
+<input type="password">
+<input type="radio">
+<input type="checkbox">
+<input type="button" value="表单按钮">
+
+<hr>
+<button id="qy">启用</button>
+<button id="jy">禁用</button>
+
+<script>
+      /* 需求分析：
+                    点击启用，设置所有表单元素的disabled为false
+                    点击禁用，设置所有表单元素的disabled为true
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1. 获取元素：
+      var qy = document.getElementById('qy');//启用
+      var jy = document.getElementById('jy');//禁用
+      var inputList = document.getElementsByTagName('input');//表单元素列表
+      //2.注册事件：
+
+      //2.1 禁用
+      jy.onclick = function (  ) {
+          //3.事件处理:设置所有表单元素的disabled为true
+          for(var i = 0;i<inputList.length;i++){
+                inputList[i].disabled = true;
+          }
+      }
+
+      //2.2 启用
+      qy.onclick = function (  ) {
+          //3.事件处理:设置所有表单元素的disabled为false
+          for(var i = 0;i<inputList.length;i++){
+              inputList[i].disabled = false;
+          }
+      }
+</script>
+</body>
+</html>

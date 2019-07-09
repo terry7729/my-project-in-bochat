@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        transition:过渡属性
+                简单来说可以让一个元素在变成另外一个样式时带动画效果
+
+                参数1：设置参与过渡的属性，一般写all，代表所有属性都参与过渡 ，默认值也是all
+                参数2：过渡的持续时间
+                参数3：动画的延迟时间
+                参数4：运动曲线（动画的运动效果） ease ease-in ease-out，建议记住linear代表匀速,steps()分步骤进行动画
+
+            transition如果是加在hover里，就代表只有鼠标悬停时才有动画效果，恢复是没有的
+
+     -->
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+
+            /* 
+                参数1：设置参与过渡的属性，一般写all，代表所有属性都参与过渡 ，默认值也是all
+                参数2：过渡的持续时间
+                参数3：动画的延迟时间
+                参数4：运动曲线（动画的运动效果） ease ease-in ease-out，建议记住linear代表匀速,steps()分步骤进行动画
+
+                其实四个参数没有顺序之分，可以随便写，但是先写的时间是持续时间，后写的时间是延时时间
+                transition是一个复合属性（组合属性），类似于border或者说background，也就是说由多个子属性拼接起来的
+            */
+            /* transition:all 1s 0.1s steps(3); */
+
+            /* transition是由以下四个子属性组成 */
+            /* transition-property: 参与过渡的属性 */
+            /* transition-duration: 动画的持续时间 */
+            /* transition-delay: 过渡的延迟时间 */
+            /* transition-timing-function: 运动曲线 */
+
+            /* transition: 1s linear 0.5s all;  */
+
+        }
+
+        .box:hover {
+
+            transition:all 1s 0.1s ;
+            width: 300px;
+            height: 300px;
+            background-color: #00f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

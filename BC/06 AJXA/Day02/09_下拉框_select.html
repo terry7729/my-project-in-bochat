@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        select是下拉框：默认都是下拉形式（单选形式）
+                如果给它加一个行内属性 multiple就可以变成多选
+
+        如果要让select有内容显示，必须给它加option，有几个option就有几个选项
+
+        如果要改变默认显示的option，那么就给需要默认显示的option加一个selected
+
+
+        下拉框.value 
+            如果被选中的option有value属性，那么获取的是这个option的value的值
+            如果没有value属性，那么获取的是这个option的文本
+
+        下拉框.value的赋值
+            如果option有value，那么会找到value等于你赋的值的那个option，让它被选中
+            但如果option没有value，那么会找到option里文本等于你赋的那个值的option，让它被选中
+
+     -->
+
+    <style>
+        select{
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <select name="" id="sel1">
+        <option>苹果</option>
+        <option>西瓜</option>
+        <option>鸭梨</option>
+        <option>菠萝</option>
+    </select>
+
+    <input type="button" value="获取当前选中的值" id="btn1">
+    <input type="button" value="设置第四个被选中" id="btn2">
+</body>
+</html>
+
+<script>
+
+    
+    var sel1 = document.getElementById('sel1');
+
+    
+    document.getElementById('btn1').onclick = function(){
+
+        console.log(sel1.value);
+        
+    }
+
+    document.getElementById('btn2').onclick = function(){
+
+        sel1.value = "菠萝";
+    }
+</script>

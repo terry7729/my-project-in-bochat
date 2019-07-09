@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //面向对象编程
+        //万物皆对象:在程序员眼中,所有的东西,都是对象
+        //把宋明封装成为一个对象
+        //名字:宋明
+        //性别:男
+        //年龄:48
+        //打招呼的动作(方法===函数)
+        //用代码把以上宋明的特点变成一个对象
+
+        //1.使用构造函数的方式来新建对象
+        var songM = new Object();
+        //如何给对象设置上属性以及方法函数
+        //点语法
+        //内部已经帮你声明好了变量
+        songM.name = "宋明";
+        songM.gender = "男";
+        songM.age = 48;
+        songM.money = 12;
+        //给对象设置一个函数
+        //匿名函数
+        songM.sayHi = function (){
+            console.log("你好啊,是兄弟就来砍我,我在贪玩蓝月等你");
+        };
+        //console.log(songM);
+
+
+        //对象如何取值:依旧使用点语法
+        //对象中的属性以及方法,都是有归属的
+        //属于谁,就由谁来调用
+        //console.log(gender);错误的
+        console.log(songM.gender);
+        console.log(songM.name);
+
+        songM.sayHi();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

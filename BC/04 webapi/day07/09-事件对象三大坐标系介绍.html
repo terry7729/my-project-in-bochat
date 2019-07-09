@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            left: 100px;
+            top:100px;
+            position: absolute;
+        }
+
+        body{
+            width: 3000px;
+            height: 3000px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="box" style="width: 200px;height: 200px;background-color: red;"></div>
+
+<script src="common.js"></script>
+
+<script>
+
+    var box = document.getElementById('box');
+
+    /*事件对象三大坐标系
+     */
+    box.onclick = function ( e ) {
+        e =  e || window.event;
+
+        //1. 获取鼠标触发点相对于屏幕左上角距离
+        // console.log ( 'screenX:' + e.screenX, 'screenY:' + e.screenY );
+        //2 获取鼠标触发点相对于页面可视区域左上角的距离
+        console.log ( 'clicentX:' + e.clientX, 'clicentY:' + e.clientY );
+        //3 获取鼠标触发点相对于页面左上角（哪怕页面滚动走了也是左上角）的距离
+        //最常用：因为元素定位的坐标系就是按照page的坐标系来的
+        console.log ( 'pageX:' + e.pageX, 'pageY:' + e.pageY );
+
+        console.log  ( getScroll ().scrollLeft, getScroll ().scrollTop );
+
+        console.log ( getPagePoint ( e ).pageX, getPagePoint ( e ).pageY );
+    }
+
+
+    //2.IE8不支持pageX,并且没有任何替代属性
+    //IE8中获取pageX，只能手动去计算   pageX = clientX + scrollLeft
+
+    /**
+     * 获取事件对象鼠标触发点相对于页面左上角距离
+     * @param e 事件对象
+     */
+    function getPagePoint ( e ) {
+        var x = e.clientX + getScroll().scrollLeft;
+        var y = e.clientY + getScroll().scrollTop;
+
+        return {
+            pageX:x,
+            pageY:y
+        }
+    }
+
+</script>
+</body>
+</html>

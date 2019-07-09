@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* 在移动端去除一些按住高亮的背景色 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+html {
+    font-size: 26.6667vw;
+    font-family: "microsoft yahei" !important;
+}
+
+img {
+    border: none;
+}
+
+body {
+    padding-bottom: env(safe-area-inset-bottom);
+}
+
+
+/*清除浮动*/
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+main {
+    overflow: hidden;
+    width: 3.75rem;
+    max-width: 5.5rem !important;
+}
+
+main>.header {
+    /* height: 1.07rem; */
+    padding: 0.2rem 0.16rem 0;
+    border-top: 1px solid #F7F7F7;
+}
+
+.header h3 {
+    font-size: 0.18rem;
+    color: #222222;
+    /* font-family: 'PingFang-SC-Bold'; */
+    line-height: 0.25rem;
+    /* font-weight: normal; */
+}
+
+.header>div {
+    overflow: hidden;
+}
+
+.header span {
+    color: #999999;
+    font-size: 0.12rem;
+    margin-top: 0.18rem;
+    display: inline-block
+}
+
+.header>div {
+    display: flex;
+    border-bottom: 1px solid #F7F7F7;
+    padding-bottom: 0.16rem;
+}
+
+.header .ly {
+    /* width: 0.8rem; */
+}
+
+.header .timer {
+    flex: 1;
+    text-align: right;
+}
+
+.main {
+    padding: 0.2rem 0.16rem 0.25rem;
+    /* height: 3.47rem; */
+    overflow: hidden;
+}
+
+.main p {
+    line-height: 0.22rem;
+    font-size: 0.14rem;
+}
+
+.main img {
+    max-width: 3.4rem;
+}
+
+.paddbottom {
+    padding-bottom: 0.2rem;
+}
+
+.readAll {
+    width: 1.2rem;
+    height: 0.33rem;
+    background-color: #222222;
+    margin-left: 1.18rem;
+    margin-top: 0.25rem;
+    border-radius: 0.02rem;
+    font-size: 0.14rem;
+    padding-left: 0.2rem;
+    line-height: 0.33rem;
+    color: #fff;
+    margin-bottom: 0.43rem;
+}
+
+.readAll>img {
+    width: 0.11rem;
+    margin-left: 0.05rem;
+}
+
+.recommendRead {
+    height: auto;
+    width: 100%;
+}
+
+.recommendRead>div {
+    height: 0.25rem;
+    width: 3.6rem;
+    margin-left: 0.15rem;
+}
+
+.recommendRead>img {
+    left: 0.15rem;
+}
+
+.recommendRead ul li {
+    height: 0.9rem;
+}
+
+.recomm {
+    position: relative;
+    border-bottom: 1px solid #F7F7F7;
+    margin-bottom: 0.16rem;
+}
+
+.recomm>img {
+    position: absolute;
+    top: 0.02rem;
+    width: 0.05rem;
+    margin-top: 0.02rem;
+    margin-right: 0.1rem;
+}
+
+.recomm span {
+    top: -1px;
+    left: 0.14rem;
+    position: absolute;
+    font-size: 0.18rem;
+}
+
+.recommendRead>span {
+    color: #222222;
+    font-size: 0.18rem;
+    left: 0.29rem;
+    top: -0.04rem;
+}
+
+.main {
+    font-size: 0.14rem;
+}
+
+.recommendRead li {
+    width: 3.6rem;
+    height: 1.15rem;
+    /* margin-bottom: 0.24rem; */
+}
+
+.recommendRead li>a {
+    text-decoration: none;
+    color: #222222;
+    position: absolute
+}
+
+.info p {
+    font-size: 0.14rem;
+    line-height: 0.22rem;
+    font-weight: bold;
+    margin-top: -0.02rem;
+}
+
+.info>div {
+    width: 2.16rem;
+    margin-left: 0.15rem;
+}
+
+.info>img {
+    width: 1.1rem;
+    height: 0.75rem;
+    margin-left: 0.19rem;
+    border-radius: 0.03rem;
+}
+
+.info {
+    display: flex;
+}
+
+.footer {
+    width: 100%;
+    height: 0.7rem;
+}
+
+.info .bijiao {
+    display: flex;
+    color: #999999;
+    font-size: 0.12rem;
+    margin-top: 0.16rem;
+}
+
+.bijiao>span {
+    flex: 1;
+}
+
+.bijiao .one {
+    text-align: left;
+}
+
+.bijiao .wne {
+    text-align: right;
+}
+
+@supports (bottom: constant(safe-area-inset-bottom)) or (bottom: env(safe-area-inset-bottom)) {
+    footer {
+        padding-bottom: env(safe-area-inset-bottom);
+        width: 100%;
+        position: fixed;
+        height: 0.7rem;
+        background: url('../img/notice_bottom@2x.png') no-repeat;
+        background-size: 3.75rem;
+        bottom: 0;
+        display: flex;
+        cursor: pointer;
+    }
+}
+
+footer {}
+
+footer>img {
+    width: 0.44rem;
+    height: 0.44rem;
+    margin-top: 0.13rem;
+    margin-left: 0.15rem;
+}
+
+footer>div>p:nth-of-type(1) {
+    color: #fff;
+    font-size: 0.14rem;
+    margin-top: 0.16rem;
+    margin-left: 0.15rem;
+    margin-bottom: 0.03rem;
+}
+
+footer>div>p:nth-of-type(2) {
+    color: #fff;
+    font-size: 0.12rem;
+    opacity: 0.5;
+    margin-left: 0.15rem;
+}
+
+.enlargeImg_wrapper {
+    height: 100%;
+    /* display: none; */
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 40%; */
+    background-color: rgba(52, 52, 52, 0.8);
+    /* background-size: 90%; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.enlargeImg_wrapper .imglist {
+    /* left: 50%;
+    position: absolute;
+    top: 40%;
+    margin-left: -1.7rem; */
+    width: 3.7rem;
+}
+
+.mian img:hover {
+    cursor: zoom-in;
+}
+
+.enlargeImg_wrapper:hover {
+    cursor: zoom-out;
+}
+
+.pinch-zoom,
+.pinch-zoom img {
+    width: 100%;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-drag: none;
+}

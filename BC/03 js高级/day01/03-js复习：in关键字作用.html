@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    // in关键字：有三个作用
+    //
+    // 1.遍历对象： for-in循环
+    // var person = {
+    //     name:'班长',
+    //     age:18,
+    //     sex:'男'
+    // };
+    //
+    // for (var key in person){
+    //     console.log ( key );//属性名字符串
+    //     console.log ( person[ key ] );//属性值
+    // }
+
+    //2.检测对象是否可以访问某个属性：
+    /*语法：  '属性名' in 对象名   */
+    // var person = {
+    //     name:'班长',
+    //     age:18,
+    //     sex:'男'
+    // };
+    //
+    // console.log ( "name" in person );//true
+    // console.log ( "age" in person );//true
+    // console.log ( "sex" in person );//true
+    // console.log ( "girlFrined" in person );//false
+    // var  girlFriend = 'sex';
+    // console.log ( girlFriend in person );//true   检测girlFriend这个变量中的字符串对应的属性在不在person中
+
+    //3.检测数组是否包含某个下标:
+    /* 语法： 下标 in 数组名 */
+    // var arr = [66,88,100,20,50];
+    // console.log ( arr );
+    //
+    // console.log ( 1 in arr );//true
+    // console.log ( 5 in arr );//false
+    //
+    // //4.检测是否是否包含某个元素
+    // /*  数组名.indexOf(元素)   */
+    //
+    // console.log ( arr.indexOf ( 88 ) );//1  存在则返回该元素下标
+    // console.log ( arr.indexOf ( 888 ) );//-1 不存在则返回固定值-1
+
+    //复习数组去重：
+    //
+    // var arr = [20,25,66,88,100,25,66];
+    // //1.声明空数组存储去重后的元素
+    // var newArr = [];
+    // //2.遍历旧数组
+    // for(var i = 0;i<arr.length;i++){
+    //     //3.检测旧数组元素在不在newArr中，在则不添加，不在则添加
+    //     if (newArr.indexOf(arr[i]) == -1){//不在
+    //         newArr.push(arr[i]);
+    //     }
+    // };
+    //
+    // console.log ( newArr );
+
+
+
+    var arr = [20,25,66,88,100,25,66];
+    var newArry = [];
+    for (var i = 0;i <arr.length;i++) {
+        if (newArry.indexOf(arr[i]) == -1) {
+            newArry.push(arr[i])
+        }
+    }
+
+    console.log(newArry);
+</script>
+</body>
+</html>

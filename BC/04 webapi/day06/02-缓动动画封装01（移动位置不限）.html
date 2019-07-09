@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="缓动移到400" id="move400"/>
+<input type="button" value="缓动移到800" id="move800"/>
+
+<div id="box"></div>
+
+
+<script>
+    /*本小节目标
+    代码冗余   ---函数
+    移动距离不限 ---函数参数
+
+     */
+    var box = document.getElementById('box');
+
+    document.getElementById('move400').onclick = function (  ) {
+            animationSlow(400);
+    }
+
+    document.getElementById('move800').onclick = function (  ) {
+            animationSlow(800);
+    }
+
+
+    var timeID = null;
+    /** 缓动动画封装
+    @param target 移动目标距离
+     */
+    function animationSlow ( target ) {
+        //1.清除之前的定时器，以本次移动为准
+        clearInterval(timeID);
+        //2.开始本次移动
+        timeID =  setInterval(function (  ) {
+            //2.1 获取元素当前位置
+            var currentLeft = box.offsetLeft
+            //2.2 计算本次移动距离  =   (目标位置 - 当前位置)/10
+            var step = (target - currentLeft)/10;
+            //取整
+            step = Math.ceil(step);
+            //2.3 开始移动
+            currentLeft += step;
+            box.style.left = currentLeft + 'px';
+            //2.4 终点检测：到达终点停止移动
+            if (currentLeft == target){
+                clearInterval(timeID);
+            }
+        },50);
+    }
+</script>
+</body>
+</html>

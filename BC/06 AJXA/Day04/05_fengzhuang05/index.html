@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        上一个封装存在的问题：
+            封装的函数形参太多了，调用函数时这些形参都得传，而且是一个一个传，要一一对应
+            所以也就是说哪怕你不需要给服务器提交数据，你都得给data传一个空字符串
+
+        
+        想法：
+            想让函数的形参少一点
+            第二：哪怕没有参数，也不用给data传空字符串
+
+
+        实现思路：
+            把所有形参当做对象的属性，然后只要传入这一个对象就可以了
+
+        
+    -->
+
+</head>
+
+<body>
+    <input type="button" value="发请求1" id="btn1">
+    <input type="button" value="发请求2" id="btn2">
+    <input type="button" value="发请求3" id="btn3">
+
+    <p>姓名：</p>
+    <p>年龄：</p>
+
+</body>
+
+</html>
+
+<script>
+
+    // 我现在只传一个参数，但是这个参数是一个对象
+    // 对象里面可以包含N多个属性
+    function ajax(params) {
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //不管你请求方式传的是大写还是小写，我统一转成小写，那么我判断时只用判断小写的这一个条件就行了
+        params.type = params.type.toLowerCase();
+
+        //拼接url
+        if (params.type == "get") {
+
+            params.url += "?" + params.data;
+        }
+
+        //2. 设置请求行
+        xhr.open(params.type, params.url);
+        
+        //3. 设置请求头（get不用设置，post要设置）
+        if (params.type == "post") {
+
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            //4. 发送请求&设置请求体（post要设置请求体
+            xhr.send(params.data);
+
+        } else {
+            //4. 发送请求&设置请求体（post要设置请求体）
+            xhr.send();
+        }
+        //5. 监听响应完成
+        xhr.onload = function () {
+
+            // console.log(xhr.responseText);
+            // alert(xhr.responseText);
+            // div.innerHTML = xhr.responseText;
+            //创建表格那些,也就是说每个调用我封装的函数的人，想做的操作是不一样
+            //换句话说就是对响应体处理的代码不一样
+            //干脆就让人吧代码传进来
+            //但是，我可以把代码打包成一个函数，再把这个函数传进来，相当于就传了一段代码进来？
+            // success( xhr.responseText );
+
+            var obj = xhr.responseText;
+
+            // dataType = dataType ? dataType.toLowerCase() : dataType;
+            
+            //如果dataType传值了，才转成小写
+            if(params.dataType != undefined) //undefined null 0 "" -0 NaN false 都是false
+                params.dataType = params.dataType.toLowerCase();
+
+            if(params.dataType == "json"){
+
+                obj = JSON.parse(xhr.responseText);
+            }else if(params.dataType == "xml"){
+
+                //转成XML
+                var parser = new DOMParser();
+                obj = parser.parseFromString(xhr.responseText,'text/xml');
+            }
+
+
+            params.success(obj);
+        }
+    }
+
+    //找到所有的p标签
+    var pList = document.getElementsByTagName('p');
+
+
+    //发请求1
+    document.getElementById('btn1').onclick = function () {
+
+        // ajax('GET', 'checkname.php', "name=rose",function(res){
+
+        //     // console.log(res);
+        //     // 转成JS数据
+        //     // var obj = JSON.parse(res);
+
+        //     // console.log(res);
+        //     pList[0].innerHTML += res.name;
+        //     pList[1].innerHTML += res.age;
+            
+        // },'JSON');
+
+        ajax({
+            type:"get",
+            url:"checkname.php",
+            data:"name=rose",
+            success:function(res){
+
+                pList[0].innerHTML += res.name;
+                pList[1].innerHTML += res.age;
+            },
+            dataType:"json"
+        });
+    }
+
+    //发请求2
+    document.getElementById('btn2').onclick = function () {
+
+        // ajax('POST', 'code.php', "phone=13800138000",function(res){
+
+        //     alert(res);
+        // }); 
+
+        ajax({
+            type:"post",
+            url:"code.php",
+            data:"phone=13800138000",
+            success:function(res){
+                
+                alert(res);
+            }
+        });
+    }   
+
+
+    document.getElementById('btn3').onclick = function(){
+
+        // ajax('get','test.php','',function(res){
+
+        //     console.log(res);
+            
+        // });
+
+        ajax({
+            type:"get",
+            url:"test.php",
+            success:function(res){
+
+                alert(res);
+            }
+        });
+    }
+</script>

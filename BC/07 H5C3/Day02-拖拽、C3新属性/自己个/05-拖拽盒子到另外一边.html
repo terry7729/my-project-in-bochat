@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 430px;
+            height: 550px;
+            border: 1px solid #000;
+            position: absolute;
+        }
+
+        img{
+            width: 100px;
+        }
+
+        .left{
+            top:20px;
+            left:10px;
+        }
+
+        .right{
+            top:20px;
+            right:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <!-- img[src=images/$.jpg]*5 -->
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/5.jpg" alt="">
+    </div>
+    <div class="right"></div>
+</body>
+</html>
+<script src="./jquery-1.11.4.min.js"></script>
+<script>
+    var globalImg;
+    $('img').each(function(){
+        $(this).on('dragstart',function(){
+            globalImg=$(this);
+        })
+    });
+
+    // $('img').on('dragstart',function(){
+
+    // })
+
+    $('.right').on('dragover',function(e){
+        e=e||event;
+        e.preventDefault();
+    })
+
+    $('.right').on('drop',function(e){
+        e=e||event;
+        e.preventDefault();
+        $(this).append(globalImg);
+    })
+
+       $('.left').on('dragover',function(e){
+        e=e||event;
+        e.preventDefault();
+    })
+
+    $('.left').on('drop',function(e){
+        e=e||event;
+        e.preventDefault();
+        $(this).append(globalImg);
+    })
+
+
+
+</script>

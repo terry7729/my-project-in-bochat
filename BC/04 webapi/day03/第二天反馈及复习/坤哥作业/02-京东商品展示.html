@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul {
+            list-style: none;
+            padding-top: 15px;
+        }
+        .box {
+            width: 350px;
+            height: 420px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        li {
+            float: left;
+            width: 20%;
+            text-align: center;
+        }
+        img:hover {
+            outline: 3px solid #0094ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div>
+            <img src="images1/b1.jpg" id="big" alt=""/>
+        </div>
+        <div>
+            <ul id="ul">
+                <!--data-src是自定义属性，存放对应大图的src-->
+                <li><img src="images1/s1.jpg" data-src="images1/b1.jpg" alt=""/></li>
+                <li><img src="images1/s2.jpg" data-src="images1/b2.jpg" alt=""/></li>
+                <li><img src="images1/s3.jpg" data-src="images1/b3.jpg" alt=""/></li>
+                <li><img src="images1/s4.jpg" data-src="images1/b4.jpg" alt=""/></li>
+                <li><img src="images1/s5.jpg" data-src="images1/b5.jpg" alt=""/></li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script>
+
+        /*1.获取事件源
+        2.添加事件
+        3.事件处理
+
+         */
+
+        //1.获取元素
+        var big = id('big');//大图片
+        var liList = id('ul').getElementsByTagName('li');//小图片列表
+
+        //2.循环小图片列表
+        for(var i = 0;i<liList.length;i++){
+            //2.1 给每一个小图片添加点击事件
+            liList[i].onclick = function (  ) {
+
+                //3.1 拿到li标签中的image标签
+                var image = this.children[0];
+
+                //3   设置大图片的src属性为自己的href属性
+                big.src = image.getAttribute('data-src');
+            }
+        }
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        这些标签虽然说是专门用来表示网页区域结构的，但是它们本质上像div（块级元素），不给样式是看不到
+
+        比div优势：
+                1.更有语义化，更利于seo
+                2.因为是标签，不能乱写，更加有规范
+
+
+        header: 头部区域
+                nav：导航区域
+
+        main： 主体区域
+                section： 小区域
+                        aside：边栏
+                        article:文章
+
+        footer：页尾区域
+     -->
+
+     <style>
+        header {
+            height: 200px;
+            background-color: #f00;
+        }
+
+        nav {
+            height: 100px;
+            background-color: orange;
+        }
+        nav {
+            height: 100px;
+            background-color: orange;
+        }
+
+        main {
+            margin-top: 20px;
+            background-color: #0f0;
+            height: 800px;
+        }
+
+        footer {
+            margin-top: 20px;
+            background-color: #00f;
+            height: 100px;
+        }
+
+        section {
+            width: 100%;
+            height: 200px;
+            background-color: purple;
+            margin-top: 10px;
+        }
+
+        aside {
+            width: 30%;
+            height: 100%;
+            background-color: orangered;
+            float: left;
+        }
+
+        article {
+            width: 70%;
+            height: 100%;
+            background-color: gold;
+            float: left;
+        }
+     </style>
+</head>
+<body>
+
+    <!-- 头部区域 -->
+    <header>
+        <nav></nav>
+    </header>
+
+    <!-- 主体区域 -->
+    <main>
+        <!-- 小区域 -->
+        <section>
+            <!-- 边栏 -->
+            <aside></aside>
+            <!-- 文章(正文) -->
+            <article></article>
+        </section>
+    </main>
+
+    <!-- 页尾区域 -->
+    <footer></footer>
+</body>
+</html>

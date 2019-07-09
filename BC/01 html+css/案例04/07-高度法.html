@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 500px;
+            background-color: red;
+            height: 300px;
+            /* 高度法 */
+            /* 高度法并不是所有的情况都适合 */
+            /* 高度法只适合那种固定高度的盒子 */
+            /* 一旦盒子的高度是动态变化的,那么就不适用 */
+        }
+
+        .son {
+            width: 200px;
+            height: 50px;
+            border: 5px solid yellow;
+            background-color: pink;
+            float: left;
+        }
+
+        .bottom {
+            width: 500px;
+            height: 500px;
+            background-color: gold;
+        }
+
+        .bottom .demo {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+        <div class="son"></div>
+    </div>
+    <div class="bottom">
+        <div class="demo"></div>
+    </div>
+</body>
+</html>

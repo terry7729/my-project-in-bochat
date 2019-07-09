@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+账号：<input type="text" id="userName" value="我是用户名">
+<br/><br/>
+密码：<input type="password" id="password" >
+<br/><br/>
+<input type="button" value="登录" id="login">
+
+
+<script>
+      /* 需求分析：点击登录按钮，判断用户名和密码长度
+                * 成功：用户名和密码都要大于6位
+                * 失败：用户名或密码都要小于6位
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1. 获取元素：
+      var login = document.getElementById('login');
+      var userName = document.getElementById('userName');
+      var password = document.getElementById('password');
+
+        /*   获取元素文本
+            双标签： innerText
+            单标签：value
+       */
+      console.log ( userName.innerText );
+      console.log ( userName.value );//我是用户名
+      //2.注册事件：
+      login.onclick = function (  ) {
+          //3.事件处理
+          if (userName.value.length >= 6 && password.value.length >= 6){//一假则假
+              alert('登录成功');
+          }else{
+              alert('用户名或密码长度不够');
+          }
+      }
+</script>
+</body>
+
+
+</html>

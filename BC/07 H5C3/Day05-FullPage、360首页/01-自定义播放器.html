@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <!-- 
+        视频/音频 的API：
+                方法： 
+                    play()：  播放
+                    pause()： 暂停
+                    requestFullScreen()： 全屏
+
+     -->
+
+
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+
+    <style>
+        body {
+            background-color: #000;
+        }
+
+        .player {
+            width: 600px;
+            height: 420px;
+            margin: 100px auto;
+            border: 1px solid white;
+            display: flex;
+            flex-direction: column;
+        }
+
+        video {
+            width: 100%;
+            flex: 9;
+        }
+
+        .controls {
+            flex: 1;
+            /* background-color: #f00; */
+
+            border-top: 1px solid white;
+            display: flex;
+        }
+
+        .controls a {
+            width: 60px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            font-size: 35px;
+
+            /* -webkit-animation:  */
+            /* -moz-animation:  */
+            /* animation: */
+        }
+
+        .progress {
+
+            flex: 1;
+            background-color: #fff;
+        }
+
+        .son {
+            background-color: gray;
+            width: 0%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="player">
+
+        <video src="video/movie01.mp4"></video>
+        <div class="controls">
+            <a id="play" href="javascript:void(0);" class="fa fa-play-circle"></a>
+            <div class="progress">
+                <div class="son"></div>
+            </div>
+            <input type="range" id="range" max="1" min="0" step="0.1" value="1">
+            <a id="full" href="javascript:void(0);" class="fa fa-arrows-alt"></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    //找到video
+    var video = document.querySelector('video');
+    //找到显示进度的子盒子
+    var son = document.querySelector('.son');
+    //找到进度条父盒子
+    var progress = document.querySelector('.progress');
+
+    //播放的点击事件
+    document.getElementById('play').onclick = function () {
+
+        //如果a标签的图标有播放的图标，就要做播放的功能
+        if (this.classList.contains('fa-play-circle')) {
+
+            //要让视频播放起来
+            video.play();
+            this.classList.replace('fa-play-circle', 'fa-pause-circle');
+
+        } else {
+
+            //代表图标是暂停的图标，就要让视频暂停
+            video.pause();
+            this.classList.replace('fa-pause-circle', 'fa-play-circle');
+        }
+    }
+
+    //全屏的点击事件
+    document.getElementById('full').onclick = function () {
+
+        // 这个方法只是在谷歌最新的浏览器里支持，你的谷歌比现在版本低2个版都不可以用
+        // 在那之前这个方法仅仅只是说加到标准里了，各大浏览器也支持。只不过还在测试阶段，没有正式发布
+        // 像这样的属性或者方法也叫实验室中的属性或者方法
+        // 像实验室方法浏览器支持了，但是没法直接用，所以你要用的时候要在方法前面或者属性前面加浏览器的前缀
+        // video.requestFullscreen();
+
+        // video.webkitRequestFullScreen();
+        // video.mozRequestFullScreen();
+
+        //IE这里的s记得小写
+        // video.msRequestFullscreen();
+
+        //能力检测
+        // if( video.requestFullscreen ){
+
+        //     video.requestFullscreen();
+
+        // }else{
+
+        //     video.msRequestFullscreen();
+        // }
+
+
+
+        // 一个月以前的兼容
+        if (video.webkitRequestFullScreen) {
+
+            video.webkitRequestFullScreen();
+
+        } else if (video.mozRequestFullScreen) {
+
+            video.mozRequestFullScreen();
+        } else {
+
+            video.msRequestFullscreen();
+        }
+    }
+
+    //当视频时间每发生改变就来触发的事件
+    video.ontimeupdate = function () {
+
+        //用视频的当前时间(currentTime) / 视频总时长(duration)   
+        // console.log(video.currentTime, video.duration);
+
+        son.style.width = video.currentTime / video.duration * 100 + "%";
+
+    } 
+
+    //给进度条父盒子加点击事件
+    progress.onclick = function(e){
+
+        e = e || window.event;
+        //怎样获得相对于自身的x e.offsetX：获得相对于自身的x值，它是IE弄出来的
+        // console.log(e.offsetX);
+        // e.clientX - 盒子自身相对于可视区域的left
+        var rect = progress.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        // console.log(x);
+
+        //用相对于自身的x 除以 总宽度 得到比例
+        video.currentTime =  x / progress.offsetWidth * video.duration
+        
+    }
+
+    //滑块的值改变事件
+    document.getElementById('range').onchange = function(){
+
+        //拿到滑块的值去修改音量
+        video.volume = this.value;
+    }
+</script>

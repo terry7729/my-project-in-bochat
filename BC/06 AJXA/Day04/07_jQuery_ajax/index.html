@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        $.get和$.post 跟 $.ajax唯一的区别在于：不用写type属性，因为它们就是专门发get或者post请求的
+
+        $.get和$.post这两个方法，在jQuery1.12和以后的版本才能支持传入对象的写法
+
+        jQuery1.11 和之前的版本，都只支持一一个传参数的写法
+            参数1：url
+            参数2：data
+            参数3：success
+            参数4：dataType
+
+     -->
+
+    <!-- 首先导入jQuery -->
+</head>
+
+<body>
+    <input type="button" value="发请求" id="btn">
+    <input type="button" value="发get请求" id="btn2">
+    <input type="button" value="发post请求" id="btn3">
+</body>
+
+</html>
+
+<!-- <script src="./jquery-1.12.4.js"></script> -->
+
+<script src="./jquery-1.11.4.min.js"></script>
+
+<script>
+
+    $('#btn').click(function () {
+
+        $.ajax({
+            // 请求的路径
+            url: "data.php",
+            // 请求的方式
+            type: "post",
+            // 请求提交的数据
+            // data:"name=jack&age=16",
+            // jquery提交给服务器的数据，除了可以写字符串，还可以写对象
+            // 它会自动帮你把这个对象转成对应的key=value形式的字符串
+            data: { name: "rose", age: 16 },
+            // 告诉jQuery，我的响应体是JSON格式的，你帮我自动按JSON转成JS对象
+            // 如果响应体不是JSON，但是你又告诉jQuery说，按JSON来转换，那么会转换失败，进不到success这个回调函数里面
+            dataType: "json",
+            // 响应完成的回调函数，obj就是响应体
+            success: function (obj) {
+
+                console.log(obj);
+            },
+            // 当发生错误会调用的回调函数
+            error: function (e) {
+                //当出错错误，会来到这个函数，形参是jQuery帮你创建的一个对象
+                //里面会有响应状态码，响应文本，以及响应体这些东西
+                console.log(e);
+
+            }
+        });
+    });
+
+
+    $('#btn2').click(function () {
+
+        //请求get.php
+        // $.get({
+
+        //     success: function (obj) {
+
+        //         console.log(obj);
+        //     },
+        //     data: { name: "rose" },
+        //     url: "get.php",
+
+        // });
+
+
+        //一定要记住顺序：
+        //参数1：url
+        //参数2：提交给接口的数据
+        //参数3：回调函数
+        //参数4：dataType：告诉jQuery响应体的数据类型，你帮我自动高转换，如果是字符串不用写
+        $.get("get.php",{name:"JACK"},function(obj){
+
+            console.log(obj);
+
+        });
+    });
+
+
+    $('#btn3').click(function () {
+
+        // $.post({
+        //     url: "post.php",
+        //     data: { name: "胖林" },
+        //     success: function (obj) {
+
+        //         console.log(obj);
+
+        //     }
+        // });
+
+        $.post("post.php", "name=胖龙", function (obj) {
+
+            console.log(obj);
+
+        });
+    });
+</script>

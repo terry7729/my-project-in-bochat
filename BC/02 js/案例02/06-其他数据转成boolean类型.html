@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //使用Boolean()
+        console.log(Boolean(1));//true
+        console.log(Boolean(110));//true
+        //非零的数就是true
+        console.log(Boolean(-110));//true
+        console.log(Boolean("lcw"));//true
+        console.log(Boolean(" "));//true
+
+        console.log(Boolean(0));//false
+        console.log(Boolean(-0));//false
+        console.log(Boolean(""));//false
+        console.log(Boolean(undefined));//false
+        console.log(Boolean(null));//false
+        console.log(Boolean(NaN));//false
+
+        //拓展知识点,利用双重取反,可以获得布尔值
+        //隐式转换====显式转换
+        var str = "梁朝伟";
+        var res = !!str;
+        console.log(res);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

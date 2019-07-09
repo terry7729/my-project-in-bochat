@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*window:浏览器窗口
+           1.是js中的顶级对象。（所有的全局变量，所有的全局函数，dom对象都是window对象的属性）
+           2.凡是window对象的属性，在使用的时候都可以省略前面的window
+           3.window对象有一个特殊的属性name，值一定只能是字符串
+     */
+
+    console.log ( window );
+
+    var num = 10;
+    console.log ( num  === window.num);//true
+    console.log ( document === window.document );//true  DOM属于BOM
+    //name属性：值一定是字符串
+    console.log ( name );
+    //手动修改name的值
+    name = 10;//变成字符串10
+    console.log ( window );
+    name = [10,20,30];//10,20,30 字符串
+    console.log ( window );
+
+    //哪怕你重新声明一个变量叫做name，它的值都只能是字符串
+    var name = true;//变成字符串true
+    console.log ( typeof name );//string
+
+    //取名要有意义，最后不要使用HTML中默认的属性名作为变量名，一般可以加上前缀  boxTop
+    var top = 10;
+    console.log ( top );//无法被修改的
+
+
+</script>
+</body>
+</html>

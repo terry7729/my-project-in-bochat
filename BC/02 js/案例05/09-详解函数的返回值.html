@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //function demo1(a,b) {
+        //    var sum = a + b;
+        //    //如果函数内部没有return.那么函数默认返回undefined
+        //}
+        //var res1 = 10;
+        //res1 = demo1(10,20);
+//
+        //console.log(res1);//undefined
+
+        //function demo2(a,b) {
+        //    var sum = a + b;
+        //    return;
+        //    //如果有return但是后面没有内容,那也是返回undefined;
+        //}
+        //
+        //var res2 = demo2(10,20);
+        //console.log(res2);//undefined
+
+
+        //function demo3(a,b) {
+        //   var sum = a + b;
+        //   return sum;
+        //   //如果return后面有变量,那么会直接把这个变量返回出去
+        //}
+//
+        //var res3 = demo3(100,200);
+        //console.log(res3);
+
+        function demo4(a,b) {
+            var sum = a + b;
+            return sum;
+            //如果return后面有变量,那么会直接把这个变量返回出去
+            console.log("我是return后面的代码");
+            //如果有代码在return后面,那么不好意思,这句代码永远都不会执行
+            //因为函数只要遇到了return,那么函数结束,后面的代码不会执行
+        }
+
+        var res4 = demo4(20,20);
+        console.log(res4);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

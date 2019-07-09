@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        默认情况下：
+            主轴：x
+            副轴：y
+
+        弹性布局里默认情况下x为主轴，y为副轴
+
+        用了伸缩（弹性）布局会让子元素依次在主轴方向排列
+        
+        弹性布局特点：子元素永远不会超过主轴方向
+
+        加在父元素上的属性：
+                display:flex;  让子元素用伸缩布局
+                flex-direction：设置主轴方向，也就是说设置x还是y为主轴
+                justify-content：设置主轴上的对齐方式
+                align-items：设置副轴上的对齐方式
+                flex-wrap:wrap  代表允许换行
+     -->
+    <style>
+        ul {
+            padding: 0;
+            list-style: none;
+
+            width: 400px;
+            height: 550px;
+            border: 1px solid #000;
+            /* 弹性布局 */
+            display: flex;
+            /* 
+            设置子元素在主轴方向的排列方式
+                flex-start:在主轴起点对齐（默认值）
+                flex-end：在主轴终点对齐
+                center:在主轴方向居中
+                space-around:元素和元素之间有间距，两边也有间距
+                space-between：元素和元素之间有间距，但是两边没有间距
+            */
+            justify-content: center;
+
+            /* 
+            设置子元素在副轴的排列方式
+                stretch：默认值，在副轴起点对齐。但是如果没有给子元素副轴方向大小，会铺满整个副轴方向
+                flex-start:副轴的起点对齐。如果没有给子元素副轴大小，会用内容撑开
+                        如果给了副轴大小，以上两个没区别
+                flex-end:在副轴终点对齐
+                center：在副轴居中
+
+            */
+            align-items: stretch;
+        }
+
+        li {
+            width: 100px;
+            /* height: 100px; */
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- 
+
+    1.第一屏
+        1.1 先给第一屏两个个背景图片，先写product的背景图片，它的位置是center center,第二个图给大背景图片，位置是水平居中，垂直到bottom
+
+        1.2 给第一屏里加2个img，一个放沙发， 一个放气球
+
+        1.3 给沙发做定位，left:50%（因为要参照背景，背景是水平居中的），然后再往左偏移-160px;给沙发bottom一个固定的值320px
+
+        1.4 给气球做定位，left:50%，再往右偏移130px;    bottom:480px;
+
+        1.5 写一个动画剧本，剧本里就是往上偏移80像素（用translate）
+
+        1.6 给沙发和气球应用这个动画剧本，沙发的持续时间短一点（跳的快），气球的时间长一点（跳的慢）
+
+    
+    2.第二屏
+        2.1 先给第二屏加背景图片，背景图片只有一张，水平居中，垂直为bottom
+        2.2 给第二屏里加一个img，img放search01图片，给它做一个定位，用left:50%
+            并且margin-left:30%;这样它就跑到右边去了，然后再加一个bottom固定值300（因为背景也是固定的）
+
+        2.3 给第二屏里加一个img,放serach02图片，用left:50%和margin-left为 -111px;（宽度的一半，然后就能居中了），bottom固定值300,并且它默认要隐藏（display:none）
+
+        2.4 给第二屏里加一个img放沙发（因为要整体放大所以用img）,沙发用right:50%;和margin-right: -220.5px;（就能水平居中）和bottom: 210px;，为什么用right和bottom呢？因为放大时要保持右下不变
+
+        2.5 在JS里判断滚出来的是不是第二屏，如果是，则给$('.section2 .search01')加animate,改掉它的marginLeft，改为-111,然后在动画的回调函数里，把search01隐藏，search02显示出来，然后给search02加一个往右上走并缩小的动画（记得延迟500毫秒再做这个动画），并同时用animate把沙发放大到自己的原本宽度
+
+    3.第三屏
+        3.1 先给背景图片，背景图片水平居中垂直居中
+        3.2 给个img，放沙发，定位时用left50%和bottom50%，然后再调整margin-left和margin-bottom到合适的位置
+        3.3 给个div，背景图片放color01，left50%和bottom50%定位到合适地方
+        3.4 给个div，背景图片放add01，位置跟上面的差不多，但是要下来一些
+        3.5 给section3加一个交集选择器：.section3.animation，然后修改掉里面color01，改背景图片为color02（记得加transition），并且改掉add01，改背景图片为add02
+
+    4.解决滚出去后在滚回来没动画的问题
+        4.1 在afterLoad里，$('.section').eq(index-1).addClass('animation').siblings().removeClass('animation');
+            意思是哪一屏滚出来，哪一屏加一个类animation，让其他所有没滚出来的屏删除掉animation，这样做的话就能完成用transition做的动画滚出来有动画效果和滚出去后又能恢复
+
+        4.2 在afterLoad里，$('.section>div img').removeAttr('style');和$('.section>div div').removeAttr('style')
+            因为jQuery的动画都是操作行内样式来实现的，所以只要把行内的style删掉就会恢复原样
+
+    5.第四屏
+        5.1 先给它加一个背景图片，布局为center和bottom
+        5.2 加一个img放文字
+        5.3 加一个div，div放键盘的背景图片，宽高跟键盘的宽高一样，然后给这个div里放一个img，img放地址，定位到对应的位置
+        5.4 给section4>div加弹性布局，主轴为Y轴，副轴居中。给键盘加一个margin-top，然后让键盘的opacity为0
+        5.5 加一个div，div里放两张背景图片，一个购物车，一个沙发，先放购物车，再放沙发，然后调整他们对应的位置，再然后给这个div用定位的方式定位到对应的位置。
+        5.6 在afterLoad里判断如果是第四屏，就给购物车做一个animate动画，让购物车移动到右边去（记得用jQuery.easing加效果），动画完成后用animate把键盘opacity改回1
+
+    6.第五屏
+        6.1 先加一个背景图片，用平铺就可以了
+        6.2 准备一个div，div里放两个img，一个放账单，一个放信用卡，然后把这个div设置的宽高为信用卡的宽高，然后把信用卡和账单都定位，账单定位到右边去，然后把大盒子挪到中间偏左（right:50% 再bottom给一个对应的值）
+        6.3 准备一个div，放鼠标图片作为背景图片，这个div用鼠标图片的一半高就可以了，再定位的中间偏右（left:70%;）
+        6.4 准备一个img，放手的图片，定位到    left:68%;  bottom: -40px;
+        6.5 准备一个img，放文字的图片，定位到    left:50%;margin-left: -270.5px;top:30px; opacity:0
+        6.6 给它们加transition动画：手往上移、鼠标换图片、信用卡出账单、文字旋转并opacity为1（记得加视点）
+
+    7.第六屏
+        7.1 准备一个大div，跟父元素一样宽一样高，背景图片放街道
+        7.2 在上面大div里加一个div，div里放一个img显示快递员，再放一个img显示车，快递员用right和bottom定位，然后高度为0，在然后在快递员和车的上面再放一个div，div里放2个img，一个放沙发，一个放盒子。然后定位到车的上面
+        7.3 在afterLoad里判断是不是第6屏，如果是，先把盒子往下掉，然后让街道的backgroundpositionx改的往左边走，然后让快递员放大，然后快递员往右边走
+        7.4 回到街道div，再加2个img，一个放门，一个放女孩，定位到对应的位置，默认隐藏，然后在快递员往右走后，显示出门和女孩
+
+    8.第七屏
+        8.1 给第七屏加一个背景，背景用center和bottom
+        8.2 准备一个div，背景图片放星星，定位到对应地方
+        8.3 准备一个img，放好评2个字，定位到对应地方
+        8.4 用transition动画，把星星的宽度放大，用steps，把img淡入
+
+    9.第八屏
+        9.1 加背景图片，平铺就行了
+        9.2 加div，div里放begin的静态图，然后给它加hover，hover里换成动态图
+        9.3 加img，放再来一次，定位到右下角
+        9.4 加img，放手的图
+        9.5 给section8加鼠标移动事件，拿到e.pageX和e.pageY，设置给手
+        9.6 给手的css加pointer-events: none;（不然会挡住别的元素的点击事件）
+        9.7 给再来一次加点击事件，点击事件里回到第一屏$.fn.fullpage.moveTo(1);
+
+   
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 导入文件 -->
+    <link rel="stylesheet" href="css/jquery.fullpage.min.css">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.fullpage.min.js"></script>
+
+    <link rel="stylesheet" href="css/index.css">
+
+    <script src="js/jquery.easing.1.3.js"></script>
+
+    <script src="js/index.js"></script>
+
+    <!-- 
+        当你的元素想放在背景图片某个位置时，就要参照背景图片的布局位置，背景图片怎么布局，你就该怎么布局，再偏移到对应位置
+        因为背景图片大小不会变，所以意味着那个偏移值不会变
+
+        什么时候用img好什么时候用div好
+            如果你这个图片，仅仅只是放大、移动，而且这个图片里不需要其他图片，那么可以用img，如果是整体放大或缩小也是用img好
+
+            如果你这个图片里面还要放其他图片用div，如果你要用动画效果切换图片，也用div比较好，如果你希望图片是一点一点出来（类似于我们昨天的搜索文字）也是用div好
+
+     -->
+
+</head>
+<body>
+    
+    <!-- 准备HTML -->
+    <div id="itcast">
+        <!-- 第一屏 -->
+        <div class="section section1">
+            <!-- 沙发 -->
+            <img class="sofa" src="images/01/sofa.png" alt="">
+            <!-- 气球 -->
+            <img class="ball" src="images/01/ball.png" alt="">
+        </div>
+
+        <!-- 第二屏 -->
+        <div class="section section2">
+            <img class="search01" src="images/02/search01.png" alt="">
+            <img class="search02" src="images/02/search02.png" alt="">
+            <img class="sofas" src="images/02/sofas.png" alt="">
+        </div>
+
+        <!-- 第三屏 -->
+        <div class="section section3">
+
+            <img class="sofa" src="images/03/sofa.png" alt="">
+            <div class="color"></div>
+            <div class="add"></div>
+
+        </div>
+
+        <!-- 第四屏 -->
+        <div class="section section4">
+
+            <!-- 云 -->
+            <img class="cloud" src="images/04/cloud.png" alt="">
+
+            <!-- 文字 -->
+            <img class="words" src="images/04/words02.png" alt="">
+            <!-- 键盘 -->
+            <div class="keyboard">
+                <img class="address" src="images/04/address.png" alt="">
+            </div>
+
+            <!-- 购物车 -->
+            <div class="carBox"></div>
+
+        </div>
+
+        <!-- 第五屏 -->
+        <div class="section section5">
+            <!-- 银行卡 -->
+            <div class="cardBox">
+                <img class="bill" src="images/05/bill.png" alt="">
+                <img class="card" src="images/05/card.png" alt="">
+            </div>
+
+            <!-- 鼠标 -->
+            <div class="mouse"></div>
+
+            <!-- 手 -->
+            <img class="hand" src="images/05/hand.png" alt="">
+
+            <!-- 文字 -->
+            <img class="words" src="images/05/words.png" alt="">
+
+        </div>
+
+        <!-- 第六屏 -->
+        <div class="section section6 ">
+            <div class="street">
+                
+                <!-- 门 -->
+                <img class="door" src="images/06/door.png" alt="">
+
+                <!-- 小女孩 -->
+                <img class="girl" src="images/06/girl.png" alt="">
+
+                <!-- 车的大盒子 -->
+                <div class="carBox">
+
+                    <!-- 从天而降的沙发 -->
+                    <div class="giftBox">
+                        <img class="sofa" src="images/04/sofa.png" alt="">
+                        <img class="box" src="images/06/box.png" alt="">
+                    </div>
+
+                    <!-- 快递员 -->
+                    <img class="man" src="images/06/man.png" alt="">
+
+                    <!-- 车 -->
+                    <img class="car" src="images/06/car.png" alt="">
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 第七屏 -->
+        <div class="section section7 ">
+            <div class="star"></div>
+            <img class="good" src="images/07/good.png" alt="">
+        </div>
+
+        <!-- 第八屏 -->
+        <div class="section section8 active">
+            <div class="begin"></div>
+            <img class="again" src="images/08/again.png" alt="">
+            <img class="hand" src="images/08/hand.png" alt="">
+        </div>
+    </div>
+</body>
+</html>
+

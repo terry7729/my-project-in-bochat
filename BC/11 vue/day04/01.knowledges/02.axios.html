@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="music" @keyup.enter="search">
+    
+    <ul>
+      <li v-for="it in songList">
+        {{it}}
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 独立的ajax请求库 
+  1.如果只想用ajax请求 无论是否用vue 都可以用它
+  2.axios如果结合vue使用需要考虑this的指向问题(箭头函数)
+  3.一般我们会把他设置到Vue.prototype.$http上 用起来跟Vue-resource类似
+
+  axios跟vue-resource的区别
+    vue-resource可以发 jsonp
+    axios 不支持jsonp
+      为了保证axios极可能的轻量级，只集合了必须的功能，一些也许挺常用的功能，axios建议使用其他的库来实现比如 jsonp
+  JSONP
+    只能发get 数据量小，不安全，兼容性好 只要支持script标签
+  CORS
+    getpost都可以，数据量大，更安全，兼容性相对于jsonp差一些
+    对前端而言要干什么？
+      如果工作时，碰到了调用接口出现跨域提示，找后台
+-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  // 把axios也用this.$http来使用
+  Vue.prototype.$http = axios;
+  let app = new Vue({
+    el: "#app",
+    data: {
+      music: "",
+      songList: []
+    },
+    methods: {
+      search() {
+        // this.$http.get();
+        // axios.get(`https://autumnfish.cn/search?keywords=${this.music}`)
+        this.$http.get(`https://autumnfish.cn/search?keywords=${this.music}`)
+          .then(res => {
+          // .then(function (response) {
+            console.log(this);
+            console.log(res)
+            // 取值的结构跟vue-resource有点不同
+            // console.log(response.data.result.songs);
+            this.songList = res.data.result.songs;
+          })
+      }
+    },
+  })
+</script>

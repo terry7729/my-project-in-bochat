@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <inputvalue></inputvalue>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 单独写模板 -->
+<script type="text/x-template" id="tem">
+  <div>
+    <input type="text" v-model="message">
+    <h2 @click="changeMessage">{{message}}</h2>
+    <p>你输入了{{getMessageLength}}个字</p>
+  </div>
+</script>
+
+<script>
+  // Vue组件就是一个 Vue实例，Vue支持的那些属性 都可以写
+  Vue.component('inputvalue', {
+    template: '#tem',
+    data() {
+      return {
+        message: ''
+      }
+    },
+    methods: {
+      changeMessage(){
+        this.message = '今天天气不太好，出门记得带伞哦'
+      }
+    },
+    computed: {
+      getMessageLength(){
+        return this.message.length;
+      }
+    },
+  })
+  // 根实例（最顶级的Vue实例，需要设置el）
+  let app = new Vue({
+    el: "#app"
+
+  })
+</script>

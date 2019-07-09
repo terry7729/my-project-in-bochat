@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //    6. 循环的应用之六:求1堆数中的最大值和最小值
+        //    eg: 请用户输入5个数, 将最大的那个数打印出来
+        //[2.13.22.-45.77.99.102.78]
+        var max = -Number.MAX_VALUE;
+        //擂主准备好了,史上最弱
+        var num;
+        //打擂者
+        for(var i = 0;i < 5;i++){
+               num = +prompt("请输入第"+(i+1)+"个数字");
+               if(num > max){
+                   max = num;
+               }
+               //max = num > max ? num : max;
+        }
+        console.log(max);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

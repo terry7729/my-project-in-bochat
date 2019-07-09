@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        视距：视觉的距离。
+                相当于模拟出一个“眼睛”看物体的距离，遵循近大远小的规则
+
+            perspective:800px;
+
+        translateZ:z轴平移
+        translate:既可以做x轴平移，也可以y轴平移
+        translateX：仅仅是x轴平移
+        translateY: 仅仅是y轴平移
+
+    -->
+
+    <style>
+        img {
+            transform: perspective(1800px) translateZ(0px);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/dog3.jpg" alt="">
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //function getStu(name) {
+        //    var stu = new Object();
+        //    stu.name = name;
+        //    stu.sayHi = function () {
+        //        console.log("雷猴啊,猴嗨森,我是"+this.name);
+        //    };
+        //    return stu;
+        //    //当你创建好对象之后,必须要返回出去
+        //}
+        //以上是创建对象的函数
+
+        //var sm = getStu("宋明");
+        //
+
+
+        //使用new关键字
+        //new到底做了哪些事情
+        //1.首先声明了一个空的对象
+        //2.让this指向这个空对象,可以设置属性以及函数方法
+        //3.把参数赋值给这个对象
+        //4.最后把这个创建好的对象返回出去
+
+        //function = f;
+        function getStu(name) {
+            this.name = name;
+            this.sayHi = function () {
+                console.log("雷猴啊,猴嗨森,我是"+this.name);
+            };
+        }
+
+        var sm = new getStu("宋明");
+        console.log(sm);
+        sm.sayHi();
+
+        var dd = new getStu("豆豆");
+        console.log(dd);
+        dd.sayHi();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

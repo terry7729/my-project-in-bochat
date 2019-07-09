@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    ul {
+      list-style-type: none;
+      /*background-color: green;*/
+    }
+  </style>
+</head>
+<body>
+  <div sb="one"></div>
+  <div sb="two"></div>
+  <div></div>
+</body>
+</html>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+
+    console.log($('div[sb="one"]'));
+
+  });
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        以后要做三维旋转，那么记得要一个东西叫视距，会更加有视觉效果
+
+            rotateX：沿x轴旋转
+            rotateY：沿y轴旋转
+            rotateZ：沿z轴旋转 它等于 rotate
+
+     -->
+    <style>
+        ul {
+
+            list-style: none;
+            padding: 0;
+            width: 580px;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+
+        li {
+
+            width: 180px;
+            height: 180px;
+            margin-left: 10px;
+            margin-top: 10px;
+            background: yellowgreen;
+            float: left;
+            transition: all 1s;
+
+            transform: perspective(800px);
+        }
+
+        li:nth-child(1):hover {
+
+            /* 沿着x轴旋转 */
+            transform:perspective(800px) rotateX(45deg);
+        }
+
+        li:nth-child(2):hover {
+
+            /* 沿着y轴旋转 */
+            transform:perspective(800px) rotateY(45deg);
+        }
+
+        li:nth-child(3):hover {
+
+            /* 沿着z轴旋转 */
+            /* transform: rotateZ(45deg); */
+            transform:perspective(800px) rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>x轴旋转</li>
+        <li>y轴旋转</li>
+        <li>z轴旋转</li>
+    </ul>
+</body>
+
+</html>

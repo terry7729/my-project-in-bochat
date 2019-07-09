@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="匀速移到400" id="move400"/>
+<input type="button" value="缓动移到400" id="move800"/>
+
+<div id="box"></div>
+
+
+<script>
+    /*1.现实世界物体运动两种方式
+        匀速运动：不符合物体运动规律
+        加速运动（减速运动）：最常用，更加符合现实世界物体运动规律
+    2.*** 缓动动画核心思路 :    每一次移动的距离 = (目标位置 - 当前位置)/10  ***
+
+    3.模拟  0-400的缓动过程
+
+    运动次数     目标位置     当前位置      本次移动的距离 = （目标位置 - 当前位置）/10
+        1                400             0               （400-0）/10 = 40
+        2                400             40               （400-40）/10 = 36
+        3                400             76               （400-76）/10 = 32.4   向上取整 33
+        4                400            109                 （400-109）/10 = 29.1   向上取整 Math.ceil(29.1) = 30
+    …………………………
+        n                400             397                (400-397)/10 = 0.3  Math.ceil(0.3) = 1
+        n+1                400             398                (400-398)/10 = 0.2  Math.ceil(0.2) = 1
+        n+2                400             399                (400-399)/10 = 0.1  Math.ceil(0.1) = 1
+        n+3                400             400                (400-400)/10 = 0
+
+   4.***重点：缓动动画特点***
+        a.需要取整：  因为每一次移动的距离可能会产生小数，而像素单位一般都是整数，所以需要取整
+        b.没有误差：
+                无需边界检测（超过目标位置  1.清除定时器  2.元素复位）：缓动动画到了后面每一次移动都是1px的移动，的
+                需要终点检测（到达目标位置，结束运动，清除定时器）
+     */
+
+    var box = document.getElementById('box');
+    var timeID = null;
+    //缓动动画
+    document.getElementById('move800').onclick = function (  ) {
+      timeID =   setInterval(function (  ) {
+          //1.获取元素当前位置
+          var currentLeft = box.offsetLeft;
+          //2.计算本次移动距离 = (目标位置 - 当前位置)/10
+          var  step = (400-currentLeft)/10;
+          //取整
+          step = Math.ceil(step);
+          //3.开始移动
+          currentLeft += step;
+          box.style.left = currentLeft + 'px';
+          //4.终点检测：到达终点清除定时器
+          if(currentLeft == 400){
+              clearInterval(timeID);
+          }
+        },50)
+    }
+
+
+    document.getElementById('move400').onclick = function (  ) {
+      timeID =   setInterval(function (  ) {
+            //1.获取元素当前位置
+           var currentLeft =  box.offsetLeft;
+            //2.开始移动
+            currentLeft += 10;
+            box.style.left = currentLeft + 'px';
+            //3.边界检测：超过目标位置（1）清除定时器  （2）元素复位
+            if (currentLeft >= 400){
+                clearInterval(timeID);
+                box.style.left = '400px';
+            }
+        },50);
+    }
+</script>
+</body>
+</html>

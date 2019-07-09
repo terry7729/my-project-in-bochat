@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+
+<!--标准属性：HTML中有的属性
+        自定义属性：HTML中没有的属性，存储数据
+-->
+<div id="box"   class="one" style="width: 100px;background-color: red" aaa="哈哈哈">班长</div>
+
+<script>
+    //元素的属性的几种形态：  (1)行内标准属性     （2）行内自定义属性 （3）行外标准属性  （4）点语法动态添加属性
+
+    var box = document.getElementById('box');
+
+    /*1.点语法操作属性
+        1.1 可以获取的
+            * 行内标准属性
+            * 点语法动态添加属性
+        1.2 不可以获取
+            * 行内自定义属性
+            * 行外标准属性
+   */
+    box.bbb = '啦啦啦啦啦啦';
+
+    // //1.1 点语法可以获取属性
+    // console.log ( box.style.width );// (1)行内标准属性
+    // console.log ( box.bbb );//（4）点语法动态添加属性
+    // //1.2 点语法不可以获取的属性
+    // console.log ( box.aaa );//undefined（2）行内自定义属性
+    // console.log ( box.style.height );//（3）行外标准属性空字符串
+
+    /*2.attribute语法
+        获取属性: 元素名.getAttribute('属性名')
+        设置属性: 元素名.setAttribute('属性名',属性值);
+        移除属性：元素名.removeAttribute('属性名')
+
+        1.1 可以获取的
+            * 行内标准属性
+            * 行内自定义属性
+        1.2 不可以获取
+            * 点语法动态添加属性
+            * 行外标准属性
+    */
+
+    //2.1 可以获取
+    console.log ( box.getAttribute ( "id" ) );// (1)行内标准属性
+    console.log ( box.getAttribute ( "aaa" ) );// （2）行内自定义属性
+
+    //2.不可以获取
+    console.log ( box.getAttribute ( "style.height" ) );//（3）行外标准属性  null
+    console.log ( box.getAttribute ( "bbb" ) );//null (4)点语法动态添加属性
+
+    //3.设置属性
+    box.setAttribute('aaa','嘿嘿黑');
+    box.setAttribute('ccc','喵喵喵');
+
+    //4.删除属性
+    // box.className = '';//点语法只能删除属性值，不能删除属性名
+
+    /*凡是用字符串来操作元素属性，不需要考虑calss关键字与 - 不符合规则，HTML中是什么就是什么*/
+    box.removeAttribute('class');//同时删除属性名和属性值
+
+
+    /*语意不同
+    点语法：操作标准属性
+    attrubute语法：操作自定义属性
+     */
+</script>
+</body>
+</html>

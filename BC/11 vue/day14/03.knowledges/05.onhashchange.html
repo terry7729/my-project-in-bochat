@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="router-view"></div>
+</body>
+
+</html>
+<script>
+    /*
+        vuerouter检测url改变 本质借助了 
+        onhashchange这个事件
+        事件参数中可以获取 原始url 和 新的url
+        截取字符串的方式 获取结尾的地址
+        匹配到对应的组件
+      */
+
+    window.onhashchange = function(e) {
+        // console.log(e)
+        let url = parseInt(e.newURL.split('#/')[1])
+        console.log(url)
+        console.log(typeof url)
+            // switch的比较 ===
+        switch (url) {
+            case 1:
+                document.querySelector('.router-view').innerHTML = '<h1>我是组件1</h1>'
+                break
+            case 2:
+                document.querySelector('.router-view').innerHTML = '<h1>我是组件2</h1>'
+                break
+            case 3:
+                document.querySelector('.router-view').innerHTML = '<h1>我是组件3</h1>'
+                break
+
+            default:
+                break
+        }
+    }
+</script>

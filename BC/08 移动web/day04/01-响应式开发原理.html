@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .row .col {
+        border: 1px solid red;
+        height: 100px;
+    }
+    
+    .row .col {
+        /*flex: 1;*/
+        /* width: 25%;
+            width: 33.33%;
+            width: 50%;
+            width: 100%;*/
+    }
+    </style>
+</head>
+
+<body>
+    <!--     需要一个div 在 
+    大屏幕的时候一行显示4个div  w>=1200          大屏幕  大电脑 笔记本电脑
+    中屏幕的时候一行显示3个div  w>=992  w < 1200 中屏幕 老款电脑   ipad pro
+    小屏幕的时候一行显示2个div  w>=768  w < 992  小屏幕 ipad  平板电脑
+    超小屏幕的时候一行显示1个div w<768           超小屏幕 手机 -->
+    <div class="row">
+        <div class="col">
+            1
+        </div>
+        <div class="col">
+            2
+        </div>
+        <div class="col">
+            3
+        </div>
+        <div class="col">
+            4
+        </div>
+    </div>
+    <script>
+    // 1. 获取当前屏幕宽度来判断属于哪个屏幕
+    // 2. 根据你当前屏幕设置col对应的宽度
+    window.addEventListener('resize', reponsive);
+    reponsive();
+    function reponsive() {
+        console.log(window);
+        var cols = document.querySelectorAll('.col');
+        // var windowWidth = window.innerWidth;
+        // var windowWidth = window.outerWidth;
+        var windowWidth = document.documentElement.offsetWidth;
+        console.log(windowWidth);
+        if (windowWidth >= 1200) {
+            for (var i = 0; i < cols.length; i++) {
+                cols[i].style.width = '25%';
+            }
+        } else if (windowWidth >= 992) {
+            for (var i = 0; i < cols.length; i++) {
+                cols[i].style.width = '33.33%';
+            }
+        } else if (windowWidth >= 768) {
+            for (var i = 0; i < cols.length; i++) {
+                cols[i].style.width = '50%';
+            }
+        } else {
+            for (var i = 0; i < cols.length; i++) {
+                cols[i].style.width = '100%';
+            }
+        }
+    }
+    </script>
+</body>
+
+</html>

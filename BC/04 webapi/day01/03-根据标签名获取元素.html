@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="ul1">
+    <li>隔壁老宋1</li>
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+<ul>
+    <li>隔壁老张1</li>
+    <li>隔壁老张2</li>
+    <li>隔壁老张3</li>
+    <li>隔壁老张4</li>
+    <li>隔壁老张5</li>
+</ul>
+
+<script>
+    /**
+     * 1.根据标签名获取页面所有的元素
+     * @param 标签名字符串
+     * @return 返回一定是数组数组(伪数组，只有数组三要素没有数组的api)
+     */
+    var liList = document.getElementsByTagName('li');
+
+    //  liList.push();//返回的数组是伪数组，不能调用array的方法
+
+    console.log ( liList );
+    //获取第一个li元素,可以通过数组下标取值
+    var li1  = liList[0];
+    console.log ( li1 );
+
+    //2.找不到则返回空数组
+    var aList = document.getElementsByTagName('a');
+    console.log ( aList );
+
+    //3.getElementsByTagName:注意点
+    //3.1  document
+    document.getElementsByTagName('li');//获取页面所有的li元素
+    //3.2 如果是父元素来调用这个方法，则获取的是父元素下所有的标签名元素
+    var ul1 = document.getElementById('ul1');//隔壁老宋ul
+    console.log ( ul1.getElementsByTagName ( "li" ) );
+
+    //3.3 因为id具有唯一性，所以根据id获取元素只能由document来调用
+   // console.log ( ul1.getElementById ( "li2" ) );//程序报错
+
+    /*总结：
+    a.如果想要获取页面所有的标签名元素： document.getElementsByTagName()
+    b.如果想要获取某一个父元素中所有的标签名元素：父元素.getElementsByTagName()
+    c.getElementById只能由document来调用
+    d.如果这个方法的Element后面没有s，返回值是元素对象 | null.
+        如果这个方法的Element后面有s，返回值一定是数组
+     */
+
+</script>
+</body>
+</html>

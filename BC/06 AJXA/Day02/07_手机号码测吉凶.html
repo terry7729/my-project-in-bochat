@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>史上最智能的手机号码测算平台！</h1>
+    <input type="text" placeholder="请输入手机号" id="phone"> 
+    <input type="button" value="开始测算" id="btn">
+
+    <div id="result"></div>
+</body>
+</html>
+
+<script>
+
+    //找到手机号
+    var phone = document.getElementById('phone');
+    //找到div
+    var result = document.getElementById('result');
+
+    document.getElementById('btn').onclick = function(){
+
+        //创建请求对象
+        var xhr = new XMLHttpRequest();
+        xhr.open('get','http://i.ataohao.com/api/hw?cmd=80100011&param=%3Cnumber%3E' + phone.value +  '%3C/number%3E%3Ctype%3E3%3C/type%3E');
+        xhr.send();
+
+        xhr.onload = function(){
+
+            // console.log(xhr.responseText);
+            result.innerHTML = xhr.responseText;
+            
+        }
+    }
+</script>

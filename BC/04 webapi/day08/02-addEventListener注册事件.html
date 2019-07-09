@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<button id="btn">点我啊</button>
+
+<script>
+    var btn = document.getElementById('btn');
+
+    //1.点语法注册事件
+    //特点：不能注册多个同名事件，后者会覆盖前者
+    // btn.onclick = function (  ) {
+    //     alert('1111111');
+    // };
+    //
+    // btn.onclick = function (  ) {
+    //     alert('2222222');
+    // };
+
+    //2.addEventListener方式
+    //特点：可以注册多个同名事件,不会覆盖，而是依次触发
+    /**
+     * @param type:事件类型字符串  不要on  (click mouseover)
+     * @param 事件处理函数
+     * @param 布尔类型
+        * 默认值：false 冒泡   开发中最常用
+        * true:捕获
+     */
+    // btn.addEventListener('click',function (  ) {
+    //     alert('11111');
+    // },false);
+    //
+    // btn.addEventListener('click',test,false);
+
+    function test (  ) {
+        alert('22222');
+    }
+
+    //3IE8不支持： addEventListener
+
+    //IE8: attachEvent
+    /**
+     * type: 事件类型  要加on
+     * 事件处理函数
+     */
+    // btn.attachEvent('onclick',function (  ) {
+    //     alert('11111');;
+    // });
+    //
+    // btn.attachEvent('onclick',test);
+
+    addEvent(btn, 'click',function (  ) {
+        alert(1111);
+    });
+
+    addEvent(btn, 'click',test);
+
+    //4.浏览器兼容性
+    /**
+     *
+     * @param ele 事件源
+     * @param type 事件类型   不要on
+     * @param fn 事件处理函数
+     */
+    function  addEvent ( ele,type,fn ) {
+        //能力检测
+        if (ele.addEventListener){//谷歌火狐
+            ele.addEventListener(type,fn);
+        }else if (ele.attachEvent){//IE8浏览器
+            ele.attachEvent('on' + type, fn);
+        }else{//某些浏览器不支持注册多个同名事件
+            ele['on' + type] = fn;
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+/* 定义类名 也叫自定义函数 */
+.bordertb {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+/* 类似JS的自定义函数把一些重复使用代码封装到函数里面 还可以传人参数 还可以有默认值 */
+div {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+}
+h1 {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  -ms-border-radius: 30px;
+}
+p {
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //班里有三个同学,我要把三个同学都封装成为对象
+
+        function fun() {
+                // console.log("大家好,我是"+songM.name+",我今年已经"+songM.age+"岁了");
+                //上面的代码写死了宋明的名字还有年龄,别人就用不了
+                //有没有一种方法,可以让谁调用这个函数,就用谁的对象属性
+                //this关键字的作用:哪个对象调用,就用哪个对象属性
+                console.log("大家好,我是"+this.name+",我今年已经"+this.age+"岁了");
+        };
+
+        var songM = new Object();
+        songM.name = "宋明";
+        songM.age = 48;
+        // songM.sayHi = function () {
+        //     console.log("大家好,我是"+songM.name+",我今年已经"+songM.age+"岁了");
+        // };
+        songM.sayHi = fun;
+        songM.sayHi();
+
+        var douD = new Object();
+        douD.name = "豆豆";
+        douD.age = 18;
+        // douD.sayHi = function () {
+        //     console.log("大家好,我是"+douD.name+",我今年已经"+douD.age+"岁了");
+        // };
+        douD.sayHi = fun;
+        douD.sayHi();
+
+        var heiH = new Object();
+        heiH.name = "赫赫";
+        heiH.age = 47;
+        // heiH.sayHi = function () {
+        //     console.log("大家好,我是"+heiH.name+",我今年已经"+heiH.age+"岁了");
+        // };
+        heiH.sayHi = fun;
+        heiH.sayHi();
+
+        //上面的对象都有一个相同的函数方法,那么能否把函数方法优化一下
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

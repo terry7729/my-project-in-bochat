@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <input type="button" value="点我呀" v-on:click="sayHi"> -->
+    <!-- 简写方式 -->
+    <input type="button" value="点我呀" @click="sayHi">
+    <h2>{{info}}</h2>
+
+    <h2>输入内容，失去焦点获取输入的内容</h2>
+    <input type="text" @blur="getValue">
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  /*
+    1.方法中this就是当前的这个vue实例
+    2.实例化Vue的时候参数中的data，methods 最终会直接设置到Vue实例的属性上
+      访问时不用再通过data，methods去点 直接通过this即可访问
+    3.Vue会吧数据的更新同步到页面上，程序员在用Vue开发时，只需要考虑数据的更改即可，dom的操作Vue来操作
+    4.可以通过event获取事件参数
+  */
+  let app = new Vue({
+    el: "#app",
+    data:{
+      info:"感觉自己萌萌哒"
+    },
+    methods: {
+      sayHi() {
+        // alert("吃了没！！")
+        // 打印this 就是实例化的Vue对象
+        console.log(this);
+        // 谁调用就是谁
+        this.info = '萌你奶奶个腿';
+      },
+      getValue(event){
+        console.log(event);
+        console.log(event.target.value);
+        // 修改info
+        // 事件源（表单元素）的value值 设置给Vue的info
+        this.info = event.target.value;
+      }
+    }
+  })
+  // 打印app
+  console.log(app);
+</script>

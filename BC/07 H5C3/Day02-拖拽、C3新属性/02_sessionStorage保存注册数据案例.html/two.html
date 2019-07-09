@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入职业" id="job">
+    <input type="text" placeholder="请输入年龄" id="age">  
+    <input type="text" placeholder="请输入年薪" id="salary">
+    <input type="button" value="注册" id="register">
+</body>
+</html>
+
+<script>
+    document.getElementById('register').onclick = function(){
+
+       var user = sessionStorage.getItem('user');
+       var pwd =  sessionStorage.getItem('pwd');
+       console.log(user,pwd);
+       
+    }
+</script>

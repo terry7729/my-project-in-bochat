@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      height: 100px;
+      margin-top: 10px;
+    }
+  </style>
+
+</head>
+<body>
+<input type="button" value="设置边框" id="btn1"/>
+<input type="button" value="设置文本" id="btn2"/>
+<div></div>
+<div></div>
+<div></div>
+</body>
+</html>
+
+
+<script>
+  //入口函数
+  window.onload = function () {
+    //获取三个div
+    var divs = document.getElementsByTagName("div");
+
+    //设置边框
+    document.getElementById("btnl").onclick = function(){
+      for(var i = 0 ; i < divs.length; i++){
+        divs[i].style.border = '1px solid red';
+      }
+    };
+
+    //设置文本
+    document.getElementById("btn2").onclick = function () {
+      for(var i = 0 ; i < divs.length; i++){
+        divs[i].textContent = '设置的文本';
+      }
+    };
+  }
+
+//  window.onload = function () {
+//    console.log("哈哈,我又是一个入口函数");
+//  }
+
+
+  //分析一下,原生js的缺点:
+  //a.不能添加多个入口函数(window.onload),如果添加了多个,后面的就会把前面的覆盖.
+  //b.原生js 的api名字都太长太难记.
+  //c.循环做的事差不多,循环很多下.有代码冗余
+  //d.原生js有些属性或者方法,有浏览器兼容问题.有些浏览器不支持.
+  //e.容错率低.上面的代码出了问题,后面的代码执行不了.
+
+</script>
+
+

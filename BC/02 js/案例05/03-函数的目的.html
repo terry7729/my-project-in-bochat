@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //在项目中,有一些代码,经常会出现,但是你不能每次出现都重新去写,那么,你可以选择把这段代码封装成为一个函数
+        //什么时候要用,就随时调用就可以了
+
+        //现在有这么几组数据,需要求和
+        //22,33
+        //22,44
+        //33,44
+
+        // var res1 = 22 + 33;
+        // console.log(res1);
+        //
+        // var res2 = 22 + 44;
+        // console.log(res2);
+        //
+        // var res3 = 33 + 44;
+        // console.log(res3);
+
+        function getSum(num1,num2) {
+            var sum = num1 + num2;
+            console.log(sum);
+        }
+
+        getSum(22,33);
+        getSum(22,44);
+        getSum(33,44);
+
+        //函数就是将一些经常出现的代码,变得简单,只需要你写一次就可以任意调用
+    </script>
+</head>
+<body>
+
+</body>
+</html>

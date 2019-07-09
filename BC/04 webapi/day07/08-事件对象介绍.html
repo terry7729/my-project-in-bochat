@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="box" style="width: 100px;height: 100px;background-color: red;">我是班长</div>
+
+<script>
+
+    var box = document.getElementById('box');
+
+    /*1.事件对象：存储与事件相关信息的数据的对象
+            * 当用户触发某个元素的事件时，浏览器会捕捉到触发这个事件时的一些数据（鼠标信息，键盘信息），并且
+           将这些数据存入一个对象中，这个对象称之为事件对象
+     2.如何获取事件对象：浏览器在触发事件的时候会将捕捉好的事件对象作为实参传递给事件处理函数
+            谷歌火狐浏览器：直接给事件处理函数添加形参即可   e   或者 event
+            IE8:无需添加形参，只需要使用全局属性   window.event
+     */
+    box.onclick = function ( e ) {
+       e =  e || window.event;
+        console.log ( e );
+        alert('我是班长，我喂自己袋盐');
+        if (e.altKey == true){
+            console.log ( "按住来alt键" );
+        }else{
+            console.log ( "没有按住来alt键" );
+        }
+    }
+
+
+</script>
+</body>
+</html>

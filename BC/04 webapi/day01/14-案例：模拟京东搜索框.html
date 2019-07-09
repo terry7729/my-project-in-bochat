@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" value="请输入搜索内容" id="search">
+
+
+<script>
+    /*输入框焦点事件
+    onfocus : 成为焦点：输入框会出现光标，此时可以输入文字
+    onblur: 失去焦点：输入框光标消失，此时不可以输入文字
+     */
+
+      /* 需求分析：
+                输入框成为焦点： 如果是默认文字，则清空
+                输入框失去焦点： 如果没有输入，则显示默认文本
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1.获取元素
+    var search = document.getElementById('search');
+
+
+    //2.1.成为焦点
+    search.onfocus = function (  ) {
+        console.log ( "你单击我了，此时出现光标可以输入文字了" );
+        //3事件处理:如果是默认文字，则清空
+        if(search.value == '请输入搜索内容'){
+            search.value = '';
+        }
+    }
+
+    //2.3 失去焦点
+    search.onblur = function (  ) {
+        console.log ( "我的光标消失啦，此时不能输入文字了" );
+        //3.事件处理：如果没有输入，则显示默认文本
+        if (search.value.length == 0){
+            search.value = '请输入搜索内容';
+        }
+    }
+</script>
+</body>
+</html>

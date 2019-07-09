@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .father {
+            width: 300px;
+            height: 300px;
+            border: 20px solid #000;
+            background-color: green;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+            left: 0px;
+            top: 0px;
+        }
+        .one {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="father" id="father">
+    <div class="one" id="box"></div>
+</div>
+
+<script src="common.js"></script>
+<script>
+    var box = document.getElementById('box');
+
+    box.onclick = function (e  ) {
+        e =e || window.event;
+        //蓝线距离 = 红线(e.pageX) - 绿线(father.offsetLeft) - 白线（father.clientLeft） - 黄线（box.offsetLeft）
+        var x = getPagePoint(e).pageX - box.parentNode.offsetLeft - box.parentNode.clientLeft - box.offsetLeft;
+        var y = getPagePoint(e).pageY - box.parentNode.offsetTop - box.parentNode.clientTop - box.offsetTop;
+
+        box.innerText = 'x:' + x + 'y:' + y;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            color: red;
+        }
+        /* 继承 */
+
+        * {
+            color: #0f0;
+        }
+
+        div {
+            color: pink;
+        }
+
+        .demo {
+            color: gold !important;
+        }
+
+        #test {
+            color: purple;
+        }
+
+
+        /* 优先级 */
+        /* 继承  <  通配符  <  标签选择器  <  类选择器  <  id选择器  <  行内式  <  !important*/
+        /* !important在工作中用得不多,因为性能不好 */
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="demo" id="test"  style="color: skyblue;">
+            测试文字
+        </div>
+    </div>
+</body>
+</html>

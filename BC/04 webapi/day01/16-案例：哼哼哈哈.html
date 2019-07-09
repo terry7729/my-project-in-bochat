@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button>哼哼</button>
+<button>哼哼</button>
+<button>哼哼</button>
+<button>哼哼</button>
+<button>哼哼</button>
+
+<script>
+  /* 需求分析：
+        点击页面每一个按钮：（1）自己的文字变成哈哈，颜色变成粉色  （2）其他按钮样式恢复成默认值
+       思路分析：事件三要素
+             1 获取元素：
+             2 注册事件：
+             3 事件处理：
+   */
+
+  //1. 获取元素：
+  var buttonList = document.getElementsByTagName('button');//按钮列表
+  //2.注册事件：
+
+  for(var i = 0;i<buttonList.length;i++){
+      //这个循环体只有一行代码：对每一个按钮onclick属性赋值，值是一个函数
+      buttonList[i].onclick = function (  ) {
+          /*疑问：所有的按钮都会执行这个函数体代码，我怎么知道到底是哪一个按钮呢？
+          i:不行的，i是固定值5.  注册事件的时候，事件函数体代码不会执行，只有当页面加载完毕之后用户点击的时候
+          才会执行，而此时循环早已执行完毕，全局变量i的值就是5
+            this:谁调用这个方法this就代表谁
+           */
+            // alert(i);
+          console.log ( this );
+
+          //方式一：好理解，性能不如方式二  弊端：存在重复设置
+          // //(1)无条件的将所有的按钮样式恢复默认
+          // for(var j = 0;j<buttonList.length;j++){
+          //   buttonList[j].innerText = '哼哼';
+          //   buttonList[j].style.backgroundColor = '';
+          // }
+          // //(2)修改当前点击的按钮样式
+          // this.innerText = '哈哈';
+          // this.style.backgroundColor = 'hotpink';
+
+          //方式二：排他思想
+          for(var j = 0;j<buttonList.length;j++){
+               if ( buttonList[j] == this){//是自己
+                   buttonList[j].innerText = '哈哈';
+                   buttonList[j].style.backgroundColor = 'hotpink';
+               }else{//不是自己
+                     buttonList[j].innerText = '哼哼';
+                     buttonList[j].style.backgroundColor = '';
+               }
+          }
+      }
+  }
+
+  // buttonList[0].onclick = function(){
+  //     console.log ( this );//第一个按钮
+  // };
+  //
+  // buttonList[1].onclick = function(){
+  //     console.log ( this );//第二个按钮
+  // }
+  //
+  // buttonList[2].onclick = function(){
+  //     console.log ( this );//第三个按钮
+  // }
+  //
+  // buttonList[3].onclick = function(){
+  //     console.log ( this );//第四个按钮
+  // }
+  //
+  // buttonList[4].onclick = function(){
+  //     console.log ( this );//第五个按钮
+  // }
+
+    // for (var i = 1;i<=5;i++){
+    //     //这个循环体只有两行代码
+    //     //1.打印循环变量  i = 1 2 3 4 5
+    //     console.log ( i );
+    //     //2.声明函数：将代码存入变量   并不会执行
+    //     function fn (  ) {
+    //         console.log ( '我是函数体中的i' + i );
+    //     }
+    // };
+    //
+    // console.log ( '猜猜我是几' + i );
+    // //调用函数函数：执行函数中的代码  此时循环结束，i的值变成6
+    // fn();
+   // buttonList[0].onclick();
+</script>
+</body>
+</html>

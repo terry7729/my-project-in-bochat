@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //工厂模式,创建一堆一毛一样的对象
+        //我要把我们班所有都封装成对象
+        function fun() {
+            console.log("雷猴啊,猴嗨森,我是"+this.name);
+        }
+        //var sm = new Object();
+        //sm.name = "宋明";
+        //sm.sayHi = fun;
+        //
+        //var dd = new Object();
+        //dd.name = "豆豆";
+        //dd.sayHi = fun;
+        //
+        //var hh = new Object();
+        //hh.name = "呵呵";
+        //hh.sayHi = fun;
+        //我以为上面的代码已经够优秀了,结果老师告诉我,上面的就是垃圾
+        //把创建对象的过程,封装成为一个函数
+        function getStu(name) {
+            var stu = new Object();
+            stu.name = name;
+            stu.sayHi = fun;
+            return stu;
+        }
+        var sm = getStu("宋明");
+        sm.sayHi();
+        var dd = getStu("豆豆");
+        dd.sayHi();
+        var hh = getStu("赫赫");
+        hh.sayHi();
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

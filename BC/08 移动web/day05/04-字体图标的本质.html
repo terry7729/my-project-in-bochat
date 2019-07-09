@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- 引入了字体图标的CSS  -->
+    <link rel="stylesheet" type="text/css" href="字体图标/自己公司的图标/iconfont.css">
+    <style>
+    body {
+        font-size: 100px;
+    }
+    
+    .box1 {
+        /*使用微软雅黑字体*/
+        font-family: '微软雅黑';
+    }
+    
+    .box2 {
+        /*使用webdings字体*/
+        font-family: 'Webdings';
+    }
+    
+    .box3 {
+        /*在box3元素上使用这个iconfont字体*/
+        /*字体是在上面的包iconfont.css文件里面定义*/
+        font-family: "iconfont" !important;
+    }
+    
+    .box3::before {
+        /*带\ unicode编码只能在伪元素使用*/
+        content: "\e62e";
+    }
+    /*只要是在@font-face里面写的就是定义字体*/
+    /*@font-face{
+    	font-family: 'iconfont';
+    }*/
+    /*只要是在选择器里面写 font-family使用字体*/
+    /*div:last-child{
+    	 font-family: "iconfont" !important;
+    }*/
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        ABCDEFG
+    </div>
+    <div class="box2">
+        ABCDEFG
+    </div>
+    <div class="box3">
+        &#xe62e;
+    </div>
+</body>
+
+</html>

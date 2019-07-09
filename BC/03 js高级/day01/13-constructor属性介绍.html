@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    /*
+        prototype：属于构造函数，指向构造函数的原型对象
+        __proto__:属于实例化对象，指向构造函数的原型
+        constructor:属于原型对象,指向对应的构造函数
+     */
+
+    function Person (name  ) {
+        this.name = name;
+    };
+
+    // console.log ( Person );//函数对象使用log打印默认会打印函数体代码
+    // console.log ( console.dir ( Person ) );//打印完整的函数对象信息
+    //
+    // var p1 = new Person('班长');
+    // console.log ( p1 );
+    // console.log ( p1.__proto__ === Person.prototype );//true
+    //
+    // //1.constructor:属于原型对象
+    // console.log ( Person.prototype );
+    // console.log ( Person.prototype.constructor === Person );//true
+    //
+    // //2.constructor作用：可以让实例对象知道自己是哪一个构造函数生成的
+    // console.log ( p1.constructor );//Person
+    //
+    // //问题：下面这行代码可不可以实例化对象
+    // var p2 =new  p1.__proto__.constructor('保健坤');
+    // console.log ( p2 );
+
+    //3.注意点：如果对原型对象重新赋值，则会丢失constructor
+    //解决方案：重新找回constructor
+    Person.prototype = {
+        constructor:Person//给新的原型对象动态添加一个constructor属性，指向原型对象
+    };
+    var p3 = new Person('班花');
+
+    console.log ( p3 );
+</script>
+</body>
+</html>

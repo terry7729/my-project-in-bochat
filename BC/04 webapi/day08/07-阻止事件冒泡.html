@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box{
+            width: 300px;
+            height: 300px;
+            background-color: hotpink;
+            position: relative;
+        }
+
+        #son{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+
+            left: 350px;
+            top: 350px;
+
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">
+    <input type="button" value="点我" id="btn"/>
+
+    <div id="son">我是班长</div>
+</div>
+
+
+<script>
+    /*
+    1.事件冒泡：如果一个元素的事件被触发，该元素所有的父元素的同名事件会被依次触发
+        元素 -> 父元素 ->body ->html -> document ->window -> null
+    2.事件冒泡一直存在，只是以前没有给父元素注册同名事件
+
+    3.阻止事件冒泡：不要触发父元素的同名事件
+            谷歌火狐：  e.stopPropagation()
+            IE8:             e.cancelBubble = true
+       注意点：阻止事件冒泡前提，一定要获取事件对象
+     */
+    document.getElementById('btn').onclick = function(){
+        alert('我是快乐的小按钮');
+    };
+
+    document.getElementById('box').onclick = function( e ){
+        alert('我是骚粉的大盒子');
+
+        e = e || window.event;
+        //谷歌火狐
+        // e.stopPropagation();
+        //IE8
+        e.cancelBubble = true;
+    }
+
+    document.body.onclick = function (  ) {
+        alert('我是body')
+    }
+
+    document.documentElement.onclick = function (  ) {
+        alert('我是HTML')
+    }
+
+    document.onclick = function (  ) {
+        alert('我是document');
+    }
+
+    window.onclick = function (  ) {
+        alert('我是window');
+    }
+</script>
+</body>
+</html>

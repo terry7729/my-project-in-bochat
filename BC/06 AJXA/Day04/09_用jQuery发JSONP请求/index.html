@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- <script>
+        
+    </script> -->
+
+
+</head>
+
+<body>
+    <h1>来，算一下你的QQ决定的命运！</h1>
+    <input type="text" placeholder="请输入qq号" id="qq"> <input type="button" value="开始测算" id="btn">
+    <hr>
+    <p>QQ号：</p>
+    <p>得分：</p>
+    <p>吉凶论断：</p>
+    <p>论断详情：</p>
+    <p>性格分析：</p>
+    <p>性格详情：</p>
+</body>
+
+</html>
+
+
+<script src="../07_jQuery_ajax/jquery-1.12.4.js"></script>
+
+<script>
+
+    var pList = document.getElementsByTagName('p');
+
+    $('#btn').click(function () {
+
+        // 如果用jQuery发jsonp请求，不用创建script，只要dataType写一个jsonp，它就会自动帮你做好哪些事
+        $.post({
+            url: "http://api.jisuapi.com/qqluck/query",
+            data: { appkey: "94c543ddb1a37c93", qq: $('#qq').val() },
+            dataType: "jsonp",
+            success: function (obj) {
+
+                // console.log(obj);
+                pList[0].innerHTML = "QQ号：" + obj.result.qq;
+                pList[1].innerHTML = "得分：" + obj.result.score;
+                pList[2].innerHTML = "吉凶论断：" + obj.result.luck;
+                pList[3].innerHTML = "论断详情：" + obj.result.content;
+                pList[4].innerHTML = "性格分析：" + obj.result.character;
+                pList[5].innerHTML = "性格详情：" + obj.result.characterdetail;
+            }
+        });
+    });
+
+
+</script>

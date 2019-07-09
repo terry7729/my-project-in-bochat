@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        上一次封装存在的问题：
+            对响应体的处理方式写死了，永远都只是打印响应体
+
+        解决办法：
+            对响应体处理的代码不要写死，而是让别人代码传进来？怎么传代码？就是传一个函数进来
+
+            步骤：
+                1.在封装的函数再多加一个参数，这个参数叫success
+                2.在响应完成里调用这个函数，并传入响应体
+                3.以后调用我们封装的ajax函数时，还要多传一个回调函数
+
+        
+        
+     -->
+</head>
+
+<body>
+    <input type="button" value="发请求1" id="btn1">
+    <input type="button" value="发请求2" id="btn2">
+
+    <div></div>
+</body>
+
+</html>
+
+<script>
+
+    function ajax(type, url, data, success) {
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //不管你请求方式传的是大写还是小写，我统一转成小写，那么我判断时只用判断小写的这一个条件就行了
+        type = type.toLowerCase();
+
+        //拼接url
+        if (type == "get") {
+
+            url += "?" + data;
+        }
+
+        //2. 设置请求行
+        xhr.open(type, url);
+        
+        //3. 设置请求头（get不用设置，post要设置）
+        if (type == "post") {
+
+            xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+            //4. 发送请求&设置请求体（post要设置请求体
+            xhr.send(data);
+
+        } else {
+            //4. 发送请求&设置请求体（post要设置请求体）
+            xhr.send();
+        }
+        //5. 监听响应完成
+        xhr.onload = function () {
+
+            // console.log(xhr.responseText);
+            // alert(xhr.responseText);
+            // div.innerHTML = xhr.responseText;
+            //创建表格那些,也就是说每个调用我封装的函数的人，想做的操作是不一样
+            //换句话说就是对响应体处理的代码不一样
+            //干脆就让人吧代码传进来
+            //但是，我可以把代码打包成一个函数，再把这个函数传进来，相当于就传了一段代码进来？
+            success( xhr.responseText );
+        }
+    }
+
+
+    //发请求1
+    document.getElementById('btn1').onclick = function () {
+
+        ajax('GET', 'checkname.php', "name=rose",function(res){
+
+            // console.log(res);
+            document.querySelector('div').innerHTML = res;
+            
+        });
+    }
+
+    //发请求2
+    document.getElementById('btn2').onclick = function () {
+
+        ajax('POST', 'code.php', "phone=13800138000",function(res){
+
+            alert(res);
+        }); 
+    }   
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //给按钮设置点击事件.
+      $('#btn').click(function () {
+        //1.清空节点. 清空ul1.
+        //$('#ul1').html(""); //虽然可以实现效果,但是不用这个,因为他不安全,有可能会造成内存泄漏.
+
+        //$('#ul1').empty(); //推荐使用. 因为他不仅清空元素,还清除对应的事件.
+
+
+        //2.移除节点.
+        $('#li3').remove(); //自杀
+
+      });
+
+
+
+
+    });
+  </script>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<ul id="ul1">
+  <li>我是第1个li标签</li>
+  <li>我是第2个li标签</li>
+  <li id="li3">我是第3个li标签</li>
+  <li>我是第4个li标签</li>
+  <li>我是第5个li标签</li>
+</ul>
+</body>
+</html>

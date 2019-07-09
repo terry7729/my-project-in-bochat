@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*1.隐式类型转换：当运算符两边数据类型不一样的时候，编译器会自动将数据类型转换成一致之后再计算
+            其他数据类型转number: 算术运算符（+ - * /  %） 自增自减  关系运算符（> >= < <= == === != !==）
+            其他数据类型转string：字符串连接符 +
+            其他数据类型转boolean：逻辑非 ！
+       2.比较运算符：== ===
+                * 重新认识比较运算符
+     */
+
+    //比较运算符：虽然会发生隐式类型转换，但是有前提条件的
+
+    //1. 全等运算符： ===
+    //严格匹配：不会类型转换，必须要数据类型与值完全一致
+    // console.log ( "1" === 1 );//fase
+    //
+    // //2.相等运算符： ==
+    // // 非严格匹配：会类型转换，但是有前提条件,一起有五种情况
+    // console.log ( Number ( null ) );//0
+    // console.log ( Number ( undefined ) );//NaN
+    /*  以 x == y 为示例   */
+
+    //2.1 x和y都是null或undefined :
+    /*规则：没有隐式类型转换，无条件返回true*/
+    // console.log ( null == undefined );//true
+    // console.log ( null == null );//true
+    // console.log ( undefined == undefined );//true
+
+    //2.2 x或y是NaN : NaN与任何数字都不等
+    /*规则：没有隐式类型转换，无条件返回false*/
+   // console.log ( NaN == NaN );//false
+
+    // //2.3 x和y都是string，boolean，number
+    // /*规则：有隐式类型转换，会将不是number类型的数据转成number */
+    // console.log ( 1 == true );//true    (1) 1 == Number(true)
+    // console.log ( 1 == "true" );//false   (1) 1 == Number('true')
+    // console.log ( 1 == ! "true" );//false  (1) 1 == !Boolean('true')  (2) 1 == !true
+    // // (3) 1 == false  (4)1 == Number(false)
+    // console.log ( 0 == ! "true" );//true
+
+
+    //2.4 x或y是复杂数据类型 : 会先获取复杂数据类型的原始值之后再左比较
+    /*复杂数据类型的原始值： 先调用valueOf方法，然后调用toString方法
+            * valueOf:一般默认返回自身
+        数组的toString：默认会调用join方法拼接每个元素并且返回拼接后的字符串
+     */
+
+    // console.log ( [].toString () );//空字符串
+    // console.log ( {}.toString () );//[object Object]
+    //
+    // console.log ( [ 1, 2, 3 ].valueOf().toString());//‘1，2，3’
+    //
+    // console.log ( [ 1, 2, 3 ] == "1,2,3" );//  (1)[1,2,3].toString() == '1,2,3'  (2)'1,2,3' == '1,2,3'
+    // console.log({} == '[object Object]');//true
+
+    //2.5 x和y都是复杂数据类型 : 只比较地址，如果地址一致则返回true，否则返回false
+
+    var arr1 = [10,20,30];
+    var arr2 = [10,20,30];
+    var arr3 = arr1;//将arr1的地址拷贝给arr3
+
+    console.log ( arr1 == arr2 );//虽然arr1与arr2中的数据是一样，但是它们两个不同的地址
+    console.log ( arr3 == arr1 );//true  两者地址是一样
+
+    console.log ( [] == [] );//false
+    console.log ( {} == {} );//false
+
+    //3. 经典面试题
+
+
+    // e:x和y都是复杂数据类型，比较地址
+    console.log ( [] ==  [] );//false
+    // [] 与右边逻辑非表达式结果比较
+    //(1) [] == !Boolean([])
+    // (2) [] == !true
+    // (3)[] == false
+    // (4) [].toString() == false
+    // (5)'' == false
+    // (6)Number('0') == Number(false)
+    console.log ( [] == ! [] );//true
+
+    console.log ( {} ==  {} );//false
+    // {} 与右边逻辑非表达式结果比较
+    //(1){} == !{}
+    // (2){} == !true
+    // (3){} == false
+    // (4){}.toString() == false
+    // (5)'[object Object]' == false
+    // (6)Number('[object Object]') == false
+    console.log ( {} == ! {} );//false
+
+    /*
+    八种情况转boolean得到false: 0 -0 NaN undefined null '' false document.all()
+     */
+
+
+
+
+    // console.log ( "张三" - 100 );// NaN (1)Number('张三') = NaN  (2)NaN - 100 = NaN
+    //
+    // console.log ( 1 + true );//2   1 + Number(true)
+    // console.log ( "1" + true );//1true   '1' + String(true) = 1true
+
+
+    // var a = {
+    //     i:0,
+    //     valueOf:function (  ) {
+    //         a.i++;
+    //         return a.i;
+    //     }
+    // };
+    // if (a == 1 && a == 2 && a == 3){
+    //     console.log ( "a的值是多少，可以保证这行代码被执行" );
+    // }
+
+
+</script>
+</body>
+</html>

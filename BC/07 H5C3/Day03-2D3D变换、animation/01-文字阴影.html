@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        body{
+            background-color: #000;
+        }
+
+        p{
+            color:white;
+            font-size: 200px;
+            text-align: center;
+
+        }
+        p:hover{
+
+            transition: all 1s;
+
+            /*
+                参数1：x偏移 水平偏移，值为正往右，负往左
+                参数2：y偏移 垂直偏移，值为正往下，负往上
+                参数3：模糊度
+                参数4：颜色 
+                如果有多个阴影用逗号隔开，先写的层级更高
+            */
+            text-shadow: -5px -5px 5px green,-10px -10px 5px yellow,-15px -15px 5px red;
+        }
+
+    </style>
+</head>
+<body>
+    <p>抽利群</p>
+</body>
+</html>

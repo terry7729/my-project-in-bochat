@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>博信BoChat-开源代码</title>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+	<link rel="stylesheet" type="text/css" href="../css/index.css" />
+	<link rel="shortcut icon" href="../img/bochat-icon.ico" type="image/x-icon">
+</head>
+
+<body style="background: url(../img/Rectangle.png) no-repeat;width: 100%;height: 100%;background-size:cover;">
+	<header>
+		<div class="container">
+			<a href="#" style="flex: 1;">
+				<img src="../img/Logo.png" class="logo" />
+			</a>
+			<nav class="nav">
+				<ul class="nav_item">
+					<li onclick="javascript:location.href='../index.html'">首页</li>
+					<li onclick="javascript:location.href='node_recruit.html'">节点招募</li>
+					<li onclick="javascript:location.href='about_botChat.html'">关于博信</li>
+					<li onclick="javascript:location.href='white_paper.html'">白皮书</li>
+					<li class="active">开源代码</li>
+					<li onclick="javascript:location.href='partner.html'">合作伙伴</li>
+					<li onclick="javascript:location.href='app_up.html'">应用上架</li>
+					<li onclick="javascript:location.href='commerce_cooperation.html'">商务合作</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="node_">
+		<img src="../img/left_r.png" />
+		<span class="ma_t_l52">开源代码</span>
+		<img src="../img/right_r.png" />
+		<h1 class="node_size">OPEN SOURCE CODE</h1>
+	</div>
+	<div class="source_main">
+		<ul>
+			<li>
+				<p class="source_main_word">1.BX开源代码，发行量查询<span class="source_main_span"><img src="../img/tran_r.png"
+							width="32" /></span></p>
+				<img src="../img/b_bg.png" class="show_produce canter_dis" data-index="0" />
+			</li>
+			<li>
+				<p class="source_main_word">2.GC开源代码，发行量查询<span class="source_main_span"><img src="../img/tran_r.png"
+							width="32" /></span></p>
+				<img src="../img/2019_bg.png" class="show_produce canter_dis" data-index="1" />
+			</li>
+		</ul>
+	</div>
+	<div class="alert hidden">
+		<div class="show_img show_img0 hidden">
+			<div id="pdf_viewer"></div>
+		</div>
+		<div class="show_img show_img1 hidden">
+			<div id="pdf_viewer1"></div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../js/jquery.min.js"></script>
+	<script type="text/javascript" src="../js/neo.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js">
+	</script>
+	<script type="text/javascript">
+		var index = '';
+		var options = {
+			pdfOpenParams: {
+				scrollbars: '0',
+				toolbar: '0',
+				statusbar: '0'
+			}
+		};
+		$('.show_produce').click(function () {
+			isAcrobatPluginInstall();
+			var pdf = '';
+			index = $(this).data('index');
+			if (index == 0) {
+				pdf = 'BXkydm';
+				PDFObject.embed("../pdf/" + pdf + ".pdf", "#pdf_viewer", options);
+				downFile(pdf);
+			} else {
+				pdf = 'goldkydm';
+				PDFObject.embed("../pdf/" + pdf + ".pdf", "#pdf_viewer1", options);
+				downFile(pdf);
+			}
+			$('.alert').removeClass('hidden');
+			$('.alert .show_img' + index).removeClass('hidden');
+
+		});
+		$('.alert').click(function () {
+
+			$('.alert .show_img' + index).addClass('hidden');
+			$('.alert').addClass('hidden')
+		});
+
+		function downFile(pdf) {
+			var $a = $("<a>");
+			$a.attr({
+				"href": "../pdf/" + pdf + ".pdf"
+			});
+			$a.attr("download", "" + pdf + ".pdf");
+			$("body").append($a);
+			$a[0].click();
+			$a.remove();
+		}
+		//判断ie是否有pdf查看器
+		function isAcrobatPluginInstall() {
+			if ((window.ActiveXObject) || (navigator.userAgent.indexOf("Trident") > -1)) {
+				for (x = 2; x < 10; x++) {
+					try {
+						oAcro = eval("new ActiveXObject('PDF.PdfCtrl." + x + "');");
+						if (oAcro) {
+							return true;
+						}
+					} catch (e) {}
+				}
+				try {
+					oAcro4 = new ActiveXObject('PDF.PdfCtrl.1');
+					if (oAcro4)
+						return true;
+				} catch (e) {}
+				try {
+					oAcro7 = new ActiveXObject('AcroPDF.PDF.1');
+					if (oAcro7)
+						return true;
+				} catch (e) {}
+				alert("对不起,您还没有安装PDF阅读器软件呢,为了方便预览PDF文档,请选择安装！");
+				location = 'http://ardownload.adobe.com/pub/adobe/reader/win/9.x/9.3/chs/AdbeRdr930_zh_CN.exe';
+			} else {
+				return true;
+			}
+		}
+	</script>
+</body>
+
+</html>

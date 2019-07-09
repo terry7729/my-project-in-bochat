@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+</head>
+<body>
+<input type="button" value="获取" id="getBtn"/>
+<input type="button" value="设置" id="setBtn"/>
+
+<div id="div1">我是一个div标签
+  <p>我是一个p标签 <span>span1</span></p>
+</div>
+
+<div>我是一个div2标签
+  <p>我是一个p2标签 <span>span2</span></p>
+</div>
+
+</body>
+</html>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //1.text()方法,获取或者设置 文本的.
+
+    //2.获取 text()方法不给参数
+    $('#getBtn').click(function () {
+      //2.1 获取id为div1的这个元素的文本.
+      //他自己的和他所有后代的元素的文本都被获取到了.
+      //console.log($('#div1').text());
+
+
+      //2.2 获取标签为div的元素们的文本.
+      //包含的2个div标签的文本都获取到了.
+      console.log($('div').text());
+    });
+
+
+    //3.设置 text(就是要设置的文本)方法给参数
+    $('#setBtn').click(function () {
+      //2.1 给id为div1的这个元素设置文本.
+      //把id为div1的内容都覆盖掉了.
+      //设置的内容包含标签,不会解析出来. 只会作为文本内容.
+      // $('#div1').text('哈哈<a>哈哈,我是超链接</a>');
+
+      //2.2 给标签为div的元素们设置文本
+      $('div').text('呵呵'); //隐式迭代.
+    });
+
+
+  });
+</script>

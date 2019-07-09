@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        fsfds
+    </div>
+    <script>
+        var div = document.querySelector('div');
+        var isMove = false;
+        // 移动端click事件为了兼容双击操作有一个 300ms延迟事件 只要页面没有禁止用户双击缩放 都会有这个问题
+        // div.addEventListener('click', function () {
+        //     console.log('click');
+
+        // });
+
+        div.addEventListener('touchstart', function () {
+            console.log('touchstart');
+
+        });
+
+        div.addEventListener('touchmove', function () {
+            // console.log('touchmove');
+            isMove = true;
+
+        });
+        // 因为touch系列事件 没有延迟 吧touchend当成是click 判断 如果没有触发move
+        div.addEventListener('touchend', function () {
+            console.log('touchend');
+            // 如果只单击了 没有移动 就是click事件 如果发生了移动就是 滑动事件            
+            if(isMove == false){
+               console.log('使用touch事件 模拟一个不延迟的click');
+               
+            }else{
+                console.log('认为松开手就是移动事件');
+            }
+            // 每次滑动结束 吧isMove 重置为false
+            isMove = false;
+        });
+    </script>
+</body>
+
+</html>

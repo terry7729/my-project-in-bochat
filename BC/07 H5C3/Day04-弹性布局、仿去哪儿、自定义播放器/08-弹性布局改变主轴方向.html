@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        ul{
+            padding: 0;
+            list-style: none;
+
+            width: 400px;
+            height: 550px;
+            border: 1px solid #000;
+
+            display: flex;
+            /* 修改主轴方向
+                    row:默认值，代表x轴为主轴
+                    column：让y轴为主轴
+                    
+                    row-reverse：还是x为主轴，只不过终点变起点，起点变终点
+                    column-reverse：还是y为主轴，只不过终点变起点，起点变终点
+            */
+            flex-direction: column;
+            /* 设置主轴对齐方式 */
+            /* justify-content: flex-end; */
+
+            /* 设置副轴对齐方式 */
+            /* align-items: flex-start; */
+        }
+
+        li{
+            width: 600px;
+            height: 300px;
+            background-color: yellowgreen;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

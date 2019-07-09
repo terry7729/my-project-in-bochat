@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .clock {
+            width: 600px;
+            height: 600px;
+            margin: 100px auto;
+            background: url(images/clock.jpg) no-repeat;
+            position: relative;
+        }
+
+        .clock div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(images/hour.png) no-repeat center center;
+        }
+
+        #m {
+            background-image: url(images/minute.png);
+        }
+
+        #s {
+            background-image: url(images/second.png);
+        }
+    </style>
+</head>
+<body>
+<div class="clock">
+    <div id="h"></div>
+    <div id="m"></div>
+    <div id="s"></div>
+</div>
+
+<script>
+   /*一个表盘360度，有60秒，60分，有12小时
+   1s = 360/60 = 6 度
+   1m = 360/60 = 6度
+   1h = 360/12 = 30度
+
+   假设：当前时间   00：00：30
+   秒钟角度 = 30 * 6 = 180度
+   分钟角度 =  (30/60) * 6 = 3度
+   时钟角度 =  (30/3600) * 30 = 0.25度
+
+   假设：   04：30：30
+   秒种角度 = 30 * 6 = 180
+   分钟角度 = (30 + 30/60) * 6 = 183
+   时钟角度 = (4 + 30/60 + 30/3600) * 30 = 135.25
+
+   假设：  h:m:s
+   秒种角度  = s * 6
+   分种角度  = (m + s/60) * 6
+   时种角度  = (h + m/60 + s/3600) * 30
+   */
+    var hDiv = document.getElementById('h');
+    var mDiv = document.getElementById('m');
+    var sDiv = document.getElementById('s');
+    /*发现问题：页面加载时会有1s左右的顿闪
+    分析问题：定时器中的代码不是一加载就执行，而是1s之后执行
+    解决问题：让页面一加载的时候就走字一次
+    */
+
+    zouZi();
+
+    setInterval(zouZi,1000);
+
+    function zouZi (  ) {
+        //1.获取当前时间的时分秒
+        var date = new Date();
+        var h = date.getHours();
+        var m = date.getMinutes();
+        var s = date.getSeconds();
+        //2.根据时分秒计算角度
+        var sDeg  = s * 6;
+        var mDeg = (m+s/60)*6;
+        var hDeg = (h + m/60 + s/3600) * 30;
+        //3.将计算好的角度赋值给页面元素
+
+        hDiv.style.transform = 'rotate(' + hDeg + 'deg)';
+        mDiv.style.transform = 'rotate(' + mDeg + 'deg)';
+        sDiv.style.transform = 'rotate(' + sDeg + 'deg)';
+    }
+
+    /*自定义对象{}  内置对象：js作者提前写好的对象  json对象：解决跨平台问题*/
+</script>
+</body>
+
+</html>

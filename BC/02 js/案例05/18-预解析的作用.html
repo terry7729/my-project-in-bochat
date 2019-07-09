@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //js代码是从上到下执行???错误
+        //function demo1() {
+        //    console.log(num);
+        //    var num = 10;
+        //}
+//
+        //demo1();
+
+        //什么是预解析:在任何作用域代码执行之前,系统会将所有的变量的声明提升到当前作用域的最前面,赋值语句留在原地
+
+        //function demo1() {
+        //    var num;
+        //    console.log(num);
+        //    num = 10;
+        //    //以上就是预解析之后的代码
+        //    //var num = 10;
+        //}
+
+
+        //对于函数来讲,当作用域的代码执行之前,系统会把所有的函数声明提升到作用域的最前面
+        //函数的调用位置,跟声明的位置没有任何关系
+        demo2();
+        function demo2() {
+            console.log("我是一个函数");
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //准备一个箩筐,来装我所有的数
+        var sum = 0;//箩筐变量
+        for (var i = 1;i < 11;i++) {
+            sum += i;
+            //将每一个数,添加到箩筐里面,相加起来
+        }
+
+        //求数的最大值与最小值
+        var max = -Number.MAX_VALUE;//准备一个擂台,选出最大值,准备一个史上最弱的擂主
+        var min = Number.MAX_VALUE;//准备一个擂台,选出最小值,准备一个史上最强大的擂主
+        var num;
+        for (var i = 0;i < 5;i++) {
+            num = +prompt("请输入一个数字:");
+            //当数据接收完毕,就要去跟擂主打架,比谁大
+            if (num > max) {
+                max = num;
+            }
+            //跟擂主打架,比谁小
+            if (num < min) {
+                min = num;
+            }
+
+        }
+        console.log("最大的是"+max);
+        console.log("最小的是"+min);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

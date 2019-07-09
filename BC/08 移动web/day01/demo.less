@@ -1,0 +1,98 @@
+// 把一些重复的使用颜色之类存在变量里面如果需要修改只要修改变量即可
+/* CSS注释 */
+
+/* 定义一个变量 存储边框颜色 */
+
+// var borderColor = "#0f0";
+/* 定义变量 @变量名: 变量值 */
+
+// 变量名的命名规则和JS一样 不能以数字开头 不能包含特殊符号 但是less变量可以写-
+/* @borderColor: #0f0; */
+
+@border-color: #f00;
+body {}
+
+div {
+    // 使用变量
+    border: 1px solid @border-color;
+}
+
+p {
+    border: 1px solid @border-color;
+}
+
+h1 {
+    border: 1px solid @border-color;
+}
+
+/* 嵌套 */
+
+nav ul {
+    padding: 0;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+.link {
+    display: block;
+}
+
+.link:hover {
+    color: red;
+}
+
+.link1 {
+    display: block;
+    background-color: #ccc;
+}
+
+.link2 {
+    display: block;
+    width: 300px;
+}
+
+nav ul li a img {
+    width: 40px;
+    height: 40px;
+}
+
+nav ul li a p {
+    color: #666;
+}
+
+/* less的嵌套 让选择器减少重复写 写起来方便 维护也方便 */
+
+/* &表示当前选择器类似this 通常会用在伪类 伪元素 交集选择器上 */
+
+nav {
+    ul {
+        padding: 0;
+        li {
+            list-style: none;
+            .link {
+                display: block;
+                img {
+                    width: 40px;
+                    height: 40px;
+                }
+                p {
+                    font-size: 20px;
+                    font-weight: 600; // 写p元素里面是p:hover
+                    &:hover {
+                        color: #0f0;
+                    }
+                } // & 相当于JS this关键字一样  在a里面表示a的hover a:hover
+                &:hover {
+                    color: red;
+                }
+                &:first-child {}
+                &::before {}
+            }
+            &.active {
+                color: red;
+            }
+        }
+    }
+}

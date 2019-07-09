@@ -1,0 +1,334 @@
+/* 初始化代码 */
+
+body,
+div,
+span,
+p,
+img,
+input,
+ul,
+li,
+a,
+h1,
+h2,
+h3,
+h4,
+strong,
+em,
+ins,
+del {
+    margin: 0;
+    padding: 0;
+    /* 清除内外边距 */
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+li {
+    list-style: none;
+}
+
+input {
+    border: none;
+    outline: none;
+}
+
+img {
+    border: none;
+    /* 清除低版本下的边框线 */
+    vertical-align: middle;
+    /* 行内块元素与文字中线对齐 */
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 400;
+}
+
+i {
+    font-style: normal;
+}
+
+body {
+    font: 12px/100% "微软雅黑";
+    background-color: #f3f6f6;
+}
+
+/* 清除浮动的影响 */
+.clearfix:after {
+    content: ".";
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+
+/* top的css代码 */
+
+.top {
+    width: 1366px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.logo {
+    float: left;
+    margin-top: 30px;
+}
+
+.logo a {
+    width: 195px;
+    height: 42px;
+    display: block;
+    background: url("../imgs/logo.png");
+    text-indent: -999px;
+}
+
+.nav {
+    float: left;
+    margin-top: 32px;
+    margin-left: 45px;
+}
+
+.nav li {
+    float: left;
+    font-size: 18px;
+    line-height: 38px;
+    padding: 0 8px;
+    margin-right: 26px;
+}
+
+.nav .tag {
+    border-bottom: 2px solid #00a8fd;
+}
+
+.search-bar {
+    width: 409px;
+    height: 38px;
+    border: 1px solid #00a3ff;
+    float: left;
+    margin-top: 30px;
+    margin-left: 124px;
+}
+
+.search-bar input {
+    width: 350px;
+    height: 38px;
+    padding-left: 10px;
+    float: left;
+}
+
+.search-bar a {
+    float: right;
+    width: 49px;
+    height: 38px;
+    background: url("../imgs/fangdajin.png") no-repeat #00a3ff center center;
+}
+
+.userInfo {
+    height: 30px;
+    float: right;
+    line-height: 30px;
+    margin-top: 35px;
+}
+
+.userInfo a {
+    float: left;
+    /* 转换显示模式 */
+}
+
+.userInfo .notice {
+    width: 27px;
+    height: 20px;
+    background: url("../imgs/lingdang_03.png");
+    margin-top: 4px;
+    margin-left: 28px;
+}
+
+.userInfo .userIcon {
+    width: 32px;
+    height: 30px;
+    background: url("../imgs/usericon_03.png");
+    margin-left: 28px;
+    margin-right: 5px;
+}
+
+.bg {
+    height: 420px;
+    background-color: #1b046b;
+}
+
+.main {
+    width: 1200px;
+    height: 420px;
+    background: url("../imgs/banner.png");
+    margin: 0 auto;
+}
+
+.classList {
+    width: 190px;
+    height: 420px;
+    background-color: rgba(0, 0, 0, .3);
+    float: left;
+}
+.classList ul {
+    padding-top: 12px;
+}
+.classList li {
+    font-size: 14px;
+    height: 44px;
+    line-height: 44px;
+    /* 之所以用高度与行高来控制垂直位置 */
+    /* 是为了同时方法li标签的点击范围 */
+}
+.classList li a {
+    color: #fff;
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* 保证了a的大小与li标签一样 */
+}
+.classList li span {
+    float: left;
+    margin-left: 20px;
+}
+.classList li i {
+    float: right;
+    margin-right: 20px;
+}
+.classList li:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+.classList li:hover a {
+    color: #09c0ff;
+}
+
+.sel {
+    float: left;
+    margin-top: 374px;
+    margin-left: 296px;
+}
+.sel i {
+    float: left;
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, .3);
+    border-radius: 6px;
+    margin-right: 16px;
+}
+.sel i.tag {
+    width: 20px;
+    background-color: #fff;
+}
+
+.classTable {
+    width: 228px;
+    height: 300px;
+    background-color: #fff;
+    float: right;
+    margin-top: 50px;
+}
+.classTable .title {
+    width: 228px;
+    height: 48px;
+    background-color: #9acfea;
+    font-size: 20px;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    line-height: 48px;
+}
+.tableList {
+    padding: 0 20px;
+}
+.tableList li {
+    height: 56px;
+    border-bottom: 1px solid #ccc;
+    padding-top: 14px;
+}
+.tableList li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.tableList li .className {
+    font-size: 16px;
+    line-height: 26px;
+}
+.tableList .className span {
+    font-size: 14px;
+    margin-left: 6px;
+}
+.tableList .learning {
+    color: #bdbdbd;
+}
+.tableList li.tag {
+     height: 49px;
+    padding-top: 9px;
+}
+.tableList li a:hover p {
+    color: #19a8ff;
+}
+.classTable .btn a {
+    display: block;
+    width: 198px;
+    height: 38px;
+    border: 1px solid #22b2ff;
+    margin: 0 auto;
+    font-size: 16px;
+    line-height: 38px;
+    text-align: center;
+    color: #22b2ff;
+}
+
+.recommend {
+    width: 1200px;
+    height: 60px;
+    background-color: #fff;
+    margin: 0 auto;
+    margin-top: 8px;
+    
+}
+
+.recommend ul {
+    float: left;
+    margin-left: 34px;
+}
+
+.recommend ul li {
+    float: left;
+    font-size: 16px;
+    line-height: 60px;
+}
+
+.recommend ul li.line {
+    width: 1px;
+    height: 16px;
+    background-color: #ccc;
+    margin: 22px 34px 0px 34px;
+
+}
+
+.recommend ul li.tag a {
+    color: #09c0ff;
+}
+
+.hobby {
+    float: right;
+    line-height: 60px;
+    margin-right: 25px;
+}
+
+.hobby a {
+    color: #00a8fd;
+}

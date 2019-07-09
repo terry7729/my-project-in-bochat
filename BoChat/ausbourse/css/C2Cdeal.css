@@ -1,0 +1,638 @@
+.section1 .navbox {
+    height: 144px;
+}
+
+.content .list {
+    padding-top: 17px;
+    height: 782px;
+}
+
+.content .list .rows {
+    display: flex;
+    height: 48px;
+    line-height: 48px;
+}
+
+.content .list .left {
+    width: 64px;
+    text-align: center;
+}
+
+.content .list .right {
+    flex: 1;
+    text-align: left;
+    padding-left: 60px;
+}
+
+.content #input {
+    width: 540px;
+    height: 34px;
+    background-color: #F5F8FD;
+    outline: none;
+    border: none;
+}
+
+.layui-layer {
+    border: 5px solid rgb(15, 23, 51);
+    box-sizing: content-box;
+}
+
+.layui-layer-content {
+    width: 100%;
+    height: 100%;
+    font-size: 0.14rem;
+    text-align: center;
+    line-height: 200px;
+}
+
+.toptables .copy {
+    color: #2385FB;
+    font-size: 16px;
+}
+
+.toptables {
+    height: 322px;
+    width: 850px;
+    border-bottom: 1px solid #E6EAF2;
+    margin-left: 48px;
+}
+
+.bottomtables {
+    width: 608px;
+    height: 100%;
+    margin-left: 48px;
+    overflow: hidden;
+}
+
+.bottomtables span {
+    margin: 30px 0 14px;
+    display: block;
+    color: #99A1B0;
+    font-size: 16px;
+}
+
+.bottomtables .layui-progress {
+    margin-bottom: 30px;
+}
+
+.tbcontents {
+    display: flex;
+    margin-bottom: 22px;
+}
+
+.tbcontents .leftcontent {
+    flex: 1;
+    display: flex;
+}
+
+.tbcontents .lefticons {
+    width: 16px;
+    margin-right: 12px;
+}
+
+.tbcontents .opratio P:nth-of-type(1) {
+    font-size: 16px;
+    color: #1E2A39;
+}
+
+.tbcontents .opratio P:nth-of-type(2) {
+    font-size: 14px;
+    color: #99A1B0;
+}
+
+.tbcontents .lefticons>img {
+    margin-top: 4px;
+}
+
+.tbcontents .rightopration {
+    width: 84px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.tbcontents .rightopration .oprations {
+    width: 100%;
+    height: 30px;
+    color: #2385FB;
+    border: #2385FB 1px solid;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.bottomtables .tbcontents .special {
+    border: none;
+}
+
+
+/* 钱包地址 */
+
+.content .addAddress {
+    width: 102px;
+    height: 30px;
+    font-size: 14px;
+    color: #2385FB;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 9px;
+    margin-right: 20px;
+    border: #2385FB 1px solid;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+.content .wallet>p {
+    flex: 1;
+}
+
+.content .wallet {
+    display: flex;
+}
+
+.content .lists {
+    width: 100%;
+    height: 742px;
+    background-color: #fff;
+}
+
+.content .lists .layui-tab-title {
+    padding-left: 48px;
+    border: none;
+}
+
+.content .lists .table tr,
+.content .lists .table tr th,
+.content .lists .table tr td {
+    border: none;
+}
+
+.content .lists .table thead {
+    background-color: #F5F8FD;
+    font-size: 12px;
+    color: #99A1B0;
+}
+
+.content .lists .table tbody {
+    color: #1E2A39;
+    font-size: 14px;
+}
+
+.section3 .content form {
+    width: 378px;
+    height: 300px;
+    margin: 48px auto;
+}
+
+.section3 .content form input {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #E6EAF2;
+    margin-bottom: 30px;
+    padding-left: 12px;
+    border-radius: 4px;
+}
+
+.section3 .content .list .submit {
+    width: 378px;
+    height: 48px;
+    background: linear-gradient(to right, #3E77F4, #37BAFF);
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    margin: 0px auto 27px;
+    display: block;
+}
+
+.section3 .content .tablists p {
+    color: #2385FB;
+    font-size: 14px;
+}
+
+.section3 .content .list2>div {
+    width: 364px;
+    height: 248px;
+    background-color: #F5F8FD;
+    text-align: center;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.section3 .content .list2 .idcardfront {
+    margin: 48px auto 14px;
+}
+
+.section3 .content .list2 .idcardfront>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section3 .content .list2 p {
+    margin-top: 26px;
+    margin-bottom: 25px;
+}
+
+.section3 .content .list2 .idcardInfo {
+    width: 80px;
+    height: 21px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 47px auto;
+}
+
+.section3 .content .list2 .idcardInfo p:nth-of-type(1) {
+    width: 50px;
+    height: 5px;
+    background-color: #8CB7FF;
+    margin: 0;
+}
+
+.section3 .content .list2 .idcardInfo p:nth-of-type(2) {
+    width: 80px;
+    height: 5px;
+    background-color: #8CB7FF;
+    margin: 0;
+}
+
+.section3 .content .list2>div>div {
+    width: 160px;
+    height: 96px;
+    border: 1px dashed #8CB7FF;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.section3 .content .list2>div>button {
+    width: 160px;
+    height: 30px;
+    margin-top: 16px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #2385FB;
+    border: 1px solid #2385FB;
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.section3 .content .list2>button.submit {
+    width: 360px;
+    margin-top: 35px;
+}
+
+.section3 .content .list2>p {
+    width: 378px;
+    margin: 0 auto;
+}
+
+.section3 .content .list3>div {
+    width: 556px;
+    height: 358px;
+    margin-left: 250px;
+}
+
+.section3 .content .list3 .success p {
+    padding-left: 126px;
+    margin-top: 38px;
+    margin-bottom: 40px;
+}
+
+.section3 .content .list3 .renzinfo {
+    border: 1px solid #E6EAF2;
+    overflow: hidden;
+}
+
+.section3 .content .list3 {
+    overflow: hidden;
+}
+
+.section3 .content .list3 .renzinfo .toptables {
+    border: none;
+}
+
+.section3 .content .list3 .renzinfo .left {
+    width: 185px;
+    text-align: right;
+}
+
+.section3 .content2 .list3>div:nth-of-type(1) {
+    width: 152px;
+    height: 152px;
+    margin: 0 auto;
+}
+
+.section3 .content2 .list3>div>img {
+    width: 100%
+}
+
+.section3 .content2 .list3>div>div {
+    font-size: 18px;
+    margin: 0 auto 40px;
+    width: 72px;
+    color: #99A1B0;
+}
+
+.section3 .content2 .list3 .google {
+    margin: 0 auto;
+    margin-top: 40px;
+    border: 0;
+}
+
+.section3 .content2 .list3 .google .rows {
+    width: 364px;
+}
+
+.section3 .content2 .list3 .google .rows .left {
+    color: #99A1B0;
+    font-size: 18px;
+    text-align: center;
+    width: 54px;
+}
+
+.section3 .content2 .list3 .google .rows .right {
+    color: #1E2A39;
+}
+
+.section3 .content2 .list3 .google .firstrows {
+    margin-bottom: 10px;
+}
+
+.section3 .content2 .list3 .google p {
+    text-align: center;
+    color: #2385FB;
+}
+
+.section3 .content2 .list3 .rzcode {
+    padding: 0;
+    /* margin-left: 60px; */
+    margin-left: 35px;
+}
+
+.section3 .content2 .list3 .rzcode>input {
+    width: 272px;
+    height: 48px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #E6EAF2;
+    padding-left: 25px;
+}
+
+.section3 .content2 .list3 .google>button {
+    width: 378px;
+    height: 48px;
+    background: linear-gradient(to right, #3E77F4, #37BAFF);
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    margin: 0px auto 27px;
+    display: block;
+}
+
+.section3 .samecontent .list4 {
+    width: 364px;
+    height: 294px;
+    margin-top: 31px;
+}
+
+.section3 .samecontent .list4>input {
+    width: 364px;
+    height: 48px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #E6EAF2;
+    margin-bottom: 30px;
+    padding-left: 13px;
+}
+
+.section3 .samecontent .list4>button {
+    width: 364px;
+    height: 48px;
+    background: linear-gradient(to right, #3E77F4, #37BAFF);
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    margin: 0px auto 27px;
+    display: block;
+}
+
+.section3 .content5 .layui-form {
+    width: 364px;
+    margin: 0 auto;
+}
+
+.content5 .layui-form-radio>i:hover,
+.content5 .layui-form-radioed>i {
+    color: #2385FB;
+}
+
+.section3 .content5 .layui-form .layui-form-item.radio {
+    height: 80px;
+}
+
+.section3 .content5 .layui-form .layui-form-item {
+    text-align: left;
+    height: 48px;
+}
+
+.section3 .content5 .layui-form .layui-btn {
+    width: 364px;
+    height: 48px;
+    background: linear-gradient(to right, #3E77F4, #37BAFF);
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    margin: 0px auto 27px;
+    display: block;
+}
+
+.section3 .content5 .layui-form .layui-input-block {
+    margin: 0;
+}
+
+.section3 .content5 .layui-form .layui-input-inline {
+    width: 100%;
+}
+
+.section2 .content .myassets {
+    width: 918px;
+    height: 116px;
+    background-color: #F5F8FD;
+    display: flex;
+    margin: 0 auto 14px;
+}
+
+.section2 .content1 .tablists .table {
+    width: 918px;
+    margin-left: 14px;
+}
+
+.section2 .content1 .tablists {
+    height: 752px;
+}
+
+.section2 .content1 .tablists td {
+    line-height: 48px;
+    height: 48px;
+}
+
+.section2 .content .myassets>div {
+    flex: 1;
+}
+
+.section2 .content .myassets>div>p:nth-of-type(1) {
+    font-size: 16px;
+    color: #99A1B0;
+    margin: 30px 0 3px 34px;
+}
+
+.section2 .content .myassets .allassets {
+    color: #1E2A39;
+    font-size: 24px;
+    margin-left: 30px;
+}
+
+.section2 .content .myassets .usable {
+    color: #2385FB;
+    font-size: 24px;
+    margin-left: 30px;
+}
+
+.section2 .content .myassets .freeze {
+    color: #99A1B0;
+    font-size: 24px;
+    margin-left: 30px;
+}
+
+.section2 .content1 .goDeal {
+    cursor: pointer;
+    color: #2385FB;
+}
+
+.section2 .samecontent .list .myassets>div>P:nth-of-type(2) {
+    color: #99A1B0;
+    margin-top: 11px;
+}
+
+.section2 .samecontent .list .myassets .enbalance {
+    font-size: 16px;
+}
+
+.section2 .samecontent .list .myassets .enbalance>span {
+    color: #2385FB
+}
+
+.section2 .samecontent .shifttoWallet {
+    height: 302px;
+    width: 918px;
+    margin-left: 14px;
+    display: flex;
+    font-size: 14px;
+}
+
+.section2 .samecontent .shifttoWallet>div {
+    flex: 1;
+}
+
+.section2 .samecontent img {
+    width: 152px;
+}
+
+.section2 .samecontent .leftWallet {
+    padding-left: 34px;
+}
+
+p {
+    line-height: 22px;
+}
+
+.section2 .samecontent .leftWallet p:nth-of-type(2) {
+    color: #99A1B0;
+    margin-bottom: 6px;
+}
+
+.section2 .samecontent .rightWallet p {
+    margin-bottom: 22px;
+    color: #99A1B0
+}
+
+.section2 .samecontent .rightWallet p:nth-of-type(1) {
+    color: #2385FB;
+}
+
+.section2 .samecontent .list .table td {
+    height: 40px;
+    line-height: 40px;
+}
+
+.shifttoWallet form {
+    width: 100%;
+    position: relative;
+    height: 100%;
+}
+
+.shifttoWallet input {
+    width: 364px;
+    height: 48px;
+    padding-left: 11px;
+    border: 1px solid #E6EAF2;
+    margin-bottom: 22px;
+    border-radius: 4px;
+}
+
+.shifttoWallet input.yzcode {
+    color: #1E2A39;
+}
+
+.shifttoWallet button {
+    width: 364px;
+    height: 48px;
+    background: linear-gradient(to right, #3E77F4, #37BAFF);
+    text-align: center;
+    line-height: 48px;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    border-radius: 4px;
+    /* margin: 0px auto 27px; */
+    display: block;
+}
+
+.section2 .content4 .lists .shifttoWallet {
+    height: 398px;
+}
+
+.section2 .content4 .lists .phonecode {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    font: 16px;
+    color: #2385FB;
+}
+
+.section2 .content4 .lists .code {
+    width: 364px;
+    height: 48px;
+    position: relative;
+    margin-bottom: 22px;
+}

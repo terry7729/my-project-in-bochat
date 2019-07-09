@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*函数也是对象，也可以有自己的成员（属性和方法）
+        实例成员：属于实例化对象的成员
+        静态成员：属于函数对象的成员
+
+     */
+
+    function Person (name,age  ) {
+        this.name = name;
+        this.age = age;
+    };
+
+    //将函数Person作为一个对象：函数对象
+    Person.sayHi = function (  ) {
+        console.log ( "今天学的好开心啊" );
+    };
+
+    Person.sayHi();//静态成员
+
+    //实例化对象
+    var p1 = new Person('班长',18);
+    console.log ( p1.name );//实例成员
+    console.log ( p1.age );//实例成员
+
+    //测试
+    console.log ( Person.prototype );//静态成员  属于构造函数的成员
+
+    var arr = [10,20,30];
+    console.log ( arr.length );//实例成员
+    arr.push()//实例成员
+
+
+    console.log ( Math.PI );//静态成员
+
+
+</script>
+</body>
+</html>

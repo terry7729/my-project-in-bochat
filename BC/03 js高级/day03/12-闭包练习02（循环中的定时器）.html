@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //需求：开启三个定时器分别打印1 2 3
+    //
+    // setTimeout(function (  ) {
+    //     console.log ( 1 );
+    // },2000);
+    //
+    // setTimeout(function (  ) {
+    //     console.log ( 2 );
+    // },2000);
+    //
+    //
+    // setTimeout(function (  ) {
+    //     console.log ( 3 );
+    // },2000);
+
+    //三个定时器代码有冗余，可以使用循环实现
+
+    /*发现问题：定时器中打印三个4，而不是1 2 3
+       分析问题： js中的代码分为两种    优先执行代码（同步执行：从上往下依次执行）
+           次要代码（异步执行：会先等页面同步代码执行完毕后执行。 定时器代码，事件）
+                定时器中的代码会等页面所有代码执行完毕之后，隔一段时间执行，此时循环早已结束，全局变量i值变成4
+        解决问题：使用闭包延长生命周期
+    */
+    for (var i = 1;i<=3;i++){
+        function outer (  ) {
+            var num = i;
+            function closure (  ) {
+                console.log ( num );
+            };
+            return closure;
+        };
+        var fn = outer();//每执行一次循环体，就会执行一次外部函数得到新的闭包函数  三个闭包函数分别存储 1 2 3
+        //fn () ;//1 2 3
+        setTimeout(fn,2000);//将三个闭包函数作为定时器的参数，2s之后会自动调用函数，类似于触发事件处理函数
+    }
+</script>
+</body>
+</html>

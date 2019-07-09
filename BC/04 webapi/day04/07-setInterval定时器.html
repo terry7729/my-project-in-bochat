@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p id="p1">0</p>
+
+<button id="start">开始</button>
+<button id="end">结束</button>
+
+<script>
+    /*定时器（计时器）：一段代码每隔一段时间自动执行
+          setInterval（）：永久定时器，一旦开启会永久重复执行，只能手动清除
+     */
+
+    var timeID = null;//声明一个变量存储定时器ID
+    document.getElementById('start').onclick = function (  ) {
+        var p1 = document.getElementById('p1');
+        /**1.开启一个定时器
+         * @param 一段代码   回调函数
+         * @param 时间间隔  单位 ms
+         * @return 定时器ID
+          * 一个页面可以开启多个定时器，浏览器为了区分这些定时器  ，没开启一个定时器就会给定时器一个编号，
+         * 就叫做定时器ID
+         */
+      timeID  =  setInterval(function (  ) {
+            // var text = Number(p1.innerText);
+            // text+=1;
+            //  p1.innerText = text;
+            p1.innerText++;
+        },1000);
+
+
+    }
+
+    document.getElementById('end').onclick = function (  ) {
+        /**
+         * 2.停止定时器
+         * @param 定时器ID
+         */
+        clearInterval(timeID);
+    }
+
+
+
+    //回调函数：如果一个函数的参数也是一个函数，那么这个参数函数叫做回调函数
+    // function a (  ) {
+    //     console.log ( "哈哈" );
+    // }
+    //
+    // function b (  ) {
+    //     console.log ( "呵呵" );
+    // }
+    //
+    // //函数c有一个参数：接收一段代码，函数c完成自己的功能之后会执行这段代码
+    // function c ( fn ) {
+    //     console.log ( "嘿嘿" );
+    //     fn();
+    // };
+    //
+    // c(function (  ) {
+    //     console.log ( 1111 );
+    // });
+    //
+    // c(a);//调用函数c，传递参数变量a的值
+</script>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .parent {
+            width: 102px;
+            height: 502px;
+            overflow: hidden;
+            border: 1px solid red;
+        }
+
+        .children {
+            height: auto;
+            /* 最终的效果是让children 通过位移动起来 后面的看不到的内容就能看得到了 */
+            /* transform: translateY(-414px); */
+        }
+
+        .children ul li {
+            height: 50px;
+            line-height: 50px;
+            list-style: none;
+            border: 1px solid rgba(0, 255, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 移动端针对滑动新增了一些touch事件
+        1. touchstart 滑动开始事件
+        2. touchend 滑动结束事件
+        3. touchmove 滑动移动事件
+        4. touchcancel 滑动取消事件 -->
+    <div class="parent">
+
+        <div class="children">
+            <ul>
+                <li>第1个li</li>
+                <li>第2个li</li>
+                <li>第3个li</li>
+                <li>第4个li</li>
+                <li>第5个li</li>
+                <li>第6个li</li>
+                <li>第7个li</li>
+                <li>第8个li</li>
+                <li>第9个li</li>
+                <li>第10个li</li>
+                <li>第11个li</li>
+                <li>第12个li</li>
+                <li>第13个li</li>
+                <li>第14个li</li>
+                <li>第15个li</li>
+                <li>第16个li</li>
+                <li>第17个li</li>
+                <li>第18个li</li>
+                <li>第19个li</li>
+                <li>第20个li</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        /* 1. touchstart 滑动开始事件
+        2. touchend 滑动结束事件
+        3. touchmove 滑动移动事件
+        4. touchcancel 滑动取消事件 
+        事件对象TouchEvent对象
+            touches 屏幕上手指对象  touchstart touchmove事件使用
+            changedTouches 屏幕上手指改变的对象 在touchend事件使用
+            注意touches 和changedTouches 都是数组 想要拿到某个手指信息要 touches[下标] touches[0]
+        手指坐标位置信息
+            clientXY手指距离视口左上角的位置 使用clientX 或者 clientY比较多
+            pageXY手指距离页面左上角的位置
+            screenXY手指距离屏幕左上角的位置 
+            e.touches[0].clientX
+            e.touches[0].clientY
+            */
+        /* 
+            1. 需要获取手指在滑动的时候位移的距离
+                1. 从开始手指在 50px  滑动的时候 滑到了100px   距离 100-50px  == +50px
+                2. 手指 从 100px  滑到的时候 滑到了50px  距离 50 - 100px  == -50px
+                3. 距离 == 滑到中位置 -  滑到开始的位置    但是距离有正有负  正表示从上往下 负值表示从下往上 */
+        // 记录开始的坐标
+        var startY = 0;
+        // 记录滑动的位置
+        var moveY = 0;
+        // 滑动的距离Y 
+        var distanceY = 0 ;
+        // 记录之前的滑动的距离
+        var currentY = 0;
+        // 1. 通过移动端的滑动事件让children动起来
+        var children = document.querySelector('.children');
+        // 触摸开始的时候会触发 整个触摸过程只触发了一次
+        children.addEventListener('touchstart', function (e) {
+            startY = e.touches[0].clientY;
+            console.log(currentY);            
+        });
+        // 在触摸了之后进行移动会触发的事件 整个过程会触发很多次
+        children.addEventListener('touchmove', function (e) {
+            moveY = e.touches[0].clientY;
+            // 计算滑动的距离 使用moveY - startY 
+            distanceY = moveY - startY;
+            // console.log(distanceY);
+            // 就吧当前滑动的距离设置给children位移  注意带px单位 让距离+之前的距离 先算好 拼接到位移值里面(currentY+distanceY)
+            children.style.transform = 'translateY('+(currentY+distanceY)+'px)';            
+        });
+        // 触摸结束会触发的事件 整个过程只会触发一次  取消了之后end没法结束
+        children.addEventListener('touchend', function (e) {
+            // 在滑动结束的时候吧之前滑动的距离累加起来  因为滑动结束了才知道到底滑了多远
+            currentY += distanceY;
+        });
+
+        // 这个事件一般是不会触发 只有特殊情况 意外中断触摸才会触发
+        children.addEventListener('touchcancel', function () {
+            console.log('触摸取消');
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*
+    1.上下文模式注意点：如果修改为基本数据类型，则系统自动帮我们转成对应的基本包装类型
+     */
+
+    function fn (  ) {
+        console.log ( this );
+    };
+
+    fn();//this:window
+    //注意点：如果上下文模式修改this为基本数据类型,系统会自动帮我们转成对应的对象类型
+    fn.call(10);//this: new Number(10)
+    fn.call('10');//this: new String('10')
+    //如果将this修改为undefined或者null，程序不会报错，也不会修改，还是指向window
+    fn.call(undefined);//this:window
+    fn.call(null);//this:window
+    fn.call();//this:window
+
+    //2.上下文模式的应用场景
+
+    //2.1求数组的最大值
+    var arr = [100,20,66,88,30];
+
+    //擂台思想
+    var max = -Infinity;
+    for(var i = 0;i<arr.length;i++){
+        if (arr[i] > max){
+            max = arr[i];
+        }
+    }
+    console.log ( max );
+
+    //2.2 Math.max
+    console.log ( Math.max ( arr[ 0 ], arr[ 1 ], arr[ 2 ], arr[ 3 ], arr[ 4 ] ) );
+
+    //2.3 使用applay
+    //这个代码没有修改Math的max方法指向，只是利用apply传参特点
+    console.log ( Math.max.apply ( Math, arr ) );
+
+    //3.检测数组的数据类型：让数组来调用对象的toString
+
+    console.log ( arr.toString () );//arr.join  生成字符串  调用数组自己的toString
+    console.log ( Object.prototype.toString.call ( arr ) )//[object Array]
+
+</script>
+</body>
+</html>

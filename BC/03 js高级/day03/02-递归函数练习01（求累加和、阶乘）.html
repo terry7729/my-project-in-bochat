@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //递归函数：函数自己调用自己
+    /*
+    a.只要能用递归就一定可以用循环
+    b.递归要有结束条件，否则会导致死循环
+     */
+
+    //1.求累加和: 求 1-n 之间的和
+
+    function getSum ( n ) {
+        if (n == 1){
+            return 1;
+        }else{
+            return n + getSum(n-1);
+        }
+
+        // if (n == 1){
+        //     return 1;
+        // }else if (n == 2){
+        //     return 2+ getSum(1);
+        // }else  if (n == 3){
+        //     return 3 + getSum(2);
+        // }else if (n == 4){
+        //     return 4 + getSum(3)
+        // }
+        // ………………
+        // else if (n == n){
+        //     return n + getSum(n-1)
+        // }
+
+
+        //循环实现
+        // var sum = 0;
+        // for (var i = 1;i<=n;i++){
+        //     sum += i;
+        // };
+        // return sum;
+    };
+
+    console.log ( getSum ( 100 ) );
+
+
+    //2.递归求阶乘  ！
+    /*
+    5的阶乘 5! = 5 * 4 * 3 * 2 * 1 = 120
+    6的阶乘 6! = 6 * 5 * 4 * 3 * 2 * 1 = 720
+    n的阶乘n! = n *  (n-1) * (n-2) * ………………  1；
+     */
+
+    function getJieChen ( n ) {
+
+
+        if (n == 1){
+            return 1;
+        }else{
+            return n * getJieChen(n-1);
+        }
+        // if (n ==  1){
+        //     return 1;
+        // }else  if (n == 2){
+        //     return 2 * getJieChen(1);
+        // }else if (n == 3){
+        //     return 3 * getJieChen(2);
+        // }else if (n == 4){
+        //     return 4 * getJieChen(3);
+        // }else if (n == 5){
+        //     return 5 * getJieChen(4);
+        // }
+        // ………………
+        // else if (n == n){
+        //     return n * getJieChen(n-1)
+        // }
+
+        // //循环实现
+        // var jiechen = 1;
+        // for (var i = n;i>=1;i--){
+        //     jiechen *= i;
+        // };
+        // return jiechen;
+    }
+
+
+    console.log ( getJieChen ( 5 ) );
+
+    //匿名递归函数求阶乘
+    var res = (function(n){ return n ==1?1:n*arguments.callee(n-1)})(5);
+    console.log ( res );
+
+</script>
+</body>
+</html>

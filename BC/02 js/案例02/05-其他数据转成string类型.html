@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.String(转换的数据)
+        //var num1 = 10086;
+        //var res1 = String(num1);
+        //console.log(typeof res1);//string
+//
+        //var res2 = String(true);
+        //console.log(res2);//true
+        //console.log(typeof res2);//string
+//
+        //var res3 = String(undefined);
+        //console.log(typeof res3);//string
+//
+        //var res4 = String(null);
+        //console.log(typeof res4);//string
+//
+        //var res5 = String(NaN);
+        //console.log(typeof res5);//string
+
+        //所有的数据类型,使用String()都可转换成String类型
+
+        //2.转换的数据.toString
+        //var num1 = 10086;
+        //var res1 = num1.toString();
+        //console.log(typeof res1);//string
+//
+        //var bool2 = true;
+        //var res2 = bool2.toString();
+        //console.log(typeof res2);//string
+
+        //var res3 = undefined.toString();
+        //console.log(typeof res3);
+        //Cannot read property 'toString' of undefined
+        //在undefined内部,找不到toString方法,所以报错
+
+        //var res4 = null.toString();
+        //console.log(typeof res4);
+        //Cannot read property 'toString' of null
+
+        //var res5 = NaN.toString();
+        //console.log(typeof res5);//string
+
+        //3.利用连接+
+        //使用连接+,加上一个空的字符串即可
+        var num = 10086;
+        var res = num + "";
+        console.log(typeof res);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

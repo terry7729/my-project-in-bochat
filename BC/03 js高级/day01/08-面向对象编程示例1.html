@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div,p{
+            height: 20px;
+            margin-top: 20px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+
+
+<div></div>
+<div></div>
+<div></div>
+
+<p></p>
+<p></p>
+<p></p>
+
+<script>
+    //需求：给页面所有的div元素与p元素设置边框：  10px solid green
+
+    //1.面向过程
+    /*弊端： （1）代码冗余   (2)不便于维护  */
+    // //1.1 获取页面元素
+    // var divList = document.getElementsByTagName('div');
+    // var pList = document.getElementsByTagName('p');
+    // //1.2 遍历元素设置属性
+    // for(var i = 0;i<divList.length;i++){
+    //     divList[i].style.border = '10px solid green';
+    // }
+    //
+    // for(var i = 0;i<pList.length;i++){
+    //     pList[i].style.border = '10px solid green';
+    // };
+
+    //2.使用函数封装：代码复用
+    /*好处：解决代码冗余问题
+     弊端：全局变量污染  （所有的变量都是全局变量，就有可能别人的变量名和你的重复导致一些bug）
+     */
+
+    //2.1 获取元素
+    // var divList = tagName('div');
+    // var pList = tagName('p');
+    // //2.2 设置样式
+    // setStyle(divList,'10px solid green');
+    // setStyle(pList,'10px solid green');
+    //
+    // function tagName (name  ) {
+    //     return document.getElementsByTagName(name);
+    // };
+    //
+    // function setStyle ( eles,value  ) {
+    //     for(var i = 0;i<eles.length;i++){
+    //         eles[i].style.border = value;
+    //     }
+    // }
+
+    /*3.使用对象：解决全局变量污染的问题
+
+     */
+
+    var obj = {
+        tagName:function  (name  ) {
+            return document.getElementsByTagName(name);
+        },
+        setStyle:function ( eles,value  ) {
+            for(var i = 0;i<eles.length;i++){
+                eles[i].style.border = value;
+            }
+        }
+    }
+    //1.获取元素
+    var divList = obj.tagName('div');
+    var pList = obj.tagName('p');
+    //2.设置属性
+    obj.setStyle(divList,'10px solid green');
+    obj.setStyle(pList,'10px solid green');
+</script>
+</body>
+</html>

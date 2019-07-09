@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        以前原生JS操作类不方便
+
+        多了一个新的属性叫classList,会把所有的类当做一个伪数组
+                classList 是一个伪数组，可以获取所有类
+
+        优点：
+            1.取值方便，可以通过下标直接取到某个类
+            2.加类方便
+            3.移出类也方便
+
+        方法：
+            classList.add() 加一个类
+                    如果要加多个，就用逗号隔开，写多个参数，注意：千万不要写到一个参数里面（一个字符串里面）
+                    有几个就写几个字符串
+                例：box.classList.add('red','new');
+
+            classList.remove() 移除一个类
+                    如果要移出多个，跟add是一样的，要写多个参数
+
+
+            classList.replace(); 替换一个类
+                    参数1：被替换的类
+                    参数2：要替换新的内容
+
+
+            classList.toggle(); 切换一个类
+                    原来没这个类就加上，原来有这个类就去掉。一种开关效果
+
+
+            classList.contains(); 是否有某个类，如果有返回true，没有返回false
+    -->
+
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+        
+        .red {
+            background-color: #f00;
+        }
+        
+        .blue {
+            background-color: #00f;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="添加背景色" id="btn1">
+    <input type="button" value="移出背景色" id="btn2">
+    <input type="button" value="打印classList" id="btn3">
+    <input type="button" value="替换红色为蓝色" id="btn4">
+    <input type="button" value="切换红色" id="btn5">
+    <input type="button" value="判断有没有某个类" id="btn6">
+    <div class="box xxoo  dsfd"></div>
+</body>
+
+</html>
+
+
+<script>
+    var box = document.querySelector('div');
+
+    document.getElementById('btn1').onclick = function() {
+
+        //以前要用+=还要记得加空格
+        // box.className += " red";
+
+        //现在加一个类
+        // box.classList.add('red');
+        // box.classList.add('new');
+
+        // 千万不能像下面这样写，一定会报错，它只能一个字符串里写一个类，不能有空格
+        // box.classList.add('red new');
+        // 下面这个也不行
+        // box.classList.add('red,new');
+
+        // 如果要加多个，就用逗号隔开，写多个参数，注意：千万不要写到一个参数里面（一个字符串里面）
+        // 有几个就写几个字符串
+        box.classList.add('red', 'new');
+    }
+
+    document.getElementById('btn2').onclick = function() {
+
+        // box.className = "box xxoo  dsfd";  
+
+        //移出red这个类
+        // box.classList.remove('red');
+
+        box.classList.remove('red', 'xxoo');
+    }
+
+
+    document.getElementById('btn3').onclick = function() {
+
+        // console.log(box.className);
+        // console.log(box.classList);
+        console.log(box.classList);
+
+    }
+
+
+    document.getElementById('btn4').onclick = function() {
+
+        // 替换的意思
+        // 参数1：被替换的类
+        // 参数2：替换成什么类
+        box.classList.replace('red', 'blue');
+    }
+
+
+    document.getElementById('btn5').onclick = function() {
+
+        //切换一个类
+        //原来没有这个类就加上，原来有这个类就移除掉
+        box.classList.toggle('red');
+    }
+
+    document.getElementById('btn6').onclick = function() {
+
+        //有返回true,没有返回false
+        var res = box.classList.contains('red');
+        console.log(res);
+
+    }
+</script>

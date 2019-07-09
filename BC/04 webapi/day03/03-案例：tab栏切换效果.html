@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>tab栏切换</title>
+    <style>
+        .Box {
+            width: 240px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            padding: 20px;
+        }
+
+        .con {
+            width: 100%;
+            height: 200px;
+            background-color: #cccccc;
+            border: 1px solid #000;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .current {
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+<div class="Box" id="box">
+    <button class="current">按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+    <div class="con" style="display:block">内容1</div>
+    <div class="con" >内容2</div>
+    <div class="con">内容3</div>
+    <div class="con">内容4</div>
+</div>
+
+
+<script>
+      /* 需求分析：点击上方按钮列表，下方显示对应盒子
+                * 点击按钮： （1）排他思想修改按钮样式  （2）排他思想隐藏其他盒子
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1. 获取元素：
+      var buttonList = document.getElementsByTagName('button');//上方按钮列表
+      var conList = document.getElementsByClassName('con');//下方内容盒子列表
+      //2.遍历按钮列表
+    for(var i = 0;i<buttonList.length;i++){
+        //2.1 给每一个按钮添加自定义索引属性
+        buttonList[i].setAttribute('index',i);
+        //2.2 给每一个按钮注册点击事件
+        buttonList[i].onclick = function (  ) {
+            //3.事件处理:排他思想修改按钮的样式与显示对应的盒子
+            //3.1 获取当前按钮的索引
+            var index = this.getAttribute('index');
+            console.log ( index );
+
+            //3.2 排他思想修改样式
+            for(var j = 0;j<buttonList.length;j++){
+                if (j == index){//下标与索引一致  按钮颜色改变 对应盒子显示
+                    buttonList[j].className = 'current';
+                    conList[j].style.display = 'block';
+                }else{//下标与索引不一致  按钮样式默认  对应盒子隐藏
+                    buttonList[j].className = '';
+                    conList[j].style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>

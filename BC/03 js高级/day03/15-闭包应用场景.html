@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*闭包实际开发应用场景  -----沙箱模式 ： 一种独立的内存空间，通常是匿名函数自调用
+            a.提供不同的作用域---避免全局变量污染
+            b.模块化开发----不同的功能对应不同的作用域
+     */
+    (function ( w  ) {
+        var p = {
+            name:'张三',
+            sayHi:function (  ) {
+                console.log ( "今天学到好多东西" );
+            }
+        };
+
+        var num = 10;
+        //沙箱模式中所有的变量都是局部的，如何可以在外部全局变量中访问？
+        //将需要暴露外部的api作为window的属性
+        /*这里为什么不直接使用window而使用形参来接收呢？
+        1.沙箱内部不能直接访问外部变量，会破坏封装性
+        2.以后的开发中为了减少js文件的大小，会使用专业的压缩工具来压缩,为了避免压缩工具压缩代码导致错误，通常不直接使用window
+         */
+        w.p = p;
+    })(window);
+
+    console.log ( p );//window.person
+</script>
+</body>
+</html>

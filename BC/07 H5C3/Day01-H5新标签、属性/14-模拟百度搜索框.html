@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <!--
+        总体思路：用户在文本框里输入的是什么，就来数组中遍历每个元素，找输入的内容是否在遍历到的元素里面，如果在，就把这个元素做成li标签加到ul里，如果不在就不操作
+
+        怎么判断在不在字符串里？
+                xxx.indexOf(内容) != -1
+
+
+
+       onkeyup事件：
+            键盘弹起时会触发的事件
+    -->
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 20px;
+        }
+
+        .box {
+            width: 600px;
+            height: 40px;
+            margin: 200px auto;
+            position: relative;
+        }
+
+        #txt {
+            width: 498px;
+            height: 38px;
+            border: 1px solid #eee;
+            font-size: 20px;
+        }
+
+        #search {
+            width: 100px;
+            height: 40px;
+        }
+
+        #keywords {
+            position: absolute;
+            top: 40px;
+            left: 0;
+            background-color: rgb(12, 255, 24);
+            list-style: none;
+            width: 500px;;
+        }
+
+        li {
+            line-height: 24px;
+        }
+
+        /*/!*是li标签，并且鼠标移入的时候变红*!/*/
+        /*li:hover {*/
+
+        /*background-color: red;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+
+<div class="box">
+    <div class="top">
+        <input type="text" id="txt"/><input type="button" value="search" id="search"/>
+    </div>
+    <ul id="keywords"></ul>
+</div>
+
+</body>
+</html>
+
+
+<script>
+
+    var txt = document.getElementById('txt');
+    var keywords = document.getElementById('keywords');
+
+    //先取出上一次保存的记录
+    var json = localStorage.getItem('history');
+
+    if(json)
+        var arr = JSON.parse(json);
+    else
+        var arr = [];
+
+    
+
+    document.getElementById('search').onclick = function(){
+
+
+        arr.push(txt.value);
+
+        //转成JSON
+        var json = JSON.stringify(arr);
+
+        //把输入框的内容存到本地存储，方便当做搜索记录下次拿出来用
+        localStorage.setItem('history',json);
+
+        // location = "http://www.itcast.cn";
+    }
+
+    //文本框获得焦点事件
+    txt.onfocus = function(){
+
+        //遍历数组，有多少个记录就创建多少个li
+        for(var i = 0; i < arr.length; i++){
+            var li = "<li>" + arr[i] + "</li>";
+            keywords.innerHTML += li;
+        }
+    }
+
+    //失去焦点事件
+    txt.onblur = function(){
+
+        //清空ul
+        keywords.innerHTML = "";
+    }
+</script>

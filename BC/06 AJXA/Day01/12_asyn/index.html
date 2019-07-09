@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        同步：
+            就是指一堆任务，要按顺序来完成，前一个任务没做完，不能做下一个任务
+
+        异步：
+            就是指一堆任务，“同时”进行
+
+            我们发的ajax请求，默认就是异步任务
+            发异步请求
+     -->
+</head>
+
+<body>
+    <input type="button" value="发异步请求" id="btn1">
+    <input type="button" value="发同步请求" id="btn2">
+</body>
+
+</html>
+
+<script>
+    // 发异步请求
+    document.getElementById('btn1').onclick = function () {
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('get', 'data.php');
+
+        xhr.onload = function () {
+
+            //2秒后才打印的
+            console.log(xhr.responseText);
+
+        }
+
+        // 这个请求至少需要2秒完成
+        xhr.send();
+
+        console.log('我在send后面');
+
+    }
+
+    //发同步请求
+    document.getElementById('btn2').onclick = function () {
+
+        var xhr = new XMLHttpRequest();
+        // 其实open参数有一个参数3，它就是用来告诉请求对象，我发的是异步还是同步
+        // true代表异步，false代表同步
+        xhr.open('get', 'data.php', false);
+
+
+        //监听响应完成：一般情况下写在后面和前面每问题
+        //如果发的是同步请求，那么写在后面就有问题了
+        xhr.onload = function () {
+
+            //2秒后才打印的
+            console.log(xhr.responseText);
+
+        }
+
+        // 这个请求至少需要2秒完成
+        xhr.send();
+
+
+
+
+
+        console.log('我在send后面');
+
+    }
+
+
+    // 在JS里的代码执行，默认是同步的
+    // for(var i = 0; i < 1000;i++){
+
+    //     console.log(i);
+    // }
+
+    // console.log('循环后面的内容');
+
+    // 异步
+    // 字符串写法：如果你的代码只有一句话，可以直接写在字符串里
+    // setTimeout("console.log('1');",1000);
+    // setTimeout("console.log('2')",1000);
+
+    // setTimeout(function(){
+
+    //     console.log('1');
+    //     console.log('1');
+
+
+    // },1000);
+
+</script>

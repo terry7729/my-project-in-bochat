@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      /*display: none;*/
+      position: absolute;
+      left: 0px;
+    }
+  </style>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+       $(function () {
+          $("#show").click(function () {
+              $("#div1").animate({
+                  width:200,
+                  height:300,
+                  left:800,
+
+              },2000,function () {
+                  $("#div1").animate({
+                      top:500,
+
+                  },2000,function () {
+                      $("#div1").animate({
+
+                          left:200
+                      })
+                  })
+              })
+          })
+       })
+  </script>
+</head>
+<body>
+<input type="button" value="显示" id="show"/>
+<input type="button" value="隐藏" id="hide"/>
+<input type="button" value="切换" id="toggle"/> <br/><br/>
+<div id="div1"></div>
+<br/><br/>
+<div id="div2"></div>
+</body>
+</html>
+
+<!--<script src="jquery-1.12.4.js"></script>-->
+<!--<script>-->
+  <!--$(function () {-->
+    <!--//1.显示  show(参数1,参数2);-->
+    <!--$('#show').click(function () {-->
+      <!--//1.1 让id为div1的元素显示.-->
+      <!--//show()没有参数是直接显示,没有动画效果.-->
+      <!--//如果想要有动画效果,就要给参数:-->
+      <!--//参数1: 执行动画的时长  可以是毫秒数 也可以是代表时长的字符串  slow  fast  normal  如果字符串单词写错了相当于写了一个normal-->
+      <!--//参数2: 动画执行完毕后的回调函数.-->
+      <!--// $('#div1').show(1000, function () {-->
+      <!--//   alert('动画执行完毕了.');-->
+      <!--// });-->
+
+      <!--$('#div1').show(1000);-->
+
+
+      <!--//1.2 当div标签显示.-->
+      <!--// $('div').show(1000);-->
+
+    <!--});-->
+
+
+    <!--//2.隐藏 hide()-->
+    <!--$('#hide').click(function () {-->
+      <!--//设置id为div1的元素隐藏-->
+      <!--$('#div1').hide(2000);-->
+
+      <!--// $('#div1').hide(2000, function () {-->
+      <!--//   alert('你看不到我了..');-->
+      <!--// });-->
+    <!--});-->
+
+
+    <!--//3.切换 toggle()-->
+    <!--$('#toggle').click(function () {-->
+      <!--//如果是隐藏,就动画显示.-->
+      <!--//如果是显示,就动画隐藏.-->
+      <!--$('#div1').toggle(1000);-->
+    <!--});-->
+
+
+
+  <!--});-->
+<!--</script>-->

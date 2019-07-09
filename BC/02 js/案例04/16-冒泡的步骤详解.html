@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //[50,40,30,20,10]  ===  [10,20,30,40,50]
+        //循环的轮数:4次
+
+        //第0轮                       4次 === 长度(5) - 1 - i
+        //      第0次:40,50,30,20,10
+        //      第1次:40,30,50,20,10
+        //      第2次:40,30,20,50,10
+        //      第3次:40,30,20,10,50
+
+        //第1轮                       3次 === 长度(5) - 1 - i
+        //      第0次:30,40,20,10,50
+        //      第1次:30,20,40,10,50
+        //      第2次:30,20,10,40,50
+
+        //第2轮                       2次 === 长度(5) - 1 - i
+        //      第0次:20,30,10,40,50
+        //      第1次:20,10,30,40,50
+
+        //第3轮                       1次 === 长度(5) - 1 - i
+        //      第0次:10,20,30,40,50
+
+
+        //循环次数:4
+        //每轮循环中要对比几次:长度 - 1 - i === length - 1 - i
+
+        //以下是代码实现的步骤
+        var arr = [5,4,3,2,1,11,22,43,12,99,78];//希望从小到大
+        //第三步代码
+        for (var j = 0;j < arr.length-1;j++) {
+            for (var i = 0;i < arr.length-1-j;i++) {
+                //i的值:4,3,2,1
+                //长度 - 1 - j = 4
+                //长度 - 1 - j = 3
+                //长度 - 1 - j = 2
+                //长度 - 1 - j = 1
+                if (arr[i] > arr[i+1]) {
+                    var tmp;
+                    tmp = arr[i];
+                    arr[i] = arr[i+1];
+                    arr[i+1] = tmp;
+                }
+            }
+        }
+        //第二步代码
+        //for (var i = 0;i < 4;i++) {
+        //    if (arr[i] > arr[i+1]) {
+        //        var tmp;
+        //        tmp = arr[i];
+        //        arr[i] = arr[i+1];
+        //        arr[i+1] = tmp;
+        //    }
+        //}
+        //for (var i = 0;i < 3;i++) {
+        //    if (arr[i] > arr[i+1]) {
+        //        var tmp;
+        //        tmp = arr[i];
+        //        arr[i] = arr[i+1];
+        //        arr[i+1] = tmp;
+        //    }
+        //}
+        //for (var i = 0;i < 2;i++) {
+        //    if (arr[i] > arr[i+1]) {
+        //        var tmp;
+        //        tmp = arr[i];
+        //        arr[i] = arr[i+1];
+        //        arr[i+1] = tmp;
+        //    }
+        //}
+        //for (var i = 0;i < 1;i++) {
+        //    if (arr[i] > arr[i+1]) {
+        //        var tmp;
+        //        tmp = arr[i];
+        //        arr[i] = arr[i+1];
+        //        arr[i+1] = tmp;
+        //    }
+        //}
+
+
+        //第一步代码
+        //if (arr[0] > arr[1]) {
+        //    //第三方变量交换
+        //    var tmp;
+        //    tmp = arr[0];
+        //    arr[0] = arr[1];
+        //    arr[1] = tmp;
+        //}
+//
+        //if (arr[1] > arr[1+1]) {
+        //    var tmp;
+        //    tmp = arr[1];
+        //    arr[1] = arr[1+1];
+        //    arr[1+1] = tmp;
+        //}
+//
+        //if (arr[2] > arr[2+1]) {
+        //    var tmp;
+        //    tmp = arr[2];
+        //    arr[2] = arr[2+1];
+        //    arr[2+1] = tmp;
+        //}
+//
+        //if (arr[3] > arr[3+1]) {
+        //    var tmp;
+        //    tmp = arr[3];
+        //    arr[3] = arr[3+1];
+        //    arr[3+1] = tmp;
+        //}
+
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+
+</head>
+<body>
+
+</body>
+</html>
+<script src="sb.js"></script>
+<script src="jquery-1.12.4.js"></script>
+<script src="jquery-3.0.0.js"></script>
+<script>
+  //$(function () {
+    //1.如何查看jQuery文件的版本.
+    //查看文件名不靠谱.
+    // console.log(jQuery.fn.jquery);
+    // console.log(jQuery.prototype.jquery);
+    // console.log($.fn.jquery);
+    // console.log($.prototype.jquery);
+
+
+    //2.如果此时引入了2个jQuery文件,那我使用$符号,使用的是那个版本文件中的$呢?
+    //后引入那个文件的, 因为后引入的会把前面引入的给覆盖掉.
+    //console.log($.fn.jquery);
+
+
+    //比如:如果要做浏览器兼容处理就要引入1.x版本, 那如果要使用最近更新的新方法,就要使用3.x版本的.
+    //3.现在引入2个jQuery文件, 那如何调用者两个文件中的方法呢?
+//    var _$ = $.noConflict(); //把$的控制权给释放了. 这个方法有返回值,返回值可以看成是释放$的替代.
+//
+//    console.log(jQuery.fn.jquery); //3.0.0
+//    console.log(_$.fn.jquery);//3.0.0
+//
+//    (function ($) {
+//      //这里就可以继续使用$了.
+//      console.log($.fn.jquery);//3.0.0
+//    }(_$));
+//
+//    console.log($.fn.jquery); //1.12.4
+
+
+
+
+    //4.引入了3个包含$的文件.
+    //console.log($.fn.jquery);
+  var _$30 = $.noConflict();
+  var _$10 = $.noConflict();
+
+  console.log(_$30.fn.jquery);
+  console.log(_$10.fn.jquery);
+  console.log($);
+
+
+
+  //});
+</script>

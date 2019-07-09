@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .one{
+            width: 100px;
+            padding: 10px;
+            border: 10px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="box" class="one" style="height: 150px; background: pink; "></div>
+
+<script>
+    /*offset家族:获取元素真实的宽高与位置
+        offsetWidth/Height:
+        offsetParent:
+        offsetLeft/Top:
+     */
+
+    var box = document.getElementById('box');
+
+    /*1.点语法获取元素宽高的特点
+        a.只能获取行内属性，不能获取行外属性
+        b.获取的是字符串，带单位的
+        c.无法获取元素的真实宽高（w/h + padding + border）,总结：行内属性写的是什么获取的就是什么
+        d.可以获取，也可以设置
+     */
+    console.log ( box.style.height );//150px
+    console.log ( box.style.width );//空字符串
+    // box.style.width = '200px';
+
+    /*2.offset家族获取元素宽高的特点
+        a.可以获取行内与行外
+        b.获取的是number，不带单位
+        c.获取元素的真实宽高（width + padding + border）
+        d.只能获取，不能修改
+     */
+
+    console.log ( box.offsetWidth );//140  (wdith100 + padding10 * 2 + border10 * 2)
+    console.log ( box.offsetHeight );//190  (height150 + padding10 * 2 + border10 * 2)
+
+    box.offsetWidth = 500;
+</script>
+</body>
+</html>

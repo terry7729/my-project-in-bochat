@@ -1,0 +1,98 @@
+@charset "utf-8";
+/* CSS Document */
+body, ul, ol, li, p, h1, h2, h3, h4, h5, h6, form, fieldset, table, td, span, img, div, dl, dt, dd, input, footer {
+    margin: 0;
+    padding: 0;
+}
+  /*src : url('../fonts/PingFang.ttf');*/
+/*@font-face{
+    font-family: 'pingfang';
+    src : url('../fonts/PingFang.ttf');
+    font-weight: normal;  
+ 	font-style: normal; 
+}*/
+
+html,body{
+	font-family: "microsoft yahei" !important;
+}
+
+
+body {
+	/*display:none;*/
+    color: #000;
+    font-size: 14px;
+}
+
+html, body {
+    width: 100%;
+    min-width: 1500px !important;
+}
+
+img {
+    border: none;
+}
+
+ul, ol, li, submit {
+    list-style: none;
+    border: none;
+}
+
+input, select, textarea, button {
+    outline: none;
+    border: none;
+    background: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+em, i {
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*清除复选框的选择按钮*/
+select {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+
+
+
+a {
+    text-decoration: none;
+}
+
+/*清除浮动*/
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+
+}
+
+/*兼容ie6,ie7*/
+.clearfix {
+    zoom: 1;
+}
+
+.clear {
+    clear: both;
+}
+.float_l{
+	float: left;
+}
+.float_r{
+	float: right;
+}
+.margin_l100{
+	margin-left: 100px;
+}
+.posit_re{
+	position: relative;
+}

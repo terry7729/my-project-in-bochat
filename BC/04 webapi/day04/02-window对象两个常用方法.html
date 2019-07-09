@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="open">打开</button>
+<button id="close">关闭</button>
+
+<script>
+    /*window对象常用方法
+        open:打开新窗口
+        claose:关闭窗口
+
+     */
+
+    document.getElementById('open').onclick = function (  ) {
+        /**
+         * @param URL:新窗口的网址
+         * @name name 类似于a标签的target 默认值是_blank
+         * @features:特征  控制新窗口的位置和大小
+         * @param replace true - URL 替换浏览历史中的当前条目。
+         false - URL 在浏览历史中创建新的条目。
+         */
+        window.open('http://www.itheima.com','_blank','left=200px,top=100px,width=300px,height=300px');
+    }
+
+    document.getElementById('close').onclick = function (  ) {
+        window.close();
+    }
+</script>
+</body>
+</html>

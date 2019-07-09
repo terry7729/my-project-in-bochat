@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  /*
+    数据深浅拷贝
+  */
+  // 浅拷贝 地址
+  let obj = {
+    name: 'jack',
+    friend: {
+      name: 'rose',
+      friend: {
+        name: 'robot'
+      }
+    }
+  }
+  // 浅拷贝  地址
+  // let cloneObj = obj ;
+  // cloneObj.friend.name='ice';
+  // console.log(obj.friend.name);
+
+  // 不能 直接赋值
+  // 弄一个新对象
+  // 1.obj->string->obj
+  // let cloneObj = JSON.parse(JSON.stringify(obj))
+  // let str = JSON.stringify(obj)
+  // let cloneObj = JSON.parse(str)
+  // cloneObj.friend.name = 'ice'
+  // console.log(obj.friend.name)
+
+  // 2.Object.assign
+  // 只拷贝最外层，内部还是应用地址赋值
+  // let cloneObj = {}
+  // Object.assign(cloneObj, obj)
+
+  // console.log(cloneObj)
+  // cloneObj.friend.name = 'ice'
+  // cloneObj.name = 'robot'
+  // console.log(obj)
+
+  // 3.框架的 $.extend() 其他框架的拷贝 合并语法 深拷贝
+
+  // 4.自己手写一个深拷贝 递归
+</script>

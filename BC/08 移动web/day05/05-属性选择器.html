@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+    <style>
+        /*[]匹配属性
+		[href]匹配href属性 只要有href属性的元素都能匹配到*/
+        /*[href]{
+			color:red;
+		}*/
+        /*[href^="a"] 匹配属性的值以a开头的元素*/
+
+        [href^="a"] {
+            color: green;
+        }
+
+        /*[href$="b"] 匹配属性的值以b结尾的元素*/
+
+        [href$="b"] {
+            color: yellow;
+        }
+
+        /*[href*="d"] 匹配属性的值中间包含了d的元素*/
+
+        [href*="d"] {
+            color: hotpink;
+        }
+
+        /*属性选择器 匹配开头icon-类名的*/
+        /*[class*=" icon-"] 匹配中间包含了空格icon-的元素*/
+        [class^="icon-"],
+        [class*=" icon-"] {
+            color: red;
+            font-family: 'iconfont';
+        }
+    </style>
+</head>
+
+<body>
+    <a href="aadaaa">超链接</a>
+    <a>超链接</a>
+    <p href="fddsfdb">发的说法是</p>
+    <span class="abc icon-icon">2</span>
+    <div class="icon-logo">3</div>
+    <div class="icon-mobilephone">4</div>
+</body>
+<script>
+    console.log('aaa');
+    var div = document.querySelector('div');
+    document.querySelector('');
+    document.querySelector('');
+    document.querySelector('');
+    document.querySelectorAll('');
+    function name(params){
+      
+    }    
+</script>
+</html>

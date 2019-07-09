@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="div1"></div>
+<p id="p1"></p>
+<script>
+    //1.数组的原型链
+    var arr = [10,20,30];// new Array(10,20,30)
+    console.log ( arr );
+    arr.push(40);
+    //检查数组的原型
+    console.log ( arr.__proto__.constructor );//Array
+    console.log ( Array.prototype === arr.__proto__ );//true
+
+    //检查数组的原型的原型
+    console.log ( arr.__proto__.__proto__.constructor );//Object
+    console.log ( Object.prototype === arr.__proto__.__proto__ );//true
+    //检查object的原型
+    console.log ( arr.__proto__.__proto__.__proto__ );//null
+
+    //2.Date:日期对象
+
+    var date = new Date();
+
+    //检查date的原型
+    console.log ( date.__proto__.constructor );//Date
+    console.log ( Date.prototype === date.__proto__ );//true
+
+    //检查date的原型的原型
+    console.log ( date.__proto__.__proto__.constructor );//Object
+    console.log ( Object.prototype === date.__proto__.__proto__ );//true
+
+    //3.String对象的原型链
+
+    var str = new String('我爱学习');
+    console.log ( str );
+
+    //查看str对象的原型
+    console.log ( str.__proto__.constructor );//String
+    console.log ( String.prototype === str.__proto__ );//true
+    //查看str对象的原型的原型
+    console.log ( str.__proto__.__proto__.constructor );//Object
+    console.log ( Object.prototype === str.__proto__.__proto__ );//true
+
+    //4.dom对象的原型链
+
+    var div1 = document.getElementById('div1');
+    var p1 = document.getElementById('p1');
+</script>
+</body>
+</html>

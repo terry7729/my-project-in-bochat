@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 模拟异步 定时器
+  // 通过Promise对象包裹异步代码 就可以使用链式调用.then
+  // 传入的回调函数的 2个形参 也是 回调函数
+  let p1 = new Promise((resolve, reject) => {
+    // 执行异步代码
+    setTimeout(() => {
+      // 根据异步代码的执行结果 人为的调用 resolve 或者 reject
+      resolve('执行完毕啦')
+    }, 1000)
+  })
+  // .then调用时，会执行 Promise内部的代码
+  // 传入的回调函数 会被resolve所接受
+  // res就是resolve执行时传入的 参数
+  // p1.then(res => {
+  //   console.log(res)
+  // })
+
+  // 为了使用方便 一般会抽取为函数
+  function makePro() {
+    return new Promise((resolve, reject) => {
+      // 执行异步代码
+      setTimeout(() => {
+        // 根据异步代码的执行结果 人为的调用 resolve 或者 reject
+        resolve('执行完毕啦')
+      }, 1000)
+    })
+  }
+  // makePro()
+  //   .then(res => {
+  //     console.log(res)
+  //     // 为了链式调用
+  //     return makePro()
+  //   })
+  //   .then(res => {
+  //     console.log(res)
+  //     return makePro()
+  //   })
+  //   .then(res => {
+  //     console.log(res)
+  //   })
+
+  // axios
+  //   .get('xxx')
+  //   .then(res => {
+  //     return axios.get('x2')
+  //   })
+  //   .then(res => {})
+</script>

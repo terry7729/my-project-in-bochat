@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        浏览器认识的标签就按这个标签本来的特点来解析
+
+        浏览器如果不认识的标签，会解析这个标签，只是解析为普通的行内元素，类似于span
+
+
+        JS兼容的原理：其实就是用JS创建出这个元素，只不过把它修改为块级元素
+
+     -->
+
+    <style>
+        xxoo{
+            border: 1px solid #000;
+        }
+
+        header{
+
+            width: 100px;
+            height: 100px;
+            background: #f00;
+        }
+    </style>
+</head>
+<body>
+    <!-- 浏览器认识这个标签，就按这个标签本来的特性来解析 -->
+    <!-- <h2>我是h2</h2> -->
+
+    <!-- 浏览器不认识的标签依然也能解析 -->
+    <!-- <xxoo>我是xxoo</xxoo> -->
+
+    <!-- <header>我是header</header> -->
+</body>
+</html>
+
+<script>
+    //用JS创建标签，用JS创建的是浏览器认识的标签，会按它本身的样子解析
+    // var h2 = document.createElement('h2');
+    // h2.innerHTML = "我是h2";
+    // document.body.appendChild(h2);
+
+    // var xxoo = document.createElement('xxoo');
+    // xxoo.innerHTML = "我是xxoo";
+    // document.body.appendChild(xxoo);
+
+    //IE8以后认识，认识当块级元素解析了
+    var header = document.createElement('header');
+    header.innerHTML = "我是header";
+    header.style.display = "block";
+    document.body.appendChild(header);
+</script>

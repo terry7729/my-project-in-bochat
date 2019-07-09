@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <input type="button" value="存储一个数据" id="save">
+        <input type="button" value="取出一个数据" id="get">
+        <input type="button" value="删除一个数据" id="remove">
+        <input type="button" value="清空所有数据" id="clear">
+        <input type="button" value="存储数组" id="saveArr">
+        <input type="button" value="存储对象" id="saveObj">
+        <input type="button" value="取数组" id="getArr">
+        <input type="button" value="取对象" id="getObj">
+</body>
+</html>
+<script>
+    document.getElementById('save').onclick=function(){
+
+        localStorage.setItem('name','terry');
+        localStorage.setItem('age','23');
+        localStorage.setItem('height','177');
+
+    }
+
+    document.getElementById('get').onclick=function(){
+       var res=  localStorage.getItem('name');
+        console.log(res);
+        
+    }
+
+    document.getElementById('remove').onclick=function(){
+        localStorage.removeItem('name');
+    }
+
+    document.getElementById('clear').onclick=function(){
+        localStorage.clear();
+    }
+
+    //存数组
+    //存数组
+    document.getElementById('saveArr').onclick = function () {
+
+        var arr=[10,20,30];
+        var json =JSON.stringify(arr);
+        localStorage.setItem('arr',json); 
+    }
+
+     document.getElementById('getArr').onclick = function () {
+         var arr=JSON.parse(localStorage.getItem('arr'));
+         console.log(arr);
+         
+     }
+
+     document.getElementById('saveObj').onclick = function () {
+         var obj={name:'222',age:'23213'};
+         var json =JSON.stringify(obj);
+         localStorage.setItem('obj',json)
+
+         var objs=JSON.parse(localStorage.getItem('obj'));
+         console.log(objs);
+     }
+</script>

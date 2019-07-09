@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        .box {
+            width: 280px;
+            height: 180px;
+            border: 1px solid #000;
+            margin: 100px auto;
+
+            /* 
+                参数1：圆的大小和圆心的位置
+                参数2：颜色1
+                参数3：颜色2
+
+                至少2个颜色，多了不限，总是以最后一个颜色填充其他区域
+            */
+            background: radial-gradient(100px at left, red, blue, green);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

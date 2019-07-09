@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        header {
+            height: 200px;
+            background-color:gold;
+        }
+
+        main {
+            height: 500px;
+            background-color:#882c94;
+
+        }
+
+        
+        nav {
+            height: 100px;
+            background-color: orange;
+        }
+
+         aside {
+            height: 100%;
+            width: 50%;
+            background-color: aqua;
+            float: left;
+        }  
+
+        section{
+            height: 100%;
+        }
+        main>section article {
+            height: 100%;
+            width: 50%;
+            background-color: red;
+            float: left;
+        }  
+
+        footer {
+            height: 300px;
+            background-color: #220755;
+        }
+    </style>
+
+    //ie8及以下需要做兼容处理
+    <!-- [if lte IE 8]>
+         <script src="../html5shiv.js"></script>
+        <![endif] -->
+       
+</head>
+<body>
+    <header>
+        <nav></nav>
+    </header>
+    <main>
+        <section>
+                <aside></aside>
+                <article></article>
+        </section>
+        
+    </main>
+    <footer></footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        :hover
+        :active：a标签点击时的样式（按下去没松手那个状态）
+        :link   默认样式
+        :visited 访问之后的样式
+
+        以上四个都是伪类选择器，但是除了hover外，一般都是给a标签用
+
+        :hover：鼠标悬停采用的样式（也可以理解为是鼠标移入）
+
+
+    所有的伪类选择器，前面都有英文冒号，绝对不能省略
+    -->
+
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+
+        .box:hover{
+
+            width: 300px;
+            height: 300px;
+            background: #f00;
+        }
+    </style>
+
+
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

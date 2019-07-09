@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        地理定位：获得设备当前的经纬度
+
+        经纬度：经度和纬度
+            作用：可以精确的定位到地球上某个点，参照的是坐标的思想
+        
+        
+        怎么才能获取到你所在的地理位置？
+
+                1.GPS定位
+                        设备连接到卫星，然后卫星探测你在地球上哪个位置（经纬度）
+                        需要你的设备内置GPS模块
+
+                2.wifi定位
+                        相当于利用大数据，服务器存储了这个wifi的信息和位置
+
+                        例如：张三有一天去某家星巴克喝咖啡，刚好打开了百度地图和自己的GPS定位而且还连了星巴克的wifi
+                        这个时候百度地图就可以收集到这家星巴克的wifi信息（mac地址）和地理位置
+                        有一天李四也来这家星巴克上网了，但是哪怕它没有GPS，只要连了wifi，百度地图也知道它在哪
+
+                    还可以辅助让定位更精确。它会提示你把wifi功能打开能提高位置精确度。甚至都不用连wifi
+                    因为只要你打开了wifi，就会搜索周边的wifi信号，信号有强有弱就能根据这判断出位置
+
+                
+                3.网络基站定位
+                        你上网其实是先连接你这个片区的基站
+                        百度服务器只要记录上基站的信息和位置，然后你是通过这个基站发出的请求，也能大概确定你在什么位置
+                    这种精确度不高，会有3KM误差
+    -->
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    //当获得位置后，会自动调用这个回调函数
+    //并把位置信息当形参传入
+    navigator.geolocation.getCurrentPosition(function(loc){
+
+        // console.log(loc);
+        
+        //纬度
+        console.log(loc.coords.latitude);
+        
+        //经度
+        console.log(loc.coords.longitude);
+        
+    });
+</script>

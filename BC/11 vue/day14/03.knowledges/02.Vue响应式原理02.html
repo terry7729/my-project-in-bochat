@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let obj = {}
+  // 增加了属性 属性取值 和赋值的时候 执行自定义的逻辑
+  Object.defineProperty(obj, 'name', {
+    get() {
+      console.log('get触发')
+      // return '998'
+      return name
+    },
+    set(value) {
+      console.log('set触发')
+      // console.log(value)
+      name = value
+    }
+  })
+  console.log(obj)
+  // obj.name
+  // obj.name = 'rose'
+</script>

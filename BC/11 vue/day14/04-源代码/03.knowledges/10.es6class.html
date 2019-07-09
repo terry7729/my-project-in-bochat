@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  //  js早期实现继承
+  // class是从后台语言学习过来的 java c#
+  // class的作用类似于 构造函数 模板
+  class Person {
+    // 构造器 会在new的时候 执行这个函数
+    constructor(name = 'jack', age = 18) {
+      this.name = name
+      this.age = age
+    }
+    sayHi() {
+      console.log(this.name + '你好哦')
+    }
+  }
+  let p = new Person()
+  // p.sayHi()
+  // console.log(p)
+
+  class Student extends Person {}
+  let s = new Student()
+  console.log(s)
+  s.sayHi()
+</script>

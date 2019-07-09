@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        localStorage：本地存储
+                可以存储一些数据到本地（存到浏览器）
+
+
+                用途：用户做了一些配置，需要记录下来，那么就可以记录在本地，可以多个页面之间传递数据
+                    总结为：可以缓存一些数据
+
+        跟cookie的不同：cookie有失效时间，而localStorage没有失效时间，就意味着localStorage的值一旦存起来，只要自己不删，那么就一直存在
+
+
+        setItem()： 存储一个数据到浏览器。
+                        严格来讲只能存字符串，如果传入复杂类型，会调用复杂类型的toString方法得到字符串再存
+                    
+                    所以如果要存一个复杂类型，先把复杂类型转成JSON字符串，再存
+
+                    取的时候，再把JSON字符串转为JS数据
+
+        getItem()： 根据key来取出值
+
+        removeItem() 根据key删除某个值
+
+        clear(): 没有参数，直接清除所有的值；
+
+
+        特点：
+            1.只要自己不删，就一直存在。
+            2.不同网站之间的本地存储无法共享。同一个网站里不同页面可以共享
+
+     -->
+</head>
+
+<body>
+
+    <input type="button" value="存储一个数据" id="save">
+    <input type="button" value="取出一个数据" id="get">
+    <input type="button" value="删除一个数据" id="remove">
+    <input type="button" value="清空所有数据" id="clear">
+    <input type="button" value="存储数组" id="saveArr">
+    <input type="button" value="存储对象" id="saveObj">
+    <input type="button" value="取数组" id="getArr">
+    <input type="button" value="取对象" id="getObj">
+</body>
+
+</html>
+
+<script>
+    //存储数据
+    document.getElementById('save').onclick = function () {
+
+        // 参数1：键
+        // 参数2：值
+        localStorage.setItem("name", "jack");
+        localStorage.setItem("age", 16);
+        localStorage.setItem("height", "189");
+    }
+
+    //获取数据
+    document.getElementById('get').onclick = function () {
+
+        //取出值当返回值
+        var res = localStorage.getItem('name');
+        console.log(res);
+    }
+
+    //删除数据
+    document.getElementById('remove').onclick = function () {
+
+        //也是根据key来删
+        localStorage.removeItem('name');
+    }
+
+    //清空数据
+    document.getElementById('clear').onclick = function () {
+
+        localStorage.clear();
+    }
+
+
+    //存数组
+    document.getElementById('saveArr').onclick = function () {
+
+        var nums = [10, 20, 30, 40, 50];
+        // console.log(nums.toString());
+
+        //先把数组转成JSON字符串
+        var json = JSON.stringify(nums);
+
+        localStorage.setItem('arr',json);
+    }
+
+    //存对象
+    document.getElementById('saveObj').onclick = function () {
+
+        var obj = { name: "andy", age: 16 };
+        // console.log(obj.toString());
+        //先把对象转成JSON字符串
+        var json = JSON.stringify(obj);
+
+        localStorage.setItem('obj',json);
+    }
+
+    //取数组
+    document.getElementById('getArr').onclick = function () {
+
+        var res = localStorage.getItem('arr');
+        var arr = JSON.parse(res);
+        console.log(arr);
+
+    }
+
+    //取对象
+    document.getElementById('getObj').onclick = function () {
+
+        var res = localStorage.getItem('obj');
+        var obj = JSON.parse(res);
+        console.log(obj);
+
+    }
+</script>

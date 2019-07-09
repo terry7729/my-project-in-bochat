@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+</head>
+<body>
+<input type="button" value="按钮" id="btn1"/> <br/> <br/>
+<input type="checkbox" id="ckb1"  /><br/>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //回忆一下:
+    //有一类属性,比如checked,写在元素身上元素就表示选中, 没有写上就表示没有选中.
+    //那这一类布尔类型的属性,用js操作,如何操作? 设置true或者false
+    //$('#btn1').on('click', function () {
+      //设置
+      // document.getElementById("ckb1").checked = false;
+      //获取
+      //console.log(document.getElementById("ckb1").checked);
+    //});
+
+
+    //jQuery中.
+    //在jQuery1.6之后，对于checked、selected、disabled这类boolean类型的属性来说，不能用attr方法，只能用prop方法。
+    $('#btn1').on('click', function () {
+      //console.log($('#ckb1').attr('checked'));
+
+      //console.log($('#ckb1').prop('checked'));
+      console.log($('#ckb1').prop('checked',false));
+    });
+
+
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        解释为什么使用ajax发post请求时要加请求头
+        总结： 
+             1.哪怕使用表单自动替我们发请求时,get请求没有Content-Type:applicatipn/x-www-form-urlencoded
+                但是post有这句话，所以我们自己发ajax请求时，是不是也应该跟表单这种特点一样？
+
+
+             2.如果用ajax发post请求，不加请求头，那么服务器不能拿到我们提交的数据，加了服务器才能拿到提交的数据
+    -->
+</head>
+<body>
+    <input type="button" value="点我" id="btn">
+</body>
+</html>
+
+<script>
+    // 点击事件
+    document.getElementById('btn').onclick = function(){
+
+        //1. 发ajax请求
+        var xhr = new XMLHttpRequest();
+
+        xhr.open('post','data.php');
+
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        
+        // 如果要给服务器提交多个数据，那么用&连接
+        xhr.send('name=jack&age=16');
+
+        xhr.onload = function(){
+
+            console.log(xhr.responseText);
+            
+        }
+    }
+</script>

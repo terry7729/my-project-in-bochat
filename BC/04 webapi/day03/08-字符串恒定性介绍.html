@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*字符串的恒定性：字符串是不可以被修改的  （千万不要和变量的赋值搞混淆）
+                字符串所有的api都是生成一个新的字符串，而不是修改原先的字符串
+           避免方案：字符串所有的api的返回值都用新的变量去接收
+     */
+
+    //1.验证
+    var str1 = '我爱你们';
+    str1[1] = '恨';
+    console.log ( str1 );
+
+    //(1)将我爱你们替换成我恨你们，生成一个新的字符串v （2）将replace返回值的新字符串重新赋值给str1
+   // str1 =  str1.replace('爱','恨');
+
+   var str2 =  str1.replace('爱','恨');
+    console.log ( str1 );//我爱你们
+    console.log ( str2 );//我恨你们
+
+</script>
+</body>
+</html>

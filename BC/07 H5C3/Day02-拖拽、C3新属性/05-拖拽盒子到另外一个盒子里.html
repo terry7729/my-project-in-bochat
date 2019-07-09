@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!--
+    跟容器（目标元素）有关的事件：
+            ondragenter:有元素进入时触发
+            ondragleave：有元素离开时触发
+            ondragover：有元素在容器范围内时不断触发，但这个事件主要是阻止默认行为，好方便让drop事件能得到触发
+            ondrop：当有元素在容器范围内被放置时触发，需要先阻止over的默认行为才能触发
+
+
+    为什么ondrop事件需要写over事件，并在over里阻止事件默认行为？？
+
+        因为所有元素都有个默认行为是不允许别人拖拽进来，所以我们需要在over里阻止这个默认行为，代表允许别人拖拽进来了
+-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+        }
+
+        .container {
+
+            width: 400px;
+            height: 550px;
+            border: 1px solid #000;
+            position: absolute;
+            right: 10px;
+            top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" draggable="true"></div>
+    <div class="container"></div>
+</body>
+
+</html>
+
+<script>
+    //找到容器
+    var container = document.querySelector('.container');
+    // 找到div
+    var box = document.querySelector('.box');
+    // box.ondragend = function(){
+
+    //     container.appendChild(box);
+    // }
+
+    //当有元素进入时触发的事件
+    container.ondragenter = function () {
+
+        // console.log('enter');
+        // container.appendChild(box);
+
+    }
+
+    //当有元素离开时触发的事件
+    container.ondragleave = function () {
+
+        // console.log('leave');
+
+    }
+
+    //当有元素在容器范围内时不断触发的事件
+    //但是这个事件有个默认行为：禁止元素放进来
+    //所以你要阻止这个默认行为，就能允许元素放进来，就能触发ondrop了
+    container.ondragover = function(e){
+
+        console.log('over');
+        
+        e = e || window.event;
+        e.preventDefault();
+    }
+
+    //当在容器范围内并且松手才触发的事件
+    //但是如果想要这个事件能够被触发，必须再写一个事件ondragover,并且在over这个事件里阻止事件默认行为
+    container.ondrop = function(){
+
+        console.log('...');
+        container.appendChild(box);
+        
+    }
+</script>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    //1. __proto__:属于实例化对象，指向对应构造函数的原型
+    //原型：任何函数在声明的时候，系统都会自动帮我们创建一个与之对象的对象，称之为原型对象
+    function Person ( name ) {
+        this.name = name;
+    };
+    console.log ( Person.prototype );
+    //往原型对象中存储方法
+    Person.prototype.sayHi = function (  ) {
+        console.log ( "今天学的好开心" );
+    };
+    Person.prototype.hobby = '学习';
+
+    //a.构造函数自身可以访问原型对象：  构造函数名.prototype
+    Person.prototype.sayHi();
+    console.log ( Person.prototype.hobby );
+    //b. 这个构造函数实例化出来的每一个对象
+    var p1 = new Person('班长');
+    console.log ( p1 );
+    // p1.sayHi();
+    // console.log ( p1.hobby );
+
+    //1.__proto__:属于实例化对象，指向实例化这个对象的构造函数的原型
+    /*
+    __proto__不是js的标准属性，开发中尽量不要使用，一般学习研究的时候是可以使用的
+     */
+    console.log ( p1.__proto__ === Person.prototype );//true
+    //2.对象访问成员的规则：先看自己有没有这个成员，如果有则访问，没有则访问原型的
+    p1.sayHi()
+
+</script>
+</body>
+</html>

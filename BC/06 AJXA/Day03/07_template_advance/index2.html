@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 涉及到本机服务器要用127打开，其他的可以直接打开 -->
+
+
+    <!-- 
+
+        总结：模板里，如果想写JS语法
+            <% 语法 %>
+
+            模板里，如果要输出呢？
+                <%= 值 %>
+
+     -->
+
+    <style>
+        input{
+            width: 120px;
+            height: 60px;
+            display: block;
+
+            margin: 50px auto;
+        }
+
+        table{
+            margin: 50px auto;
+            
+            /* table专用的属性，合并单元格的边框 */
+            border-collapse: collapse;
+        }
+
+        th,td{
+
+            border: 1px solid #000;
+            width: 120px;
+            text-align: center;
+            line-height: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <input type="button" value="加载数据" id="load">
+
+    <table>
+        <thead>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>成绩</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            
+        </tbody>
+
+    </table>
+</body>
+
+</html>
+
+<!-- 1.导入模板 -->
+<script src="../06_模板引擎的基本使用/template-web.js"></script>
+
+<!-- 2.准备模板 -->
+<script type="text/html" id="tpl">
+
+<% for(var i = 0; i < list.length; i++){  %>
+
+    <tr>
+        <td><%= list[i].Id %></td>
+        <td><%= list[i].name %></td>
+        
+    <% if( list[i].age  < 18 ){ %>
+        <td>未成年</td>
+    <% }else{ %>
+        <td>成年</td>
+    <% } %>
+
+        <td><%= list[i].score %></td>
+    </tr>
+
+<% } %>
+
+</script>
+
+
+<script>
+
+    //找到tbody
+    var tb = document.querySelector('tbody');
+
+    //加载数据的点击事件
+    document.getElementById('load').onclick = function () {
+
+        tb.innerHTML = "";
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //2. 设置请求行
+        xhr.open('get', 'data.php');
+        //3. 设置请求头（get不用设置）
+        //4. 发送请求&设置请求体
+        xhr.send();
+        //5. 监听响应完成
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                // console.log(xhr.responseText);
+                //把JSON转成JS数据
+                var arr = JSON.parse(xhr.responseText);
+                console.log(arr);
+
+
+                // template('tpl',arr);
+                
+                // 注意：如果模板里坑的名字是数组，你不能直接传数组
+                var html = template('tpl',{ list: arr });
+                tb.innerHTML = html;
+                
+            }
+        }
+    }
+</script>

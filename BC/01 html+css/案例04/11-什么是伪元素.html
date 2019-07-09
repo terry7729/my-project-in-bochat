@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 伪元素 */
+        /* content这个属性,必须要有,那么是空值 */
+        div::before {
+            /* 在div的所有子元素之前添加一个伪元素 */
+            content: "";
+        }
+
+        div::after {
+            /* 在div的所有子元素之后添加一个伪元素 */
+            content: "再见";
+            color: red;
+            font-size: 30px;
+        }
+
+        /* 可以在不修改代码的情况下,添加额外的元素 */
+    </style>
+</head>
+<body>
+    <!-- 在不修改结构代码的情况下,添加"你好"再见" -->
+    <div>
+        <a href="#">黑马程序员</a>
+    </div>
+</body>
+</html>

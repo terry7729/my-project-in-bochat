@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>支付</title>
+    <link rel="stylesheet" href="./css/pay.css">
+
+</head>
+
+<body>
+    <form action="">
+        <p>确认支付</p>
+        <div>
+            <label for="">订单</label><input type="text" name="orderId" class="orderId disabled" disabled>
+        </div>
+        <div>
+            <label for="">币种</label><input type="text" name="showCurrency" class="showCurrency disabled" disabled>
+        </div>
+        <div>
+            <label for="">数量</label><input type="number" name="showCurrencyNum" class="showCurrencyNum disabled" disabled>
+        </div>
+        <div>
+            <label for="">资金密码</label><input type="password" class="zjpwd" oninput="if(value.length>6)value=value.slice(0,6)">
+        </div>
+
+        <input type="button" class="submit" value="确认">
+    </form>
+    <div class="alerts">
+        <img src="./img/chenggong@3x.png" alt="">
+        <span>复制成功</span>
+    </div>
+    <div class="loading">
+        <img src="./img/pay.gif" alt="" class="paygif">
+    </div>
+
+</body>
+
+</html>
+<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="./js/md5.js"></script>
+<script type="text/javascript" src="./js/ajax.js"></script>
+<!-- <script src="./js/sha.js"></script> -->
+<script>
+    var postData = GetRequest();
+
+    $('.orderId').val(postData.orderId)
+    $('.showCurrency').val(postData.showCurrency);
+    $('.showCurrencyNum').val(postData.showCurrencyNum);
+
+    //随机数
+
+    //url参数转成对象
+    function GetRequest() {
+        var url = decodeURI(decodeURI(location.search)); //获取url中"?"符后的字串，使用了两次decodeRUI解码
+        var theRequest = new Object();
+        if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for (var i = 0; i < strs.length; i++) {
+                theRequest[strs[i].split("=")[0]] = unescape(strs[i].substr(strs[i].indexOf('=') + 1));
+            }
+            return theRequest;
+        }
+    }
+    //提交
+    $('.submit').click(function(e) {
+        e = e || window.event
+        e.preventDefault()
+        if ($('.zjpwd').val().trim() == '') {
+            $('.alerts img').attr('src', './img/jinggao@3x.png');
+            $('.alerts').fadeIn(800).find('span').html('请输入密码').parent().fadeOut(2000);
+            return
+        }
+        $('.loading').show()
+        $(this).attr('disabled', 'disabled')
+
+        // var timestamp = new Date().getTime();
+        // var nonce = MathRand();
+        // var sign = timestamp + nonce + "BoChat_APP"
+        // sign = sha1(sign)
+
+        var pwd = 'Bochat2019' + $('.zjpwd').val().trim() + "001"
+        var md5pwd = $.md5(pwd);
+
+        $.ajax({
+            url: requestUrl + '/app/meet/gamePayConfirm',
+            type: 'post',
+            // headers: {
+            //     timestamp: timestamp,
+            //     nonce: nonce,
+            //     sign: sign
+            // },
+            data: {
+                body: postData.body,
+                orderId: postData.orderId,
+                showCurrency: postData.showCurrency,
+                showCurrencyNum: postData.showCurrencyNum,
+                language: postData.language,
+                money: postData.money,
+                moneyType: postData.moneyType,
+                payCurrency: postData.payCurrency,
+                payCurrencyNum: postData.payCurrencyNum,
+                payCurrencyPrice: postData.payCurrencyPrice,
+                payUserId: postData.payUserId,
+                showCurrencyPrice: postData.showCurrencyPrice,
+                subject: postData.subject,
+                timestamp: postData.timestamp,
+                sign: postData.sign,
+                signType: postData.signType,
+                password: md5pwd
+
+            },
+            success: function(res) {
+                $('.loading').hide()
+                if (res.retcode == 0 & Object.keys(res.data).length != 0) {
+                    $('.alerts img').attr('src', './img/chenggong@3x.png');
+                    $('.alerts').stop(true, false).fadeIn(800).find('span').html('支付成功').parent().fadeOut(2000);
+                    location = res.data.successPayUrl;
+                } else {
+                    $('.alerts img').attr('src', './img/cuowu@3x.png');
+                    $('.alerts').stop(true, false).fadeIn(800).find('span').html(res.msg).parent().fadeOut(2000);
+                    $('.submit').removeAttr('disabled')
+                }
+
+            }
+        })
+    })
+</script>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>公告</title>
+    <meta name="keywords" content="博信,BoChat,博信有礼,见证新生" />
+    <meta name="description" content="博信BoChat：基于区块链底层技术开发的社交应用。具备即时通讯、社交交互、应用商店、数字资产矩阵钱包等功能。实现在交互过程中通过数字资产打赏利是、分发糖果、任务酬劳、理财获益等的APP应用。" />
+    <link rel="stylesheet" href="./css/announcement.css">
+
+</head>
+
+
+<body>
+    <main>
+        <div class="header">
+            <h3 class="title"></h3>
+            <div><span class="ly"></span><span class="timer"></span></div>
+
+        </div>
+        <div class="main">
+
+
+        </div>
+
+
+    </main>
+
+</body>
+
+</html>
+<script src="./js/jquery.min.js"></script>
+
+<script src="./js/ajax.js"></script>
+<script>
+    // 获取url资讯id
+    var url = location.search.split('id=')[1]
+    if (url.indexOf('&') != -1) {
+        var id = url.substr(0, url.indexOf('&'))
+    } else {
+        id = url
+    }
+    $.ajax({
+        url: requestUrl + '/app/meet/listAnnouncement',
+        type: 'post',
+        data: {
+            id: id,
+            offset: 5,
+            type: 1,
+            start: 0
+        },
+        success: function(res) {
+            if (res.retcode == 0 & Object.keys(res.data.items).length != 0) {
+                var obj = res.data.items[0]
+                $('.title').html(obj.title)
+                $('.timer').html(obj.releaseTime)
+                $('.main').html(obj.content)
+                $('.ly').html(obj.source)
+
+            }
+        }
+    })
+</script>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>表单注册</title>
+    <style>
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+            font-family: '微软雅黑';
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('./resource/images/wallpaper.jpg') no-repeat center /100% 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        ul {
+            margin: 0;
+            padding: 50px;
+            padding-top: 0px;
+            list-style: none;
+        }
+
+        .register {
+            width: 800px;
+            background-color: #F9F9F9;
+            border: 1px solid #CCC;
+            border-radius: 5px;
+        }
+
+        li {
+            display: flex;
+            margin: 20px 0;
+        }
+
+        label,
+        input {
+            display: block;
+            float: left;
+            height: 46px;
+            font-size: 24px;
+            box-sizing: border-box;
+            color: #333;
+        }
+
+        label {
+            width: 200px;
+            line-height: 46px;
+            margin-right: 30px;
+            text-align: right;
+        }
+
+        input {
+            width: 320px;
+            padding: 8px;
+            line-height: 1;
+            outline: none;
+            position: relative;
+        }
+
+        input.code {
+            width: 120px;
+        }
+
+        input.verify {
+            width: 190px;
+            margin-left: 10px;
+        }
+
+        input.disabled {
+            background-color: #CCC !important;
+            cursor: not-allowed !important;
+        }
+
+        input[type=button] {
+            border: none;
+            color: #FFF;
+            background-color: #E64145;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .tips {
+            width: 100%;
+            height: 40px;
+            text-align: center;
+        }
+
+        .tips p {
+            min-width: 300px;
+            max-width: 400px;
+            line-height: 40px;
+            margin: 0 auto;
+            color: #FFF;
+            display: none;
+            background-color: #C91623;
+        }
+
+        .submit:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+
+        span {
+            line-height: 46px;
+            padding-left: 20px;
+            font-size: 20px;
+            color: yellowgreen;
+            text-shadow: 0 0 20px yellowgreen;
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            background: url('./resource/images/loading3.gif') no-repeat center;
+            z-index: 999;
+            position: absolute;
+            /* background-color: rgba(53, 53, 53); */
+            background-color: #353535;
+            opacity: 0.2;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 遮罩层 -->
+    <div class="cover"></div>
+
+    <!-- 注册界面 -->
+    <div class="register">
+
+        <!-- 提示信息 -->
+        <div class="tips">
+            <p>用户名不能为空</p>
+        </div>
+
+        <form id="ajaxForm">
+            <ul>
+                <li>
+                    <label for="">用户名</label>
+                    <input type="text" name="name" class="name">
+                </li>
+                <li>
+                    <label for="">请设置密码</label>
+                    <input type="password" name="pass" class="pass">
+                </li>
+                <li>
+                    <label for="">请确认密码</label>
+                    <input type="password" name="repass" class="repass">
+                </li>
+                <li>
+                    <label for="">验证手机</label>
+                    <input type="text" name="mobile" class="mobile">
+                </li>
+                <li>
+                    <label for="">短信验证码</label>
+                    <input type="text" name="code" class="code">
+                    <input type="button" value="获取验证码" class="verify">
+                </li>
+                <li>
+                    <label for=""></label>
+                    <input type="button" class="submit" value="立即注册">
+                </li>
+            </ul>
+        </form>
+    </div>
+
+</body>
+
+</html>
+
+<!-- 导入jQuery  -->
+<script src="./js/jquery-1.12.4.min.js"></script>
+
+
+<script>
+
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+    // 注意：自己写的时候记得去把api文件夹前面加一个_
+
+    $('.name').blur(function () {
+
+        //当输入的内容为空不往下执行
+        if (this.value == "") return;
+
+        //显示出加载动画
+        $('.cover').show();
+
+        $.get({
+            url: "_api/checkName.php",
+            data: { name: this.value },
+            success: function (obj) {
+                // console.log(obj);
+                $('.tips>p').html(obj).fadeIn(800).fadeOut(800);
+
+                // 响应完成要消失加载动画
+                $('.cover').hide();
+            }
+        });
+    })
+
+    //手机号的失去焦点事件
+    $('.mobile').blur(function () {
+
+        if (this.value == "") return;
+
+        //显示加载动画
+        $('.cover').show();
+
+        //发送请求
+        $.post({
+            url: "_api/checkMobile.php",
+            data: { mobile: this.value },
+            success: function (obj) {
+                // console.log(obj);
+                $('.tips>p').html(obj).fadeIn(800).fadeOut(800);
+                $('.cover').hide();
+            }
+        });
+    });
+
+
+    //获取验证码的点击事件
+    $('.verify').click(function () {
+
+        //发请求获取验证码
+        $.get({
+
+            url: "_api/code.php",
+            data: { mobile: $('.mobile').val() },
+            success: function (obj) {
+
+                $('.code').val(obj);
+            }
+        })
+
+        $(this).addClass('disabled').val('还有5s');
+
+        //默认从5秒开始
+        var sec = 5;
+
+        //倒计时
+        var timerID = setInterval(function () {
+
+            sec--;
+            // 注意：计时器里的this是window
+            $('.verify').val('还有' + sec + 's');
+
+            //如果时间为0代表倒计时结束就停止计时器
+            if (sec == 0) {
+
+                clearInterval(timerID);
+                //恢复文字和样式
+                $('.verify').removeClass('disabled').val('获取验证码');
+            }
+
+        }, 1000);
+    });
+
+
+    //注册的点击事件
+    $('.submit').click(function () {
+
+        // jQuery里的表单的序列化
+        // 它有返回值
+        // 获取到表单内所有元素的值，并且拼成key=value形式的字符串
+        // 好处：就不用我们再一个一个取值去传递了，直接调用这个方法，就能获取到我们需要提交的数据
+        var res = $('#ajaxForm').serialize();
+
+        //name=jakc123&pass=1234&repass=1234&mobile=13800138002&code=9070
+        // console.log(res);
+        // return;
+
+        $.post({
+
+            url: "_api/register.php",
+            data: res,
+            success: function (obj) {
+
+                console.log(obj);
+
+            }
+        });
+
+        return;
+
+
+        $.post({
+
+            url: "_api/register.php",
+            data: {
+                name: $('.name').val(),
+                mobile: $('.mobile').val(),
+                pass: $('.pass').val(),
+                repass: $('.repass').val(),
+                code: $('.code').val()
+            },
+            success: function (obj) {
+
+                console.log(obj);
+
+            }
+        });
+    });
+</script>

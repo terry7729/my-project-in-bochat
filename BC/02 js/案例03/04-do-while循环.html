@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //让用户输入帐号,以及密码:如果帐号不等于admin,密码不等于8888,怎让用户重新输入
+        var userName;
+        var password;
+
+        while(userName != "admin" || password != "8888"){
+            
+            var userName = prompt('请输入你的账号:');
+            var password = +prompt('请输入你的密码:');
+        };
+        alert('登录成功,欢迎回来');
+
+        //能不能先执行一次循环代码之后再去判断
+        //do-while
+        //语法结构:
+        //do{
+        //  循环体代码:
+        // }while(判断条件);
+        //先执行一次循环代码,然后再去判断条件,如果成立则循环继续,如果不成立则循环结束
+
+        //var userName;
+        //var password;
+        //do{
+        //    userName = prompt("请输入你的帐号");
+        //    password = prompt("请输入你的密码");
+        //}while (userName != "admin" || password != "8888");
+
+        //如何区别
+        //如果是while:皇上啊,赵一波斩不斩啊.拖出去,五马分尸(先奏后斩)
+        //如果do-while:皇上啊,赵一波已经斩了,你还要不要再多斩一次啊(先斩后奏)
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

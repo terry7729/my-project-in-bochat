@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        +：把两边的值，加起来算和
+            例：10 + 20 得到结果是30
+           但是如果+号两边有一边是字符串，那么+就不是算和了，而是把两边的内容连接起来变成一个新的字符串
+
+           "10" + 20 = "1020"
+
+           "10" + "20" = "1020"
+
+           只要是有字符串用+，都是连接（拼接）
+
+     -->
+
+     <script>
+        //  var res = "hello";
+        //  res = res + " world"; //var res = "hello" + "world";
+        
+        //  如果要在原来的值的基础上再加一个值，可以用 +=
+        //  res += " world"; // res = res + " world"
+        //  console.log(res);
+
+
+        var res = "<tr>";
+
+        res += "<td></td>"; // res = <tr> + "<td></td>" ;  res = "<tr><td></td>";
+
+        res += "<td></td>"; // res = <tr><td></td> + "<td></td>" = res = <tr><td></td><td></td>
+
+        res += "<td></td>"; // <tr><td></td><td></td><td></td>
+
+        res += "<td></td>"; // <tr><td></td><td></td><td></td><td></td>
+
+        res += "</tr>"; // <tr><td></td><td></td><td></td><td></td></tr>
+
+        console.log(res);
+        
+         
+     </script>
+</head>
+<body>
+    
+</body>
+</html>

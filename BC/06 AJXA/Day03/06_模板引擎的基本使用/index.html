@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        如果要拼接一段HTML代码，很麻烦
+
+        模板引擎：它的作用：就是可以帮我们生成大量的html代码，而不用我们再自己手动写代码拼接
+
+
+        模板：就是一套准备好的固定格式，我们只要根据这个固定格式就可以显示成不同内容
+
+
+        模板引擎的意思：预先准备好一套HTML代码，但是里面的值没有写死，而是你传过来什么值，它就显示什么值
+
+
+        模板使用的步骤：
+                1.导入模板引擎
+                2.准备一个模板
+                        用script标签，而且必须给type属性，而且type属性不能是text/javascript,否则会报错
+                        还要给一个id，方便后面能找到这个模板
+                        挖坑的时候用<%= 坑的名字 %> 
+
+                3.使用这个模板
+                        template()函数来使用模板
+
+     -->
+
+</head>
+<body>
+    <input type="button" value="点我" id="btn">
+
+    <div id="result"></div>
+
+</body>
+</html>
+
+<!-- 1.导入模板 -->
+<script src="./template-web.js"></script>
+
+
+
+<!-- 2.准备模板 -->
+<script type="text/html" id="tpl">  
+
+
+    <p>大家好，我叫<span style='color:red'><%= name %></span>，今年<u><%= age %></u>岁，我是<i><%= gender %></i>生 </p> 
+
+</script>
+
+
+
+
+<script>
+
+    var result = document.getElementById('result');
+
+    var obj = { name:"andy",age:16,gender:"男" };
+    var obj2 = { name2:"rose",age:17,gender:"女" };
+
+    document.getElementById('btn').onclick = function(){
+
+        //加一个p标签里面放span,u,i
+        // result.innerHTML = "<p>大家好，我叫<span style='color:red'>jack</span>，今年<u>16</u>岁，我是<i>男</i>省 </p>";
+
+        //参数1：是传模板id
+        //参数2：告诉它里面的坑用什么数据来填入
+        var html1 = template('tpl',obj);
+        console.log(html1);
+
+        var html2 = template('tpl',obj2);
+        console.log(html2);
+        
+        
+    }
+</script>

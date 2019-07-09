@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        视频/音频 的音量取值范围是 0 - 1
+     -->
+</head>
+
+<body>
+    <input type="range" max="1" min="0" step="0.1">
+
+    <video src="video/movie01.mp4" controls></video>
+
+    <input type="button" value="设置音量到1" id="btn1">
+    <input type="button" value="设置音量到100" id="btn2">
+    <input type="button" value="设置音量到0.5" id="btn3">
+    <input type="button" value="设置音量到0" id="btn4">
+</body>
+
+</html>
+
+<script>
+    //我想打印range的当前值
+    var range = document.querySelector('input');
+    //找到视频
+    var video = document.querySelector('video');
+
+    range.onchange = function () {
+
+        console.log(range.value);
+
+    }
+
+    document.getElementById('btn1').onclick = function () {
+
+        //视频音量有一个属性叫volume
+        // console.log(video.volume);
+        video.volume = 1;
+
+    }
+
+    document.getElementById('btn2').onclick = function () {
+
+        video.volume = 100;
+
+    }
+
+    document.getElementById('btn3').onclick = function () {
+
+        video.volume = 0.5;
+
+    }
+
+    document.getElementById('btn4').onclick = function () {
+
+        video.volume = 0;
+
+    }
+</script>

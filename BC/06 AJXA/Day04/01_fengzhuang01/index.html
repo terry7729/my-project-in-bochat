@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        为什么要封装ajax的代码？
+            一个普通页面里面都可能会有好几个局部请求
+            发请求的代码几乎都是一样的，所以根据封装的思想，相同的代码，在不同的地方要用，应该封装成函数
+
+
+        简单封装步骤：
+                1.声明一个函数
+                2.直接把相同代码作为函数体放到函数里
+                3.在需要用的地方调用
+
+
+        存在的问题：
+                请求方式和请求路径写死了，不管在哪调用都是同一个方式和同一个路径
+        根据封装的思想：不同的值，当做参数传进来
+     -->
+</head>
+
+<body>
+    <input type="button" value="发请求1" id="btn1">
+    <input type="button" value="发请求2" id="btn2">
+</body>
+
+</html>
+
+<script>
+
+    function ajax(type,url) {
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+        //2. 设置请求行
+        xhr.open(type, url);
+        //3. 设置请求头（get不用设置，post要设置）
+        if(type == "post"){
+            xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+        }
+        //4. 发送请求&设置请求体（post要设置请求体）
+        xhr.send();
+        //5. 监听响应完成
+        xhr.onload = function () {
+
+            console.log(xhr.responseText);
+
+        }
+    }
+
+
+    //发请求1
+    document.getElementById('btn1').onclick = function () {
+
+        ajax('get','checkname.php');
+    }
+
+    //发请求2
+    document.getElementById('btn2').onclick = function () {
+
+        ajax('get','code.php');
+    }
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">我是班长
+    <p>我是班长的小迷弟</p>
+</div>
+
+<script>
+    var box = document.getElementById('box');
+
+    //1.innerText:获取元素的文本（包含子元素的文本）
+    console.log ( box.innerText );
+
+    //2.innerHTML:获取元素的内容（包含文本与标签）
+    console.log ( box.innerHTML );
+
+    //3.通过分别设置一个元素innerText与innerHTML了解这两个属性之间的区别
+    //3.1 innerText不能识别标签，会把字符串所有内容都当成元素的文本
+    //box.innerText = '<a>我是链接</a><p>我是保健坤</p>';
+
+    //3.2 innerHTML可以识别标签，会正确解析字符串中的标签样式
+    box.innerHTML = '<a href="#">我是链接</a><p>我是保健坤</p>';
+
+</script>
+</body>
+</html>

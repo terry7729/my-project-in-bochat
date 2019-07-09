@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        浏览器默认就有个drop（文件拖进来）的行为：打开拖进来的文件
+
+        所以如果我希望拖进来文件的时候做自己想做的事，我们还需要阻止这个默认行为
+    -->
+
+    <style>
+        /* 我们用下面这句代码设置让body跟显示区域（文档）一样大 */
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+
+
+        body {
+            border: 5px dashed black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>拖拽文件到虚线内</h1>
+</body>
+
+</html>
+<script src="./jquery-1.11.4.min.js"></script>
+<script>
+    console.log($('document'));
+    //它的目的是为了让drop得以触发
+    document.ondragover = function (e) {
+
+        // 这里的阻止默认行为主要是为了让drop事件能够得到触发
+        e = e || window.event;
+        e.preventDefault();
+    }
+
+    document.ondrop = function (e) {
+        e = e || event;
+        e.preventDefault();
+        var url = URL.createObjectURL(e.dataTransfer.files[0]);
+        $('body').css('background', 'url(' + url + ') no-repeat');
+    }
+    $('document').on('dragover', function (e) {
+        e = e || event;
+        e.preventDefault();
+    })
+
+    $('document').on('drop', function (e) {
+        e = e || event;
+        e.preventDefault();
+
+
+    })
+</script>

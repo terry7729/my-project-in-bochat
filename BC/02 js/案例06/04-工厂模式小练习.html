@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //我要把我们班所有都封装成对象
+        //拥有一个学生名单数组["宋明","豆豆","赫赫","胖虎","班长"]
+        //批量生成对象,并且放到一个数组中
+        var stuArr = ["宋明","豆豆","赫赫","胖虎","班长"];
+        var stuObj = [];
+
+        function getStu(name) {
+            var stu = new Object();
+            stu.name = name;
+            stu.sayHi = function () {
+                console.log("雷猴啊,猴嗨森,我是"+this.name);
+            };
+            return stu;
+        }
+
+        for (var i = 0;i < stuArr.length;i++) {
+            stuObj[stuObj.length] = getStu(stuArr[i]);
+            //数组是可以存储对象的
+        }
+
+        console.log(stuObj);
+        stuObj[0].sayHi();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

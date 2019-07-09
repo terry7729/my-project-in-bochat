@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //请输入一个月份,然后判断这个月份的季节
+        //春季:3,4,5 夏季:6,7,8 秋季:9,10,11 冬季:12,1,2
+        /*
+        * switch(表达式) {
+        *   case 值1:
+        *       当表达式的结果等于值1的时候,执行这里的代码;
+        *       break;
+        *   case 值2:
+        *       当表达式的结果等于值2的时候,执行这里的代码;
+        *       break;
+        *   case 值3:
+        *       当表达式的结果等于值3的时候,执行这里的代码;
+        *       break;
+        *  default:
+        *       当上面的所有值都不满足的时候,会执行的代码;
+        *       break;
+        * }
+        * */
+
+        var month = +prompt("请输入一个月份:");
+        switch (month) {
+            case 3:
+                //case的对比并不是我们以为的==.而是===必须类型与值都全等才可以匹配
+            case 4:
+            case 5:
+                alert("现在是春天!");
+                break;
+            case 6:
+            case 7:
+            case 8:
+                alert("现在是夏天!");
+                break;
+            case 9:
+            case 10:
+            case 11:
+                alert("现在是秋天!");
+                break;
+            case 12:
+            case 1:
+            case 2:
+                alert("现在是冬天!");
+                break;
+            default:
+                alert("你是个小傻瓜吗?");
+                break;
+        }
+
+        //break:用来打断程序的进行,如果没有break,那么整个程序会一直穿透下去
+
+        //使用判断语句的建议
+        //如果是判断一个范围,if
+        //如果是匹配某一个值,switch
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .map{
+            width: 800px;
+            height: 600px;
+            background-color: #ccc;
+            top: 0px;
+            left: 0px;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+
+<div id="map" class="map"></div>
+<script>
+    //需求：生成十个随机食物
+
+    var map = document.getElementById('map');
+
+    //1.面向过程做法
+    /*弊端：（1）不便于维护  （2）复用性低
+
+     */
+    // for (var i = 1;i<=10;i++){
+    //     //1.创建div
+    //     var div = document.createElement('div');
+    //     //2.设置属性
+    //     div.style.position = 'absolute';
+    //     div.style.width = '20px';
+    //     div.style.height = '20px';
+    //     div.style.backgroundColor = 'green';
+    //     //随机位置
+    //     //单位长度
+    //     var x = Math.floor(Math.random() * map.offsetWidth/20);//0-40的随机整数 表示第几个格子
+    //     var y = Math.floor(Math.random() * map.offsetHeight/20);//0-40的随机整数 表示第几个格子
+    //     div.style.left = x * 20 + 'px';
+    //     div.style.top = y * 20 + 'px';
+    //     //3.添加到地图
+    //     map.appendChild(div);
+    // }
+
+    //2.面向对象
+    //声明构造函数创建食物对象
+    function Food ( w,h,x,y,bgColor ) {
+        this.w  = w || 20;
+        this.h  = h || 20;
+        this.x  = x || 0;
+        this.y  = y || 0;
+        this.bgColor  = bgColor || 'green';
+    };
+
+    //每一个食物都有添加到页面的方法
+    Food.prototype.render = function (  ) {
+        //将食物添加到页面
+        //this:指向调用这个方法的每一个食物对象
+        //1.创建div
+        var div = document.createElement('div');
+        //2.设置属性
+        div.style.position = 'absolute';
+        div.style.width = this.w + 'px';
+        div.style.height = this.h + 'px';
+        div.style.backgroundColor =this.bgColor;
+        //随机位置
+        //单位长度
+        var x = this.x || Math.floor(Math.random() * map.offsetWidth/20);//0-40的随机整数 表示第几个格子
+        var y = this.y || Math.floor(Math.random() * map.offsetHeight/20);//0-40的随机整数 表示第几个格子
+        div.style.left =  x * this.w + 'px';
+        div.style.top = y * this.h + 'px';
+        //3.添加到地图
+        map.appendChild(div);
+    }
+
+    for(var i = 1;i<=10;i++){
+        //实例化食物
+        var food = new Food();
+        food.render();
+    }
+
+    var f1 = new Food(40,40,5,5,'red');
+    f1.render();
+
+
+</script>
+</body>
+</html>

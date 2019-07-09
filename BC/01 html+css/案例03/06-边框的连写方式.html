@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            border-style: solid;
+            border-style: solid double dashed dotted;
+            /* 上 右 下 左:顺时针 */
+            border-style: solid dashed double;
+            /* 上 左右 下 */
+            border-style: solid double;
+            /* 上下 左右 */
+            border-width: 10px;
+            border-width: 10px 20px 30px 40px;
+            /* 顺序规律同上 */
+            border-color: gold;
+            border-color: yellow green blue  pink;
+            /* 顺序同上 */
+
+            /* 一般边框我们不会这么写 */
+            /* 连写 */
+            border: solid pink 20px;
+            /* 工作中最常用的连写方式,没有顺序要求 */
+        }
+
+        p.demo {
+            width: 300px;
+            height: 300px;
+            background-color: gold;
+            /* 添加下边框 */
+            border-bottom: 20px solid red;
+            /* border-top: */
+            /* border-right:  */
+            /* border-left:  */
+
+            /* 边框也是可以单独设置的 */
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+    </div>
+    <p class="demo"> </p>
+</body>
+</html>

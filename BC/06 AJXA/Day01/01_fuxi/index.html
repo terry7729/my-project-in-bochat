@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- http协议
+            请求行：请求方式 请求路径  遵守的协议版本
+            请求头：一堆键值对，告诉服务器我当前发请求的环境
+            请求体：提交给服务器的数据（一般get请求没有请求，post有请求体）
+
+        ajax：是一套用来发局部请求的技术，都是要发请求，既然都要发请求，要有请求行、也要有请求头、请求体（如果没提交的数据就不需要请求体），所以等会ajax基本使用的时候，我们就会要设置请求行这些东西了
+    -->
+</head>
+<body>
+    <!-- 表单默认发送的是get请求，改成post请求 -->
+    <form action="data.php" method="GET">
+
+        <input type="text" name="user">
+        <input type="text" name="age">
+        <input type="submit">
+    </form>
+</body>
+</html>

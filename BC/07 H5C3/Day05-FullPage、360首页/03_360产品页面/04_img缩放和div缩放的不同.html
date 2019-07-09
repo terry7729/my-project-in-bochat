@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        img缩放是整体缩放，而div用背景图片缩放是一点一点看不到或者看到某些图片
+     -->
+
+    <style>
+        body{
+            background-color: #000;
+        }
+
+        img{
+            width: 100px;
+        }
+
+        .key{
+            width: 100px;
+            height: 20px;
+            background: url(images/key.png);
+        }
+    </style>
+</head>
+<body>
+    <img src="images/key.png" alt="">
+
+    <div class="key"></div>
+</body>
+</html>

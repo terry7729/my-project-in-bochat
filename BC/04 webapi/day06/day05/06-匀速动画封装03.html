@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 30px;
+        }
+
+        .one1 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 200px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始移动到四百" id="move400"/>
+<input type="button" value="开始移动到八百" id="move800"/>
+<div class="one" id="box"></div>
+<div class="one1" id="box1"></div>
+
+<script>
+    
+    /*本小节解决目标：移动方向不限
+        从左往右移动：  当前位置  < 目标位置   （1）currentLeft += 10   (2)边界检测： if(当前位置>= 目标位置){}
+        从右往左移动：  当前位置  > 目标位置      (2)currentLeft  -= 10  (2)边界检测 : if（当前位置<=目标位置）{}
+
+     */
+
+    var box = document.getElementById('box');
+    var box1 = document.getElementById('box1');
+
+    //红色盒子移到400
+    document.getElementById('move400').onclick = function (  ) {
+        animationMove(box, 400);
+    };
+
+    //绿色盒子移到800
+    document.getElementById('move800').onclick = function (  ) {
+        animationMove(box, 800);
+    }
+
+    /**匀速动画封装
+     * @param ele 要移动的元素
+     * @param target  目标距离
+     */
+    function animationMove ( ele,target ) {
+        //1.清除之前的定时器，以本次为准
+        clearInterval(ele.timeID);
+        //2.开始本次移动
+       ele.timeID =  setInterval(function (  ) {
+            //2.1 获取元素当前位置
+           var currentLeft =  ele.offsetLeft;
+           //2.2 开始移动
+           /*
+           从左往右移动：  当前位置  < 目标位置   （1）currentLeft += 10   (2)边界检测： if(当前位置>= 目标位置){}
+        从右往左移动：  当前位置  > 目标位置      (2)currentLeft  -= 10  (2)边界检测 : if（当前位置<=目标位置）{}
+            */
+
+          var isLeft = currentLeft<target?true:false;
+           // if(currentLeft < target){
+           //     var isLeft = true;//从左往右移动
+           // }else{
+           //     var isLeft = false;//从右往左
+           // };
+
+           isLeft?currentLeft += 10:currentLeft -= 10;
+           // if (isLeft){
+           //     currentLeft += 10;
+           // }else{
+           //     currentLeft -= 10;
+           // }
+
+           ele.style.left = currentLeft + 'px';
+           //2.3 边界检测
+
+           /*这个三元表达式意思
+           如果isLeft是true，就执行代码   currentLeft >= target
+           如果isLeft是false，就执行代码   currentLeft <= target
+
+            */
+           if (isLeft?currentLeft >= target:currentLeft <= target){
+               clearInterval(ele.timeID);
+               ele.style.left = target + 'px';
+           }
+
+           // if (isLeft){//从左往右
+           //     if (currentLeft >= target){
+           //         clearInterval(ele.timeID);
+           //         ele.style.left = target + 'px';
+           //     }
+           // }else{//从右往左
+           //     if (currentLeft <= target){
+           //         clearInterval(ele.timeID);
+           //         ele.style.left = target + 'px';
+           //     }
+           // }
+
+
+
+        },50);
+    }
+
+    // var box = {name:'张三'};
+    // var ele = box;
+    // ele.age = 18;
+    // console.log ( box );
+</script>
+</body>
+</html>

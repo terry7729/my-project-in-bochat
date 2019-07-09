@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img id="img" src="" alt=""/>
+
+<script>
+    /*1.定义一个变量来记录分m和秒s
+    2.开启一个定时器，每一秒钟，s++
+    3.当s>59，s = 0;m++
+    4.如果m与s小于10，则在前面加上0
+    5.将m与s拼接成图片的路径    'meimei/' + m + '_' + s + '.jpg'
+
+     */
+
+    var img = document.getElementById('img');
+    //1.定义一个变量来记录分m和秒s
+    var m = 0;
+    var s = 0;
+    //2.开启一个定时器，每一秒钟，s++
+    setInterval(function (  ) {
+        s++;//自增运算符可以把字符串转成number
+       // 3.当s>59，s = 0;m++
+        if(s>59){
+            s = 0;
+            m++;
+        }
+       // 4.如果m与s小于10，则在前面加上0(将小于10的数字在前面拼接一个字符串0)
+        s = parseInt(s);
+        s = s < 10?'0' + s : s;
+        m = parseInt(m);//保证m是一个number的类型
+        console.log ( m );
+        m = m < 10?'0' + m : m;//如果m是一个字符串0，那么每一次计算就相当于字符串0的拼接
+        console.log ( m );
+
+
+       // 5.将m与s拼接成图片的路径    'meimei/' + m + '_' + s + '.jpg'
+        img.src =  'meimei/' + m + '_' + s + '.jpg';
+    },1000)
+
+</script>
+</body>
+</html>

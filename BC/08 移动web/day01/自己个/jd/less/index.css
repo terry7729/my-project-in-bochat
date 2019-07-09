@@ -1,0 +1,229 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  -webkit-user-select: none;
+  -webkit-text-size-adjust: 100%;
+}
+html {
+  font-size: 26.6667vw;
+}
+body {
+  font-size: 0.14rem;
+  font-family: '微软雅黑';
+}
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: #666;
+}
+input {
+  border: 0;
+  outline: 0;
+}
+img {
+  vertical-align: middle;
+}
+input,
+button {
+  -webkit-appearance: none;
+  -webkit-touch-callout: none;
+}
+.bt {
+  border-top: 0.01rem solid #ccc;
+}
+.bb {
+  border-bottom: 0.01rem solid #ccc;
+}
+.bl {
+  border-left: 0.01rem solid #ccc;
+}
+.br {
+  border-right: 0.01rem solid #ccc;
+}
+header {
+  background-size: 3.75rem 1.75rem;
+  position: fixed;
+  top: 0;
+  display: flex;
+  background-color: #e92322;
+  width: 100%;
+  z-index: 2;
+}
+header .icon-logo {
+  background: url(../images/sprites.png);
+  background-size: 2rem 2rem;
+  padding: 0.10rem 0.11rem;
+  display: block;
+  width: 0.8rem;
+  height: 0.45rem;
+  background-position: 0px -1.08rem;
+  background-origin: content-box;
+  background-clip: content-box;
+}
+header form {
+  flex: 1;
+  position: relative;
+  padding-top: 0.05rem;
+  align-items: flex-start;
+}
+header form .search {
+  border-radius: 0.18rem;
+  font-size: 0.14rem;
+  padding-left: 0.3rem;
+  width: 100%;
+  height: 0.35rem;
+}
+header form i {
+  width: 0.2rem;
+  height: 0.2rem;
+  padding-top: 0.1rem;
+  padding: 0.05rem;
+  background: url(../images/sprites.png);
+  background-size: 2rem 2rem;
+  position: absolute;
+  background-position: -0.58rem -1.08rem;
+  top: 0.12rem;
+  left: 0.1rem;
+}
+header .login {
+  width: 0.5rem;
+  height: 0.45rem;
+  line-height: 0.45rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.14rem;
+}
+#slide img {
+  width: 100%;
+}
+#slide .swiper-pagination-bullet {
+  background-color: gold;
+}
+#nav ul {
+  padding: 0.1rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+#nav ul li {
+  width: 25%;
+  text-align: center;
+}
+#nav ul li a {
+  display: block;
+}
+#nav ul li img {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+#nav ul li p {
+  margin: 0.05rem 0;
+}
+#main {
+  padding: 0.1rem;
+  /* 为了把main里面的内容往上挤不要和底部重叠在一起 */
+  padding-bottom: .6rem;
+  background-color: #eee;
+}
+#main .seckill {
+  box-shadow: 0 0 0.05rem 0 #666;
+}
+#main .seckill .title {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  margin-bottom: 0.04rem;
+  font-size: .14rem;
+}
+#main .seckill .title .left {
+  flex: 7;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+#main .seckill .title .left img {
+  width: 0.2rem;
+  margin-left: 0.05rem;
+}
+#main .seckill .title .left > span {
+  color: #de181b;
+  margin-left: 0.03rem;
+}
+#main .seckill .title .left .downtime {
+  margin-left: 0.03rem;
+}
+#main .seckill .title .left .downtime span {
+  height: 0.15rem;
+  width: 0.15rem;
+  line-height: 0.15rem;
+  text-align: center;
+}
+#main .seckill .title .left .downtime span:nth-child(3n) {
+  color: black;
+}
+#main .seckill .title .left .downtime span:not(:nth-child(3n)) {
+  display: inline-block;
+  background-color: black;
+}
+#main .seckill .title .right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#main .seckill .title .right a {
+  width: 100%;
+}
+#main .seckill .content ul {
+  display: flex;
+}
+#main .seckill .content ul li {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#main .seckill .content ul li p:first-of-type {
+  color: #de181b;
+}
+#main .seckill .content ul li:not(:first-child) {
+  border-left: 0.01rem solid #ccc;
+}
+#main .seckill .content img {
+  width: 1.1rem;
+}
+.jd-market {
+  box-shadow: 0 0 0.05rem 0 #666;
+  margin-top: 0.1rem;
+  background-color: #fff;
+}
+.jd-market .title h4 {
+  height: 0.3rem;
+  line-height: 0.3rem;
+  position: relative;
+  padding-left: 0.3rem;
+}
+.jd-market .title h4::before {
+  content: "";
+  position: absolute;
+  width: 0.04rem;
+  height: 0.14rem;
+  background-color: #de181b;
+  top: 0.08rem;
+  left: 0.2rem;
+}
+.jd-market .content {
+  display: flex;
+}
+.jd-market .content > div {
+  flex: 1;
+}
+.jd-market .content > div a {
+  display: block;
+}
+.jd-market .content > div a img {
+  width: 100%;
+}

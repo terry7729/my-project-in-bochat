@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box" style="width: 100px;height: 100px;background-color: red;">我是班长</div>
+
+<button id="btn">我是按钮</button>
+
+<script>
+   var box = document.getElementById('box');
+  // box.style.backgroundColor = 'green';
+
+   //交互：什么元素在什么时刻做什么事
+   /*1.事件：js处理用户交互的一种机制
+     2.事件三要素
+        事件源：什么元素
+        事件类型：什么时刻  （onclick  onmouseover）
+        事件处理：做什么事  （函数）
+     3.注册事件：对象赋值的过程
+            事件源.事件类型 = 事件处理函数
+
+    4.事件的工作原理
+        * a.注册事件的时候（只是给元素赋值），并不会触发这个事件。
+        * b.当界面加载完毕之后，用户触发了这个事件的时候，
+        * 此时浏览器会自动捕捉到这个事件，并且调用元素的这个方法
+    */
+
+   //box这个元素在点击的时候会出现弹窗
+   //鼠标单击
+    box.onclick = function (  ) {
+        alert('班长困了，要睡觉了');
+    };
+
+    //鼠标移入
+    box.onmouseover = function (  ) {
+        alert('我是班长，鼠标移入我了，我要和苍老师开始一对一交流了');
+    }
+
+    //获取按钮元素
+    var btn = document.getElementById('btn');
+    //给按钮注册鼠标双击事件
+    btn.ondblclick = function (  ) {
+        box.style.backgroundColor = 'green';
+    }
+
+    //用户点击的时候，浏览器自动的帮我们执行了下面这行代码
+   // box.onclick();
+</script>
+</body>
+</html>

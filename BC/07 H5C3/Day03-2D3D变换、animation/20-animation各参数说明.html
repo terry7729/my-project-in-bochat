@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+
+            /*
+                参数1：剧本名字（动画名）
+                参数2：动画的持续时间
+                参数3：动画的延迟时间
+                参数4：运动曲线 linear 匀速 steps分步骤
+                参数5：动画的次数，如果要无限加一个关键字 infinite
+                参数6：默认情况下复原时没有动画，加一个alternate代表复原也有动画，但是复原时动画也占用1次
+                参数7：默认情况下动画完了都会复原成初始样子，如果希望就用动画最终的样子停留，那么就加一个属性叫forwords
+                        如果是无限次，这个参数就废了，因为动画根本不会停
+                参数8：播放状态，只有两个值：running（播放）   paused（暂停）
+            */
+            animation: bigger 1s .1s linear 3 alternate forwards paused;
+            
+            /* 没有顺序之分，不用刻意记，想到什么写什么 */
+            /* animation: 1s bigger 2s linear alternate 3; */
+            /* animation也是一个复合属性 */
+
+
+            /* animation-name: 剧本名 */
+            /* animation-duration: 动画持续时间 */
+            /* animation-delay: 延迟时间 */
+            /* animation-timing-function: 运动曲线 */
+            /* animation-iteration-count: 动画次数 */
+            /* animation-direction: 是否复原时也有动画 */
+            /* animation-fill-mode: 是否停留在动画最终样子 */
+            /* animation-play-state: 播放状态 */
+
+            /* 作业把盒子改成自动来旋转 */
+            
+    
+        }
+
+
+        .box:hover{
+
+            animation-play-state: running;
+        }
+
+        @keyframes bigger{
+
+            from{}
+            to{
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

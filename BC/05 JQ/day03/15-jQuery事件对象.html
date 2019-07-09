@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 2000px;
+      height: 2000px;
+
+    }
+    .one {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+      /*margin-top: 10px;*/
+      position: relative;
+      top: 100px;
+      left: 100px;
+    }
+  </style>
+</head>
+<body>
+<div id="one" class="one">
+  <input type="button" value="我是按钮" id="btn"/>
+  <br/><br/>
+  <a href="https://www.baidu.com">百度一下，你就知道</a>
+</div>
+</body>
+</html>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+     //回忆一下:不管是什么事件被触发,都会有一个对象记录这个事件成触发时候的一些信息,比如有么有按住alt键,比如触发事件的坐标啊,这个对象就是事件对象 , 原生js中用事件参数e可以获取.
+    // document.getElementById("one").onclick = function (e) {
+    //   e = e || window.event;
+    //   console.log(e);
+    // };
+
+
+    //1.jQuery中的事件对象,其实就是对原生的事件对象做了一个封装,帮你处理了兼容性.其他都一样,也是用事件参数e获取.
+    //$('#one').on('click', function (e) {
+      //console.log(e);
+
+      //2 三个常用的坐标. 和原生js中的一样.
+      // console.log("screenX :"+e.screenX + "-" + e.screenY); //屏幕左上角 距离触发事件的那一点的距离
+      // console.log("clientX :"+e.clientX + "-" + e.clientY); //页面可视区左上角距离触发事件的那一点之间的距离.
+      // console.log("pageX :"+e.pageX + "-" + e.pageY);//页面左上角 距离触发事件那一点之间的距离.
+
+      //3.
+      //alert("我是div,我被单击了....");
+    //});
+
+
+    //4.给div里面的按钮设置一个点击事件.
+    // $('#btn').on('click', function (e) {
+    //   //不想事件冒泡.
+    //   e.stopPropagation(); //阻止冒泡.
+    //   alert("我是按钮,我被单击了...");
+    // });
+
+
+    //5.阻止默认行为.
+    // $('a').on('click', function (e) {
+    //   // e.stopPropagation();//阻止冒泡
+    //   // e.preventDefault();//阻止默认行为.
+//
+    //   alert('我是a标签,我被单击了..');
+//
+    //   //6.jQuery中的return false 既能阻止冒泡,又能阻止默认行为.
+    //   return false;
+    // });
+
+
+    //7.keyCode
+    // $(document).on('keydown', function (e) {
+    //   console.log(e.keyCode);
+    // });
+
+
+    //8.  e.data
+    // $('body').on('click','div','我就是data', function (e) {
+    //   console.log(e.data);
+    // });
+
+  });
+</script>

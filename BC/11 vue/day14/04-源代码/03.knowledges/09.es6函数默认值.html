@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 默认值 在不传入实参时 会使用默认的值替代
+  function sayhi(name = 'rose') {
+    console.log(name)
+    name = name ||'rose'
+  }
+  sayhi('jack')
+  sayhi()
+</script>

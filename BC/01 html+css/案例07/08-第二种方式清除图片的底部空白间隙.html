@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            border: 1px solid red;
+        }
+
+        img {
+            /* vertical-align: middle; */
+            /* 修改对齐方式,只要不是基线即可 */
+
+            /* 为什么会有底部间隙:行内块元素与文字的对齐方式是基线对齐 */
+            /* 把行内块,变成块即可 */
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src="鲁迅.png" alt="">
+    </div>
+</body>
+</html>

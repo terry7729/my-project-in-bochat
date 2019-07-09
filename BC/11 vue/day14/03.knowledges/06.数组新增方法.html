@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // 有个数组
+  let foodArr = [
+    {
+      name: '西兰花炒蛋',
+      color: '黄绿色'
+    },
+    {
+      name: '蛋炒西兰花',
+      color: '黄绿色'
+    },
+    {
+      name: '西兰花蛋汤',
+      color: '黄绿色'
+    },
+    {
+      name: '花菜炒蛋',
+      color: '黄色'
+    }
+  ]
+  // forEach
+  // filter 过滤
+  // let newArr = foodArr.filter(v => {
+  //   if (v.color == '黄色') return true
+  // })
+  // console.log(newArr)
+
+  // every 是否每一个元素都符合要求
+  // let res = foodArr.every(v => {
+  //   // if (v.name.indexOf('蛋') != -1) {
+  //   if (v.name.indexOf('兰') != -1) {
+  //     return true
+  //   }
+  // })
+  // console.log(res)
+
+  // some 任何一个满足 就是 true 一个都不满足时false
+  // let res = foodArr.some(v => {
+  //   // if (v.name.indexOf('兰') != -1) {
+  //   if (v.name.indexOf('牛逼') != -1) {
+  //     return true
+  //   }
+  // })
+  // console.log(res)
+  // map 可以基于现有的数据 生成一个新的数组
+  // let res = foodArr.map(v => {
+  //   v.skill = '吃起来健康'
+  //   return v
+  // })
+  // console.log(res)
+  // console.log(res === foodArr)
+
+  // find 找到满足条件的第一个元素并返回
+  let res = foodArr.find(v => {
+    if (v.name.indexOf('蛋') != -1) {
+      return true
+    }
+  })
+  console.log(res)
+</script>

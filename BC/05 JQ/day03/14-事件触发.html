@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    .one {
+      width: 100px;
+      height: 100px;
+      border: 1px solid red;
+      margin-top: 100px;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn1"/>
+<input type="button" value="按钮2" id="btn2"/>
+<div id="one" class="one"></div>
+</body>
+</html>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //事件触发 trigger.
+
+    //1.给div注册一个事件.
+    $('#one').on('click', function () {
+      console.log('我是div,我被单击了');
+    });
+
+
+    //2.点击按钮,满足条件触发div的单击事件.
+    var i = 0;
+    $('#btn1').on('click', function () {
+      i++;
+      //当i等于3的时候,要调用一下div的单击事件.
+      if(i == 3){
+        //a.调用div的click事件.
+        //$('#one').click();
+        //b.使用触发器.
+        $('#one').trigger('click'); //感觉就是用代码的方式来触发事件.
+      }
+    });
+
+
+    //3.给div注册一个自定义事件.
+    $('#one').on('linge', function () {
+      console.log("我是林哥事件,林哥很帅,呵呵...");
+    });
+
+    //给按钮2点击事件,满足条件触发div的linge事件.
+    $('#btn2').on('click', function () {
+      var res = confirm('林哥帅吗?');
+     console.log(res);
+    });
+
+
+
+
+
+  });
+</script>

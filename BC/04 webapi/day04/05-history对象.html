@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="05-history测试网页.html">跳转</a>
+<button id="forward">下一页</button>
+
+<script>
+    /*history:获取浏览器的历史记录
+        back:上一页
+        forward:下一页
+     */
+
+    console.log ( history );
+
+    document.getElementById('forward').onclick = function (  ) {
+        window.history.forward();
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.利用构造函数的方式声明数组
+        //官方推荐的方法
+        //var arr1 = new Array();
+        //arr1[0] = 10;
+        //arr1[1] = 20;
+        //arr1[2] = 30;
+        //console.log(arr1);
+
+        //2.能否利用构造函数的方式声明数组的同时,初始化
+        //可以在new Array(数组的数据)
+        //var arr2 = new Array(10,20,30,40,50,60);
+        //console.log(arr2);
+
+        //使用以上方法初始化的时候,要注意一个问题
+        //var arr3 = new Array(10);
+        //声明了一个长度为10的空数组
+        //console.log(arr3);
+        //如果new Array()小括号中只有一个数字,那么此时不再是初始化,而是声明一个带有长度的空数组
+
+        //3.使用最多的方式:字面量声明法
+        //[]就是数组的字面量,它代表的就是数组
+        //var arr4 = [];
+        ////以上声明了一个空数组
+        //arr4[0] = 10;
+        //arr4[1] = 20;
+        //console.log(arr4);
+
+        //4.在利用字面量声明的同时,初始化
+        var arr5 = [10,20,30,40,50];
+        console.log(arr5);
+
+        var arr6 = [10];
+        //上面是声明了只有一个值的数组
+        console.log(arr6);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

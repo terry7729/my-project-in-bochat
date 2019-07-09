@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*
+    1.延长变量的生命周期
+    2.提供有限的访问权限
+     */
+
+    //1.延长变量的生命周期
+    /*生命周期：一个变量从声明到被回收的过程
+            局部变量：从执行函数开始，到函数执行完毕被回收
+            全局变量：从网页打开到关闭
+     */
+
+    function fn (  ) {
+        var num = 10;
+        //(1)声明闭包函数
+        function closure (  ) {
+            //(2)闭包函数内部返回想要访问的局部变量
+            console.log ( num )
+            return num;
+        };
+        //(3)返回闭包函数
+        return closure;
+    };
+
+    fn();
+
+    var closure = fn();
+    closure();
+    closure();
+   // console.log ( num );//报错  因为局部变量执行完毕之后会被系统回收
+    /*闭包唯一弊端：会消耗内存资源
+    如何手动回收闭包内存：  变量名 = null
+
+     */
+    closure = null;
+
+    //2.提供有限的访问权限
+
+    var person = function (  ) {
+        //声明局部变量
+        var name = '班长';
+        var age = 38;
+        //使用闭包访问局部变量
+        function getName (  ) {
+            return name;
+        };
+
+        function getAge (  ) {
+            return age;
+        };
+
+        function setName (value  ) {
+            //只有名字没有狗 才可以修改
+            if (value.indexOf('狗') == -1){
+                name = value;
+            }
+
+        };
+
+        function setAge ( value ) {
+            if (value > 0 && value <= 100){
+                age = value;
+            }
+
+        }
+
+        //返回一个对象，对象中存储四个闭包函数用于操作局部变量
+        return {
+            getName:getName,
+            getAge:getAge,
+            setName:setName,
+            setAge:setAge
+        }
+    };
+
+    var p1 = person();//得到闭包函数对象
+    p1.setName('老狗');//修改无效
+    p1.setName('老油条');//修改有效
+    console.log ( p1.getName () );
+
+    p1.setAge(-1);//修改无效
+    p1.setAge(33);//修改有效
+    console.log ( p1.getAge () );
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        console.log ( document );
+        console.log ( document.getElementById ( "box" ) );
+        /*
+        1.Dom 文档对象模型(document)
+          里面提供了很多的API， 对页面的对象，做增删查改。
+
+        2.获取元素
+          a.根据id来获取元素
+            document.getElementById("id名");
+          b.根据标签名来获取元素
+            document.getElementsByTagName("标签名"); //找到页面上所有的这个标签。
+            某个元素.getElementsByTagName("标签名"); //找到当前这个元素下的所有的这个标签。
+          c.根据类名来获取元素
+            document.getElementsByClassName("类名"); //不推荐使用，ie8和他之前的浏览器不支持
+          d.根据属性name来获取元素，一般的获取表单元素
+            document.getElementsByName("属性name名");
+          e.选择器获取元素
+            document.querySelector('#text');//找到满足条件第一个元素
+            document.querySelectorAll('.box');//找到满足条件所有元素
+
+          注意：如果获取元素返回的是一个null，那些情况造成的？
+               a.id名获取标签名或者类名不正确。
+               b.页面元素没有加载出来之前获取。
+
+       3.获取元素的属性值
+         元素名.属性名;
+         元素名["属性名"];
+
+       4.设置元素的样式
+         元素名.style.width = "100px";
+         css中带有下划线的样式，js设置样式的时候不能使用下划线，而是去掉下划线，下划线后面的那个字母大写。
+         backgroundColor    zIndex   fontSize
+
+       5.事件
+         页面或浏览器处理用户交互的机制（那个元素在什么交互下执行什么方法）
+         三要素：
+           a.事件源    哪个元素
+           b.事件类型   怎么交互   click   mouseover
+           c.事件处理   产生了什么结果  函数
+
+
+
+      6.className
+        可以用className获取元素的类名。
+        可以用className设置元素的类名。 //如果有类选择器设置了样式，可以通过这个方式给元素设置样式
+
+      7.事件
+        onclick 单击事件
+        ondblclick 双击事件
+        onfocus 获得焦点事件
+        onblur  失去焦点事件
+        onmouseover 鼠标移入事件
+        onmouseout  鼠标移出事件
+
+        * */
+    </script>
+</head>
+<body>
+
+<div id="box"></div>
+</body>
+</html>

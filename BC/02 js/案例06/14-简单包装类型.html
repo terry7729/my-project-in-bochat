@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var str = "hello";
+        var res = str.concat(" js");//为什么str能够点出一个方法.方法不是应该只有对象才有吗?
+        //在系统内部,我们声明的数据类型,会被包装为一个对象
+        console.log(res);
+
+        var res2 = Object.prototype.toString.call(str);
+        console.log(res2);//object String
+    </script>
+</head>
+<body>
+
+</body>
+</html>

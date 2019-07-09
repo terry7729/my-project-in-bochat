@@ -1,0 +1,185 @@
+body {
+    background-color: #17244A !important;
+    height: 1080px;
+}
+
+.header {
+    width: 100%;
+    height: 905px;
+    background: url('../img/bg_signup_1.png') no-repeat;
+    background-size: 100%;
+}
+
+.loginForm {
+    width: 460px;
+    height: 518px;
+    margin: 0 auto;
+    background: url('../img/bg_signup_2.png') no-repeat;
+    background-size: 460px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loginForm>form {
+    position: absolute;
+    top: 120px;
+    height: 398px;
+    width: 100%;
+    background-color: #fff;
+    padding-left: 48px;
+    padding-right: 48px;
+    overflow: hidden;
+}
+
+form h2 {
+    color: #57698C;
+    font-size: 24px;
+    margin-top: 16px;
+}
+
+.imgcode {
+    position: relative;
+}
+
+form .form-group {
+    margin-bottom: 22px;
+}
+
+.form-group>input {
+    height: 46px;
+}
+
+.imgcode>div,
+.imgcode>a {
+    width: 128px;
+    height: 46px;
+    position: absolute;
+    right: 0;
+    background-color: #17244A;
+    top: 0;
+    cursor: pointer;
+}
+
+form .btn {
+    width: 364px;
+    height: 54px;
+    background: linear-gradient(to right, #3e77f4, #37baff);
+    color: #fff;
+}
+
+.useropration {
+    display: flex;
+    justify-content: space-around;
+    color: #ABAFC0;
+    font-size: 13px;
+}
+
+.useropration>div {
+    flex: 1;
+    /* text-align: center; */
+}
+
+.forgetandR {
+    text-align: right;
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+.forgetandR>.links {
+    cursor: pointer;
+}
+
+.line {
+    margin: 0 10px 0 10px;
+    text-align: center;
+}
+
+.registers {
+    color: #2385FB
+}
+
+.regist {
+    width: 460px;
+    height: 752px;
+    background: url('../img/bg_signup_2.png') no-repeat;
+    background-size: 460px;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 50%;
+    margin-left: -230px;
+    z-index: 2;
+    display: none;
+}
+
+.regist>form {
+    margin-top: 120px;
+    background-color: #fff;
+    height: 632px;
+    padding: 0 48px 0 48px;
+    overflow: hidden;
+}
+
+.imgcode .phonecode {
+    background-color: transparent;
+    color: #3D82F5;
+    text-align: center;
+    line-height: 48px;
+    font-size: 16px;
+}
+
+.agreement {
+    font-size: 14px;
+    color: #ABAFC0;
+    margin: 18px 0;
+}
+
+.agreement a {
+    color: #2385FB;
+    text-decoration: none;
+}
+
+.agreement a:hover {
+    color: #2385FB;
+    text-decoration: none;
+}
+
+.goLogin {
+    text-align: center;
+}
+
+.xyheader {
+    width: 882px;
+    height: 80px;
+    background: linear-gradient(to right, #3e77f4, #37baff);
+    font-size: 24px;
+    line-height: 80px;
+    color: #FFFFFF;
+    text-align: left;
+    text-align: center;
+}
+
+.layui-layer-page .layui-layer-content {
+    overflow: hidden !important;
+}
+
+.xytext {
+    width: 786px;
+    height: 630px;
+    color: #1E2A39;
+    margin: 0 auto;
+    font-size: 14px;
+    margin-top: 27px;
+}
+
+.xytext>p {
+    line-height: 20px;
+    margin-bottom: 0;
+    text-align: left
+}
+
+.close {
+    position: absolute;
+    top: 41px;
+    right: 41px;
+}

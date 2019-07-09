@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    p {
+      border: 1px solid #000;
+      font-size: 50px;
+    }
+
+    p img {
+      width: 100px;
+      height: 100px;
+    }
+
+    p.isBoy {
+      background-color: hotpink;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p v-for="it in messageList" :class="{isBoy:it.male}">
+      <img v-bind:src="it.male?'./img/boy.png':'./img/girl.png'" alt="">{{it.info}}
+    </p>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  /*
+    v-bind:属性名
+    简写 :属性名
+    v-bind:属性="表达式"
+    v-bind:属性="{属性名:布尔值}"
+  */
+  let app = new Vue({
+    el: "#app",
+    data: {
+      messageList: [{
+          // 男性
+          male: true,
+          info: "在吗"
+        },
+        {
+          // 女性
+          male: false,
+          info: "不在"
+        },
+        {
+          // 男性
+          male: true,
+          info: "呵呵"
+        },
+        {
+          // 女性
+          male: false,
+          info: "滚"
+        },
+        {
+          // 男性
+          male: true,
+          info: "好勒！！！"
+        },
+      ]
+    }
+  })
+</script>

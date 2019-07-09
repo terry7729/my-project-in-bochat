@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .one{
+            top:50px;
+            left: 50px;
+            width: 100px;
+            height: 100px;
+            background: greenyellow;
+            border: 10px solid red;
+            margin: 20px;
+            position: absolute;
+        }
+
+        .two{
+            top: 200px;
+            left: 200px;
+            width: 200px;
+            height: 200px;
+            background: cyan;
+            border: 20px solid purple;
+            padding: 10px;
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div class="two">
+    <div class="one" id="box">1</div>
+</div>
+
+<script>
+    /*offsetLeft/Top :获取元素的真实位置
+            获取元素自身左/上外边框距离定位父级（offsetParent）的左/上内边框的距离
+     */
+
+    var box = document.getElementById('box');
+
+    console.log ( box.offsetLeft );//70
+    console.log ( box.offsetTop );//70
+</script>
+</body>
+</html>

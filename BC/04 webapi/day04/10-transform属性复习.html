@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        #box{
+            /*transform: rotate(90deg);*/
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="box" style="width: 10px; height: 300px;background-color: red;margin: 0 auto"></div>
+
+<script>
+    /*一个表盘有360度，一个表盘有60s
+    1秒钟 = 360/6 = 6度
+
+     */
+    var box = document.getElementById('box');
+    var jiaoDu = 0;//声明一个变量记录元素当前的角度
+    //定时器模拟秒钟走字
+    setInterval(function (  ) {
+        jiaoDu += 6;
+        console.log ( jiaoDu );
+        box.style.transform = 'rotate(' + jiaoDu + 'deg)';
+    },100);
+</script>
+</body>
+</html>

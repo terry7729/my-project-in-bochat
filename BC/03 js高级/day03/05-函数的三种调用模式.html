@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*1.函数的调用模式：  (1)普通函数  (2)对象的方法   (3)构造函数
+    * 2.this指向：谁调用这个方法，this代表谁
+            * a.全局函数：window
+            * b.对象方法：对象
+            * c.构造函数（new）：new创建的空对象
+     */
+
+
+    //1.全局函数
+    function fn (  ) {
+        console.log ( this );
+        console.log ( "哈哈哈" );
+    };
+
+    fn();//this指向window   相当于  window.fn()
+
+    //2.对象的方法
+    var person = {
+        name:'保健坤',
+        sayHi:function (  ) {
+            console.log ( this );
+            console.log ( "猴赛雷，今晚去学习啊" );
+        },
+        fn : fn//对象有一个fn的属性，值是全局变量fn的值（地址）
+    };
+
+    //2.1 对象的方法
+    person.sayHi();//this指向person
+    //2.2  容易混淆的地方 : this的指向不是取决于这个函数怎么声明的，而是取决于这个函数怎么调用
+    /*这里person的fn属性的值是全局变量fn的地址，所以调用peroson.fn就会执行fn对应地址中的代码
+     */
+    person.fn();//this指向person
+
+    //3.构造函数
+
+    function Student ( name,age ) {
+
+        console.log ( this );
+        this.name = name;
+        this.age = age;
+    }
+
+    //3.1 使用new调用函数，this指向new关键字创建的空对象
+    var s1 =new Student('班长',38);
+    //3.2 没有使用new调用函数,此时函数相当于全局函数。 this：指向window
+    Student('大前端',18);//window.Student()
+
+    console.log(age);//18   因为没有使用new调用构造函数，此时this指向window，实际上是给window添加属性，全局变量
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.undefined:未定义
+        //变量只有声明,没有赋值的时候,就会是undefined
+        //var res;
+        //console.log(res);//undefined,是一个值
+        //console.log(typeof res);//undefined,是一个数据类型
+
+        //console.log(num);//连声明都没有,就直接使用,会报错
+
+        //2.null:空值
+        //在任何时候,变量都不会主动等于null,除非程序员手动设置
+        //var res;
+        //res = null;
+        //console.log(res);
+        //console.log(typeof res);//object复制数据类型,对象
+
+        //3.在某些意义上来看,undefined与null都是代表空,代表没有
+        //请问,他们两个会相等吗,会全等吗?
+        //var res1 = undefined == null;
+        //console.log(res1);//true,值是相等的
+        //var res2 = undefined === null;
+        //console.log(res2);//false,但是数据类型不同
+
+        //4.NaN: not a number:不是一个数字
+        //什么时候会出现NaN,计算错误的时候
+        //var str = "梁朝伟";
+        //var num = 10;
+        //var res = str - num;
+        //console.log(res);//NaN
+        //console.log(typeof res);//number:不是一个数字,但是是一个数值类型
+
+        //4.1.NaN不会等于任何数,包括它自己
+        //var res1 = NaN == 1;
+        //console.log(res1);//false
+        //var res2 = NaN == NaN;
+        //console.log(res2);//false
+
+        //4.2.拓展,如何判断一个数据是否是NaN
+        //isNaN(检测数据)
+        var str = "lcw";
+        var res1 = isNaN(str);//对lcw进行一次判断,判断是否是NaN
+        //lcw是不是一个  不是数字的值
+        console.log(res1);//true;
+        var sm = "宋明";
+        var res2 = isNaN(sm);
+        console.log(res2);//true
+        var num = 123;
+        var res3 = isNaN(num);
+        console.log(res3);//false
+        var num2 = "123";
+        var res4 = isNaN(num2);
+        console.log(res4);//false
+        //如果这个字符串的值是纯数字,那么isNaN会将这个数字字符串转换成为number数字来做判断
+        var num3 = "lcw123";
+        var res5 = isNaN(num3);
+        console.log(res5);//true
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

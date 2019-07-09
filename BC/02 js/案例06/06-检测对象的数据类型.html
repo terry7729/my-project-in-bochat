@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        var stu = new Object();
+        stu.name = "宋明";
+
+        var res1 = typeof stu;
+        console.log(res1);//object
+
+        var res2 = stu instanceof Object;
+        console.log(res2);//true
+
+        var res3 = Object.prototype.toString.call(stu);
+        console.log(res3);//object Object
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //错误的版本
+        //1.数组的去重-去掉数组中重复的项
+        //[10,8,10,7,8,6,78]    [10,8,7,6,78];
+        //思路:准备一个空数组,然后将老数组中的每一个数都拿出来,跟新数组做对比,只要发现不同,那么就可以把他放到新数组中.
+        //错误的思路:当老数组的值不等于新数组,就把这个数存到新数组中
+        //正确的思路:当老数组中的值不等于新数组的所有值,才把这个数存到数组中
+
+        //var oldArr = [10,8,10,7,8,6,78];
+        //var newArr = [oldArr[0]];
+        ////首先要遍历老数组,将每一个数都拿出来做比较
+        //for (var i = 1;i < oldArr.length;i++) {
+        //    //将老数组中的每一个数拿出来,跟新数组中的每一个数做比较
+        //    //如果发现,不相等,那么就代表新数组中没有这个数
+        //    //再把这个数存到新数组中
+        //    for (var j = 0;j < newArr.length;j++) {
+        //        //将老数组的数与新数组做对比
+        //        if (oldArr[i] != newArr[j]) {
+        //            //如果发现不相等,那么就是新数组中没有这个数,就把这个数存到新数组中
+        //            newArr[newArr.length] = oldArr[i];
+        //        }
+        //    }
+        //}
+        //console.log(newArr);
+
+
+        //正确的版本
+        var oldArr = [10,8,10,7,8,6,78];
+        var newArr = [oldArr[0]];
+        var flag;
+        //首先要遍历老数组,将每一个数都拿出来做比较
+        for (var i = 1;i < oldArr.length;i++) {
+            //将老数组中的每一个数拿出来,跟新数组中的每一个数做比较
+            //如果发现与新数组中的任何一个相等,那么就没有比较再继续对比了
+            //标记法
+            flag = true;//我假设所有的数都能存放新数组中
+            for (var j = 0;j < newArr.length;j++) {
+                if (oldArr[i] == newArr[j]) {
+                    flag = false;
+                    break;
+                    //如果发现老数组的值与新数值的值相等,那么假设失败
+                }
+            }
+            if (flag) {
+                //如果flag还是true,那么就代表老数组中的这个数与新数组中任何一个数都不相等
+                newArr[newArr.length] = oldArr[i];
+            }
+
+        }
+        console.log(newArr);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

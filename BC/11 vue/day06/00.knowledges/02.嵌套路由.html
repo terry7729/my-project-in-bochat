@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .user {
+      display: flex;
+      background-color: yellowgreen;
+      height: 200px;
+    }
+
+    .user .left {
+      width: 100px;
+      background-color: skyblue;
+    }
+
+    .user .left a {
+      display: block;
+      padding: 10px;
+      background-color: red;
+      color: white;
+    }
+
+    .user .right {
+      flex: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="top">
+      <router-link to="/index">首页</router-link>
+      <router-link to="/user">用户中心</router-link>
+    </div>
+    <div class="content">
+      <router-view></router-view>
+    </div>
+
+  </div>
+</body>
+
+</html>
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+  // 组件
+  let index = {
+    template: "<div>我是首页</div>"
+  }
+  let user = {
+    template: `<div class="user">
+  <div class="left">
+      <router-link to="/user/center">中心</router-link>
+      <router-link to="/user/order">订单</router-link>  
+  </div>
+  <div class="right">
+      <router-view></router-view>  
+  </div>
+</div>`
+  }
+
+  // 嵌套路由用到的组件
+  let center = {
+    template:"<div><h1>我是中心</h1></div>"
+  }
+  let order = {
+    template:"<div><h1>我是订单</h1></div>"
+  }
+
+  // 规则
+  let routes = [{
+      path: '/index',
+      component: index
+    },
+    {
+      path: '/user',
+      component: user,
+      children: [
+      {
+        path: '',//   /user/center
+        redirect: 'center'
+      },  
+      {
+        path: 'center',//   /user/center
+        component: center
+      }, {
+        path: 'order',//   /user/order
+        component: order
+      }]
+    },
+  ]
+
+  // 路由对象
+  let router = new VueRouter({
+    routes
+  })
+
+  let app = new Vue({
+    el: "#app",
+    router
+  })
+</script>

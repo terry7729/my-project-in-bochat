@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+
+        body{
+            background-color: deepskyblue;
+            overflow: hidden;
+        }
+
+        .fish{
+            width: 174px;
+            height: 126px;
+            background: url(images/fish.png);
+            
+            /* 动画也可以写多个，只不过用逗号隔开 */
+            /* animation: swimming 10s infinite,shake 1.5s steps(11) infinite; */
+        }
+
+        .fish:nth-child(1){
+
+            animation: swimming 8s infinite,shake 1.5s steps(11) infinite;
+        }
+        
+
+        .fish:nth-child(2){
+
+            animation: swimming 10s infinite,shake 1.5s steps(11) infinite;
+        }
+        .fish:nth-child(3){
+
+            animation: swimming 16s infinite,shake 1.5s steps(11) infinite;
+        }
+        .fish:nth-child(4){
+
+            animation: swimming 13s infinite,shake 1.5s steps(11) infinite;
+        }
+        .fish:nth-child(5){
+
+            animation: swimming 9.2s infinite,shake 1.5s steps(11) infinite;
+        }
+        
+
+        @keyframes shake{
+
+            from{}
+            to{
+                background-position-y: -1386px;
+            }
+        }
+
+        @keyframes swimming{
+
+            40%{
+                transform: translate(1100px);
+            }
+
+            50%{
+                transform: translate(1100px) rotate(180deg);
+            }
+
+            90%{
+
+                transform: rotate(180deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="fish"></div>
+    <div class="fish"></div>
+    <div class="fish"></div>
+    <div class="fish"></div>
+    <div class="fish"></div>
+</body>
+</html>

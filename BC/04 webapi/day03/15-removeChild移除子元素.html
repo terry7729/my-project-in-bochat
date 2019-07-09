@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="ul1">
+    <li>隔壁老宋1</li>
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+<ul id="ul2">
+    <li>隔壁保健坤1</li>
+    <li >隔壁保健坤2</li>
+    <li>隔壁保健坤3</li>
+    <li>隔壁保健坤4</li>
+    <li id="li5">隔壁保健坤5</li>
+</ul>
+
+
+<script>
+/*  删除子元素：   父元素.removeChild(子元素)
+        1.元素不能自己移除自己
+        2.父元素不能移除别人的子元素
+        3.父元素只能移除自己的子元素
+ */
+
+var ul1 = document.getElementById('ul1');//老宋
+var li2 = document.getElementById('li2');//老宋2
+
+var ul2 = document.getElementById('ul2');//保健坤
+var li5 = document.getElementById('li5');//保健坤5
+
+    //1.元素不能自己移除自己(不能自杀)
+  //  li2.removeChild(li2);
+  //   //2.父元素不能移除别人的子元素(不能杀别人的儿子)
+    // ul1.removeChild(li5);
+  //   //3. 父元素只能移除自己的子元素 （只有亲爸爸可以杀死亲儿子）
+  //   ul2.removeChild(li5);
+</script>
+</body>
+</html>

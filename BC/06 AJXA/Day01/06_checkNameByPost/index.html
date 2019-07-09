@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入账号" id="user"><span id="result"></span>
+    <br>
+    <input type="password" placeholder="请输入密码">
+    <br>
+    <input type="button" value="注册">
+</body>
+</html>
+
+<script>
+
+    //给文本框加失去焦点事件：因为一旦失去焦点就代表你输入完了，输入完了我就该去检测你的账号是否可用
+    document.getElementById('user').onblur = function(){
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //2. 设置请求行
+        xhr.open('post','checkName.php');
+
+        //3. 设置请求头，get不用设置，但是post一定要设置
+        // 不用记，它是一个固定写法，大家复制就行了，或者做成代码段用就行了
+        xhr.setRequestHeader('Content-type','application/x-www-form-urlencoded');
+
+        //4. 发送请求&设置请求体
+        xhr.send("userName=" + this.value);
+
+        //5. 监听响应完成拿到响应体
+        xhr.onload = function(){
+
+           document.getElementById('result').innerHTML = xhr.responseText;
+        }
+    }
+</script>

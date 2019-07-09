@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        box-sizing：跟边框和内边距有关
+
+            默认情况下内边距和边框都是往外扩，这样会破坏掉你本身占用的大小
+
+            解决办法：让内边距和边框都是往盒子内加的
+
+
+                box-sizing:border-box; 代表边框是往盒子内加的
+                            content-box：默认值，代表外扩（没必要记，不写就是它）
+     -->
+     <style>
+         .box{
+             width: 100px;
+             height: 100px;
+             background-color: #f00;
+             padding: 10px;
+             border: 10px solid black;
+             
+             /* 边框和内边距内聚 */
+             /* box-sizing: border-box; */
+             /* box-sizing: content-box; */
+         }
+     </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

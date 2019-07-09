@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.验证函数是不是对象
+        对象以键值对形式存储数据，只要函数也可以像对象一样使用点语法动态添加属性，就可以说明函数也是对象
+
+     */
+    function fn (  ) {
+        console.log ( "今天学的好开心" );
+    };
+
+    fn.sayHi = '好好学习天天向上';
+    console.log ( fn.sayHi );
+
+    console.log ( fn );//使用log来打印函数，默认只会打印函数体代码
+    console.dir(fn);//使用dir打印变量，就可以看到变量完整的信息
+
+    //2.只要是对象都是由构造函数生成，都会有__proto__属性指向自己的原型
+
+    //查看fn函数对象的原型
+    /*所有的函数对象都是由Function构造函数生成*/
+    console.log ( fn.__proto__.constructor );//Function
+    console.log ( Function.prototype === fn.__proto__ );//true
+
+    console.log ( fn instanceof Object );//fn
+</script>
+</body>
+</html>

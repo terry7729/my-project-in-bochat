@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 25px;
+            height: 25px;
+            background: url("./images/taobao.png") 0 -88px;
+            /* 精灵图的本质,就是修改背景图片的位移 */
+            /* 精灵图是为了节省浏览器与服务器之间的通信成本,提高网页的加载速度 */
+
+            /* 小公司,不会用精灵图 */
+
+            /* 背景图片的位移,只有负数 */
+            /* 背景图片只能往左或者是上 */
+        }
+
+        div:hover {
+            /* background: url("./images/taobao.png") 0 -222px; */
+            /* 以上的写法,比较浪费性能 */
+            background-position: 0 -222px;
+        }
+        p{
+            width: 25px;
+            height: 25px;
+            background: url("./images/taobao.png") 0 -88px; 
+        }
+        
+        p:hover{
+            background-position: 0 -222px;
+        }
+
+    </style>
+</head>
+<body>
+    <div></div>
+    <p></p>
+</body>
+</html>

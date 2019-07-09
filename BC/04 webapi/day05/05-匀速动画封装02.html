@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 30px;
+        }
+
+        .one1 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 200px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始移动到四百" id="move400"/>
+<input type="button" value="开始移动到八百" id="move800"/>
+<div class="one" id="box"></div>
+<div class="one1" id="box1"></div>
+
+<script>
+    
+    /*本小节解决目标
+        移动元素不限   ---函数参数
+     */
+
+    var box = document.getElementById('box');
+    var box1 = document.getElementById('box1');
+
+    //红色盒子移到400
+    document.getElementById('move400').onclick = function (  ) {
+        animationMove(box, 400);
+    };
+
+    //绿色盒子移到800
+    document.getElementById('move800').onclick = function (  ) {
+        animationMove(box1, 800);
+    }
+
+    /**匀速动画封装
+     * @param ele 要移动的元素
+     * @param target  目标距离
+     */
+    function animationMove ( ele,target ) {
+        /*发现问题：多个元素不能同时移动
+        分析问题：多个元素移动需要存储多个定时器，而全局变量timeID只能存储一个定时器
+        解决问题：给每一个元素对象一个自定义属性timeID，来存储自己的定时器
+            运动员跑步，每一个运动员都有一个背包将自己的编号贴在背上，到达终点后裁判就会记录这个编号的运动员
+         结束运动，计算成绩
+         */
+        //1.清除之前的定时器，以本次移动为准
+        clearInterval(ele.timeID);
+        //2.开始本次移动
+       ele.timeID = setInterval(function (  ) {
+           //2.1 获取元素当前位置
+           var currentLeft = ele.offsetLeft;
+           //2.2 开始移动
+           currentLeft += 10;
+           ele.style.left = currentLeft + 'px';
+           //2.3 边界检测
+           if (currentLeft >= target){
+               //(1)清除定时器
+               clearInterval(ele.timeID);
+               //(2)元素复位
+               ele.style.left = target + 'px';
+           }
+        },50);
+    }
+
+    // var box = {name:'张三'};
+    // var ele = box;
+    // ele.age = 18;
+    // console.log ( box );
+</script>
+</body>
+</html>

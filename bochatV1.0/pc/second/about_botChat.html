@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>博信BoChat-关于博信</title>
+		<link rel="stylesheet" type="text/css" href="../css/animate.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/reset.css" />
+		<link rel="stylesheet" type="text/css" href="../css/index.css" />
+		<link rel="shortcut icon" href="../img/bochat-icon.ico" type="image/x-icon">
+	</head>
+	<body style="background: url(../img/about_bg.png) no-repeat;width: 100%;height: 100%;">
+		<header>
+			<div class="container">
+				<a href="#" style="flex: 1;">
+					<img src="../img/Logo.png" class="logo" />
+				</a>
+				<nav class="nav">
+					<ul class="nav_item">
+						<li onclick="javascript:location.href='../index.html'">首页</li>
+						<li onclick="javascript:location.href='node_recruit.html'">节点招募</li>
+						<li  class="active">关于博信</li>
+						<li onclick="javascript:location.href='white_paper.html'">白皮书</li>
+						<li onclick="javascript:location.href='open_source.html'">开源代码</li>
+						<li onclick="javascript:location.href='partner.html'">合作伙伴</li>
+						<li onclick="javascript:location.href='app_up.html'">应用上架</li>
+						<li onclick="javascript:location.href='commerce_cooperation.html'">商务合作</li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+		<div class="node_title">
+			<div class="node_">
+				<img src="../img/left_r.png" />
+				<span class="margin_lr_30">关于博信</span>
+				<img src="../img/right_r.png" />
+				<h1 class="node_size">ABOUT BoChat</h1>
+			</div>
+			<div class="ab_bot">
+				<p class="ab_bsize">BoChat，中文名称“博信”。基于区块链底层技术开发的社交应用。具备即时通讯、社交交互、应用商店、数字资产矩阵钱包等功能。实现在交互过程中通过数字资产打赏利是、分发糖果、任务酬劳、理财获益等的APP应用。
+				</p> 
+				<div class="ab_logo">
+					<img src="../img/bochat_logo.png"/>
+				</div>
+				<br>
+				<p class="ab_bsize">博讯企业总部位于深圳高新技术产园，香港、西雅图等地设有代表处，在区块链应用、高性能公链领域享有领先的地位。和海内外各大学术机构、大学院校展开联合学术、共同研发的合作方式，开设课题研究和联合lab；在大陆和海外均拥有近百人在区块链技术领域顶尖的专家团队。近两年来，团队致力于区块链社交平台BoChat和联盟矩阵模型公链BX Chain的开发和研究。在区块链应用、 DApp落地等领域取得卓著的成就，应用内容涵盖游戏、直播、社交、防伪溯源、公共服务、网络安全等领域。</p>
+				
+				<p class="ab_s">
+					区块链如同“甲骨文”的文字一样无法篡改，所有的记录犹如太阳永远从东边升起的不可逆转，成为永远最真实、最原始的数据库。我们立志于推动区块链技术的普及和应用，持续推进区块链技术助力实体经济的落地，针对不同的细分领域和应用场景，营造干净、健康的网络环境，构筑去中心化、公开透明、完全信任的区块链去中心化生态。秉承“创新、开拓、执着”的精神，在新技术推动的道路上奋斗拼搏，为区块链技术的普及竭尽全力！
+				</p>
+			</div>
+			<!--技术团队-->
+			<div class="skill_team">
+				<div class="node_" style="margin: 140px auto 70px auto;">
+					<img src="../img/left_r.png" />
+					<span class="margin_lr_30">技术团队</span>
+					<img src="../img/right_r.png" />
+					<h1 class="node_size">TECHNICAL TEAM</h1>
+				</div>
+				<div class="team_item">
+					<ul>
+						<li class="team_bg1 wow ">
+							<p class="team_word">
+								维克托·麦尔·舍恩伯格，数据科学的技术权威，被誉为“大数据之父”，牛津大学网络学院互联网治理与监管专业教授，曾任哈佛国家电子商务研究中心网络监管项目负责人、新加坡国立大学李光耀学院信息与创新策略研究中心主任
+							</p>
+						</li>
+						<li class="team_bg2 wow">
+							<p class="team_word">
+								信息安全博士，2012年荣获影响中国科技人才称号，专注区块链产品开发与技术多年，首批提出去中性化应用DApp生态，并且在公链TPS并发量取得突破的科学家。
+							</p>
+						</li>
+						<li class="team_bg3 wow">
+							<p class="team_word">
+								著名新经济学家、商业策略大师，被誉为“数字经济之父”，加拿大多伦多大学罗特曼管理学院教授，特伦特大学荣誉校长，世界经济论坛特聘顾问。
+							</p>
+						</li>
+						<li class="team_bg4 wow">
+							<p class="team_word">
+								中国人民大学研究员，深耕区块链技术应用近10年，在区块链技术应用落地、公链应用、网络信息安全等领域有较高造诣。国内最早期研发从业者，担任过众多区块链项目架构师，精通Python、Go语言。
+							</p>
+						</li>
+					</ul>				
+				</div>
+			</div>			
+		</div>
+		<script type="text/javascript" src="../js/jquery.min.js" ></script>
+		<script type="text/javascript" src="../js/neo.min.js" ></script>
+		<script type="text/javascript">
+			$(function(){
+				new WOW().init();
+				$('.team_item ul li').hover(function(){
+					$(this).addClass("flip").siblings().removeClass("flip"); 
+				})
+			})
+		</script>
+	</body>
+
+</html>

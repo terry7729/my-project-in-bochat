@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">点我</button>
+
+<script>
+    var btn = document.getElementById('btn');
+
+    btn.onclick =  function (  ) {
+        //1.innerHTML:1337.85ms     原理：因为字符串恒定性
+        // console.time();
+        // for(var i = 0;i<1000;i++){
+        //     document.body.innerHTML += '<p>我是第' + i + '个p标签</p>';
+        // };
+        // console.timeEnd();
+
+        //2.document.createElement:  2.86ms
+        console.time()
+        for(var i = 0;i<1000;i++){
+                //1.创建空标签
+          var p =  document.createElement('p');
+          //2.设置属性
+            p.innerText = '<p>我是第' + i + '个p标签</p>';
+            //3.添加到页面
+            document.body.appendChild(p);
+        }
+        console.timeEnd()
+    }
+</script>
+</body>
+</html>

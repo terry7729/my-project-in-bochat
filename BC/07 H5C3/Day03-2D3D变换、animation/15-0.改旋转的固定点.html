@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+
+    <!-- 
+        transform-origin：设置旋转固定点
+
+     -->
+
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            margin: 100px auto;
+            
+            /* 设置旋转时的固定点，绕着这个固定点旋转 */
+            transform-origin: right;
+        }
+
+        .box:hover{
+            transition: all 1s;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+</body>
+</html>

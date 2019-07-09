@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        sessionStorage和session没有半毛钱关系
+        
+        sessionStorage也是用来存储一段数据到浏览器的，sessionStorage可以理解为是短命版的localStorage
+
+        意思就是：sessionStorage保存的数据，关掉浏览器就删除了，但是localStorage一直存在
+
+        除此以外没有任何区别，包括使用方法都一样！
+
+            setItem：保存数据
+            getItem：获取数据
+            removeItem：删除数据
+            clear：清空
+
+
+        sessionStorage:临时保存
+            用途：用在一些需要临时保存数据的场景里
+                例如：我需要在A页面给B页面传递一段数据，那么就可以先临时保存一下
+     -->
+
+
+</head>
+<body>
+    <input type="button" value="保存" id="btn1">
+    <input type="button" value="获取" id="btn2">
+    <input type="button" value="删除" id="btn3">
+    <input type="button" value="清空" id="btn4">
+</body>
+</html>
+
+<script>
+    document.getElementById('btn1').onclick = function(){
+
+        sessionStorage.setItem('name','jack');
+        sessionStorage.setItem('age','16');
+        sessionStorage.setItem('height','185');
+    }
+
+    document.getElementById('btn2').onclick = function(){
+
+        var name =  sessionStorage.getItem('name');
+        console.log(name);
+        
+    }
+
+    document.getElementById('btn3').onclick = function(){
+
+        sessionStorage.removeItem('name');
+    }
+
+    document.getElementById('btn4').onclick = function(){
+
+        sessionStorage.clear();
+    }
+</script>

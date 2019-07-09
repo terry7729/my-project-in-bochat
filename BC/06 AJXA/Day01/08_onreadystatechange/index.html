@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        xhr.readyState：获得发请求的状态
+
+        xhr.status：获得服务器返回的响应状态码
+        
+
+        xhr.onload：响应完成的事件，但是这个事件IE8和之前的浏览器不支持
+
+        xhr.onreadystatechange：它也是可以用来监听响应完成，但是它没有兼容性的问题
+
+            它会调用三次，分别对应请求开始、请求过程中、请求结束
+
+            那么只有请求结束这最后一次才能保证拿到响应体
+
+        所以我们以后用这个事件的时候，要做一个判断
+                if(xhr.readyState == 4){
+
+                    才来拿响应体
+                }
+
+        可是，通过上面的判断，只能保证可以拿到响应体，但是这个响应体，不一定是我想要的响应体（因为可能服务器会出错，或者路径不存在）
+
+        所以，还要多加一个判断  xhr.status == 200
+
+        完整写法是：
+                xhr.onreadystatechange = function(){
+
+                    if(xhr.readyState == 4 && xhr.status == 200){
+
+                        在这里面拿响应体才最安全
+                    }
+                }
+     -->
+</head>
+
+<body>
+    <input type="button" value="点我发请求" id="btn">
+</body>
+
+</html>
+
+<script>
+    document.getElementById('btn').onclick = function () {
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //打印状态码:0 （请求还没准备好）
+        // console.log(xhr.readyState);
+
+        //2. 设置请求行
+        xhr.open('get', 'data.php');
+
+        //打印状态码:1（代表准备好请求了）
+        // console.log(xhr.readyState);
+
+        //3. 发送请求
+        xhr.send();
+
+        // 还是1
+        // console.log(xhr.readyState);
+
+
+        //4. 监听响应完成事件,IE8不支持onload事件
+        // xhr.onload = function(){
+
+        //     console.log(xhr.responseText);
+
+        // }
+
+        //它没有兼容性问题
+        //这个事件调用了3次
+        //只有第三次调用时才能保证可以拿到响应体
+
+        //这个事件相当于是监听请求开始-请求中-请求结束的三种状态变化
+        xhr.onreadystatechange = function () {
+            
+
+            //换句话说就是状态码为4的时候，才能保证拿到响应体
+            // console.log(xhr.readyState);
+            if (xhr.readyState == 4 && xhr.status == 200) {
+
+                //能不能保证拿到我想要的响应体
+                //不一定，因为有可能你请求的服务器页面不存在，或者你请求的服务器出问题了
+                console.log(xhr.responseText);
+            }
+
+        }
+    }
+</script>

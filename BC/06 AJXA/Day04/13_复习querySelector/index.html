@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        document.getElementById：返回的是某一个DOM对象
+        而其他的 document.getElmentsByXXXX 返回的都是一个伪数组
+
+        注意：一个有s，一个没有，有s都是返回伪数组
+
+     -->
+
+     <style>
+         p{
+             color:Red;
+         }
+
+         .text{
+             font-size: 20px;
+         }
+
+         #btn{
+
+             color:orange;
+         }
+     </style>
+
+
+</head>
+<body>
+
+    <u>其他u</u>
+
+    <p>你是p</p>
+    <p>你是p2</p>
+    <p>你是p3</p>
+    <p>你是p4</p>
+    <p>你是p5</p>
+    <span class="text">我是<u>span</u></span>
+    <input type="button" value="按钮" id="btn">
+
+
+</body>
+</html>
+
+<script>
+
+    //获取p标签，注意：getElmentsByTagName获取到的永远都是一个伪数组，哪怕只找到一个，也是一个伪数组，要取出元素还要写下标
+    // var p = document.getElementsByTagName('p')[0];
+    // document.getElementsByClassName();
+    // document.getElementsByName();
+
+    // console.log(p);
+    // var btn = document.getElementById('btn');
+    // console.log(btn);
+
+    // 选择器找元素很方便,能不能把这些选择器用在JS里去找元素，可以的。所以出现了querySelector()和querySelectorAll()
+    
+    // 这里要传的是选择器
+    // 用querySelector哪怕匹配多个，也只找到第一个
+    // css的选择器能找到什么，它也能找到什么，但只是第一个，css里的选择器，它这里都能写
+    // var res = document.querySelector('p'); //标签选择器
+    // var res = document.querySelector('.text>u'); //标签选择器
+    // console.log(res);
+
+
+    //都是传入css选择器
+    // 上面那个不加all的，返回的一定是单个对象，而加all的，哪怕只找到一个，也是一个伪数组
+    // var list = document.querySelectorAll('p');
+    var list = document.querySelectorAll('#btn');
+    console.log(list);
+    
+    
+    
+</script>

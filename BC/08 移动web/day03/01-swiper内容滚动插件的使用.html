@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 1. 引包 -->
+    <link rel="stylesheet" href="./jd/lib/swiper/css/swiper.css">
+    <!-- 3. 设置样式 一定要设置 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            padding: 50px 0;
+        }
+
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+
+
+        /* 设置容器高度和body 和html一样 和屏幕一样 */
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .swiper-slide {
+            /* 设置子盒子的高度 由内容撑开 默认100% 不需要这个100% 让内容撑开 */
+            height: auto;
+        }
+
+        /* 滑动插件能够滑动的距离 就是 container的高度 -  swiper-slide 内容的高度
+        当2个盒子的高度一样的时候 不能滑动 */
+        /* .swiper-container{
+            height: 500px;
+        }
+        .swiper-slide{
+            height: 2000px;
+        } */
+    </style>
+</head>
+
+<body>
+    <!-- 2. 写结构 内容滚动的结构 -->
+    <!-- Swiper -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <!-- 只有一个轮播图项 就是这个轮播图项在轮播图的容器里面滚动 -->
+            <div class="swiper-slide">
+                <ul>
+                    <li class="active"><a href="javascript:void(0);">热门推荐</a></li>
+                    <li><a href="javascript:void(0);">手机数码</a></li>
+                    <li><a href="javascript:void(0);">家用电器</a></li>
+                    <li><a href="javascript:void(0);">电脑办公</a></li>
+                    <li><a href="javascript:void(0);">计生情趣</a></li>
+                    <li><a href="javascript:void(0);">美妆护肤</a></li>
+                    <li><a href="javascript:void(0);">个护清洁</a></li>
+                    <li><a href="javascript:void(0);">汽车用品</a></li>
+                    <li><a href="javascript:void(0);">京东超市</a></li>
+                    <li><a href="javascript:void(0);">男装</a></li>
+                    <li><a href="javascript:void(0);">男鞋</a></li>
+                    <li><a href="javascript:void(0);">女装</a></li>
+                    <li><a href="javascript:void(0);">女鞋</a></li>
+                    <li><a href="javascript:void(0);">母婴童装</a></li>
+                    <li><a href="javascript:void(0);">运动户外</a></li>
+                    <li><a href="javascript:void(0);">内衣配饰</a></li>
+                    <li><a href="javascript:void(0);">食品生鲜</a></li>
+                    <li><a href="javascript:void(0);">酒水饮料</a></li>
+                    <li><a href="javascript:void(0);">家具家装</a></li>
+                    <li><a href="javascript:void(0);">家居厨具</a></li>
+                    <li><a href="javascript:void(0);">箱包手袋</a></li>
+                    <li><a href="javascript:void(0);">钟表珠宝</a></li>
+                    <li><a href="javascript:void(0);">图书音像</a></li>
+                    <li><a href="javascript:void(0);">玩具乐器</a></li>
+                    <li><a href="javascript:void(0);">医药保健</a></li>
+                    <li><a href="javascript:void(0);">宠物生活</a></li>
+                    <li><a href="javascript:void(0);">礼品鲜花</a></li>
+                    <li><a href="javascript:void(0);">农资绿植</a></li>
+                    <li><a href="javascript:void(0);">生活旅行</a></li>
+                    <li><a href="javascript:void(0);">奢侈品</a></li>
+                    <li><a href="javascript:void(0);">全球购</a></li>
+                    <li><a href="javascript:void(0);">国际名牌</a></li>
+                    <li><a href="javascript:void(0);">艺术邮币</a></li>
+                    <li><a href="javascript:void(0);">二手商品</a></li>
+                    <li><a href="javascript:void(0);">特产馆</a></li>
+                    <li><a href="javascript:void(0);">京东金融</a></li>
+                    <li><a href="javascript:void(0);">拍卖</a></li>
+                    <li><a href="javascript:void(0);">房产</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. 引入js -->
+    <script src="./jd/lib/swiper/js/swiper.js"></script>
+    <!-- 4. 初始化 -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            direction: 'vertical', // 垂直滚动
+            // 可以支持多张轮播图显示 属性一定要加 内容滚动的距离如果不加无法计算
+            slidesPerView: 'auto',
+            freeMode: true, // 是否添加滑动的惯性
+
+            // mousewheel: true,//支持鼠标滚轮
+        });
+    </script>
+</body>
+
+</html>

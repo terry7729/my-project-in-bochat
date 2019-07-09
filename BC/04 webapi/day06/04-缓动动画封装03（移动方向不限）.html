@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0px;
+            top: 50px;
+        }
+
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: hotpink;
+            position: absolute;
+            left: 50px;
+            top: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="button" value="缓动移到400" id="move400"/>
+<input type="button" value="缓动移到800" id="move800"/>
+
+<div id="box"></div>
+
+
+
+<script>
+    /*本小节目标
+    移动方向不限
+            a.缓动动画可以自动实现从左往右与从右往左移动：
+                从左往右：   目标位置 > 当前位置    本次移动距离step = (目标位置-当前位置)/10  >0 正数
+                从右往左：   目标位置  < 当前位置    本次移动距离step = (目标位置-当前位置)/10  <0 负数
+            b.为什么从左往右没有误差，但是从右往左右误差
+                从左往右：   step>0   Math.ceil(0.3) = 1
+                从右往左：   step>0   Math.ceil(-0.9) = 0    需要向下取整： Math.floor(-0.9) = -1
+     */
+    var box = document.getElementById('box');
+
+
+    document.getElementById('move400').onclick = function (  ) {
+        animationSlow(box, 400);
+    }
+
+    document.getElementById('move800').onclick = function (  ) {
+        animationSlow(box, 800);
+    }
+
+
+
+    /** 缓动动画封装
+     @param ele:要移动的元素
+     @param target 移动目标距离
+     */
+    function animationSlow (ele, target ) {
+        //1.清除之前的定时器以本次为准
+        clearInterval(ele.timeID);
+        //2.开始本次移动
+        ele.timeID = setInterval(function (  ) {
+            //2.1 获取元素当前位置
+            var currentLeft =  ele.offsetLeft
+            //2.2 计算本次移动距离 = （目标位置 - 当前位置）/10
+            var step = (target - currentLeft)/10;
+            //取整：  从左往右：step>0  向上取整Math.ceil(0.9) = 1    从右往左：step<0  向下取整Math.floor(-0.9) = -1
+           step = step>0?Math.ceil(step):Math.floor(step);
+            // if (step >0){
+            //     step = Math.ceil(step);
+            // }else{
+            //     step = Math.floor(step);
+            // }
+            //2.3 开始移动
+            currentLeft += step;
+            ele.style.left = currentLeft + 'px';
+            //2.4 终点检测
+            if (currentLeft == target){
+                clearInterval(ele.timeID);
+            }
+        },50);
+    }
+</script>
+</body>
+</html>

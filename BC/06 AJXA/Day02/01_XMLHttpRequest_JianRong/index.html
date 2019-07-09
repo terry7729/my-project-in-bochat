@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        XMLHttpRequest在IE6和之前浏览器不兼容
+
+        IE6以前支持的是 ActiveXObject('Microsoft.XMLHTTP');
+    -->
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+    
+    // var xhr = new XMLHttpRequest();
+
+    //IE6支持的是
+    // var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+
+    //这两个对象的方法都一样，都有open方法，send方法
+    
+    var xhr;
+    if(XMLHttpRequest){
+
+        xhr = new XMLHttpRequest();
+    }else{
+
+        xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+
+</script>

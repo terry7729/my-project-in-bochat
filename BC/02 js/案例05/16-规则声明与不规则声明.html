@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //规则声明
+        //var num1 = 10;
+        //var num2 = 10;
+        //var num3 = 10;
+
+        //不规则声明
+        //var num1 = num2 = num3 = 10;
+        //上面的代码相当于下面的代码
+        // var num1 = 10;
+        // num2 = 10;
+        // num3 = 10;
+        // console.log(num1, num2, num3);
+
+        function demo() {
+            var num1 = 10;//局部变量
+            //声明在局部作用域中,所以是局部变量
+            //只有num1有声明,num2,num3只有赋值,没有声明,此时会发生变量的提升,直接提升为全局变量
+            num2 = 10;//全局变量
+            num3 = 10;//全局变量
+            console.log(num1, num2, num3);
+        }
+        demo();
+        console.log(num2, num3);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

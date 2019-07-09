@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<button id="btn">关灯</button>
+<script>
+      /* 需求分析：点击按钮
+            （1）如果文本是关灯：  1.body的颜色变成黑色   2.自身文本变成开灯
+            （2）如果文本是开灯：  1.body的颜色变成默认颜色   2.自身文本变成关灯
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1. 获取元素：
+      var btn = document.getElementById('btn');
+      /*如何获取body?
+      1.通过标签名获取
+     常用 2.body具有唯一性： document.body
+       */
+      // var body = document.getElementsByTagName('body')[0];
+      // console.log ( body );
+      // console.log ( document.body );
+      //2.注册事件：
+      btn.onclick = function (  ) {
+          //3.事件处理
+          if (this.innerText == '关灯'){
+              //3.1.body的颜色变成黑色
+              document.body.style.backgroundColor = 'black';
+              // 3.2.自身文本变成开灯
+              this.innerText = '开灯';
+          }else{//开灯
+              //3.1.body的颜色变成默认颜色
+              //每一个HTML元素的属性都有默认值，如果设置为空字符串，此时浏览器就会自动加载它的默认值
+              document.body.style.backgroundColor = '';
+              // 3.2.自身文本变成关灯
+              this.innerText = '关灯';
+          }
+      }
+</script>
+</body>
+</html>
+
+
+

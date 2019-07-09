@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 430px;
+            height: 550px;
+            border: 1px solid #000;
+            position: absolute;
+        }
+
+        img{
+            width: 100px;
+        }
+
+        .left{
+            top:20px;
+            left:10px;
+        }
+
+        .right{
+            top:20px;
+            right:10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="left">
+        <!-- img[src=images/$.jpg]*5 -->
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/5.jpg" alt="">
+    </div>
+    <div class="right"></div>
+</body>
+</html>
+
+<script>
+    //找到右边容器
+    var rContainer = document.querySelector('.right');
+    //找到左边容器
+    var lContainer = document.querySelector('.left');
+
+    //找到所有img
+    var imgList = document.querySelectorAll('img');
+
+    //声明一个全局变量保存被拖拽的图片
+    var globalImg;
+
+    //给每个img加开始拖拽事件
+    for(var i = 0; i < imgList.length; i++){
+
+        imgList[i].ondragstart = function(){
+
+            console.log(this);
+            //谁被拖拽，就把谁存到全局变量里      
+            globalImg = this;      
+        }
+    }
+
+    rContainer.ondragover = function(e){
+
+        e = e || window.event;
+        e.preventDefault();
+    }
+
+    rContainer.ondrop = function(){
+
+        //我能随便放图片吗？
+        // console.log('...');
+        
+        //全局变量存的是谁就把谁加进来
+        rContainer.appendChild(globalImg);
+        
+    }
+
+
+    lContainer.ondragover = function(e){
+        e = e || window.event;
+        e.preventDefault();
+    }
+    //左边的drop事件
+    lContainer.ondrop = function(){
+
+        lContainer.appendChild(globalImg);
+    }
+
+
+
+</script>

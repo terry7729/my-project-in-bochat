@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        JSON的转换在IE7和之前的浏览器不支持
+        
+        解决办法：
+                1.使用eval函数做兼容
+                        用法： eval( "(" + JSON字符串 + ")" );
+                        不建议使用它
+                        因为它容易被XSS攻击
+                            XSS攻击：是指你的页面被注入一段恶意代码，并且恶意代码还会被执行这就叫XSS攻击
+                                    脚本注入攻击
+
+                2.导入插件来解决
+                        只要导入就能让JSON.parse在所有浏览器里都通用
+                        css hack 来做浏览器版本判断的技术
+                            在IE10和IE11里不支持css hack技术
+                            快捷键：cc:ie
+
+                在计算机里，如果看到一些2这个词，一般读成two
+                        
+
+                    p2p：Person To Person   人对人
+                    b2c：business To custormer(client)
+                    c2c：
+                    o2o：online To offline 线上到线下
+                    b2b：商家对商家，简单来说就是做批发  阿里巴巴
+
+    -->
+
+    <!-- 只要引入这个插件，那么JSON.parse就可以在所有浏览器里通用 -->
+    <!-- 只有IE7和以前的浏览器才需要，其他的不需要导入 -->
+    <!-- <script src="json2.js"></script> -->
+
+
+    <!-- 
+
+        l:less
+        t:than
+        e:equal
+
+        g:greater
+
+        gt:大于
+        gte:大于等于
+        lt:小于
+        lte:小于等于
+    -->
+    <!--[if lte IE 7]>
+        <script src="json2.js"></script>
+    <![endif]-->
+ 
+
+</head>
+<body>
+
+    <!--[if IE]>
+        <h1>我是IE</h1>        
+    <![endif]-->
+
+
+    <!--[if IE 7]>
+        <h1>我是IE7</h1>    
+    <![endif]-->
+
+    <!-- 小于等于IE7 -->
+    <!--[if lte IE 7]>
+        <h1>我是小于等于IE7</h1>   
+    <![endif]-->
+
+    <!--[if gte IE 8]>
+        <h1>大于等于IE8</h1>    
+    <![endif]-->
+    
+    <!--[if gt IE 8]>
+           <h1>大于IE8</h1>    
+    <![endif]-->
+</body>
+</html>
+
+<script>
+
+    var str = '{"name":"jack","age":16}';
+    // var str = 'alert(123)';
+
+    var obj = JSON.parse(str);
+
+    // var obj = eval( "(" + str + ")" );
+
+    console.log(obj);
+    
+</script>

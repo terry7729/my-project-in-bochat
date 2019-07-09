@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box1">我是班长</div>
+<div id="box2">我是坤哥</div>
+
+<script>
+    console.log ( document );
+    /**1.根据id获取页面元素
+     * @param  id字符串
+     * @return 页面元素对象（dom对象） |  null
+     */
+     var box1 = document.getElementById('box1');
+    console.log ( box1 );
+    console.log ( typeof box1 );
+
+    //2.如果没有这个id则返回null
+    var aaa = document.getElementById('aaa');
+    console.log ( aaa );
+
+    //3.由于id具有唯一性，所以有些浏览器直接用id名来表示这个元素对象
+    //不推荐使用，原因有些浏览器不支持
+   // console.log ( box2 );
+
+</script>
+</body>
+</html>

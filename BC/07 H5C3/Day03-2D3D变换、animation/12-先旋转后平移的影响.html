@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* 
+        transform里如果要给不同的变换，应该用空格隔开。
+            只有transform是空格隔开，其他的都是逗号
+
+        如果先旋转再平移，会改变运动方向
+         */
+        
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: #f00;
+            transition: all 1s;
+        }
+        
+        .box:hover {
+            transform: rotate(45deg) translateX(1000px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

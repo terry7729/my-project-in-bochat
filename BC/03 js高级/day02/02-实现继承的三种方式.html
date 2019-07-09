@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    //继承：一个对象拥有另一个对象所有的成员
+
+    var wangjianlin = {
+        hourse:{
+            address:'北京一环',
+            price:1000000000
+        },
+        car:{
+            bracd:'劳斯莱斯',
+            price:5000000
+        }
+    };
+    console.log ( wangjianlin );
+
+    var wangsicong = {
+        girlFriends:['豆得儿','林更新','王健纲']
+    };
+    console.log ( wangsicong );
+
+    //需求：让wangsicong拥有wangjianlin对象所有的成员
+
+    //1. 混入式继承：遍历父对象的所有属性，添加到子对象中
+    /*弊端：  代码冗余：每继承一次就要写一次循环
+      应用场景：一个对象继承
+     */
+
+    // for (var key in wangjianlin){
+    //     wangsicong[key]  = wangjianlin[key];
+    // };
+    // console.log ( wangsicong );
+
+    //2. 替换原型：将父对象作为子对象构造函数的原型
+    /*弊端：会丢失之前的原型对象的成员
+
+     */
+
+    // function CreateSon (  name,girlfreinds ) {
+    //     this.name = name;
+    //     this.girlFriends = girlfreinds;
+    // };
+    //
+    // CreateSon.prototype.play = function (  ) {
+    //     console.log ( "我是土豪，我很会花钱请女孩吃吃六块钱的麻辣烫" );
+    // }
+    //
+    // //将父对象作为子对象构造函数的原型
+    // CreateSon.prototype = wangjianlin;
+    //
+    // var wangsicong = new CreateSon('聪聪',['豆得儿','林更新']);
+    // console.log ( wangsicong );
+    // console.log ( wangsicong.car );
+    // var oldSong = new CreateSon('隔壁老宋',['苍老师','吉泽老师','白石老师']);
+    // console.log ( oldSong );
+    // console.log ( oldSong.hourse );
+
+
+    //3.混合式： 混入+替换原型
+    //解决方案：将父对象的成员添加到子对象的原型中
+
+
+    function CreateSon (  name,girlfreinds ) {
+        this.name = name;
+        this.girlFriends = girlfreinds;
+    };
+
+    CreateSon.prototype.play = function (  ) {
+        console.log ( "我是土豪，我很会花钱请女孩吃吃六块钱的麻辣烫" );
+    }
+
+    // //将父对象作为子对象构造函数的原型
+    // CreateSon.prototype = wangjianlin;
+    //将wangjianlin对象的成员添加到原型中
+    for (var key in wangjianlin){
+        CreateSon.prototype[key] = wangjianlin[key];
+    }
+
+    var wangsicong = new CreateSon('聪聪',['豆得儿','林更新']);
+    console.log ( wangsicong );
+
+    var oldSong = new CreateSon('隔壁老宋',['苍老师','吉泽老师','白石老师']);
+    console.log ( oldSong );
+
+
+
+
+</script>
+</body>
+</html>

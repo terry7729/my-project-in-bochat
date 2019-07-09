@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #box{
+            color:Red;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点我" id="btn">
+    <div id="box"></div>
+</body>
+</html>
+
+
+<script>
+
+    //找到div
+    var box = document.getElementById('box');
+
+    //加点击事件
+    document.getElementById('btn').onclick = function(){
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+
+        //2. 设置请求行（open）
+        xhr.open('get','data.php');
+        //3. 设置请求头（get不用设置）
+        //4. 发送请求&设置请求体
+        xhr.send();
+
+        //5. 监听响应完成事件
+        xhr.onload = function(){
+
+            //把响应体给div去显示
+            box.innerHTML = xhr.responseText;
+        }
+
+    }
+</script>

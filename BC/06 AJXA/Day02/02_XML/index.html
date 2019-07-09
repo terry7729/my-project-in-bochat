@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        XML也是用来做数据传输的
+
+        XML是一种类似于HTML的形式来写的，所以也就是说XML里写的都是标签
+
+        只不过大家要明确XML这种标签是用来表示数据的，而HTML这种标签是用来做网页内容的
+
+        XML里面没有固定的标签，也就是说，里面的标签名你可以自己随便写   
+        
+        
+        规则：  1.可以不写文档声明，但如果一旦写了，文档声明必须在第一行
+               2.必须提供一个根标签（所有内容都是放在这个标签里面，并且这个标签是文档声明后的第一个标签）
+               3.所有标签都是双标签，没有单标签
+               4.标签名可以随便写，但是它有这么几个规范：只能以下划线和字母开头，后面可以接任意的下划线和字母和数字  一般都是纯字母
+
+        你们只能能看懂XML文件表示什么数据就可以了
+
+
+        JSON和XML都能做数据传递
+        但是，JSON相对于XML的体量更轻，而XML体量大
+
+        XML出来的更早
+
+
+        怎么获取到XML对象？
+                xhr.responseXML来获取（你请求的是XML），直接就是XML对象了
+                就把它当DOM元素来操作就行
+    -->
+</head>
+<body>
+    
+    <input type="button" value="发请求" id="btn">
+</body>
+</html>
+
+<script>
+
+    // 说明了doucument和XML对象，它们是同一种类型的不同的个体！
+    // console.log(document);
+    // document.getElementById();
+    // document.getElementsByTagName();
+    // document.getElementsByClassName();
+    
+
+    // 点击事件
+    document.getElementById('btn').onclick = function(){
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('get','test.xml');
+        xhr.send();
+
+        xhr.onload = function(){
+
+            // console.log(xhr.responseText);
+            
+            // 如果请求的是XML,那么没必要用responseText，直接用responseXML，它既能拿到XML的响应体
+            // 也能把这个响应体转成XML的对象
+            console.log(xhr.responseXML);
+            
+            // var itemList = xhr.responseXML.getElementsByTagName('item');
+            // // console.log(itemList);
+            // console.log(itemList[0].children[0].innerHTML);
+            
+        }
+    }
+</script>

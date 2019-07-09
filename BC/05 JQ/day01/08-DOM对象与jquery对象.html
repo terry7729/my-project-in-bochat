@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      height: 100px;
+
+    }
+  </style>
+</head>
+<body>
+  <div id="one"></div>
+  <div id="one1"></div>
+  <div id="one2"></div>
+</body>
+</html>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //1.dom对象: 原生js选择器获取到的元素,就是dom对象
+    //特点: 只能调用dom的方法或者属性,不能调用jQuery的方法或者属性.
+    // var div1 = document.getElementById("one");
+    //div1.style.backgroundColor = 'red'; //可以调用dom的属性
+    //div1.css('backgroundColor','red'); //报错了,因为dom对象不能调用jQuery的方法或者属性. div1.css is not a function
+
+
+    //2.jQuery对象: jQuery选择器获取到的对象.就是jQuery对象.
+    //特点: 只能调用jQuery的方法或者属性,不能调用dom的方法或者属性.
+    // var $div1 = $('#one'); //用来保存jQuery对象的变量名用$开头,约定俗成.
+    // $div1.style.backgroundColor = 'green'; //报错了,因为jQuery对象不能调用dom方法或者属性.
+    // $div1.css('backgroundColor','green'); //可以
+
+
+    //3.jQuery对象到底长什么样.
+    //jQuery对象其是一个伪数组.是一个对象.
+    //他的元素是一个个的dom对象.
+//    var div1 = document.getElementById("one");
+//    console.log(div1);
+//
+//    var $div1 = $('#one');
+//    console.log($div1);
+//
+//    var $divs = $('div');
+//    console.log($divs);
+//
+//    console.log($divs.__proto__ === Array.prototype); //false
+
+
+
+    //4.dom对象转换成jQuery对象.
+    // var div1 = document.getElementById("one"); //dom对象.
+    // var $div1 = $(div1); //这里就是把.dom对象转换成jQuery对象.
+    // $div1.css('backgroundColor','pink');
+    // console.log($div1);
+
+
+    //5.jQuery对象也可以转成dom对象.
+    //a.使用下标直接取.
+    // var $divs = $('div');
+    // var div1 = $divs[0];
+    // div1.style.background = 'green';
+    // console.log(div1);
+
+    //b.使用的是jQuery的get方法.
+    var $divs = $('div');
+    var div2 = $divs.get(1);
+    div2.style.background = 'green';
+    console.log(div2);
+
+
+
+
+  });
+</script>

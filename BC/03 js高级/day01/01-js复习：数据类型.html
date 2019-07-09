@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.js的数据类型六种
+            基本数据类型： string number boolean undeifed null
+            复杂数据类型：对象
+                * 狭义对象：  {}
+                * 函数：function
+                * 数组array:   []
+     2.js中有三种
+        * 自定义： {}    new Object()
+        * json对象：
+        * 内置对象:   Array  Object   Math  Date  String Number Boolean  Function Events RegExp(正则表达式)
+     */
+
+    //检测数据类型三种方式
+
+    //1.typeof关键字：   （1） typeof 数据  （2） typeof (数据)
+    //会得到数据所属类型的字符串
+    /* 特点:可以检测除null与array之外的一切数据类型  */
+
+    console.log ( typeof  10 );//"number"
+
+    console.log ( typeof null );//object
+    console.log ( typeof [10,20,30] );//object
+
+    console.log ( typeof function fn () {
+    } );//function
+
+    //2.检测数组有两种方式 :  返回布尔类型的值
+
+    //2.1  Array.isArray()  : 常用，严谨性高
+    console.log ( Array.isArray ( [ 10, 20, 30 ] ) );//true
+    console.log ( Array.isArray ( {name:'班长'} ) );//false
+
+    //2.2 数据  instanceof Array : 不严谨
+    console.log ( [ 10, 20, 30 ] instanceof Array );//true
+    console.log ( {name:'班长'} instanceof Array );//false
+    //这种方式在使用Object检测数组的时候会得到true:不严谨
+    console.log ( [ 10, 20, 30 ] instanceof Object );//true
+
+    //3. 万能数据类型检测法
+    //语法： Object.prototype.toString.call( 数据 )
+    // :  返回固定格式的字符串 [object 数据类型]
+
+    console.log ( Object.prototype.toString.call ( "123" ) );//[object String]
+    console.log ( Object.prototype.toString.call ( 123 ) );//[object Number]
+    console.log ( Object.prototype.toString.call ( true ) );////[object Boolean]
+    console.log ( Object.prototype.toString.call ( undefined ) );////[object Undefined]
+    console.log ( Object.prototype.toString.call ( null ) );////[object Null]
+    console.log ( Object.prototype.toString.call ( [10,20,30] ) );//[object Array]
+    console.log ( Object.prototype.toString.call ( {} ));//[object Object]
+    console.log ( Object.prototype.toString.call ( function (  ) {} ));//[object Function]
+
+
+</script>
+</body>
+</html>

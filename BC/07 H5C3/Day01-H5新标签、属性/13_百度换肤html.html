@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>百度换肤</title>
+    <style>
+        html,
+        body,
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            background: url(images/1.jpg) no-repeat;
+        }
+
+        .back {
+            width: 100%;
+            height: 180px;
+            background: rgba(255, 255, 255, 0.3);
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .back img {
+            width: 200px;
+            height: 125px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="back">
+        <a href="images/1.jpg">
+            <img src="images/1.jpg" alt="">
+        </a>
+        <a href="images/2.jpg">
+            <img src="images/2.jpg" alt="">
+        </a>
+        <a href="images/3.jpg">
+            <img src="images/3.jpg" alt="">
+        </a>
+        <a href="images/4.jpg">
+            <img src="images/4.jpg" alt="">
+        </a>
+        <a href="images/5.jpg">
+            <img src="images/5.jpg" alt="">
+        </a>
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    //先把上一次保存的皮肤路径取出来
+    var url = localStorage.getItem('url');
+    // console.log(url);
+    
+    // if(url != null)
+    if(url)
+        //给body
+        document.body.style.background = "url(" + url + ") no-repeat";
+
+    //先找到所有的a标签
+    var aList = document.getElementsByTagName('a');
+
+    for(var i = 0; i < aList.length; i++){
+
+        aList[i].onclick = function(){
+
+            // console.log(this.href);
+            //还要把路径缓存起来
+            localStorage.setItem('url',this.href);
+
+            document.body.style.background = "url("+ this.href +") no-repeat";
+            
+            return false;
+        }
+    }
+</script>

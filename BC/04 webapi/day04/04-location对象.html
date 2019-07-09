@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="assign">assign跳转网页</button>
+<button id="replace">replace替换网页</button>
+<button id="reload">reload刷新网页</button>
+<script>
+    /*location:获取网页地址栏信息
+        url：全球统一资源定位符
+     http://www.itheima.com/?subject=1#com
+     协议名protrol：（http https）
+     主机host :  hostname(ip地址) + port（端口号）
+     网络参数search：  以?开头
+     资源定位符hash： 以#开头   （锚点定位）
+     */
+
+    console.log ( window.location );
+    console.log ( location.protocol );//http
+    console.log ( location.host );// hostname + port
+    console.log ( location.hostname );//
+    console.log ( location.port );//
+    console.log ( location.search );// ?
+    console.log ( location.hash );// # 页面会自动滚到#后面的对应的id的盒子位置
+
+    document.getElementById('assign').onclick = function (  ) {
+        //（常用）跳转网页：可以回退
+        location.assign('http://www.itheima.com');
+
+        //上面代码有一种简写形式
+        window.location.href = 'http://www.itheima.com';
+    }
+
+    document.getElementById('replace').onclick = function (  ) {
+        //替换网页：不能回退
+        location.replace('http://www.itheima.com')
+    }
+
+
+    document.getElementById('reload').onclick = function (  ) {
+        location.reload();//相当于快捷键F5
+    }
+</script>
+</body>
+</html>

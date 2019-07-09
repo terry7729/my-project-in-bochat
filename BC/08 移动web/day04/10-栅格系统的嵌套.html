@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+    <style>
+    .row div {
+        height: 100px;
+        box-shadow: 0px 0px 1px red;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- 为了和容器的padding抵消 外面包一个容器 -->
+        <div class="row">
+        	   <!-- 因为列也有padding 也会让内容往里面靠 -->
+            <div class="col-lg-4">
+            		<!-- 栅格嵌套的时候 row是和父元素col-lg-4列的padding进行抵消 -->
+            		<div class="row">
+            			<div class="col-xs-4">
+            				<div class="row">
+            					<div class="col-xs-4">1</div>
+            					<div class="col-xs-4">2</div>
+            					<div class="col-xs-4">3</div>
+            				</div>
+            			</div>
+            			<div class="col-lg-4">2</div>
+            			<div class="col-lg-4">3</div>
+            		</div>
+            </div>
+            <div class="col-lg-4">
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

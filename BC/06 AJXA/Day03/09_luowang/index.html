@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>落网</title>
+
+	<style type="text/css">
+		.item {
+			width: 640px;
+			/* height: 452px; */
+			background-color: #eee;
+			margin-top: 50px;
+			border-radius: 5px;
+			overflow: hidden;
+		}
+
+		.item .cover {
+			display: block;
+		}
+
+		.item .cover img {
+			display: block;
+		}
+
+		.item .bottom {
+			height: 35px;
+			position: relative;
+		}
+
+		.item .bottom a {
+			text-decoration: none;
+			line-height: 35px;
+			font-family: '微软雅黑';
+			margin-left: 20px;
+			color: gray;
+		}
+
+		.item .bottom .rightBox {
+			position: absolute;
+			top: 0px;
+			right: 0px;
+			height: 100%;
+		}
+
+		.item .bottom .rightBox span {
+			line-height: 35px;
+			margin: 0 20px;
+			font-size: 15px;
+			/* font-family: "微软雅黑"; */
+			color: gray;
+		}
+
+		.item .bottom .rightBox span::before {
+			margin-right: 10px;
+			color: #dd5a64;
+		}
+
+		.left-control {
+			position: fixed;
+			right: 100px;
+			top: 50%;
+			transform: translateY(-50%);
+		}
+
+		#getMore {
+			width: 100px;
+			height: 100px;
+			border: none;
+			text-align: center;
+			line-height: 100px;
+			cursor: pointer;
+		}
+
+		#getSome {
+			width: 100px;
+			height: 100px;
+			border: none;
+			text-align: center;
+			line-height: 100px;
+			cursor: pointer;
+		}
+	</style>
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+</head>
+
+<body>
+
+	<div class="left-control">
+		<h2>加载多张</h2>
+		<div id='getSome' class="icon-download icon-4x"></div>
+	</div>
+
+	<div class="container">
+		
+		<div class="item" style="display:none">
+			<a href="#" class='cover'><img src="images/vol.859.jpg" alt=""></a>
+			<div class="bottom">
+				<a href="#">vol.847 用一首歌来想象你</a>
+				<div class='rightBox'>
+					<span class='icon-heart'>18554</span>
+					<span class='icon-comment'>292</span>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
+
+<!-- 1.导入模板 -->
+<script src="js/template-web.js"></script>
+
+<!-- 2.准备模板 -->
+<script type="text/html" id="tpl">
+
+{{ each list value }}
+	<div class="item" >
+			<a href="#" class='cover'><img src="{{value.path}}" alt=""></a>
+			<div class="bottom">
+				<a href="#">{{value.name}}</a>
+				<div class='rightBox'>
+					<span class='icon-heart'>{{value.star}}</span>
+					<span class='icon-comment'>{{value.message}}</span>
+				</div>
+			</div>
+	</div>
+{{ /each }}
+
+</script>
+
+
+<script>
+
+	//找到container
+	var container = document.querySelector('.container');
+	//找到h2
+	var h2 = document.querySelector('h2');
+
+	//加载更多的点击事件
+	document.getElementById('getSome').onclick = function(){
+
+		//点击事件一开始，就应该把文字改成loading
+		h2.innerHTML = "loading!!!!!";
+
+
+		var xhr = new XMLHttpRequest();
+		xhr.open('get','_api/luowang_getSome.php?num=3');
+		xhr.send();
+		
+		xhr.onload = function(){
+
+			//把文字变回加载更多
+			h2.innerHTML = "加载更多";
+
+			// console.log(xhr.responseText);
+			var obj = JSON.parse(xhr.responseText);
+			console.log(obj);
+			
+			//调用模板
+			var html = template('tpl',{ list: obj.items});
+			// console.log(html);
+			
+			container.innerHTML += html;
+		}
+	}
+</script>
+

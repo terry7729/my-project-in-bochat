@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>写首诗</h2>
+    <!-- @keyup.enter .enter 是修饰符 指定按键是回车 -->
+    <input type="input" v-model.trim="inputValue" @keyup.enter="add2Novel">
+    <!-- <input type="input" v-model="inputValue" @keyup.enter="add2Novel"> -->
+    <ul>
+      
+      <li @click="delOne(index)" v-for="(it,index) in novelList">
+      <!-- <li @click="delOne" v-for="(it,index) in novelList"> -->
+        {{it}}
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- 
+  需求输入内容 点击回车 内容渲染到页面上
+    数据格式->数组
+    事件用的是keyup 按的是回车
+    v-model双向数据绑定 value改变同步到 data中
+  产品经理的需求？（o(╥﹏╥)o）
+    1.清空文本
+    2.去两边的空格
+    3.如果文本为空不增加 提示用户
+    4.点击删除这一行
+      点击事件 获取点击下标 删除数组中的这一个元素
+
+  修饰符
+    @keyup.enter 抬起回车
+    v-model.trim 去两边空格
+  绑定事件时 传了实参 可以获取到 不传默认有一个事件参数
+ -->
+<script>
+  // 实例化Vue对象
+  let app = new Vue({
+    el: "#app",
+    data: {
+      //  输入的内容
+      inputValue: '',
+      // 文章数组
+      novelList: []
+    },
+    // 方法
+    methods:{
+      add2Novel(event){
+        // 非空判断
+        if(this.inputValue===''){
+          alert('哥们，写点东西呗');
+          return;
+        }
+        //  把输入的内容添加到 数组中
+        // console.log(this.inputValue);
+        this.novelList.push(this.inputValue);
+        // 清空文本
+        this.inputValue ='';
+      },
+      // 删除一行
+      delOne(index){
+        console.log(index);
+        // 删除数组中对应的元素即可
+        this.novelList.splice(index,1);
+      }
+    }
+  })
+</script>

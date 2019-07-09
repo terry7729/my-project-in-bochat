@@ -1,0 +1,401 @@
+.section1 {
+    background: url('../images/01/bg.png') no-repeat center bottom
+}
+
+.section1 .products {
+    position: absolute;
+    right: 50%;
+    margin-right: -420px;
+    bottom: 50%;
+    margin-bottom: -130px;
+
+}
+
+.section1 .sofa {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    margin-bottom: 95px;
+    margin-right: 50px;
+    animation: sofamove 1s infinite alternate;
+}
+
+.section1 .ball {
+    position: absolute;
+    top: 0;
+    margin-top: 25px;
+    right: 0;
+    margin-right: 50px;
+    animation: ballmove 1.5s infinite alternate;
+}
+
+@keyframes ballmove {
+    from {}
+
+    to {
+        transform: translateY(60px)
+    }
+}
+
+@keyframes sofamove {
+    from {}
+
+    to {
+        transform: translateY(70px);
+    }
+}
+
+.section2 {
+    background: url('../images/02/bg.png') no-repeat bottom;
+}
+
+.section2 .search01 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: 40%;
+    margin-bottom: 300px;
+}
+
+.section2 .search02 {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-bottom: 300px;
+    margin-left: -111px;
+    display: none;
+}
+
+.section2 .sofas {
+    bottom: 0;
+    position: absolute;
+    right: 50%;
+    margin-bottom: 210px;
+    margin-right: -220.5px;
+    width: 0;
+}
+
+.section3 {
+    background: url('../images/03/bg.png') no-repeat center;
+
+}
+
+.section3 .safa {
+    position: absolute;
+    right: 50%;
+    bottom: 50%;
+    margin-bottom: -60px;
+    margin-right: 25px;
+}
+
+
+.section3 .color {
+    width: 296px;
+    height: 131px;
+    background: url('../images/03/color01.gif');
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    margin-bottom: -100px;
+    margin-left: 40px;
+}
+
+.section3 .add {
+    width: 218px;
+    height: 58px;
+    background: url('../images/03/add01.gif');
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    margin-bottom: -160px;
+    margin-left: 40px;
+}
+
+.section3.animation .color {
+    transition: all 1s;
+    background: url('../images/03/color02.gif');
+}
+
+.section3.animation .add {
+    transition: all 1s;
+    background: url(../images/03/add02.gif);
+}
+
+.section4 {
+    background: url('../images/04/bg.png')no-repeat center bottom;
+}
+
+.section4>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.section4 .words {}
+
+.section4 .keyboard {
+    width: 283px;
+    height: 271px;
+    background: url('../images/04/keyboard.png');
+    position: relative;
+    margin-top: 50px;
+    opacity: 0;
+}
+
+.section4 .address {
+    position: absolute;
+
+    left: 50%;
+    top: 55px;
+    margin-left: -82px;
+}
+
+.section4 .cloud {
+    position: absolute;
+    top: 0;
+    right: -600px;
+    animation: moves 20s infinite linear;
+
+}
+
+@keyframes moves {
+    from {}
+
+    to {
+        transform: translate(-2000px);
+
+    }
+}
+
+.section4 .shoppingCar {
+    width: 407px;
+    height: 366px;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    margin-left: -203.5px;
+    margin-bottom: 45px;
+    background: url('../images/04//car.png') no-repeat left bottom,
+        url('../images/04/sofa.png') no-repeat 60% -8%;
+}
+
+.section5 {
+    background: url('../images/05/bg.png') no-repeat;
+    perspective: 1200px;
+}
+
+.section5 .cardBox {
+    width: 358px;
+    height: 222px;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    margin-top: -70px;
+    margin-right: 80px;
+}
+
+.section5 .bill {
+
+    position: absolute;
+    margin-left: 150px;
+}
+
+.section5.animation .bill {
+    transition: all 1s 2s;
+    transform: translateY(-130px);
+}
+
+.section5 .card {
+    position: absolute
+}
+
+.section5 .mouse {
+    width: 205px;
+    height: 360px;
+    background: url('../images/05/mouse01.png')no-repeat bottom;
+    position: absolute;
+    left: 50%;
+    margin-left: 150px;
+    bottom: 50%;
+
+}
+
+.section5.animation .mouse {
+    transition: all 1s 1s;
+    background: url('../images/05/mouse02.png')no-repeat bottom;
+}
+
+.section5 .words {
+    position: absolute;
+    right: 50%;
+    top: 30px;
+    margin-right: -100px;
+    opacity: 0;
+}
+
+.section5.animation .words {
+    transition: all 2s 3s;
+    transform: rotateY(360deg) scale(1.2);
+    opacity: 1;
+}
+
+
+
+.section5 .hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    margin-bottom: -351px;
+    margin-left: 121px;
+}
+
+.section5.animation .hand {
+    transition: all 1s;
+    transform: translateY(-120px);
+}
+
+/* 第六屏开始 */
+.section6 .street {
+    /* position: relative; */
+    width: 100%;
+    height: 100%;
+    background: url('../images/06/bg.png') repeat-x -200px bottom;
+}
+
+
+.section6 .car {
+    width: 210px;
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    margin-left: -150px;
+
+}
+
+.section6 .shopBox {
+
+    position: absolute;
+    bottom: 50%;
+    margin-bottom: 270px;
+    left: 50%;
+    margin-left: -120px;
+}
+
+.section6 .box {
+    position: absolute;
+}
+
+
+
+.section6 .sofa {
+    width: 70px;
+    position: absolute;
+
+    top: 0px;
+    left: 25px;
+}
+
+
+
+.section6 .man {
+    width: 70px;
+    position: absolute;
+    bottom: 0;
+    left: 48%;
+    margin-bottom: 110px;
+    margin-left: -50px;
+}
+
+.section6 .door {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: 220px;
+    margin-bottom: 117px;
+    display: none;
+
+}
+
+.section6 .girl {
+    display: none;
+    width: 30px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: 275px;
+    margin-bottom: 116px;
+}
+
+/* .section6.animation .man{
+    transition: all 1s 3.5s;
+    transform: scale(1.8) translateX(100px)
+} */
+
+.section7 {
+    background: url('../images/07/bg.png') no-repeat center bottom;
+}
+
+.section7 .stars {
+    width: 0;
+    height: 17px;
+    position: absolute;
+    background: url('../images/07/stars3.png');
+    left: 50%;
+    margin-left: -300px;
+    bottom: 50%;
+    margin-bottom: 120px;
+
+}
+
+.section7.animation .stars {
+    transition: all 1.5s steps(5);
+    width: 105px;
+}
+
+.section7 .good {
+    position: absolute;
+    right: 50%;
+    margin-right: 210px;
+    bottom: 50%;
+    margin-bottom: 60px;
+    opacity: 0;
+}
+
+.section7.animation .good {
+    transition: all 1s 1.5s;
+    opacity: 1;
+}
+
+
+
+.section8 {
+    background: url('../images/08/bg.png');
+
+}
+
+.section8 .beginShopping {
+    width: 389px;
+    height: 160px;
+    background: url('../images/08/begin.png') no-repeat center top;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -195px;
+
+}
+
+.section8 .beginShopping:hover {
+    background: url('../images/08/begin.gif');
+}
+
+.section8 .again {
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+}
+
+.section8 .hand {
+    pointer-events: none;
+    position: absolute;
+}

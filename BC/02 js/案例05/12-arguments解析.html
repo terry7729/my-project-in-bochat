@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //console.log(arguments);
+        //1.直接使用arguments是会报错的.
+        //2.在函数内部可以使用arguments,而且它还是一个数组,伪数组(有数组的长度,有数组的下标,但是没有数组的方法)
+        //3.arguments主要用来存储函数参数的一个伪数组
+        //4.形参与arguments中的元素是会互相影响的,对实参,没有影响
+
+        function fun1(a,b,c) {
+            //console.log(arguments);
+            //console.log(arguments.length);
+            a = 999;
+            console.log(arguments[0]);
+        }
+        var num1 = 10,num2 = 20, num3 = 30;
+        fun1(num1,num2,num3);
+        console.log(num1);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

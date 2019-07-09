@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--1.默认情况下，a标签有两个默认样式
+        a.鼠标移入会有小手，更好的提醒用户这个元素是可以点击的
+        b.点击的时候页面会跳转
+     2.某些情况下，只希望a标签有小手，但是不希望跳转，这个时候就需要阻止a标签的默认跳转
+-->
+
+<!--方式一：设置href属性为伪链接
+    javascript：告诉浏览器不要跳转，而是执行js代码
+   void(0):js默认的空函数
+-->
+<a href="javascript:void(0)" target="_blank">链接</a>
+
+<!--方式二：在a标签的事件处理函数后面   return false-->
+<a id="link" href="#" target="_blank">链接2</a>
+
+<script>
+    document.getElementById('link').onclick = function (  ) {
+        alert(666666);
+
+        return false;//阻止a标签的默认跳转
+    }
+</script>
+</body>
+</html>

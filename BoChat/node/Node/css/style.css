@@ -1,0 +1,981 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body,
+html {
+    font-size: .42667rem;
+    font-family: PingFangSC-Regular, sans-serif;
+    height: 100%;
+}
+
+body {
+    background: #fff;
+    display: none;
+}
+
+li {
+    list-style: none;
+}
+
+input,
+button {
+    outline: none
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/*首页*/
+
+#app {
+    position: relative;
+}
+
+#app .app-btn {
+    position: absolute;
+    width: 3rem;
+    height: 0.88rem;
+    background: url("../images/check_btn.png") no-repeat;
+    background-size: 100%;
+    top: 10.44rem;
+    left: 2.25rem;
+    cursor: pointer;
+}
+
+.index_bg {
+    background-size: 100%;
+    width: 100%;
+    position: relative
+}
+
+.text1 {
+    position: absolute;
+    top: 6.24rem;
+    font-size: 0.3rem;
+    color: #fff;
+    width: 5.1rem;
+    left: 1.15rem;
+    line-height: 0.52rem;
+    text-align: justify
+}
+
+#app .blink {
+    position: absolute;
+    top: 12.1rem;
+    font-size: 0.24rem;
+    color: #4c5160;
+    left: 2.76rem;
+    background: url("../images/h5_logo.png") no-repeat left center;
+    height: 0.58rem;
+    background-size: 0.58rem;
+    padding-left: 0.85rem;
+    line-height: 0.58rem;
+}
+
+.pa_code {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.sms {
+    background: url(../images/btn_pick.png) no-repeat;
+    display: block;
+    width: 1.5rem;
+    height: 0.9rem;
+    background-size: 100%;
+    border: none;
+    font-size: 0.3rem;
+    color: white;
+}
+
+.layer-login.layui-layer {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.layer-login .layui-layer-title {
+    background: url("../images/login_tit.png") no-repeat center top;
+    background-size: 3.9rem 0.7rem;
+    overflow: visible;
+    border-bottom: none
+}
+
+.layer-login .layui-layer-close {
+    background: url("../images/login_close.png") no-repeat center;
+    background-size: 0.28rem;
+    background-position: 0!important;
+}
+
+.layer-login .layui-layer-content {
+    background-color: #fff;
+    border-radius: 6px!important;
+    top: -0.49rem;
+    z-index: -1;
+    padding-top: 1.4rem;
+}
+
+.layer-login .layui-layer-content div {
+    width: 4.8rem;
+    height: 0.88rem;
+    margin: 0 auto;
+    background-color: #fff7ee;
+    border-radius: 0.44rem;
+    margin-bottom: 0.3rem;
+}
+
+.layer-login .layui-layer-content div span {
+    color: #ffa772;
+    font-size: 0.3rem;
+    display: block;
+    float: left;
+    width: 1.46rem;
+    text-align: center;
+    line-height: 0.88rem;
+}
+
+.layer-login .layui-layer-content div input {
+    float: left;
+    height: 0.4rem;
+    width: 1.5rem;
+    margin-top: 0.25rem;
+    border: none;
+    color: #ffa772;
+    font-size: 0.3rem;
+    background: none
+}
+
+.layer-login .layui-layer-content div input::placeholder {
+    color: #ffa772
+}
+
+.layer-login .layui-layer-content div button.sms {
+    font-size: 0.3rem;
+    font-size: 0.3rem;
+    margin-top: 0.24rem;
+    border: none;
+    background: none;
+    color: #ffa772;
+}
+
+.layer-login .layui-layer-content div button.submit,
+.layer-login .layui-layer-content div.che button {
+    background: url("../images/post_btn.png") no-repeat;
+    display: block;
+    width: 4.8rem;
+    height: 0.88rem;
+    background-size: 100%;
+    border: none;
+}
+
+.layer-login .layui-layer-content div:last-child {
+    margin-top: 0.80rem;
+}
+
+.layer-login .layui-layer-content div.req {
+    padding-left: 0.35rem;
+}
+
+.layer-login .layui-layer-content div.tip {
+    background: url("../images/warning.png") no-repeat 0.4rem center;
+    font-size: 0.24rem;
+    padding-left: 0.7rem;
+    height: 0.3rem;
+    background-size: 0.26rem 0.24rem;
+    color: #f88a48
+}
+
+.layer-login .layui-layer-content div.che button {
+    background: url("../images/post_check_btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.layer-login .layui-layer-setwin {
+    top: 25px;
+}
+
+.layer-login .layui-layer-content .yzm {
+    width: 3rem;
+    float: left;
+    margin-left: 0.4rem;
+    margin-right: 0.3rem;
+}
+
+
+/*.yzm{width: 3rem;float: left;margin-left: 0.4rem;margin-right: 0.3rem;}*/
+
+.index2 {
+    width: 100%;
+}
+
+#app.index2 .app-btn {
+    background: url("../images/buy_btn.png") no-repeat;
+    background-size: 100%;
+}
+
+.index2 .pro {
+    position: absolute;
+    top: 6.3rem;
+    width: 5.82rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.index2 .pro ul li {
+    color: #f88a48;
+    font-size: 0.24rem;
+    text-align: center;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    background: #fff;
+    border-radius: 0.44rem;
+    margin-bottom: 0.28rem;
+}
+
+.index2 .pro ul li.active {
+    background: #f88a48;
+    color: #fff;
+}
+
+.index2 .p-type {
+    position: absolute;
+    top: 11.6rem;
+    font-size: 0.24rem;
+    color: #F88A48;
+    left: 0.6rem;
+}
+
+.index2 .p-type .item {
+    float: left;
+    width: 2.28rem;
+    height: 0.36rem;
+}
+
+.index2 .p-type .item input {
+    display: none
+}
+
+.index2 .p-type .item label {
+    position: relative;
+    padding-left: 0.8rem;
+    width: 100%;
+    height: 100%;
+    display: block
+}
+
+.index2 .p-type .item label.ali {
+    background: url("../images/icon_Alipay.png") no-repeat 0.4rem center;
+    background-size: 0.36rem;
+}
+
+.index2 .p-type .item label.wx {
+    background: url("../images/icon_WeChat.png") no-repeat 0.3rem center;
+    background-size: 0.36rem;
+}
+
+.index2 .p-type .item label::before {
+    display: block;
+    content: '';
+    border: 1px solid #FB9D23;
+    width: 0.18rem;
+    height: .18rem;
+    position: absolute;
+    left: 0;
+    top: 0.09rem;
+    border-radius: 50%;
+    box-sizing: border-box;
+}
+
+.index2 .p-type .item input:checked+label::after {
+    display: block;
+    content: '';
+    width: 0.12rem;
+    height: .12rem;
+    position: absolute;
+    background: #FB9D23;
+    border-radius: 50%;
+    left: 0.03rem;
+    top: 0.12rem;
+}
+
+.menu {
+    position: absolute;
+    height: 0.88rem;
+    width: 0.88rem;
+    left: 6.38rem;
+    top: 0.4rem;
+}
+
+.menu .toggle {
+    width: 0.88rem;
+    height: 0.88rem;
+    background: url("../images/icon_more.png") no-repeat center;
+    background-size: 0.88rem;
+}
+
+.menu .menu-list {
+    display: none;
+    width: 2.4rem;
+    height: 1.6rem;
+    border-radius: 0.12rem;
+    background-color: #fff;
+    position: absolute;
+    top: 1.18rem;
+    right: 0.23rem;
+    z-index: 2;
+}
+
+.menu .menu-list ul li {
+    height: 0.8rem;
+    line-height: 0.8rem;
+}
+
+.menu .menu-list ul li a {
+    font-size: 0.28rem;
+    color: #F88A48;
+    display: block;
+    padding-left: 0.85rem;
+}
+
+.menu .menu-list ul li:first-child a {
+    background: url("../images/icon_me.png") no-repeat .28rem center;
+    background-size: 0.44rem;
+}
+
+.menu .menu-list ul li:first-child+li a {
+    background: url("../images/icon_exit.png") no-repeat .28rem center;
+    background-size: 0.44rem;
+}
+
+.index2 .bg {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none
+}
+
+.layer-pay,
+.layer-withdrawal,
+.layer-bind {
+    border: 0.06rem solid #F35746;
+    border-radius: 0.12rem!important;
+}
+
+.layer-pay .layui-layer-content {
+    padding-top: 0.8rem;
+}
+
+.layer-pay .layui-layer-content .pay-tit,
+.layer-withdrawal .layui-layer-content .tit,
+.layer-bind .layui-layer-content .tit {
+    font-size: 0.24rem;
+    color: #F88A48;
+    margin-bottom: 0.15rem;
+    padding-left: 0.5rem;
+}
+
+.layer-pay .layui-layer-content .pay-money {
+    width: 4.8rem;
+    height: 0.88rem;
+    text-align: center;
+    line-height: .88rem;
+    margin: 0 auto;
+    background: #FFF7EE;
+    margin-bottom: 0.2rem;
+    color: #F88A48;
+}
+
+.layer-pay .layui-layer-content .pay-code {
+    width: 4.8rem;
+    height: 4.8rem;
+    background: #FFF7EE;
+    margin: 0 auto;
+    font-size: 0.24rem;
+    color: #F88A48;
+    text-align: center;
+    padding-top: 0.4rem;
+}
+
+.layer-pay .layui-layer-content .pay-code p.img {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0.4rem auto;
+    background: #FEE1BD;
+}
+
+.layer-pay .layui-layer-content .pay-code a {
+    color: #F88A48;
+}
+
+.layer-pay .layui-layer-setwin .layui-layer-close,
+.layer-withdrawal .layui-layer-setwin .layui-layer-close,
+.layer-bind .layui-layer-setwin .layui-layer-close {
+    right: -15px;
+    top: -15px;
+    width: 45px;
+    height: 35px;
+    background: url("../images/login_close.png") no-repeat center;
+    background-size: 0.28rem;
+}
+
+.layer-withdrawal .layui-layer-content,
+.layer-bind .layui-layer-content {
+    padding-top: 0.63rem;
+}
+
+.layer-withdrawal .layui-layer-content .input-money {
+    width: 4.8rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    margin: 0 auto;
+    background: #FFF5E9
+}
+
+.layer-withdrawal .layui-layer-content .input-money span {
+    width: 1.9rem;
+    text-align: right;
+    display: block;
+    font-size: 0.3rem;
+    color: #F88A48;
+    float: left;
+}
+
+.layer-withdrawal .layui-layer-content .input-money input {
+    float: left;
+    width: 2.6rem;
+    height: 0.4rem;
+    margin-top: 0.24rem;
+    border: none;
+    padding-left: 0.05rem;
+    border-left: 1px solid #F88A48;
+    margin-left: 0.15rem;
+    font-size: 0.3rem;
+    color: #F88A48;
+    background: none
+}
+
+.layer-withdrawal .layui-layer-content .main {
+    width: 4.8rem;
+    height: 4.8rem;
+    margin: 0.22rem auto 0;
+    background: #FFF5E9;
+    padding: 0.38rem 0.3rem;
+    box-sizing: border-box;
+}
+
+.layer-withdrawal .layui-layer-content .main p:first-child {
+    font-size: 0.24rem;
+    color: #F88A48
+}
+
+.layer-withdrawal .layui-layer-content .main p.p-type {
+    height: 0.6rem;
+    margin-top: 0.2rem;
+}
+
+.layer-withdrawal .layui-layer-content .main p.p-type a,
+.layer-bind .layui-layer-content .pay-type span {
+    display: block;
+    width: 2rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    font-size: 0.24rem;
+    color: #F88A48;
+    float: left;
+    border: 1px solid #FCAE4A;
+    border-radius: 0.12rem;
+    box-sizing: border-box;
+}
+
+.layer-withdrawal .layui-layer-content .main p.p-type a.ali,
+.layer-bind .layui-layer-content .pay-type span.ali {
+    background: url("../images/icon_Alipay.png") no-repeat 0.34rem center;
+    background-size: 0.36rem;
+    padding-left: 0.9rem;
+}
+
+.layer-withdrawal .layui-layer-content .main p.p-type a.wx,
+.layer-bind .layui-layer-content .pay-type span.wx {
+    background: url("../images/icon_WeChat.png") no-repeat 0.5rem center;
+    background-size: 0.36rem;
+    margin-left: 0.12rem;
+    padding-left: 1rem;
+}
+
+.layer-withdrawal .layui-layer-content .main p.p-type a.on {
+    background-color: #FFECD5
+}
+
+.layer-withdrawal .layui-layer-content .main p.img {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 0.35rem auto 0;
+    background: #FEE0BA
+}
+
+.layer-withdrawal .layui-layer-content .tip {
+    width: 4.8rem;
+    margin: 0 auto;
+    height: 0.68rem;
+    line-height: 0.68rem;
+}
+
+.layer-withdrawal .layui-layer-content .tip span {
+    font-size: 0.24rem;
+}
+
+.layer-withdrawal .layui-layer-content .tip span.lf {
+    float: left;
+    color: #FFA772;
+}
+
+.layer-withdrawal .layui-layer-content .tip span.rg {
+    float: right;
+    color: #F88A48;
+}
+
+.layer-withdrawal .layui-layer-content .input-code {
+    width: 4.8rem;
+    height: 0.88rem;
+    margin: 0 auto;
+    background: #FFF5E9;
+}
+
+.layer-withdrawal .layui-layer-content .input-code input {
+    width: 3.22rem;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    padding: 0 0.15rem;
+    box-sizing: border-box;
+    font-size: 0.3rem;
+    color: #FFA772;
+    margin-top: 0.24rem;
+    border: none;
+    border-right: 1px solid #FFA772;
+    background: none;
+}
+
+.layer-withdrawal .layui-layer-content .input-code input::placeholder {
+    color: #FFA772
+}
+
+.layer-withdrawal .layui-layer-content .input-code button {
+    display: block;
+    float: right;
+    background: none;
+    border: none;
+    color: #FFA772;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    width: 1.5rem;
+}
+
+.layer-withdrawal .layui-layer-content .post_btn,
+.layer-bind .layui-layer-content .post_btn {
+    margin: 0.35rem auto 0;
+    width: 4.8rem;
+}
+
+.layer-withdrawal .layui-layer-content .post_btn button,
+.layer-bind .layui-layer-content .post_btn button {
+    width: 4.8rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    text-align: center;
+    font-size: 0.36rem;
+    color: #fff;
+    border: none;
+    background: url("../images/post_bg.png") no-repeat center;
+    background-size: 100%;
+}
+
+.layer-bind .layui-layer-content .pay-type {
+    width: 4.8rem;
+    margin: 0 auto;
+    height: 0.6rem;
+}
+
+.layer-bind .layui-layer-content .input {
+    width: 4.8rem;
+    height: 0.88rem;
+    margin: 0.25rem auto;
+    background: #fff5e9;
+}
+
+.layer-bind .layui-layer-content .input input {
+    width: 4.8rem;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    border: none;
+    background: none;
+    font-size: 0.3rem;
+    color: #F88A48;
+    padding: 0 0.1rem;
+    box-sizing: border-box;
+}
+
+.layer-bind .layui-layer-content .input input::placeholder {
+    color: #F88A48
+}
+
+.layer-bind .layui-layer-content .code {
+    width: 4.8rem;
+    height: 3rem;
+    margin: 0 auto;
+    background: #fff5e9;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.layer-bind .layui-layer-content .code div {
+    width: 3.84rem;
+    height: 2.04rem;
+    margin: 0.48rem auto;
+    position: relative;
+    background: url("../images/bg_add.png") no-repeat;
+    background-size: 100%;
+}
+
+.layer-bind .layui-layer-content .code input,
+.layer-bind .layui-layer-content .code span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.layer-bind .layui-layer-content .code input {
+    opacity: 0;
+}
+
+.layer-bind .layui-layer-content .code span {
+    font-size: 0.24rem;
+    text-align: center;
+    line-height: 2.04rem;
+    color: #F88A48;
+}
+
+.layer-success {
+    border-radius: .12rem!important;
+}
+
+.layer-success .layui-layer-content {
+    background: url("../images/icon_ok.png") no-repeat center 0.24rem;
+    background-size: 1.29rem 1.03rem;
+}
+
+.layer-success .layui-layer-content p {
+    margin-top: 1.54rem;
+    color: #F88A48;
+    font-size: .24rem;
+    text-align: center
+}
+
+.user {
+    background: url("../images/user_bg.png") no-repeat #FFD2B1;
+    background-size: 100%;
+    width: 100%;
+}
+
+.user .main {
+    padding: 0 0.35rem 0;
+}
+
+.user .main .header {
+    height: 0.88rem;
+    position: relative;
+}
+
+.user .main .header a.back {
+    width: 0.88rem;
+    height: 0.88rem;
+    background: url("../images/back.png") no-repeat;
+    background-size: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.user .main .header span {
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 0.88rem;
+    text-align: center;
+    font-size: 0.36rem;
+    color: #fff;
+}
+
+.user .main .info,
+.user .main .item {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 0.12rem;
+}
+
+.user .main .info table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.user .main .info table tr:first-child {
+    background: rgba(251, 157, 35, 0.3);
+    border: none;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    font-size: 0.36rem;
+    color: #F88A48;
+}
+
+.user .main .info table tr:first-child+tr {
+    height: 1.22rem;
+    font-size: 0.3rem;
+    color: #F88A48;
+    text-align: center;
+}
+
+.user .main .info table tr th {
+    font-weight: normal;
+}
+
+.user .main .info table td {
+    border: none
+}
+
+.user .main .info table td a.btn {
+    width: 0.72rem;
+    height: 0.44rem;
+    background: url("../images/btn_pick.png") no-repeat;
+    background-size: 100%;
+    font-size: 0.24rem;
+    color: #fff;
+    display: inline-block;
+    line-height: 0.44rem;
+}
+
+.user .main .item {
+    margin-top: 0.64rem;
+    position: relative;
+}
+
+.user .main .item .tit {
+    text-align: center;
+    font-size: 0.28rem;
+    color: #fff;
+    background: url("../images/tit_bg.png") no-repeat center;
+    background-size: 3.9rem 0.7rem;
+    position: absolute;
+    width: 100%;
+    top: -0.25rem;
+    height: 0.7rem;
+    line-height: 0.7rem;
+}
+
+.user .main .item .text {
+    overflow: hidden
+}
+
+.user .main .item .text .code {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin: 1.04rem auto 0.68rem;
+    background: #FDD8B6
+}
+
+.user .main .item .text.links,
+.user .main .item .text.pros {
+    padding: 0.76rem 0 0.33rem;
+}
+
+.user .main .item .text.links span,
+.user .main .item .text.pros span.pro {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: block;
+    float: left;
+    width: 4rem;
+    height: 0.88rem;
+    background-color: #FFF1E3;
+    border-radius: 0.44rem;
+    text-align: center;
+    font-size: 0.3rem;
+    color: #F88A48;
+    line-height: 0.88rem;
+    margin-left: 0.3rem;
+}
+
+.user .main .item .text.links button.copy-btn {
+    background: url("../images/btn_copy.png") no-repeat;
+    background-size: 2.35rem 1.23rem;
+    display: block;
+    float: left;
+    border: none;
+    width: 2.35rem;
+    height: 1.23rem;
+    margin-top: -0.175rem;
+    font-size: 0.36rem;
+    color: #fff;
+}
+
+.user .main .item .text.pros span.status {
+    font-size: 0.36rem;
+    background: linear-gradient(0deg, rgba(251, 157, 35, 1) 0%, rgba(243, 86, 69, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    line-height: 0.88rem;
+    margin-left: 0.74rem;
+}
+
+.layer_iphonex {
+    width: 5.8rem;
+    background: #fff;
+    position: fixed;
+    top: 206px;
+    left: 42.5px;
+    border-radius: 6px;
+    display: none;
+}
+
+.layer_head {
+    width: 100%;
+    height: 42px;
+    position: relative;
+    margin-bottom: .3rem;
+}
+
+.layer_head .head_img {
+    width: 4rem;
+    height: 42px;
+    position: absolute;
+    top: -21px;
+    left: 50%;
+    margin-left: -2rem;
+    background: url(../images/login_tit.png) no-repeat 100% / 100%;
+}
+
+.layer_head .head_icon {
+    width: .3rem;
+    height: .3rem;
+    position: absolute;
+    right: .2rem;
+    top: .2rem;
+    background: url(../images/login_close.png) no-repeat 100% /100%;
+}
+
+.body_iphone {
+    width: 100%;
+    display: flex;
+    margin-bottom: .3rem;
+}
+
+.body_iphone .text_int {
+    flex: 1;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    margin-left: .3rem;
+    font-size: .3rem;
+    color: #ffa772;
+    box-sizing: border-box;
+    padding-left: .2rem;
+    background: #fff7ee;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.body_iphone input {
+    width: 66%;
+    height: 40px;
+    color: #ffa772;
+    line-height: 20px;
+    border: 0;
+    background: #fff7ee;
+    font-size: .3rem;
+    box-sizing: border-box;
+    padding-left: .3rem;
+    margin-right: .3rem;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-top: .14rem;
+    padding-bottom: .14rem;
+}
+
+.body_yzm {
+    width: 100%;
+    display: flex;
+    margin-bottom: .5rem;
+}
+
+.body_yzm input {
+    width: 54%;
+    height: 40px;
+    line-height: 20px;
+    border-radius: 30px;
+    color: #ffa772;
+    font-size: .3rem;
+    border: 0;
+    background: #fff7ee;
+    margin-left: .3rem;
+    box-sizing: border-box;
+    padding-left: .3rem;
+}
+
+.body_yzm input::placeholder {
+    color: #ffa772;
+    font-size: .3rem;
+}
+
+.body_yzm .send_yzm {
+    width: 1.4rem;
+    height: 40px;
+    line-height: 40px;
+    font-size: .3rem;
+    text-align: center;
+    color: #fff;
+    margin-left: .3rem;
+    padding-left: 0;
+    background: url(../images/btn_pick.png) no-repeat 100% /100% 100%;
+}
+
+.submit_int {
+    width: 100%;
+    height: 0.88rem;
+    position: relative;
+    margin-bottom: .5rem;
+}
+
+.submit_int .submit_btn {
+    width: 4.8rem;
+    height: 100%;
+    background: url(../images/post_btn.png)no-repeat 100%/ 100% 100%;
+    position: absolute;
+    left: 50%;
+    margin-left: -2.4rem;
+}
+
+.index2 .p-type .item label.zfb {
+    background: url("../images/icon_Alipay.png") no-repeat 0.3rem center;
+    background-size: 0.36rem;
+}
+
+.index2 .p-type .item label.yl {
+    background: url("../images/pay_card.png") no-repeat 0.3rem center;
+    background-size: 0.36rem;
+}
+
+.pay-code .text {
+    text-align: left;
+    margin-bottom: 0.2rem;
+    font-size: 0.3rem;
+}

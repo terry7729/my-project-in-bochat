@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+
+    //js闭包经典面试题
+
+    //1.
+    var name = 'Window Name';
+    var person = {
+        name:'Object Name',
+        getName:function (  ) {
+            return function (  ) {
+                return this.name;
+            }
+        }
+    };
+
+    // var fn = person.getName();
+    // fn();
+    //调用person.getName() 返回值是一个匿名函数，此时在全局作用域中调用匿名函数，此时this指向window
+    console.log ( person.getName () () );//Window Name
+
+    //2.
+    var name = 'Window Name';
+    var person = {
+        name:'Object Name',
+        getName:function (  ) {
+            var that = this;
+            return function (  ) {
+                return that.name;
+            }
+        }
+    };
+    //调用person.getName(),在getName方法中this指向person。此时用一个句变量that存储this（person），返回一个匿名函数，函数中that指向person
+    console.log ( person.getName () () );//Object Name
+</script>
+</body>
+</html>

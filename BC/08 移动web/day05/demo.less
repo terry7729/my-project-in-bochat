@@ -1,0 +1,155 @@
+/* 引包 可以在less文件引入别的less文件 */
+
+/* 引入了base.less这个文件 一般引包会在less前面引入 */
+
+@import 'base.less';
+@import 'a.less';
+body {
+    background-color: #cce;
+}
+
+// less注释  less里面才有的注释 在CSS  编译后会删除
+/*CSS注释 编译后会保留*/
+
+/* less的变量吧一些重复用到值 放到变量里 需要的地方使用变量 如果修改只要修改变量即可 */
+
+/* 定义变量  命名规则和js一样 中间可以- */
+
+/* 值只要是CSS属性能写的值都能写颜色 宽高 居中 动画等 */
+
+/* @变量名:变量值; */
+
+@main-color: hotpink;
+.box1 {
+    /* 使用属性:@变量名; 使用变量 */
+    color: @main-color;
+}
+
+.box2 {
+    /* 使用属性:@变量名; 使用变量 */
+    color: @main-color;
+}
+
+.box3 {
+    /* 使用属性:@变量名; 使用变量 */
+    color: @main-color;
+}
+
+/* 虽然可以改值不推荐在后面修改  会吧之前的覆盖 */
+
+/* @main-color: green; */
+
+/* 3. 嵌套 */
+
+/* CSS嵌套 */
+
+#header {
+    border-bottom: 1px solid #ccc;
+}
+
+#header .row div {
+    line-height: 40px;
+}
+
+#header .row div~div {
+    border-left: 1px solid #ccc;
+}
+
+#header .row div a {
+    font-size: 12px;
+}
+
+/* 希望CSS嵌套和标签一样 Less嵌套 */
+
+#header {
+    border-bottom: 1px solid #ccc;
+    .row {
+        >div {
+            line-height: 40px;
+            >a {
+                font-size: 12px;
+                color: #666;
+                /* &在a里面写表示a */
+                &:hover {
+                    text-decoration: none;
+                    img {
+                        display: block;
+                    }
+                }
+            }
+            /* & 在 div里面表示当前div */
+            &~div {
+                border-left: 1px solid #ccc;
+            }
+        }
+    }
+}
+
+/* &一般用在伪类 伪元素 交集选择器  关系选择器的时候使用&符号 */
+
+/* li.active{
+
+}
+li{
+    &.active{
+        
+    }
+} */
+
+.box4 {
+    height: 100px;
+    border: 1px solid red;
+    & {
+        height: 100px;
+        border: 1px solid green;
+        & {
+            height: 100px;
+            border: 1px solid hotpink;
+        }
+    }
+}
+
+/* Mixins 混入(自定义函数) 封装一些重复执行的CSS代码 还可以参数 */
+
+/* 定义了一个函数bordertp 添加上下边框的函数 */
+
+.bordertp() {
+    border-top: 1px solid #ff0;
+    border-bottom: 1px solid #ff0;
+}
+
+/* 定义了一个带参数的函数 在函数括号中写@参数名:默认值; */
+
+.bordertp(@size: 1px, @type: solid, @color: #000) {
+    border-top: @size @type @color;
+    border-bottom: @size @type @color;
+}
+
+.box1 {
+    /* 使用属性:@变量名; 使用变量 */
+    color: @main-color;
+    /* 只需要调用这个函数 自动把函数里面的代码放到这里 */
+    .bordertp(5px, dashed, red);
+}
+
+.box2 {
+    /* 使用属性:@变量名; 使用变量 */
+    color: @main-color;
+    .bordertp(10px, solid, hotpink);
+}
+
+.box3 {
+    /* 使用属性:@变量名; 使用变量 */
+    color: @main-color;
+    .bordertp();
+    height: 9px+9px;
+}
+
+/* 内置函数 */
+
+body {
+    /* 变亮 */
+    /* background-color: lighten(#000,90%); */
+    /* 变暗 */
+    background-color: darken(#fff, 10%);
+}

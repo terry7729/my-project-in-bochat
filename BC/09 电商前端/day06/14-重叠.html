@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a {
+            width: 100px;
+            height: 100px;
+            background-color: #ccc;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .b {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        .log{
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="a">a</div>
+    <div class="b">b</div>
+    <div class="log"></div>
+    <script src="./zepto.min.js"></script>
+    <script>
+        $('.b').on('tap', function () {
+            console.log('b');
+            $(this).hide();
+            $('.log').html('b倍点击了')
+        })
+        $('.a').on('click', function () {
+            $('.log').html('a倍点击了')
+        });
+    </script>
+</body>
+
+</html>

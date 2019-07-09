@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 如果逻辑很短可以不用methods 直接写的逻辑语句 this可以省略 -->
+    <input type="button" value="切换显示" @click="isShow=!isShow">
+    <br>
+    <h2>v-show控制</h2>
+    <img v-show="isShow" src="./img/boy.png" alt="">
+    <h2>v-if控制</h2>
+    <img v-if="isShow" src="./img/boy.png" alt="">
+  </div>
+</body>
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  /*
+    v-show 通过操纵元素的display 让其显示隐藏
+      频繁切换显示隐藏 用v-show 性能消耗少
+    v-if 通过添加从dom树移除 让元素显示隐藏
+      不是频繁切换，可以使用v-if 因为他需要操纵dom树 性能消耗较大
+  */ 
+  // 实例化
+  let app = new Vue({
+    el:"#app",
+    data:{
+      isShow:false
+    },
+  })
+</script>

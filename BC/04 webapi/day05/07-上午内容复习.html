@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            position: absolute;
+            top: 50px;
+            left: 30px;
+        }
+
+        .one1 {
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            position: absolute;
+            top: 200px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+<input type="button" value="开始移动到四百" id="move400"/>
+<input type="button" value="开始移动到八百" id="move800"/>
+<div class="one" id="box"></div>
+<div class="one1" id="box1"></div>
+
+<script>
+
+
+    var box = document.getElementById('box');
+    var box1 = document.getElementById('box1');
+
+    //红色盒子移到400
+    document.getElementById('move400').onclick = function (  ) {
+        animationMove(box, 400);
+    };
+
+    //绿色盒子移到800
+    document.getElementById('move800').onclick = function (  ) {
+        animationMove(box, 800);
+    }
+
+    /**匀速动画封装
+     * @param ele 要移动的元素
+     * @param target  目标距离
+     */
+    function animationMove ( ele,target ) {
+        //1.先清除之前的定时器，以本次移动为准
+        clearInterval(ele.timeID);
+        //2.开始本次移动
+       ele.timeID = setInterval(function (  ) {
+           //2.1 获取元素当前的位置
+           var currentLeft = ele.offsetLeft;
+           //2.2 开始移动
+          var isLeft =  currentLeft < target?true:false;
+          isLeft?currentLeft+=10:currentLeft-=10;
+          ele.style.left = currentLeft + 'px';
+           //2.3 边界检测
+           if (isLeft?currentLeft>=target:currentLeft <= target){
+               //(1)停止定时器
+               clearInterval(ele.timeID);
+               //(2)元素复位
+               box.style.left = target + 'px';
+           }
+        },50);
+    }
+
+
+</script>
+</body>
+</html>

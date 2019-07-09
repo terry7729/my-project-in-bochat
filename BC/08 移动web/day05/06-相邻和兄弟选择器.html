@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    /*box1的 相邻的 box2元素*/
+    /*+ 只会选中相邻的下一个元素*/
+    
+    .box1 + .box2 {
+        color: red;
+    }
+    /*box1 相邻下面的所有box2元素
+		~ 匹配相邻下所有元素*/
+    
+    .box1 ~ .box2 {
+        color: green;
+    }
+    ul li + li{
+    	color:red;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="box2">box2</div>
+        <div class="box1">box1</div>
+        <div class="box2">box2</div>
+        <div class="box2">box2</div>
+    </div>
+    <ul>
+        <li>低1个li</li>
+        <li>低2个li</li>
+        <li>低3个li</li>
+        <li>低4个li</li>
+        <li>低5个li</li>
+        <li>低6个li</li>
+        <li>低7个li</li>
+        <li>低8个li</li>
+        <li>低9个li</li>
+        <li>低10个li</li>
+    </ul>
+</body>
+
+</html>

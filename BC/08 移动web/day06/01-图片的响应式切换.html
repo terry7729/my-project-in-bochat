@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./weijinsuo/lib/bootstrap/css/bootstrap.css">
+    <title>Document</title>
+    <style>
+        /* div{
+            position: relative;
+            overflow: hidden;
+            height: 410px;
+            
+        }
+        img{
+            width: 2000px;
+            height: 410px;
+            position: absolute;
+            left: 50%;
+            transform:translateX(-50%);
+        } */
+         /* 设置背景图定位居中 */
+        .large-image {
+            background-image: url(./weijinsuo/img/slide_01_2000x410.jpg);           
+            background-position: center center;
+            height: 410px;
+            width: 100%;
+        }
+        .small-image img{
+            width: 100%;            
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 1. 有2张图片 分别是2000 的大图 和 640的小图
+        2000 大图在非手机端显示 w>768  sm md lg 显示大图
+        640 小图在手机端显示  w< 768  xs 显示小图
+    2. 大图固定高度居中显示
+    3. 小图 是全屏在手机端显示 并且宽高随着屏幕变化自适应 -->
+    <!-- 准备好了大小图 放到轮播图插件里面的item里面即可 -->
+  <div class="large-image hidden-xs">
+  </div>
+   <div class="small-image hidden-sm hidden-md hidden-lg">
+        <img src="weijinsuo/img/slide_01_640x340.jpg" alt="">
+   </div>
+</body>
+
+</html>

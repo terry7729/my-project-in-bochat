@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul id="ul1">
+    我是文本
+    <!--我是注释1111-->
+    <li>隔壁老宋1</li>
+    <li>隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+
+<script>
+    /*本小节知识点
+        元素的子节点：  父元素.childNodes
+        元素的子元素：   父元素.children
+
+     */
+
+    var ul1 = document.getElementById('ul1');
+
+    //1.获取元素的子节点(元素  注释  文本)
+    /*谷歌火狐：  文本（包含空文本）  注释   元素
+        ie8:非空文本  注释  元素
+     */
+    console.log ( ul1.childNodes );
+
+    //2.获取元素的子元素
+    //IE8: 注释 + 元素
+    console.log ( ul1.children );
+</script>
+</body>
+</html>

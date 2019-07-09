@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            color: red;
+        }
+        /* 继承的权重为0 ,随便来个选择器,都比他高 */
+
+        div {
+            color: pink;
+        }
+
+        div div {
+            color: rgb(160, 160, 161);
+        }
+
+        .demo {
+            color: gold;
+        }
+
+        .father .demo {
+            color: skyblue;
+        }
+
+        #test2 {
+            color: yellow !important;
+        }
+
+        #test1 #test2 {
+            color: purple;
+        }
+
+        /* 在复合选择器中,如何计算选择器的权重 */
+        /* 1.先确定选择器有没有直接作用到目标元素,如果是继承,那么权重为0 */
+        /* 2.再看看有没有行内式或者!important,如果有那么他们的权重最高 */
+        /* 3.开始数数 */
+        /* 4.先数id,id最多的,权重最高 */
+        /* 5.再数类,类多的,权重最高 */
+        /* 6.最后数标签,标签多的,权重最高 */
+        /* 7.权重相同,后来者居上 */
+
+        /* 重点但是鸡肋:食之无味,弃之可惜 */
+
+    </style>
+</head>
+<body>
+    <div class="father" id="test1">
+        <div class="demo" id="test2" style="color:peru;">
+            测试文字
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入账号" id="user"><span id="result"></span>
+    <br>
+    <input type="password" placeholder="请输入密码">
+    <br>
+    <input type="button" value="注册" id="btn">
+</body>
+</html>
+
+<script>
+
+    document.getElementById('user').onblur = function(){
+
+       //发一个请求，去问服务器我这个账号能不能使用
+
+       //1. 创建请求对象
+       var xhr = new XMLHttpRequest();
+
+       //2. 设置请求行（open）
+       xhr.open('get','checkName.php?username=' +  this.value);
+
+       //3. 设置请求头（get不用）
+
+       //4. 发送请求&设置请求体(get请求也不用给请求体，通过拼接url传递)
+       xhr.send();
+        
+       //5. 监听响应完成
+       xhr.onload = function(){
+
+           document.getElementById('result').innerHTML = xhr.responseText;
+       }
+    }
+</script>

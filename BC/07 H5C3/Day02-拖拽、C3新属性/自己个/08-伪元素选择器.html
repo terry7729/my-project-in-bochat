@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        header {
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+        div {
+            width: 500px;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        img {
+            width: 500px;
+            height: 500px;
+            transition: all 0.8s;
+
+
+        }
+
+        img:hover {
+            width: 600px;
+            height: 600px;
+            transition: all 0.8s;
+        }
+
+        div::before, div::after {
+            content: "";
+            height: 3px;
+            width: 100%;
+            transition: all 0.5s;
+            transform: scaleX(0);
+            background-color: gold;
+            position: absolute;
+        }
+
+        div:hover::before,
+        div:hover::after {
+            transform: scaleX(1);
+        }
+
+        
+       
+    </style>
+</head>
+
+<body>
+    <header>
+        <div>
+            <img src="./images/1.jpg" alt="">
+        </div>
+    </header>
+
+</body>
+
+</html>

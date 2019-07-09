@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        浏览器的同源策略：出于保护接口的目的，不允许用ajax访问跨域资源
+
+        浏览器不允许使用ajax访问跨域资源
+        因为浏览器要保护别的网站的资源，不能让别人轻易访问的到
+
+
+        我写了一个接口，想给张三用，但是张三的网站跟我的网站不是同一个，那么就存在跨域问题。
+        因为浏览器特别的热心，他想保护我写的接口，不让任何其他人访问。
+
+        但是我跟浏览器说：哥们，你不需要保护我，我这个允许给别人用，浏览器就不保护了
+
+        应该我的接口要告诉浏览器，所以这个代码是写在服务器上的
+    -->
+</head>
+<body>
+    
+</body>
+</html>
+
+<script>
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('get','http://www.zll.com/day03/04_cors/data.php');
+    xhr.send();
+
+    xhr.onload = function(){
+
+        console.log(xhr.responseText);
+        
+    }
+
+</script>

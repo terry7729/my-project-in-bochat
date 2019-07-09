@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>静态文件</title>
+  <style>
+    .box {
+      /*width: 322px;*/
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+    }
+    
+    span {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 30px;
+      height: 20px;
+      /*background-color: red;*/
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+<body>
+<div class="box" id="box">
+  <span id="closeButton"></span>
+  <div class="hd" id="headPart">
+    <img src="images/t.jpg" alt=""/>
+  </div>
+  <div id="bottomPart" class="bd">
+    <img src="images/b.jpg" alt=""/>
+  </div>
+</div>
+
+<script src="animation.js"></script>
+<script>
+    /* 需求分析：
+            点击xx按钮：下半部分往下移动，移动结束之后整个盒子往右移动超出屏幕
+         思路分析：事件三要素
+               1 获取元素：
+               2 注册事件：
+               3 事件处理：
+     */
+
+    //1. 获取元素：
+    var closeButton = document.getElementById('closeButton');
+    var box = document.getElementById('box');//整个大盒子
+    var bottomPart = document.getElementById('bottomPart');//下半部分
+    //2.注册事件：
+    closeButton.onclick = function (  ) {
+        //3.事件处理：下半部分往下移动，移动结束之后整个盒子往右移动超出屏幕
+        animationSlow(bottomPart,{
+            height:0
+        },function (  ) {
+            animationSlow(box, {
+                width:0
+            })
+        })
+    };
+</script>
+</body>
+</html>

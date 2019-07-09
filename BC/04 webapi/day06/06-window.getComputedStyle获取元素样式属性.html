@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>标题</title>
+    <style>
+        .one {
+            width: 100px;
+            background-color: pink;
+            border: 10px solid green;
+            padding: 10px;
+            margin: 0 auto;
+            position: relative;
+            left: 0px;
+            top: 50px;
+        }
+        .one::after {
+            content: "哈哈哈";
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="one" id="box" style="height: 100px"></div>
+
+<script>
+    /*window.getComputedStyle()：获取元素一切样式属性
+
+     */
+
+    var box = document.getElementById('box');
+
+    /*1.点语法获取样式属性特点
+            a.只能获取行内属性，无法获取行外
+            b.获取的是string，带单位
+            c.可以获取，也可以设置
+     */
+
+    console.log ( box.style.height );//100px
+    console.log ( box.style.width );//空字符串
+
+    // box.style.width = '500px';
+
+    /** 2.window.getComputedStyle()获取样式属性特点
+        a.可以获取行内属性，也可以获取行外
+        b.获取是string，带单位
+        c.只能获取，不能设置
+     */
+
+    /**
+     * @param elt:要获取的元素
+     @param pseudoElt: 伪元素  一般传null
+     @return CSSStyleDeclaration对象：元素一切的样式属性
+
+     */
+    // var style = window.getComputedStyle(box,null);
+    // console.log ( style );
+    // //点语法
+    // console.log ( style.width );//100px
+    // console.log ( style.height );//100px
+    // console.log ( style.backgroundColor );//rgb(255, 192, 203)
+    // //字符串
+    // console.log ( style[ "background-color" ] );//rgb(255, 192, 203)
+    //window.getComputedStyle():只能获取，不能设置，程序会报错
+    // style.width = '500px';
+
+    //3.获取元素伪元素的样式
+    // var weiStyle = window.getComputedStyle(box, '::after');//返回伪元素所有的样式对象
+    // console.log ( weiStyle );
+    // console.log ( weiStyle.backgroundColor );
+    // console.log ( weiStyle.content );
+
+
+    //4.IE8不支持：window.getComputedStyle
+    //IE8:  元素.currentStyle
+    //console.log ( box.currentStyle );
+
+    //   console.log ( window.getComputedStyle ( box, null ) );
+
+    // getStyle(box, 'width');
+
+
+
+    console.log ( getStyle ( box, "width" ) );
+
+    /**获取元素样式属性值
+     * @param ele 元素
+     * @param attribute 属性名
+     */
+    function getStyle ( ele ,attribute) {
+        //能力检测
+        if (window.getComputedStyle){//谷歌火狐
+            return window.getComputedStyle(ele, null)[attribute];
+        }else{//IE8浏览器
+            return ele.currentStyle[attribute];
+        }
+    };
+
+
+    // var person = {
+    //     width:'100px',
+    //     height:'100px'
+    // };
+    //
+    // var attribute = 'width';
+    //
+    // console.log ( person.width );//100px
+    // //点语法取  attribute属性值
+    // console.log ( person.attribute );//undefined
+    // //字符串语法取 attribute属性值
+    // console.log ( person['attribute'] );//undefined
+    // //字符串语法取attribute变量中字符串对应属性的值
+    // console.log ( person[attribute] );//100px
+</script>
+</body>
+</html>

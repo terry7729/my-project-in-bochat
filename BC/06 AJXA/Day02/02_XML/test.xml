@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <items>
+        <item>
+            <name>刘德华</name>
+            <age>16</age>
+        </item>
+        <item>
+            <name>张学友</name>
+            <age>17</age>
+        </item>
+        <item>
+            <name>郭富城</name>
+            <age>18</age>
+        </item>
+
+        <item>
+            <name>周林林</name>
+            <age>15</age>
+        </item>
+    </items>
+</root>

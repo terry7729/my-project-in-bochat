@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.在当前作用域中,如果一个变量有声明,不管声明在前面还是在后面,这个变量的使用,只会在这个作用域中寻找!
+        //var num = 999;
+        //function demo1() {
+//
+        //    //console.log(num);//好像是打印了一个还没有声明的变量吧,为什么没有报错
+        //    //var num = 100;
+        //    //上面的代码相当于下面代码
+//
+        //    //为什么上面的代码没有报错,预解析
+        //    //会将当前作用域中的所有变量的声明提升到作用域的最前面,赋值语句留在原地
+        //    var num;
+        //    console.log(num);//undefined,因为预解析的时候,只有声明,没有赋值
+        //    num = 100;
+        //}
+        //demo1();
+
+        //2.在当前作用域中,如果一个变量没有声明,但是被使用了,那么会像上一级作用域去找,找到了就使用,如果没有找到,继续往上,
+        // 直到找到全局变量,那么就使用全局变量,如果全局变量也没有,那么就报错
+        // var num = 100;
+        //function demo1() {
+        //    // var num = 888;
+        //    demo2();
+        //    function demo2() {
+        //        // var num = 999;
+        //        demo3();
+        //        function demo3() {
+        //            console.log(num);
+        //        }
+        //    }
+        //}
+        //demo1();
+
+        //3.在当前作用域中,如果修改一个变量,在当前作用域有声明,那么就直接修改.如果没有声明
+        //就往上一级找,找到就修改上一级的,还没有就继续往上一级找,直到找到全局变量,如果连全局变量都没有
+        //那么自己提升为全局变量
+        // var num = 100;
+        function demo1() {
+            // var num = 100;
+           demo2();
+           function demo2() {
+               // var num = 200;
+               demo3();
+
+               function demo3() {
+                   // var num = 520;
+                   num = 999;
+                   //因为只有赋值,所有的作用域都没有声明,所以会提升为全局变量
+
+               }
+           }
+        }
+        demo1();
+        console.log(num);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

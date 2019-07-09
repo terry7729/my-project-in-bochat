@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+        box-shadow：让盒子有阴影
+     -->
+
+     <style>
+
+         body{
+             background-color: #000;
+         }
+         .box{
+             width: 100px;
+             height: 100px;
+             background-color: #f00;
+             margin: 100px auto;
+            
+             /*
+                参数1：阴影水平偏移位置，正往右，负往左
+                参数2：阴影垂直偏移位置，正往下，负往上
+                参数3：阴影的模糊度 值越大越模糊，为0代表不模糊
+                参数4：阴影的宽度 如果为0也有宽度，跟盒子一样大，所以如果你给10，其实是代表在原宽度四周+10
+                参数5：阴影的颜色 
+                参数6：inset加了代表是内阴影，不加代表外阴影，默认是外阴影，参数6可以写在最后也可以写在最前面，但是不能写在中间
+
+                如果需要多个阴影，用逗号隔开,先写的阴影的层级最高会盖住后面写的
+            */
+             box-shadow:  0px 0px 10px 5px gold,0px 0px 10px 10px green,0px 0px 10px 15px hotpink inset;
+         }
+
+         img{
+
+             display: block;
+             margin: 50px auto;
+             box-shadow: 0px 0px 10px 5px hotpink;
+         }
+     </style>
+</head>
+<body>
+    
+    <div class="box"></div>
+
+    <img src="images/xk.png" alt="">
+
+</body>
+</html>

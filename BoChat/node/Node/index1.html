@@ -1,0 +1,190 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BXChain节点认购</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <div id="app" class="index2">
+        <div class="bg"></div>
+        <img src="images/index_bg1.jpg" width="100%">
+        <div class="main">
+            <div class="menu">
+                <div class="toggle"></div>
+
+                <div class="menu-list">
+                    <ul>
+                        <li><a href="user.html">个人中心</a></li>
+                        <li><a class="logout">退出登录</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="pro">
+                <ul>
+                    <li class="active">0.01%股权，获赠1000BX，认购金额1万元</li>
+                    <li>0.02%股权，获赠2000BX，认购金额2万元</li>
+                    <li>0.03%股权，获赠3000BX，认购金额3万元</li>
+                </ul>
+            </div>
+            <div class="app-btn" data-act="go_buy"></div>
+            <div class="p-type">
+                <div class="item"><input type="radio" id="wxpay" name="payt" checked class="rad1"><label for="wxpay" class="wx">微信</label></div>
+                <div class="item"><input type="radio" id="zfbpay" name="payt" checked class="rad2"><label for="zfbpay" class="zfb">支付宝</label></div>
+                <div class="item"><input type="radio" id="ylpay" name="payt" checked class="rad3"><label for="ylpay" class="yl">银行卡</label></div>
+
+            </div>
+            <!-- <div class="p-type">
+				<div class="layui-input-block">
+					<input type="radio" name="sex" value="0" title="男">
+					<input type="radio" name="sex" value="1" title="女" checked>
+				</div>
+			</div> -->
+            <div class="blink">www.bochat.net</div>
+        </div>
+
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/layer/layer.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            if (localStorage.token == undefined) {
+                window.location = "index.html";
+            }
+
+        }).on('click', '[data-act]', page_call_act);
+    </script>
+
+    <script>
+        var Url = 'http://api.bochat.net';
+        var pro = 1;
+        var payType = 1;
+        $('.pro li').click(function() {
+            $(this).addClass('active').siblings().removeClass('active');
+            pro = $(this).index() + 1;
+        })
+        $('.item :radio[name="payt"]').each(function(i) {
+            $(this).click(function() {
+                payType = i + 1;
+            })
+        });
+        //退出
+        $('.logout').click(function() {
+                $.ajax({
+                    type: "post",
+                    url: Url + '/app/user/logout',
+                    async: true,
+                    headers: {
+                        'Authorization': localStorage.token
+                    },
+                    success(data) {
+                        layer.msg(data.msg);
+                        if (data.retcode == 0) {
+                            localStorage.removeItem('token');
+                            window.location.href = "index.html";
+                        }
+                    }
+                });
+            })
+            //下载图片
+        function downFile() {
+            var $a = $("<a>");
+            $a.attr("href", 'images/zfb.jpg');
+            $a.attr("download", "zff.jpg");
+            $("body").append($a);
+            $a[0].click();
+            $a.remove();
+        }
+
+        function go_buy(o) {
+            var type;
+            var list = $('input:radio[name="list"]:checked').val();
+            if ($('.rad1').prop('checked')) {
+                type = 1
+                var html = '<div class="pay-tit">付款金额</div>';
+                html += '<div class="pay-money"></div>';
+                html +=
+                    '<div class="pay-code"><p>请向如下二维码付款</p><p class="img"><img src="" class="pa_code"/></p><p>备注请务必填入当前校验手机号</p></div>';
+            } else if ($('.rad2').prop('checked')) {
+                type = 2
+                var html = '<div class="pay-tit">付款金额</div>';
+                html += '<div class="pay-money"></div>';
+                html +=
+                    '<div class="pay-code"><p>请向如下二维码付款</p><p class="img"><img src="" class="pa_code"/></p><p>备注请务必填入当前校验手机号</p></div>';
+            } else {
+                type = 3
+                var html = '<div class="pay-tit">付款金额</div>';
+                html += '<div class="pay-money"></div>';
+                html +=
+                    '<div class="pay-code"><p class="text">开户行：平安银行深圳高新北支行</p><p class="text">账户：6230 5830 0001 2504 371</p><p class="text">户名：彭旭伟</p></div>';
+            }
+
+
+
+            $.ajax({
+                type: "post",
+                url: Url + '/app/user/addOrder',
+                async: true,
+                headers: {
+                    'Authorization': localStorage.token
+                },
+                data: 'type=' + pro + '&payType=' + pro + '',
+                success(data) {
+                    if (data.retcode == undefined) {
+                        let oData = JSON.parse(data);
+                        layer.msg(oData.msg);
+                        window.location = "index.html";
+                    } else {
+                        if (data.retcode == 0) {
+                            layer.msg(data.msg);
+                            layer.open({
+                                type: 1,
+                                title: false,
+                                skin: 'layer-pay',
+                                area: ['5.68rem', '7.62rem'],
+                                content: html
+                            });
+                            if (type == 1) {
+                                $('.pa_code').attr('src', 'images/wx1.png')
+                            } else if (type == 2) {
+                                $('.pa_code').attr('src', 'images/zfb1.png')
+                            } else {
+                                // var html = '<div class="pay-tit">付款金额</div>';
+                                // html += '<div class="pay-money"></div>';
+                                // html +=
+                                // 	'<div class="pay-code"><p>开户行：中国平安银行深圳西丽支行</p><p>账户：6230580000198568821</p><p ></>户名：赖骊筠</div>';
+
+                            }
+
+                            if (pro == 1) {
+                                $('.pay-money').html('10000')
+                            } else if (pro == 2) {
+                                $('.pay-money').html('20000')
+                            } else if (pro == 3) {
+                                $('.pay-money').html('30000')
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function togGle(elemt) {
+            $('.' + elemt + '').click(function() {
+                $('.bg').toggle();
+                $('.menu-list').toggle();
+            })
+        }
+        togGle('toggle');
+        togGle('bg');
+    </script>
+
+</body>
+
+</html>

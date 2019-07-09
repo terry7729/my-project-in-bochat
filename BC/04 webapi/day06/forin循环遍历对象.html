@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    var person = {
+        age:18,//属性名：属性值 这种一一对应的关系键值对
+        sex:'男',
+        girlFriend:'白石老师'
+    };
+
+    //对象的遍历在js中有专门的循环： for-in
+    for (var key in person){
+        console.log ( key );//key  这个变量中存储了属性名字符串
+        // console.log ( typeof  key );//string
+
+        // console.log ( person.key );//undefined   点语法取key属性的值
+        // console.log ( person[ "key" ] );//undefined 字符串语法取key属性的值  这行代码与上面这行代码完全等价 只是语法不同
+        // console.log ( person[ key ] );//字符串语法取key变量中存储的字符串  对应的属性值
+    };
+
+
+    person['age'] = 20;//修改age属性值的值为20
+    var aaa = 'sex';
+    person[aaa] = '女';
+    console.log ( person );
+    person.aaa = '女';
+    console.log ( person );
+
+
+    console.log ( person[ "age" ] );
+   // console.log ( person[ age ] );//报错
+
+    // console.log ( Number ( "10" ) );//10  数字
+    // var a = '10';
+    // console.log ( Number ( a ) );//10
+    // console.log ( Number ( 'a' ) );//NaN
+    //
+    // var s1 = '我爱你们';
+    // var s2 = 's1';
+    // console.log ( s2 );//s1
+
+
+
+    // function fn (  ) {
+    //     console.log ( "1111" );
+    //     return null;
+    // };
+    //
+    // console.log ( Number ( undefined ) );//NaN
+    // console.log ( Number ( null ) );//0
+    //
+    // console.log ( fn () + 1 );//11  undeifned + 1   = Number(undefined) + 1
+    // console.log ( fn + 1 );//
+</script>
+</body>
+</html>

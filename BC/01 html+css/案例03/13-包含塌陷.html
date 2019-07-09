@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .father {
+            width: 500px;
+            height: 500px;
+            background-color: red;
+            /* border-top: 10px solid blue;  */
+            /* padding-top: 10px; */
+            /* 挡住内部的margin */
+            /* 以上的方法,程序员不会用 */
+            /* 添加了一些没有意义的代码 */
+
+            overflow: hidden;
+            /* BFC:块级格式化上下文 */
+            /* 千万,不要去研究 */
+            /* 让内部布局,不影响外部 */
+        }
+
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            margin-top: 100px;
+        }
+
+        /* 包含塌陷:存在父子关系的盒子,给子元素添加margin-top,有可能会把父元素一起带跑 */
+        /* 怎么解决 */
+        /* 1.给父元素添加顶部的边框 */
+        /* 2.给父盒子添加顶部的内边距 */
+        /* 3.给父元素设置overflow:hidden; */
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+</body>
+</html>

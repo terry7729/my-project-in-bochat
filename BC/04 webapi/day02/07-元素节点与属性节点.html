@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div id="box" class="one11111">我是班长</div>
+
+<p id="p1">我是黑马李宗盛</p>
+
+<script>
+    /*本小节知识点：元素节点与属性节点三要素
+        元素节点：
+            nodeType: 1
+            nodeName: 标签名大写
+            nodeValue: null
+         属性节点：
+            nodeType: 2
+            nodeName: 属性名
+            nodeValue: 属性值
+     */
+
+    var box = document.getElementById('box');
+    var p1 = document.getElementById('p1');
+
+    //1.元素节点
+
+    console.log ( box.nodeType );//1
+    console.log ( box.nodeName );//DIV
+    console.log ( box.nodeValue );//null
+
+    console.log ( p1.nodeType );//1
+    console.log ( p1.nodeName );//P
+    console.log ( p1.nodeValue );//null
+
+    //2.属性节点（使用非常少）
+    //console.log ( box.id );//不是获取属性节点，而是获取属性值
+
+    console.log ( box.attributes );//打印某个元素所有的属性节点数组
+
+    console.log ( box.attributes[ 0 ].nodeType )//2
+    console.log ( box.attributes[ 0 ].nodeName )//id
+    console.log ( box.attributes[ 0 ].nodeValue )//box
+
+    console.log ( box.attributes[ 1 ].nodeType )//2
+    console.log ( box.attributes[ 1 ].nodeName )//class
+    console.log ( box.attributes[ 1 ].nodeValue )//one11111
+</script>
+</body>
+</html>

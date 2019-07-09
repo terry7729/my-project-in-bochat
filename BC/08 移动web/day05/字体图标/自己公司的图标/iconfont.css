@@ -1,0 +1,45 @@
+/*定义一个字体*/
+/*字体的名称叫iconfont*/
+/*@font-face 定义字体 指定要定义的字体名称 和 引入 对应的字体文件*/
+@font-face {
+  font-family: "iconfont";
+  src: url('iconfont.ttf?t=1545445317422') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+/*因为iconfont字体电脑上是没有的 需要自己定义一个字体*/
+/*使用一个字体*/
+.iconfont {
+  /*使用iconfont字体*/
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*这些都是unicode编码 编码是网站动态生成的编码*/
+.icon-mountains:before { content: "\e62e"; }
+
+.icon-arrows:before { content: "\e62f"; }
+
+.icon-odin:before { content: "\e630"; }
+
+/*var num = 10;
+
+function(){
+  console.log(num);
+}
+function(){
+  console.log(num);
+}
+*/
+
+/* @keyframs name {
+
+}
+
+.box{
+  animation: name;
+}
+.box{
+  animation: name;
+} */

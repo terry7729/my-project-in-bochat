@@ -1,0 +1,29 @@
+/* 引入全局变量的less文件 */
+/* 全局变量的less 吧一些重复使用变量放到这个文件里面写 */
+/* 引入头部的less文件 */
+/* 头部区域的样式写在header.less中 */
+#header {
+  border-bottom: 1px solid #ccc;
+}
+#header .row {
+  line-height: 40px;
+}
+#header .row div {
+  font-size: 12px;
+}
+#header .row div a {
+  color: #666;
+}
+#header .row div a img {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  z-index: 999;
+}
+#header .row div a:hover img {
+  display: block;
+}
+#header .row div ~ div {
+  border-left: 1px solid #ccc;
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //数组的长度还能用来干嘛
+        //在js中,数组的长度非常牛逼,数组的长度是动态改变的,根据数组中数据的多少,可以动态改变
+        var arr = [10,20];
+        console.log(arr.length);//2
+        arr[2] = 30;
+        console.log(arr.length);//3
+        arr[3] = 40;
+        console.log(arr.length);//4
+        //arr[4] = 50;
+        arr[arr.length] = 50;
+        //4 = arr/length
+        //arr[5] = 60;
+        arr[arr.length] = 60;
+        arr[arr.length] = 70;
+        arr[arr.length] = 80;
+        arr[arr.length] = 90;
+        arr[arr.length] = 100;
+        //数组的长度,在每次赋值之后,都会自增1
+        console.log(arr);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul,
+        li {
+            list-style: none;
+        }
+
+        div {
+            margin-top: 20px;
+            width: 1366px;
+        }
+
+        ul {
+            margin-top: 10px;
+            padding-top: 50px;
+            border: 2px solid #ddd;
+            height: 200px;
+        }
+
+        li {
+            text-align: center;
+            width: 180px;
+            background-color: #ccc;
+            margin-left: 12px;
+            float: left;
+            padding: 15px 0;
+        }
+    </style>
+
+    <!-- 
+        以后我们前端的开发：都是写界面、样式、交互、发请求
+
+     -->
+</head>
+
+<body>
+
+    <input type="text" id="city">
+    <button id="btn">查询天气</button>
+
+    <div>
+        <p id="cityname">城市名称：</p>
+        <ul id="weather">
+            <li>
+                <p class="date">20日星期五</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+            <li>
+                <p class="date">日期</p>
+                <p class="high">高温 25℃</p>
+                <p class="low">低温 14℃</p>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+<script>
+
+    var city = document.getElementById('city');
+
+    //找到所有的li
+    var liList = document.getElementsByTagName('li');
+
+    document.getElementById('btn').onclick = function(){
+
+        //1. 创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //2. 设置请求行，一般后端写完服务器代码会给你提供一个文档，这个文档里面写好了请求的方式和请求的路径
+        xhr.open('get','http://wthrcdn.etouch.cn/WeatherApi?city=' + city.value);
+
+        //3. 发送请求
+        xhr.send();
+
+        //4. 监听响应完成
+        xhr.onreadystatechange = function(){
+
+            if(xhr.readyState == 4 && xhr.status == 200){
+
+                // console.log(xhr.responseText);
+                // 此时打印了null
+                // 因为服务器返回的响应报文没有告诉你这个响应体是XML，所以你无法直接通过responseXML来拿
+                // console.log(xhr.responseXML);
+
+                // 那么此时我们就要自己手动把这个响应体转成XML对象
+                var parser = new DOMParser();
+                // 根据字符串来做转换
+                // 把响应体转成XML对象
+                var xml = parser.parseFromString(xhr.responseText,"text/xml");
+
+                var weatherList = xml.getElementsByTagName('weather');
+
+                // console.log(weatherList);
+
+                for(var i = 0; i < weatherList.length; i++){
+
+                    liList[i].children[0].innerHTML =  weatherList[i].children[0].innerHTML;
+                    liList[i].children[1].innerHTML =  weatherList[i].children[1].innerHTML;
+                    liList[i].children[2].innerHTML =  weatherList[i].children[2].innerHTML;
+                }
+                
+                
+            }
+        }
+    }
+</script>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+
+    </div>
+    <!-- 1. zepto: 是一个 移动端的jquery 和jquery几乎一样  除了更小之外别的都一样
+    2. 因为移动端使用jquery 比较冗余(jquery大) jquery是兼容各种浏览器（移动端不需要这么多兼容性） 
+    3. 有一个代替品zepto针对移动端的浏览器 开发的一个JS库 功能和写法和jquery都一模一样
+    4. zepto和 jquery的区别
+        1. zepto小 只有10k  jquery 也有100k左右
+        2. zepto兼容移动端一些函数 事件(封装了一些移动端特有事件)  jquery没有
+        3. zepto是模块化的使用各种功能要引入各个模块 jquery只有一个模块 -->
+    <script src="./编译好集成的zepto/zepto.min.js"></script>
+    <script>
+        var div = $('div');
+        console.log(div);
+        div.on('click', function () {
+            console.log('click');
+            div.animate({
+                width: 300,
+                height: 300
+            }, 300, function () {
+                // console.log('动画执行完了');
+                div.hide(1000);
+            });
+        });
+        // div.click(function(){
+
+        // })
+        // 只有手机上才能使用tap函数 使用touchstart滑动事件
+        div.tap(function () {
+            console.log('不延迟的click');
+        });
+    </script>
+</body>
+
+</html>

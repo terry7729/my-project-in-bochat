@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul id="ul1">
+    <li>隔壁老宋1</li>
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+<ul id="ul2">
+    <li>隔壁保健坤1</li>
+    <li >隔壁保健坤2</li>
+    <li>隔壁保健坤3</li>
+    <li>隔壁保健坤4</li>
+    <li id="li5">隔壁保健坤5</li>
+</ul>
+
+
+<script>
+    /*appendChild：添加到最后面
+      insertBefore: 添加到指定位置
+    语法：  父元素.insertBefore(新元素，要插入哪个元素的前面)
+        1.新创建的元素  : 插入到指定位置
+        2.已经存在的元素： 移动到指定位置
+        3.父元素有子元素： 父元素和子元素一起移动到指定位置
+
+     */
+
+    var ul1 = document.getElementById('ul1')
+    var li2 = document.getElementById('li2')//老宋2
+
+    //1.新创建的元素
+    var newLi = document.createElement('li');
+    newLi.innerText = '我是新来的';
+    ul1.insertBefore(newLi,li2);//将newLi插入到li2的前面
+
+    //2.已经存在的元素
+    var li5 = document.getElementById('li5');//保健坤5
+    ul1.insertBefore(li5, li2);//li5插入到li2的前面
+
+    //3.元素有子元素
+
+    var ul2 = document.getElementById('ul2');
+    ul1.insertBefore(ul2,li2);
+</script>
+</body>
+</html>

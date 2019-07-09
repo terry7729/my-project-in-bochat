@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="range" v-model="age">
+    <h2>你现在{{age}}岁了</h2>
+    <p v-if="age<18">不可以去网吧</p>
+    <p v-else-if="age>30&&age<=40">30而立</p>
+    <p v-else-if="age>40&&age<=50">40不惑</p>
+    <p v-else-if="age>50&&age<=60">50吃枸杞</p>
+    <p v-else-if="age>60&&age<=70">60吃枸杞和红枣</p>
+    <p v-else-if="age>70">70脑白金</p>
+    <p v-else>可以去网吧</p>
+  </div>
+</body>
+
+</html>
+<!-- 开发环境版本，包含了有帮助的命令行警告 jquery.js -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+  /*
+    逻辑判断
+    v-if
+    v-else-if 
+    v-else
+    类似于js中 if elseif else
+    用的多 v-if v-else
+    v-else v-else-if不能单独直接使用需要跟在v-if的后面
+  */
+  // 实例化
+  let app = new Vue({
+    el: "#app",
+    data: {
+      age: 18
+    }
+  })
+</script>

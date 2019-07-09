@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 200px;
+            background-color: green;
+        }
+
+        .one{
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box">班长</div>
+<div class="one">坤哥</div>
+<p class="one">保健坤</p>
+
+<script>
+    /**1.根据选择器获取元素querySelector
+     * @param 选择器字符串
+     * @return 满足选择器条件的元素  返回满足条件的第一个元素   元素|null
+     */
+   var banzhang =  document.querySelector('.one');
+    console.log ( banzhang );
+
+    /**2.根据选择器获取元素querySelectorAll
+     *
+     * @type {NodeListOf<Element>} 一定是数组   满足选择器条件的所有元素
+     */
+   var oneList =  document.querySelectorAll('.one');
+    console.log ( oneList );
+</script>
+</body>
+</html>

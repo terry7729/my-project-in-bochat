@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //输入五个人的成绩,求和,但是,一旦分数有误,则立刻结束(0-100之间)
+        //var sum = 0;
+        //var cj;
+        //for(var i = 0; i < 5; i++){
+        //       cj = +prompt("请输入第"+(i+1)+"个学生的成绩");
+        //       if(cj > 100 || cj < 0){
+        //           alert("你是不是脑子有包,输出错误");
+        //           //如果出现错误,立刻结束
+        //           break;
+        //       }
+        //       sum += cj;
+        //}
+//
+        //console.log(sum);
+
+        //计算1-100之间除了能被7整除之外所有整数的和。
+        var sum = 0;
+        for(var i = 1;i <= 100;i++){
+               if(i % 7 == 0){
+                   console.log(i);
+                    continue;
+               }
+               sum += i;
+        }
+        console.log(sum);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        header {
+            display: flex;
+            height: 70px;
+            background-color: #242424;
+        }
+
+        .w {
+            width: 1200px;
+            margin: 0 auto;
+        }
+
+        header>.left header>.right {
+            width: 20%;
+
+        }
+
+        .center {
+            flex: 1;
+        }
+
+        .center ul {
+            display: flex;
+            height: 100%;
+        }
+
+        .center ul li {
+            list-style: none;
+            flex: 1;
+            color: aliceblue;
+            font-size: 12px;
+        }
+
+        .center ul li a {
+            width: 100%;
+            height: 100%;
+            display: block;
+            color: aliceblue;
+            text-align: center;
+            line-height: 70px;
+            text-decoration: none;
+        }
+
+        a.router-link-active {
+            background-color: black;
+        }
+
+        main{
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id='app'>
+        <header class="w">
+            <div class="left"><img src="./img/tl.png" alt=""></div>
+            <div class="center">
+                <ul>
+                    <li>
+                        <router-link to='/findmusic'>发现音乐</router-link>
+                    </li>
+                    <li>
+                        <router-link to='/mymusic'>我的音乐</router-link>
+                    </li>
+                    <li>
+                        <router-link to='/friend'>朋友</router-link>
+                    </li>
+                    <li>
+                        <router-link to='/store'>商城</router-link>
+                    </li>
+                    <li>
+                        <router-link to='musicman'>音乐人</router-link>
+                    </li>
+                    <li>
+                        <router-link to='download'>下载客户端</router-link>
+                    </li>
+                </ul>
+            </div>
+            <div class="right"><img src="./img/tr.png" alt=""></div>
+        </header>
+        <main class="w">
+            <router-view>
+
+            </router-view>
+        </main>
+
+    </div>
+</body>
+
+</html>
+<!-- vue -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- vue-router 是vue插件 -->
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script>
+    //定义组件
+    let findmusic = {
+        template: '<img src="./img/findmusic.png" alt="">',
+
+    }
+    let mymusic = {
+        template: '<img src="./img/mymusic.png">'
+    }
+    let friend = {
+        template: '<img src="./img/friend.png">'
+    }
+    let store = {
+        template: '<img src="./img/store.png">'
+    }
+    let musicman = {
+        template: '<img src="./img/musicman.png">'
+    }
+    let download = {
+        template: '<img src="./img/download.png">'
+    }
+
+
+
+    //定义路由
+    let routers = [{
+        path:'/',
+        redirect:'/findmusic'
+    },{
+        path: '/findmusic',
+        component: findmusic
+    }, {
+        path: '/mymusic',
+        component: mymusic
+    }, {
+        path: '/friend',
+        component: friend
+    }, {
+        path: '/store',
+        component: store
+    }, {
+        path: '/musicman',
+        component: musicman
+    }, {
+        path: '/download',
+        component: download
+    }]
+    //实例化路由
+
+    const router = new VueRouter({
+        routes: routers
+    })
+    //实例化Vue顶级对象
+    new Vue({
+        el: '#app',
+        router: router
+        
+    })
+</script>

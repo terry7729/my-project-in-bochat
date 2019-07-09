@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #box{
+            height: 100px;
+        }
+
+        .one{
+            border: 10px solid green;
+        }
+
+        .two{
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="box" class="one" style="width: 100px;background-color: red;">我是班长</div>
+
+
+<script>
+    //获取页面元素
+   // banzhang =  document.getElementById('box');
+   //  console.log ( banzhang );
+    /*注意点：根据类名获取元素返回值是数组，可以通过数组下标取值来获取对应的元素*/
+    var banzhang = document.getElementsByClassName('one')[0];
+    console.log ( banzhang );
+
+    /*点语法获取元素属性的注意点
+        1.只能获取行内属性，不能获取行外属性
+        2.获取的是string类型，带单位
+        3.既可以获取，也可以修改
+        4.获取类名需要使用className
+     */
+
+    //取值
+    console.log ( banzhang.style.width );//100px
+    console.log ( typeof banzhang.style.width );//string
+    console.log ( banzhang.style.height );//空字符串
+
+    //赋值：  修改没有行内行外限制，可以修改任何属性
+    banzhang.style.height = '500px';
+
+    //获取类名
+    console.log ( banzhang.className );
+
+    //修改类名可以修改样式
+    // banzhang.className = 'two';
+    //如果不想修改样式，而是添加样式,使用字符串连接符
+     banzhang.className += ' two';//注意多个类名之间的空格
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //当script标签写在head中此时是无法获取页面元素的
+        //原因：js代码从上往下解析，当执行js代码的时候，body里面的元素没有加载
+        //解决方案：将js代码写在window.onload中
+       var box = document.getElementById('box');
+       console.log ( box );
+
+
+        /*window对象三个事件：代表浏览器窗口从打开到关闭的三个时刻
+
+         */
+
+        //1.onload:页面所有的内容（包含外部资源路径）全部加载完毕的时候会执行
+        window.onload = function (  ) {
+            //作用：可以在任何地方获取页面元素
+            var box = document.getElementById('box');
+            console.log ( box );
+        }
+
+        //2.onbeforeunload:页面即将要关闭的时候会执行
+        window.onbeforeunload = function (  ) {
+            /*作用：
+            1.常用：可以在这个方法中存储网页重要数据
+            2.不常用：可以挽留用户
+             */
+            console.log ( "页面即将要关闭" );
+
+            //弹出弹窗挽留用户
+            /*一般像这种骚扰用户的行为谷歌火狐都会拦截掉，只有IE不会拦截骚扰用户的行为
+
+             */
+           // return '大爷，确定不再玩玩嘛？';
+
+            /*网页病毒思路：仅当课后技术交流
+            用户点击关闭的时候，写一个死循环，无限打开新页面
+             */
+            // while (true){
+            //     window.open();
+            // }
+        }
+
+        //3.onunload:页面在关闭的一瞬间会执行
+        window.onunload = function (  ) {
+            //这个方法一执行完页面就会关闭，无法存储数据
+            console.log ( "页面正在关闭" );
+        }
+    </script>
+</head>
+<body>
+
+<div id="box">我是班长</div>
+
+</body>
+</html>

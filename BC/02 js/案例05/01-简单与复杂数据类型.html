@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //简单数据类型:数值类型,字符串类型,布尔值类型
+        //复杂数据类型:数组,函数,对象.
+
+        //数据类型就是用来存储数据的
+
+
+        //用简单数据类型举例:值引用,把值直接复制
+        var a = 10;
+        var b = a;
+        a = 20;
+        console.log(a,b);//20,10
+        //对a的值进行修改,不会影响到b
+
+
+        //用复杂数据类型举例:地址引用,把内存地址复制
+        var arr1 = [10,20,30,40,50];
+        var arr2 = arr1;
+        arr1[0] = 999;
+        console.log(arr2);//[999, 20, 30, 40, 50]
+        //对arr1的修改,会影响到arr2
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

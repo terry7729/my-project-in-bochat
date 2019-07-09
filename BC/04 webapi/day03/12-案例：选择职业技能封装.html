@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <style>
+        select {
+            width: 100px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+
+<!--默认情况下select标签是单选，有一个标准属性multiple,类似于disabled。  默认不写就是false：单选  写了就是true:多选-->
+<select name="" id="left" multiple>
+    <option value="">web工程师</option>
+    <option value="">android工程师</option>
+    <option value="">ios工程师</option>
+    <option value="">php工程师</option>
+    <option value="">nodejs工程师</option>
+    <option value="">pyton小白</option>
+    <option value="">足疗爱好者</option>
+</select>
+
+<button id="btn1">&gt;&gt;</button>
+<button id="btn2">&lt;&lt;</button>
+<button id="btn3">&gt;</button>
+<button id="btn4">&lt;</button>
+
+
+<select name="" id="right" multiple></select>
+
+
+<script>
+    /* 需求分析：
+          全部右移： 将左边left的每一个子元素添加到右边right
+          全部左移： 将右边right的每一个子元素添加到右边left
+          选中右移： 将左边left选中的子元素添加到右边right
+          选中左移： 将右边right的选中的子元素添加到右边left
+         思路分析：事件三要素
+               1 获取元素：
+               2 注册事件：
+               3 事件处理：
+     */
+
+    //1. 获取元素：
+    var left = document.getElementById ( "left" )
+    var right = document.getElementById ( "right" )
+    var btn1 = document.getElementById ( "btn1" )//全部右移
+    var btn2 = document.getElementById ( "btn2" )//全部左移
+    var btn3 = document.getElementById ( "btn3" )//选中右移
+    var btn4 = document.getElementById ( "btn4" )//选中左移
+
+    //2.注册事件：
+
+    //2.1 全部右移
+    btn1.onclick = function () {
+        // //3.事件处理：将左边left的每一个子元素添加到右边right
+        // for(var i = 0;i<left.children.length;i++){
+        //     right.appendChild(left.children[i]);
+        //     i--;//抵消本次循环变量i++
+        // }
+        moveAll(left,right);
+    }
+
+    //2.2 全部左移
+    btn2.onclick = function () {
+        //3.事件处理：
+        // for(var i = 0;i<right.children.length;i++){
+        //     left.appendChild(right.children[i]);
+        //     i--;//抵消本次i++
+        // }
+
+        moveAll(right,left);
+    }
+
+    //2.3 选中右移
+    btn3.onclick = function () {
+        //3.事件处理：
+        // for(var i = 0;i<left.children.length;i++){
+        //     // console.log ( left.children[ i ].selected );
+        //     //如果是选中状态则添加到右边
+        //     if (left.children[i].selected){
+        //         right.appendChild(left.children[i]);
+        //         i--;//抵消本次i++   只有发生移动后面元素下标才会前移，此时才需要抵消本次自增
+        //     };
+        // }
+
+        moveSelect(left,right);
+    }
+
+    //2.4 选中左移
+    btn4.onclick = function () {
+        //3.事件处理：
+        // for(var i = 0;i<right.children.length;i++){
+        //     if (right.children[i].selected){
+        //         left.appendChild(right.children[i]);
+        //         i--;//抵消本次i++   只有发生移动后面元素下标才会前移，此时才需要抵消本次自增
+        //     };
+        // }
+
+        moveSelect(right,left);
+    };
+
+    /**全部移动
+     * @param from :要移出的元素
+     * @param to:要移入的元素
+     */
+    function moveAll (from,to  ) {
+        for(var i = 0;i<from.children.length;i++){
+            to.appendChild(from.children[i]);
+            i--;
+        }
+    }
+
+    /**选中移动
+     * @param from:要移出的元素
+     * @param to:要移入的元素
+     */
+    function moveSelect ( from,to ) {
+        for(var i = 0;i<from.children.length;i++){
+            if (from.children[i].selected){
+                to.appendChild(from.children[i]);
+                i--;
+            }
+        }
+    }
+
+</script>
+</body>
+
+</html>

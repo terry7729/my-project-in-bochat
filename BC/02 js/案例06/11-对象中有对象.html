@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //对象中拥有对象
+        var xiuX = {
+            name:"秀秀",
+            age:18,
+            sayHi:function () {
+                console.log("大家好,我是"+this.name);
+            },
+            dog:{
+                name:"狗蛋",
+                age: 3,
+                color:"黄色",
+                shout:function () {
+                    console.log("我们一起学猫叫,一起喵喵喵喵!");
+                }
+            }
+        };
+
+        console.log(xiuX);
+        xiuX.sayHi();
+        xiuX.dog.shout();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 2000px;
+      height: 2000px;
+    }
+    div {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+      overflow: auto;
+    }
+    img {
+      vertical-align: top;
+      width: 400px;
+      height: 400px;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="按钮" id="btn"/>
+<div>
+  <img src="1.jpg" alt=""/>
+</div>
+</body>
+</html>
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //js中的scroll家族: scrollLeft scrollTop scrollWidth  scrollHeight
+
+    //jQuery中也有scrollLeft()方法 和scrollTop()方法.
+    //和元生js一样,都是代表滚出去的距离. 卷曲出去的距离.
+    $('#btn').on('click', function () {
+      //1.计算div这个元素滚出去的距离
+      console.log($('div').scrollLeft() + " : " + $('div').scrollTop());
+
+
+      //可以取出dom对象,使用原生js的方法或者属性.
+      // console.log($('div')[0].scrollWidth);
+      // console.log($('div')[0].scrollHeight);
+
+    });
+
+
+    //2.有一个scroll事件.
+    $(window).on('scroll', function () {
+      //2.页面滚出去的距离.
+      // 获取页面被卷曲的高度 $(window).scrollTop();
+      // 获取页面被卷曲的宽度 $(window).scrollLeft();
+      console.log($(window).scrollLeft() + ":" + $(window).scrollTop());
+    });
+
+
+  });
+</script>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        jQuery中的表单序列化：serialize方法
+
+            1.只能找到表单内所有带name属性的表单元素的值：要满足既要有name属性，还要是表单元素
+            2.并且生成的字符串的key，就是表单元素name属性的值
+            3.file这个元素通过表单序列化是获取不到的
+
+        用法：
+            $(找到表单).serialize();
+
+     -->
+</head>
+<body>
+    <form action="">
+
+        <input type="text" placeholder="请输入姓名" name="name">
+        <input type="text" placeholder="请输入职业" name="job">
+        <input type="text" placeholder="请输入薪资" name="salary">
+        <input type="text" placeholder="请输入年龄" name="age">
+
+        <input type="password" name="pass">
+
+        <div name="box">我是div</div>
+
+        <textarea name="text" id="" cols="30" rows="10">我是文本域</textarea>
+
+        <input type="file" name="icon">
+
+        <input type="button" value="点我获取所有" id="btn">
+
+
+    </form>
+</body>
+</html>
+
+<script src="../07_jQuery_ajax/jquery-1.12.4.js"></script>
+
+<script>
+    $('#btn').click(function(){
+
+        //我想获取到表单内所有输入的内容的值
+        var res = $('form').serialize();
+        console.log(res);
+        
+    });
+</script>

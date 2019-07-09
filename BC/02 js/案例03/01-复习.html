@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //1.数据类型的补充
+        //a.undefined类型,未定义,声明了变量但是没有赋值,此时这个变量就是undefined
+        //假如使用的没有声明的变量,那么这个时候就会报错
+        //b.null空
+        //变量不能直接等于null,除非手动设置(或者函数返回null)
+        //c.NaN:not a number,不是一个数字
+        //NaN本身是number类型,计算错误时,就会是NaN
+        //isNaN是用来判断这个数据是不是一个非数字值
+       
+        //2.数据类型的转换
+        //a.其他数据类型转换成number类型
+        //Number(需要转换的数据)
+        //parseInt(需要转换的数据)
+        //parseFloat(需要转换的数据)
+        //在需要转换的数据前面加上+号
+        //给需要转换的数据做算术运算
+
+        //b.其他数据类型转换成String类型
+        //String(需要转换的数据)
+        //需要转换的数据.toString();null跟undefined不能使用
+        //需要转换的数据与""连接
+        //var num = 10;
+        //var str = num + "";
+
+        //c.其他类型转换成布尔类型
+        //Boolean(需要转换的数据)
+        //能被转换成false的数据:0 -0 "" null undefined NaN false
+        //!!需要转换的数据
+        //var num = 10;
+        //var bool = !!num;
+        //alert(bool);
+
+        //3.if结构判断
+        //if(条件语句){
+        //      满足条件时执行语句;
+        // }
+
+        //4.if-else语句
+        //if(条件语句){
+        //      满足条件执行语句;
+        // }else {
+        //      不满足条件执行语句;
+        // }
+
+        //5.if-else if-else结构
+        //if(条件语句1){
+        //      满足条件1执行代码;
+        // }else if(条件语句2){
+        //      满足条件2执行代码;
+        // }else{
+        //      都不满足执行代码;
+        // }
+
+        //6.switch-case结构
+        //switch(表达式){
+        //  case 值1:
+        //      匹配值1执行代码;
+        //      break;
+        //  case 值2:
+        //      匹配值2执行代码;
+        //      break;
+        //  case 值3:
+        //      匹配值3执行代码;
+        //      break;
+        //  case 值4:
+        //      匹配值5执行代码;
+        //      break;
+        //  default:
+        //      都不匹配执行代码;
+        //      break;
+        // }
+        //break是为了结束这个程序,不写的话,会穿透到下一层代码
+        //default在条件都写完的情况下,可以不写
+
+        //7.三元表达式
+        //表达式?值1:值2;
+        //如果表达式的结果为true,则取值1,如果为false.则取值2;
+
+        //8.while循环结构
+        //while (判断条件) {
+        //    条件满足,执行代码;(循环体)
+        // }
+        //判断是否满足条件,满足,则执行循环体内容,然后再判断,满足则继续,不满足则结束;
+
+
+
+        //利用三元表达式求三个值中的最大值
+        var a = 10,b = 20,c = 30;
+        var maxab = a > b? a : b;
+        var max = maxab > c ? maxab : c;
+        var max = (a > b) ? (a > c ? a : c) : (b > c ? b : c);
+        var max1 = Math.max(a,b,c);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

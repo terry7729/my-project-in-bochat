@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        伸缩布局：也叫弹性布局，可以根据不同的父盒子大小来伸缩子元素的内容
+            今天所学的伸缩布局，不是取代原来的定位布局或者浮动布局，只是说又多提供了一种布局方式
+
+            它是H5出来的，所以证明有兼容问题，但是手机端没有兼容问题，手机端的内核几乎都是webkit
+     -->
+
+     <style>
+         ul{
+             padding: 0;
+             list-style: none;
+
+             width: 400px;
+             height: 550px;
+             border: 1px solid #000;
+            
+             /* 用弹性布局来管理子元素 */
+             display: flex;
+             justify-content: center;
+         }
+
+         li{
+             width: 200px;
+             height: 100px;
+             background-color:yellowgreen;  
+       
+         }
+     </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+</body>
+</html>

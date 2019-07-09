@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        transition做动画存在问题：
+
+            必须要满足一定的条件才有动画（自己动）
+            动画只有1次（动画次数唯一）
+    -->
+
+
+    <style>
+        .fish{
+            width: 174px;
+            height: 126px;
+            background: url(images/fish.png) no-repeat;
+        }
+
+        .fish:hover{
+            transition: all 1s steps(11);
+            background-position-y: -1386px;            
+        }
+    </style>
+</head>
+<body>
+    <div class="fish"></div>
+</body>
+</html>

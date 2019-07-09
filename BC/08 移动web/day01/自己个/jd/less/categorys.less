@@ -1,0 +1,139 @@
+@import 'base.less';
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+header {
+    position: fixed;
+    z-index: 999;
+    display: flex;
+    width: 100%;
+    background-color: #eee;
+    .back {
+        display: block;
+        width: .40rem;
+        height: .40rem;
+        background-image: url('../images/sprites.png');
+        background-size: 2rem 2rem;
+        background-position: -0.20rem 0;
+        background-origin: content-box;
+        background-clip: content-box;
+        padding: .1rem;
+    }
+    form {
+        flex: 1;
+        padding: .05rem;
+        .search {}
+        input {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+        }
+    }
+    .menu {
+        display: block;
+        width: .40rem;
+        height: .40rem;
+        background-image: url('../images/sprites.png');
+        background-size: 2rem 2rem;
+        background-position: -0.60rem 0;
+        background-origin: content-box;
+        background-clip: content-box;
+        padding: .1rem;
+    }
+}
+
+main {
+    position: absolute;
+    width: 100%;
+    padding: .4rem 0 .45rem 0;
+    display: flex;
+    height: 100%;
+    .category-left {
+       
+        // background-color: gold;
+        width: 33.3%;
+        height: 100%;
+        .swiper-container {
+            overflow: hidden;
+            height: 100%;
+            .swiper-wrapper {
+                
+                height: 100%;
+                .swiper-slide {
+                    height: auto;
+                }
+                ul {
+                    font-size: .14rem;
+                    li {
+                        height: 50px;
+                        &.active {
+                            background-color: #fff;
+                            a {
+                                color: red;
+                            }
+                        }
+                        a {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            width: 100%;
+                            height: 100%;
+                            border-bottom: 1px solid #fff;
+                            background-color: #eee;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .category-right {
+        overflow: hidden;
+        flex: 1;
+        height: auto;
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            .swiper-wrapper {
+                
+            }
+        }
+        
+        .top {
+            img {
+                width: 100%;
+                margin: .05rem;
+            }
+        }
+        .branchList {
+            h3 {
+                margin-left: .1rem;
+            }
+            ul {
+                display: flex;
+                flex-wrap: wrap;
+                li {
+                    width: 30%;
+                    margin-left: .07rem;
+                    a {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        img {
+                            width: 100%;
+                        }
+                        p {
+                            font-size: .12rem;
+
+                        }
+                    }
+                }
+            }
+          
+        }
+    }
+}

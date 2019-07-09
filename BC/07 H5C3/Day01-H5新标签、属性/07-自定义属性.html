@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+        什么叫自定义属性？
+                就是这个元素不带的属性，你写上了就叫自定义属性
+
+        以前写的自定义属性缺点：
+                1.很难区分到底是自定义的还是自带的属性
+                2.JS的取值和赋值太麻烦
+
+        H5里面推荐大家自定义属性写法按如下规则
+
+                data-自定义属性名
+
+        只要你的自定义属性是按data-这种形式写的，那么JS里有个属性叫 dataset可以帮助你拿到所有的自定义属性
+
+            因为dataset是一个对象，所有的自定义属性都当做了它这个对象的属性
+
+            取值时，不要加data-，但是如果后面还有-，会把-去掉，并把-后面的首字母大写
+
+            loginUserName
+     -->
+</head>
+<body>
+    
+    <div class="box" data-xxoo="gfdgdf" data-login-user-name="自定义" data-shengao="175cm" data-tizhong="45kg"></div>
+    
+</body>
+</html>
+
+<script>
+    //找到div
+    var box = document.querySelector('.box');
+    //获取自定义属性
+    // console.log(box.getAttribute('xxoo'));
+
+    //设置定义属性
+    // box.setAttribute('shengao','195cm');
+
+    // 我想一下子遍历出所有自定义属性
+    console.log(box.dataset);
+    console.log(box.dataset.name);
+    console.log(box.dataset['tizhong']);
+    
+
+    // box.dataset['shengao'] = "195cm";
+    box.dataset.shengao = "195cm";
+    
+</script>  

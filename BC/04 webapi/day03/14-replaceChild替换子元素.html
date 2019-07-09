@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<ul id="ul1">
+    <li>隔壁老宋1</li>
+    <li id="li2">隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+<ul id="ul2">
+    <li>隔壁保健坤1</li>
+    <li >隔壁保健坤2</li>
+    <li>隔壁保健坤3</li>
+    <li>隔壁保健坤4</li>
+    <li id="li5">隔壁保健坤5</li>
+</ul>
+
+
+<script>
+    /*    语法：  父元素.replaceChild(新元素，要替换的旧元素)
+        1.新创建的元素  :   则是替换操作
+        2.已经存在的元素： 先移动，后替换
+        3.父元素有子元素： 父元素和子元素一起先移动，后替换
+     */
+
+    var ul1 = document.getElementById('ul1')
+    var li2 = document.getElementById('li2')//老宋2
+
+    //1.新创建的元素
+    // var newLi = document.createElement('li');
+    // newLi.innerText = '我是新来的';
+    // ul1.replaceChild(newLi,li2);//newLi把li2替换
+
+    //2.已经存在的元素
+
+    // var li5 = document.getElementById('li5')//保健坤5
+    // ul1.replaceChild(li5, li2);//li5把li2替换
+
+    //3.父元素有子元素
+    var ul2 = document.getElementById('ul2')
+    ul1.replaceChild(ul2, li2);
+</script>
+</body>
+</html>

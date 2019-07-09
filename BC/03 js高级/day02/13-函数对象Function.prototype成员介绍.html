@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<script>
+    /*1.通过完整的原型链我们得知，所有的函数对象原型都会指向Function构造函数的原型
+    意味着，所有的函数对象都可以访问Function.prototype中的成员
+
+     */
+
+    //2.Function.prototype有哪些成员？
+
+    console.dir ( Function.prototype );
+
+    //2.1 name:获取函数名
+
+    // function fn ( a,b ) {
+    //     console.log ( "1111" );
+    //     console.log ( fn.name );//fn
+    // };
+    // console.dir(fn);
+    // fn();
+
+    //2.2 caller:获取调用本函数的引用
+    /*
+    a.如果在函数B中调用函数A，那么函数A的caller就是函数B
+    b.如果在全局调用函数A，那么函数A的caller就是null（此时相当于window.A() ）
+     */
+  /*  function fn1 (  ) {
+        console.log ( "今晚六点半，兴东地铁口鹏式足疗店见" );
+        console.log ( fn1.caller );//可以知道自己在哪个地方被人调用
+    };
+
+    function  fn2(  ) {
+        fn1();
+        console.log ( "我不去" );
+    }
+
+    fn2();
+
+    fn1();//全局变量都是window的属性，  等价于  window.fn1()*/
+
+    //2.3 length：获取函数形参的数量
+
+    // function fn (a,b ,c ) {
+    //     console.log ( fn.length );//3
+    // };
+    //
+    // fn();
+
+    //2.4 arguments:获取函数所有的实参
+
+    // function fn (a  ) {
+    //     //伪数组： 只有数组的三要素，没有数组的API（本质是对象）
+    //     console.log ( fn.arguments );
+    //     console.log ( arguments );
+    //     /*函数名.arguments与arguments关键字不是同一个对象
+    //        【常用】arguments关键字： 可以理解为函数内部一个隐藏的形参,作用是获取函数所有的实参，与形参一一对应
+    //        函数名.arguments属性：可以理解为函数对象的一个属性，作用是存储函数所有的实参，与形参不对应
+    //
+    //      */
+    //     console.log ( fn.arguments == arguments );//false
+    //
+    //
+    //     //arguments关键字:与形参一一对应    修改形参 arguments会改 修改arguments形参也会改
+    //     console.log ( a );
+    //     a = 100;
+    //     console.log ( arguments );
+    //
+    //     arguments[0] = 500;
+    //     console.log ( a );
+    //
+    //     console.log ( fn.arguments );
+    //
+    // };
+    //
+    // fn(10,20,30);
+
+    //3.arguments对象的两个常用属性
+
+    function fn ( a ) {
+        console.log ( arguments );
+
+        //3.1 callee:指向函数自身
+        //应用场景：匿名函数递归调用
+        console.log ( arguments.callee === fn );//true
+
+        //3.2 length:获取实参的数量  （数组三要素）
+        console.log ( arguments.length );//3  获取实参数量
+        console.log ( fn.length );//1  获取形参数量
+    }
+
+    fn(10,20,30);
+
+
+    //匿名函数递归调用语法介绍：了解即可
+    // (function  (  ) {
+    //     console.log ( "111" );
+    //     //使用arguments的callee可以在匿名函数内部自己调用自己
+    //     arguments.callee();
+    // })();
+
+
+</script>
+</body>
+</html>

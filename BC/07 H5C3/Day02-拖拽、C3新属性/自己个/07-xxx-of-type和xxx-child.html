@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li:first-child {
+            color: gold;
+        }
+
+        li:nth-child(even) {
+            color: red;
+        }
+
+        li:nth-of-type(1) {
+            color: aqua;
+        }
+
+        li:nth-of-type(even) {
+            color: chartreuse;
+        }
+
+        /* 排除掉最后一个li */
+        li:not(:last-child) {
+            color: Red;
+        }
+
+        input:focus {
+            
+            border: 1px solid red;
+            color:yellowgreen;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <span>我是span</span>
+        <li>隔壁老王1</li>
+        <li>隔壁老王2</li>
+        <li>隔壁老王3</li>
+        <li>隔壁老王4</li>
+        <li>隔壁老王5</li>
+        <li>隔壁老王6</li>
+        <li>隔壁老王7</li>
+        <li>隔壁老王8</li>
+        <li>隔壁老王9</li>
+        <li>隔壁老王10</li>
+        <span>最后一个span</span>
+    </ul>
+
+    <input type="text">
+</body>
+
+</html>

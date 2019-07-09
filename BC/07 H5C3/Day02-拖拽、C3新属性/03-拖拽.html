@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 
+
+        有的元素能拖，有的元素不能拖
+
+        行内属性：draggable = "true" 就可以让元素能被拖拽
+
+        拖拽有关的事件：
+                ondragstart：拖拽开始
+                ondrag:拖拽中
+                ondragend：拖拽结束
+
+        如果想监听拖拽的事件，请记得要把draggable = "true"给加上
+    -->
+
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #f00;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="images/mn.jpg" alt="">
+    <div class="box" draggable="true"></div>
+</body>
+
+</html>
+
+<script>
+    var box = document.querySelector('.box');
+
+    box.ondragstart = function () {
+
+        console.log('拖拽开始');
+
+    }
+
+    box.ondrag = function(){
+
+        console.log('拖拽中');
+        
+    }
+
+    box.ondragend = function (e) {
+
+        //事件对象就有事件触发时的所有信息
+        e = e || window.event;
+        // console.log('拖拽结束');
+        
+        box.style.left = e.pageX - x + "px";
+        box.style.top = e.pageY - y + "px";
+    }
+
+    var x,y;
+
+    box.onmousedown = function(e){
+
+        e = e || window.event;
+        x = e.pageX - box.offsetLeft;
+        y = e.pageY - box.offsetTop;
+    }
+    // box.onclick = function(e){
+
+    //     // 相对于屏幕
+    //     console.log(e.screenX,e.screenY);
+    //     // 相对于页面
+    //     console.log(e.pageX,e.pageY);
+    //     // 相对于可视区域
+    //     console.log(e.clientX,e.clientY);
+    // }
+</script>

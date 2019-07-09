@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- 
+
+        使用步骤：
+            1.创建请求对象
+            2.设置请求行（open方法）
+            3.设置请求头（get请求不用设置，post请求才设置）
+            4.发送请求&设置请求体（send方法）
+            5.监听响应完成事件，在这个事件里拿到响应体
+     -->
+</head>
+<body>
+    <!-- 我需要点击它以后发一个局部请求，请求到data.php -->
+    <input type="button" value="点我啊" id="btn">
+
+</body>
+</html>
+
+<script>
+
+
+    // 点击事件
+    document.getElementById('btn').onclick = function(){
+
+        //发局部请求
+        //1.创建请求对象
+        var xhr = new XMLHttpRequest();
+
+        //2.设置请求行，用open方法设置
+        // 参数1：请求方式
+        // 参数2：请求路径
+        // 这一步可以理解为打电话中的拨号那一步
+        xhr.open('get','./data.php');
+
+        //3.设置请求头，get请求不用设置，post请求我们才来设置
+
+        //4.发送请求&设置请求体，用send方法来设置
+        // 如果不需要提交数据，send里小括号里就不写，或者写null,或者写undefined
+        // 理解为按下了拨号键
+        xhr.send();
+        
+        //发送请求是一个网络操作，网络有延时，或者说网速有快有慢，总而言之，网络会有延时
+        //你能保证，下一句立刻能拿到响应体吗？
+        // console.log(xhr.responseText);
+
+        //5.监听响应完成事件，拿到响应体
+        xhr.onload = function(){
+
+            //当响应完成，会自动调用这个事件
+            // alert(123);
+
+            console.log(xhr.responseText);
+            
+        }
+    }
+</script>

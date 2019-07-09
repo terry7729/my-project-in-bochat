@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  /*
+    数组的这部分方法是es5中新增的
+  */
+  let arr = [{
+      name: '西兰花炒蛋',
+      color: '黄绿色'
+    },
+    {
+      name: '黄瓜炒蛋',
+      color: '黄绿色'
+    },
+    {
+      name: '青椒炒蛋',
+      color: '黄绿色'
+    },
+    {
+      name: '南瓜炒蛋',
+      color: '橘黄色'
+    },
+    {
+      name: '番茄炒蛋',
+      color: '橘黄色'
+    },
+  ]
+  // forEach 循环数组
+  /*
+    value 每一项
+    index 索引
+    arr 数组
+  */
+  // arr.forEach((value,index,arr)=>{
+  arr.forEach(v => {
+    // console.log(v)
+    // console.log(index)
+    // console.log(arr)
+  })
+
+  // filter 也会遍历数组
+  /*
+    value 每一项
+    index 索引
+    arr 数组
+  */
+  let newArr = arr.filter((value, index, arr) => {
+    // console.log(value)
+    // console.log(index)
+    // console.log(arr)
+    // 帮我们过滤元素 让我们自己写条件 筛选需要的元素
+    // 通过返回布尔值的方式 返回true 要 返回false 不要
+    if(value.color==='黄绿色'){
+      return true
+    }
+    // else{
+    //   return false;
+    // }
+  })
+
+  // 打印
+  console.log(newArr);
+</script>

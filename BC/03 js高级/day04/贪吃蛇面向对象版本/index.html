@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #map {
+            width: 800px;
+            height: 600px;
+            background: #cccccc;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="line.js"></script>
+<script src="Snake.js"></script>
+<script src="Food.js"></script>
+
+<script src="Game.js"></script>
+
+<script src="Tools.js"> </script>
+
+<script>
+    /*
+       1 获取元素：
+              * 地图map
+              * 食物food
+              * 蛇snake
+       2 注册事件：
+              * window.onkeydown
+       3 事件处理：
+              (1)蛇移动
+              (2)边界检测
+              (3)蛇吃食物
+              (4)刷新食物
+     */
+
+
+    //1.创建贪吃蛇游戏对象
+    var game = new Game();
+    game.start();
+
+
+
+
+
+</script>
+</body>
+</html>

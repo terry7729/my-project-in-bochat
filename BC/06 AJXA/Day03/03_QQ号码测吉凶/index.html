@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <!-- <script>
+        
+    </script> -->
+
+
+</head>
+
+<body>
+    <h1>来，算一下你的QQ决定的命运！</h1>
+    <input type="text" placeholder="请输入qq号" id="qq"> <input type="button" value="开始测算" id="btn">
+    <hr>
+    <p>QQ号：</p>
+    <p>得分：</p>
+    <p>吉凶论断：</p>
+    <p>论断详情：</p>
+    <p>性格分析：</p>
+    <p>性格详情：</p>
+</body>
+
+</html>
+
+
+<!-- <script src="http://api.jisuapi.com/qqluck/query?appkey=94c543ddb1a37c93&qq=10000&callback=f1"></script> -->
+
+<script>
+
+    //找到所有p标签
+    var pList = document.getElementsByTagName('p');
+
+    function f1(obj) {
+
+        // console.log(obj);
+        pList[0].innerHTML = "QQ号：" + obj.result.qq;
+        pList[1].innerHTML = "得分：" + obj.result.score;
+        pList[2].innerHTML = "吉凶论断：" + obj.result.luck;
+        pList[3].innerHTML = "论断详情：" + obj.result.content;
+        pList[4].innerHTML = "性格分析：" + obj.result.character;
+        pList[5].innerHTML = "性格详情：" + obj.result.characterdetail;
+
+    }
+
+    //找到文本框
+    var qq = document.getElementById('qq');
+
+    document.getElementById('btn').onclick = function () {
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('get','http://api.jisuapi.com/qqluck/query?appkey=94c543ddb1a37c93&qq=' + qq.value);
+        // xhr.send();
+
+        //用代码创建一个script标签
+        var spt = document.createElement('script');
+        spt.src = "http://api.jisuapi.com/qqluck/query?appkey=94c543ddb1a37c93&qq=" + qq.value + "&callback=f1";
+
+        // 把创建出来的script加到head里，那么它就可以自动发请求了
+        document.head.appendChild(spt);
+        
+    }
+</script>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul>
+    <li class="one">隔壁老宋1</li>
+    <li class="one">隔壁老宋2</li>
+    <li class="one">隔壁老宋3</li>
+    <li class="one">隔壁老宋4</li>
+    <li class="one">隔壁老宋5</li>
+</ul>
+
+<div class="one">我是班长</div>
+<script>
+    /**1.根据类名获取页面所有元素
+     * @param 类名字符串
+     * @return 一定是数组
+     */
+    var oneList =document.getElementsByClassName('one');
+    console.log ( oneList );
+
+    //2.类名获取元素使用不多，一般使用其他方式代替
+    //原因：IE8浏览器不支持
+
+</script>
+</body>
+</html>

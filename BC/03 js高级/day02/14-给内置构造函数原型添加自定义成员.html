@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*1.给内置构造函数添加自定义成员：内置构造函数自带的方法不够用，无法实现需求
+            直接添加弊端：多个程序员有可能会添加同名成员，后者会覆盖前者，产生潜在BUG
+     */
+
+    // //程序员A
+    // Array.prototype.sayHi = function (  ) {
+    //     console.log ( "我是大牛" );
+    // };
+    //
+    // //程序员B
+    // Array.prototype.sayHi = function (  ) {
+    //     console.log ( "我是牛逼" );
+    // };
+    //
+    // Array.prototype.max = function (  ) {
+    //     //this:指向调用这个方法的数组对象
+    //     var max = -Infinity;
+    //     for(var i = 0;i<this.length;i++){
+    //         if (this[i]>max){
+    //             max = this[i];
+    //         }
+    //     }
+    //     return max;
+    // }
+    //
+    //
+    // //程序员A
+    // var arr = [10,20,30,55,88,100,-20];
+    // console.log ( arr );
+    // console.log ( arr.max () );
+    // arr.sayHi();
+    //
+    // var arr1 = [100,20,200,88,90];
+    // console.log ( arr1.max () );
+
+
+    /*2.如何安全的给内置构造函数添加自定义成员
+    解决方案：构造一个自定义数组
+     */
+
+    function MyArr () {
+        this.sayHi = function () {
+            console.log ( "我是大牛" )
+        }
+    }
+
+    /*这里不能使用Array.prototype,而使用空数组
+    原因：使用Array.prototype，相当于将Array构造函数的原型对象的地址拷贝过去，修改拷贝后的数据对原数据有影响
+    使用空数组： （1）将空数组地址赋值给MyArr的原型，MyArr构造函数实例化对象仍然可以访问数组所有的方法
+                    （2）当修改MyArr的原型时，修改的是这个空数组，对默认的Array.prototype不会造成影响
+     */
+    MyArr.prototype = [];
+
+    MyArr.prototype.max = function () {
+        //this:指向调用这个方法的数组对象
+        var max = - Infinity
+        for ( var i = 0 ; i < this.length ; i ++ ) {
+            if ( this[ i ] > max ) {
+                max = this[ i ]
+            }
+        }
+        return max
+    }
+
+    var arr1 = new MyArr ()
+    arr1.sayHi ()
+    arr1.push ( 10, 20, 30 )
+    console.log ( arr1 )
+
+    var arr2 = [10,20,30];
+    console.log ( arr2 );
+    // console.log ( arr2.max () );
+
+</script>
+</body>
+</html>

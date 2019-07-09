@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        //date对象方法
+        var time = new Date();
+        //输入日期
+        console.log(time.toDateString());
+        console.log(time.toLocaleDateString());
+
+        //输出时间
+        console.log(time.toTimeString());
+        console.log(time.toLocaleTimeString());
+
+        //输出年份
+        console.log(time.getFullYear());
+
+        //输出月份
+        console.log(time.getMonth());
+
+        //获取星期数
+        console.log(time.getDay());
+
+        //获取天数
+        console.log(time.getDate());
+
+        var secRes = Date.now();
+        console.log(secRes);//从一九七0年,一月一号到现在过了多少毫秒!1541840454094
+
+        var res = new Date(0);
+        console.log(res);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

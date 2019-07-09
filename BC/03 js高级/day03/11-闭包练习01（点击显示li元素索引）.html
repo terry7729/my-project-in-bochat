@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<ul id="ul1">
+    <li>隔壁老宋1</li>
+    <li>隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+</ul>
+
+<script>
+    //需求：点击li元素显示索引
+
+    //1.以前的做法
+
+    // var ul1 = document.getElementById('ul1');
+    // for(var i = 0;i<ul1.children.length;i++){
+    //     //1.给每一个li元素添加自定义索引属性
+    //     ul1.children[i].setAttribute('index',i);
+    //     //2.给每一个li元素注册点击事件
+    //     ul1.children[i].onclick = function () {
+    //         alert(this.getAttribute('index'));
+    //     }
+    // }
+
+    //2.使用闭包
+
+
+    var ul1 = document.getElementById('ul1');
+    for(var i = 0;i<ul1.children.length;i++){
+
+        function outer (  ) {
+            var num = i;
+            function closure (  ) {
+                alert(num);
+            };
+            return closure;
+        }
+        var fn = outer();//循环每执行一次 就会生成一个新的变量 与新的闭包函数
+        // fn();
+        ul1.children[i].onclick = fn;//将每一个闭包函数地址赋值给li元素onclick
+    }
+
+
+</script>
+</body>
+</html>

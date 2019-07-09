@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box">我是班长
+<p>我是班长的小迷弟</p>
+</div>
+
+<script src="common.js"></script>
+<script>
+    var box = document.getElementById('box');
+    //1.innerText:获取元素文本(包含子元素文字)
+    /*非W3C标准语法，火狐浏览器42版本之前不支持，是微软自己的语法
+
+     */
+    //console.log ( box.innerText );
+
+    //2.textContent:作用与innerText完全一致
+    /*W3C标准语法，IE8不支持
+
+     */
+  //  console.log ( box.textContent );
+
+    console.log ( getText ( box ) );
+
+    /*3.浏览器兼容性处理
+            a.简单处理方式：不支持IE8浏览器
+            b.浏览器兼容性封装
+     */
+    /**获取元素文本
+     * NaN null undeinfed 0 -0 false ''''  document.all()
+     * @param ele 要获取的元素
+     */
+    function getText ( ele ) {
+        //浏览器能力检测
+        if (ele.textContent){//只要这个属性可以获取文本内容，就用这个属性来获取
+            return ele.textContent;
+        }else{//ele.textContent属性拿不到
+            return ele.innerText;
+        }
+    }
+
+    setText(box, '保健坤');
+    /**
+     * 修改元素文本
+     * @param ele 元素
+     * @param text 文本
+     */
+    function setText (ele,text  ) {
+        if (ele.textContent){
+            ele.textContent = text;
+        }else{
+            ele.innerText = text;
+        }
+    }
+</script>
+</body>
+</html>

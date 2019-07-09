@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">点我啊，给你点颜色看看</button>
+
+<ul>
+    <li>隔壁老宋1</li>
+    <li>隔壁老宋2</li>
+    <li>隔壁老宋3</li>
+    <li>隔壁老宋4</li>
+    <li>隔壁老宋5</li>
+    <li>隔壁老宋6</li>
+</ul>
+
+<script>
+      /* 需求分析：点击按钮，页面li元素颜色变化，单数行绿色双数行粉色
+           思路分析：事件三要素
+                 1 获取元素：
+                 2 注册事件：
+                 3 事件处理：
+       */
+
+      //1.获取元素
+    var btn = document.getElementById('btn');
+    var liList = document.getElementsByTagName('li');
+    //2.给按钮注册点击事件
+    btn.onclick = function (  ) {
+        //3.事件处理
+        for (var i = 0;i<liList.length;i++){
+           if (i%2==0){//单数行
+               liList[i].style.backgroundColor = 'green';
+           }else{//双数行
+               liList[i].style.backgroundColor = 'pink';
+           }
+        }
+    }
+
+
+
+</script>
+
+</body>
+</html>
